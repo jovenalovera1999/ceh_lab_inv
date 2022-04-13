@@ -30,7 +30,22 @@ namespace ceh_lab_inv.forms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if(login.UserAuthentication(txtUsername.Text.ToUpper(), txtPassword.Text))
+            if(String.IsNullOrWhiteSpace(txtUsername.Text) && String.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                MessageBox.Show("The username and password are required!", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Reset();
+            }
+            else if (String.IsNullOrWhiteSpace(txtUsername.Text))
+            {
+                MessageBox.Show("The username is required!", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Reset();
+            }
+            else if (String.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                MessageBox.Show("The password is required!", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Reset();
+            }
+            else if (login.UserAuthentication(txtUsername.Text.ToUpper(), txtPassword.Text))
             {
                 forms.dashboard.frmDashboard dashboard = new forms.dashboard.frmDashboard();
                 dashboard.Show();

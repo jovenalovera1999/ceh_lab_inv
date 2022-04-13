@@ -46,7 +46,7 @@ namespace ceh_lab_inv.functions
                             val.UserTelephoneNumber = dt.Rows[0].Field<string>("telephone_number");
                             val.UserEmail = dt.Rows[0].Field<string>("email");
                             val.UserUsername = dt.Rows[0].Field<string>("username");
-                            val.UserPassword = dt.Rows[0].Field<string>("CAST(AES_DECRYPT(password, 'J0V3NCUT3GW4P0P3R0J0KEL4NG09434071429') AS CHAR)");
+                            val.UserPassword = dt.Rows[0].Field<string>("CAST(AES_DECRYPT(password, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR)");
                             val.UserRole = dt.Rows[0].Field<string>("role");
                             connection.Close();
                             return true;

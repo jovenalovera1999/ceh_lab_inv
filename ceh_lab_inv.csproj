@@ -126,6 +126,7 @@
       <DependentUpon>frmView.cs</DependentUpon>
     </Compile>
     <Compile Include="functions\Duplicate.cs" />
+    <Compile Include="functions\IncomingSupply.cs" />
     <Compile Include="functions\Login.cs" />
     <Compile Include="functions\User.cs" />
     <Compile Include="Program.cs" />

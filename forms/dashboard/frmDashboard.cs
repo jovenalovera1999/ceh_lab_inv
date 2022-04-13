@@ -57,6 +57,13 @@ namespace ceh_lab_inv.forms.dashboard
             btnProfile.FillColor = Color.Green;
 
             lblModuleName.Text = "INCOMING SUPPLIES";
+
+            pnlMain.Controls.Clear();
+            forms.incoming_supplies.frmView incoming_supplies = new forms.incoming_supplies.frmView();
+            incoming_supplies.TopLevel = false;
+            pnlMain.Controls.Add(incoming_supplies);
+            incoming_supplies.Dock = DockStyle.Fill;
+            incoming_supplies.Show();
         }
 
         private void btnReport_Click(object sender, EventArgs e)
