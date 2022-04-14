@@ -78,7 +78,7 @@
             this.cmbRole.FocusedColor = System.Drawing.Color.Green;
             this.cmbRole.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.cmbRole.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.cmbRole.ForeColor = System.Drawing.Color.Green;
+            this.cmbRole.ForeColor = System.Drawing.Color.Black;
             this.cmbRole.HoverState.BorderColor = System.Drawing.Color.Green;
             this.cmbRole.ItemHeight = 30;
             this.cmbRole.Items.AddRange(new object[] {
@@ -123,7 +123,7 @@
             this.txtEmail.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtEmail.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtEmail.ForeColor = System.Drawing.Color.Green;
+            this.txtEmail.ForeColor = System.Drawing.Color.Black;
             this.txtEmail.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtEmail.Location = new System.Drawing.Point(941, 208);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
@@ -158,7 +158,7 @@
             this.txtTelephoneNumber.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtTelephoneNumber.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtTelephoneNumber.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtTelephoneNumber.ForeColor = System.Drawing.Color.Green;
+            this.txtTelephoneNumber.ForeColor = System.Drawing.Color.Black;
             this.txtTelephoneNumber.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtTelephoneNumber.Location = new System.Drawing.Point(941, 144);
             this.txtTelephoneNumber.Margin = new System.Windows.Forms.Padding(4);
@@ -205,7 +205,7 @@
             this.txtCellphoneNumber.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtCellphoneNumber.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtCellphoneNumber.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtCellphoneNumber.ForeColor = System.Drawing.Color.Green;
+            this.txtCellphoneNumber.ForeColor = System.Drawing.Color.Black;
             this.txtCellphoneNumber.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtCellphoneNumber.Location = new System.Drawing.Point(941, 80);
             this.txtCellphoneNumber.Margin = new System.Windows.Forms.Padding(4);
@@ -267,7 +267,7 @@
             this.txtAddress.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtAddress.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtAddress.ForeColor = System.Drawing.Color.Green;
+            this.txtAddress.ForeColor = System.Drawing.Color.Black;
             this.txtAddress.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtAddress.Location = new System.Drawing.Point(577, 399);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(4);
@@ -302,7 +302,7 @@
             this.txtLastName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtLastName.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtLastName.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtLastName.ForeColor = System.Drawing.Color.Green;
+            this.txtLastName.ForeColor = System.Drawing.Color.Black;
             this.txtLastName.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtLastName.Location = new System.Drawing.Point(577, 208);
             this.txtLastName.Margin = new System.Windows.Forms.Padding(4);
@@ -348,7 +348,7 @@
             this.txtMiddleName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtMiddleName.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtMiddleName.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtMiddleName.ForeColor = System.Drawing.Color.Green;
+            this.txtMiddleName.ForeColor = System.Drawing.Color.Black;
             this.txtMiddleName.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtMiddleName.Location = new System.Drawing.Point(577, 144);
             this.txtMiddleName.Margin = new System.Windows.Forms.Padding(4);
@@ -383,7 +383,7 @@
             this.txtFirstName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtFirstName.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtFirstName.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtFirstName.ForeColor = System.Drawing.Color.Green;
+            this.txtFirstName.ForeColor = System.Drawing.Color.Black;
             this.txtFirstName.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtFirstName.Location = new System.Drawing.Point(577, 80);
             this.txtFirstName.Margin = new System.Windows.Forms.Padding(4);
@@ -444,7 +444,7 @@
             this.txtPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtPassword.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtPassword.ForeColor = System.Drawing.Color.Green;
+            this.txtPassword.ForeColor = System.Drawing.Color.Black;
             this.txtPassword.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtPassword.Location = new System.Drawing.Point(213, 144);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
@@ -479,7 +479,7 @@
             this.txtUsername.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtUsername.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtUsername.ForeColor = System.Drawing.Color.Green;
+            this.txtUsername.ForeColor = System.Drawing.Color.Black;
             this.txtUsername.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtUsername.Location = new System.Drawing.Point(213, 80);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(4);
@@ -518,9 +518,9 @@
             this.btnCreateAccount.ForeColor = System.Drawing.Color.White;
             this.btnCreateAccount.HoverState.BorderColor = System.Drawing.Color.Green;
             this.btnCreateAccount.HoverState.FillColor = System.Drawing.Color.DodgerBlue;
-            this.btnCreateAccount.Location = new System.Drawing.Point(1559, 917);
+            this.btnCreateAccount.Location = new System.Drawing.Point(1559, 915);
             this.btnCreateAccount.Name = "btnCreateAccount";
-            this.btnCreateAccount.Size = new System.Drawing.Size(155, 38);
+            this.btnCreateAccount.Size = new System.Drawing.Size(155, 40);
             this.btnCreateAccount.TabIndex = 75;
             this.btnCreateAccount.TabStop = false;
             this.btnCreateAccount.Text = "CREATE ACCOUNT";
@@ -584,7 +584,7 @@
             this.cmbGender.FocusedColor = System.Drawing.Color.Green;
             this.cmbGender.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.cmbGender.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.cmbGender.ForeColor = System.Drawing.Color.Green;
+            this.cmbGender.ForeColor = System.Drawing.Color.Black;
             this.cmbGender.HoverState.BorderColor = System.Drawing.Color.Green;
             this.cmbGender.ItemHeight = 30;
             this.cmbGender.Items.AddRange(new object[] {
@@ -619,7 +619,7 @@
             this.txtAge.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtAge.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtAge.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtAge.ForeColor = System.Drawing.Color.Green;
+            this.txtAge.ForeColor = System.Drawing.Color.Black;
             this.txtAge.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtAge.Location = new System.Drawing.Point(577, 272);
             this.txtAge.Margin = new System.Windows.Forms.Padding(4);
@@ -655,7 +655,7 @@
             this.txtConfirmPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtConfirmPassword.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtConfirmPassword.ForeColor = System.Drawing.Color.Green;
+            this.txtConfirmPassword.ForeColor = System.Drawing.Color.Black;
             this.txtConfirmPassword.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtConfirmPassword.Location = new System.Drawing.Point(213, 208);
             this.txtConfirmPassword.Margin = new System.Windows.Forms.Padding(4);

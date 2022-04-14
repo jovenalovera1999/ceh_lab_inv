@@ -40,9 +40,9 @@
             this.btnProfile = new Guna.UI2.WinForms.Guna2Button();
             this.btnLogout = new Guna.UI2.WinForms.Guna2Button();
             this.btnExit = new Guna.UI2.WinForms.Guna2Button();
-            this.btnReport = new Guna.UI2.WinForms.Guna2Button();
             this.btnIncomingSupplies = new Guna.UI2.WinForms.Guna2Button();
             this.btnDashboard = new Guna.UI2.WinForms.Guna2Button();
+            this.btnCurrentSupplies = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -122,7 +122,7 @@
             this.panel2.Controls.Add(this.btnProfile);
             this.panel2.Controls.Add(this.btnLogout);
             this.panel2.Controls.Add(this.btnExit);
-            this.panel2.Controls.Add(this.btnReport);
+            this.panel2.Controls.Add(this.btnCurrentSupplies);
             this.panel2.Controls.Add(this.btnIncomingSupplies);
             this.panel2.Controls.Add(this.btnDashboard);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
@@ -231,31 +231,6 @@
             this.btnExit.Text = "EXIT";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnReport
-            // 
-            this.btnReport.Animated = true;
-            this.btnReport.BorderColor = System.Drawing.Color.Transparent;
-            this.btnReport.BorderRadius = 3;
-            this.btnReport.BorderThickness = 1;
-            this.btnReport.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReport.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnReport.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnReport.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnReport.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReport.FillColor = System.Drawing.Color.Green;
-            this.btnReport.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.btnReport.ForeColor = System.Drawing.Color.White;
-            this.btnReport.HoverState.BorderColor = System.Drawing.Color.White;
-            this.btnReport.HoverState.FillColor = System.Drawing.Color.Green;
-            this.btnReport.Location = new System.Drawing.Point(0, 76);
-            this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(194, 38);
-            this.btnReport.TabIndex = 11;
-            this.btnReport.TabStop = false;
-            this.btnReport.Text = "REPORT";
-            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
-            // 
             // btnIncomingSupplies
             // 
             this.btnIncomingSupplies.Animated = true;
@@ -306,6 +281,31 @@
             this.btnDashboard.Text = "DASHBOARD";
             this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
+            // btnCurrentSupplies
+            // 
+            this.btnCurrentSupplies.Animated = true;
+            this.btnCurrentSupplies.BorderColor = System.Drawing.Color.Transparent;
+            this.btnCurrentSupplies.BorderRadius = 3;
+            this.btnCurrentSupplies.BorderThickness = 1;
+            this.btnCurrentSupplies.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCurrentSupplies.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCurrentSupplies.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCurrentSupplies.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCurrentSupplies.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCurrentSupplies.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCurrentSupplies.FillColor = System.Drawing.Color.Green;
+            this.btnCurrentSupplies.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnCurrentSupplies.ForeColor = System.Drawing.Color.White;
+            this.btnCurrentSupplies.HoverState.BorderColor = System.Drawing.Color.White;
+            this.btnCurrentSupplies.HoverState.FillColor = System.Drawing.Color.Green;
+            this.btnCurrentSupplies.Location = new System.Drawing.Point(0, 76);
+            this.btnCurrentSupplies.Name = "btnCurrentSupplies";
+            this.btnCurrentSupplies.Size = new System.Drawing.Size(194, 38);
+            this.btnCurrentSupplies.TabIndex = 11;
+            this.btnCurrentSupplies.TabStop = false;
+            this.btnCurrentSupplies.Text = "CURRENT SUPPLIES";
+            this.btnCurrentSupplies.Click += new System.EventHandler(this.btnCurrentSupplies_Click);
+            // 
             // frmDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -342,8 +342,8 @@
         private Guna.UI2.WinForms.Guna2Button btnProfile;
         private Guna.UI2.WinForms.Guna2Button btnLogout;
         private Guna.UI2.WinForms.Guna2Button btnExit;
-        private Guna.UI2.WinForms.Guna2Button btnReport;
         private Guna.UI2.WinForms.Guna2Button btnIncomingSupplies;
         private Guna.UI2.WinForms.Guna2Button btnDashboard;
+        private Guna.UI2.WinForms.Guna2Button btnCurrentSupplies;
     }
 }

@@ -34,7 +34,7 @@ namespace ceh_lab_inv.forms.dashboard
         {
             btnDashboard.FillColor = Color.DarkGreen;
             btnIncomingSupplies.FillColor = Color.Green;
-            btnReport.FillColor = Color.Green;
+            btnCurrentSupplies.FillColor = Color.Green;
             btnCreateAccount.FillColor = Color.Green;
             btnProfile.FillColor = Color.Green;
 
@@ -52,36 +52,36 @@ namespace ceh_lab_inv.forms.dashboard
         {
             btnDashboard.FillColor = Color.Green;
             btnIncomingSupplies.FillColor = Color.DarkGreen;
-            btnReport.FillColor = Color.Green;
+            btnCurrentSupplies.FillColor = Color.Green;
             btnCreateAccount.FillColor = Color.Green;
             btnProfile.FillColor = Color.Green;
 
-            lblModuleName.Text = "INCOMING SUPPLIES";
+            lblModuleName.Text = "LIST OF INCOMING SUPPLIES";
 
             pnlMain.Controls.Clear();
-            forms.incoming_supplies.frmView incoming_supplies = new forms.incoming_supplies.frmView();
+            forms.incoming_supplies.frmList incoming_supplies = new forms.incoming_supplies.frmList();
             incoming_supplies.TopLevel = false;
             pnlMain.Controls.Add(incoming_supplies);
             incoming_supplies.Dock = DockStyle.Fill;
             incoming_supplies.Show();
         }
 
-        private void btnReport_Click(object sender, EventArgs e)
+        private void btnCurrentSupplies_Click(object sender, EventArgs e)
         {
             btnDashboard.FillColor = Color.Green;
             btnIncomingSupplies.FillColor = Color.Green;
-            btnReport.FillColor = Color.DarkGreen;
+            btnCurrentSupplies.FillColor = Color.DarkGreen;
             btnCreateAccount.FillColor = Color.Green;
             btnProfile.FillColor = Color.Green;
 
-            lblModuleName.Text = "REPORT";
+            lblModuleName.Text = "LIST OF CURRENT SUPPLIES";
         }
 
         private void btnCreateAccount_Click(object sender, EventArgs e)
         {
             btnDashboard.FillColor = Color.Green;
             btnIncomingSupplies.FillColor = Color.Green;
-            btnReport.FillColor = Color.Green;
+            btnCurrentSupplies.FillColor = Color.Green;
             btnCreateAccount.FillColor = Color.DarkGreen;
             btnProfile.FillColor = Color.Green;
 
@@ -99,7 +99,7 @@ namespace ceh_lab_inv.forms.dashboard
         {
             btnDashboard.FillColor = Color.Green;
             btnIncomingSupplies.FillColor = Color.Green;
-            btnReport.FillColor = Color.Green;
+            btnCurrentSupplies.FillColor = Color.Green;
             btnCreateAccount.FillColor = Color.Green;
             btnProfile.FillColor = Color.DarkGreen;
 

@@ -96,7 +96,72 @@ BEGIN
     CAST(AES_DECRYPT(total_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR),
     CAST(AES_DECRYPT(exp_rgt_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), status,
     DATE_FORMAT(arrival_date, '%W, %d %M %Y'), CONCAT(DATEDIFF(arrival_date, NOW()), ' DAYS LEFT'),
-    DATE_FORMAT(date_created, '%W, %d %M %Y') FROM ceh_lab_inv_db.supplies;
+    DATE_FORMAT(date_created, '%W, %d %M %Y') FROM ceh_lab_inv_db.supplies ORDER BY item ASC LIMIT 500;
+END$$
+
+DELIMITER ;
+
+--
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `incoming_supply_get`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `incoming_supply_get` (Pid INT)
+BEGIN
+	SELECT id, arrival_date, expiration_date, quantity, item, brand, qty, supplier, CAST(AES_DECRYPT(unit_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR),
+    number_of_unit, CAST(AES_DECRYPT(total_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR),
+    CAST(AES_DECRYPT(exp_rgt_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR) FROM ceh_lab_inv_db.supplies WHERE id = Pid;
+END$$
+
+DELIMITER ;
+
+--
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `incoming_supply_add`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `incoming_supply_add` (Parrival_date DATE, Pexpiration_date DATE, Pquantity VARCHAR(255), Pitem VARCHAR(255), Pbrand VARCHAR(255),
+Pqty VARCHAR(255), Psupplier VARCHAR(255), Punit_cost VARBINARY(255), Pnumber_of_unit INT, Ptotal_cost VARBINARY(255), Pstatus VARCHAR(255))
+BEGIN
+	INSERT INTO ceh_lab_inv_db.supplies(arrival_date, expiration_date, quantity, item, brand, qty, supplier, unit_cost, number_of_unit,
+    total_cost, status)
+    VALUES(Parrival_date, Pexpiration_date, Pquantity, Pitem, Pbrand, Pqty, Psupplier, AES_ENCRYPT(Punit_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test'),
+    Pnumber_of_unit, AES_ENCRYPT(Ptotal_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test'), Pstatus);
+END$$
+
+DELIMITER ;
+
+--
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `incoming_supply_update`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `incoming_supply_update` (Pid INT, Parrival_date DATE, Pexpiration_date DATE, Pquantity VARCHAR(255), Pitem VARCHAR(255),
+Pbrand VARCHAR(255), Pqty VARCHAR(255), Psupplier VARCHAR(255), Punit_cost VARBINARY(255), Pnumber_of_unit INT, Ptotal_cost VARBINARY(255))
+BEGIN
+	UPDATE ceh_lab_inv_db.supplies SET arrival_date = Parrival_date, expiration_date = Pexpiration_date, quantity = Pquantity, item = Pitem,
+    brand = Pbrand, qty = Pqty, supplier = Psupplier, unit_cost = AES_ENCRYPT(Punit_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test'),
+    number_of_unit = Pnumber_of_unit, total_cost = AES_ENCRYPT(Ptotal_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') WHERE id = Pid;
+END$$
+
+DELIMITER ;
+
+--
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `incoming_supply_delete`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `incoming_supply_delete` (Pid INT)
+BEGIN
+	DELETE FROM ceh_lab_inv_db.supplies WHERE id = Pid;
 END$$
 
 DELIMITER ;

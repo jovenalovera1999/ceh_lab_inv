@@ -83,6 +83,7 @@
             this.gridCurrentSupplies.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridCurrentSupplies.Size = new System.Drawing.Size(1726, 908);
             this.gridCurrentSupplies.TabIndex = 8;
+            this.gridCurrentSupplies.TabStop = false;
             this.gridCurrentSupplies.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.gridCurrentSupplies.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.gridCurrentSupplies.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -137,7 +138,7 @@
             this.dateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dateFrom.FormatCustom = null;
             this.dateFrom.Location = new System.Drawing.Point(764, 12);
-            this.dateFrom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateFrom.Margin = new System.Windows.Forms.Padding(4);
             this.dateFrom.Name = "dateFrom";
             this.dateFrom.Size = new System.Drawing.Size(454, 40);
             this.dateFrom.TabIndex = 11;
@@ -152,7 +153,7 @@
             this.dateTo.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dateTo.FormatCustom = null;
             this.dateTo.Location = new System.Drawing.Point(1259, 12);
-            this.dateTo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTo.Margin = new System.Windows.Forms.Padding(4);
             this.dateTo.Name = "dateTo";
             this.dateTo.Size = new System.Drawing.Size(454, 40);
             this.dateTo.TabIndex = 12;

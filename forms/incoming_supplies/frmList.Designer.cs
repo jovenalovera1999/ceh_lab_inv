@@ -1,6 +1,6 @@
 ﻿namespace ceh_lab_inv.forms.incoming_supplies
 {
-    partial class frmView
+    partial class frmList
     {
         /// <summary>
         /// Required designer variable.
@@ -55,9 +55,10 @@
             this.btnAddIncomingSupply.Location = new System.Drawing.Point(12, 12);
             this.btnAddIncomingSupply.Name = "btnAddIncomingSupply";
             this.btnAddIncomingSupply.Size = new System.Drawing.Size(191, 40);
-            this.btnAddIncomingSupply.TabIndex = 12;
+            this.btnAddIncomingSupply.TabIndex = 14;
             this.btnAddIncomingSupply.TabStop = false;
             this.btnAddIncomingSupply.Text = "ADD INCOMING SUPPLY";
+            this.btnAddIncomingSupply.Click += new System.EventHandler(this.btnAddIncomingSupply_Click);
             // 
             // gridIncomingSupplies
             // 
@@ -103,7 +104,7 @@
             this.gridIncomingSupplies.RowTemplate.Height = 40;
             this.gridIncomingSupplies.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridIncomingSupplies.Size = new System.Drawing.Size(1726, 909);
-            this.gridIncomingSupplies.TabIndex = 11;
+            this.gridIncomingSupplies.TabIndex = 13;
             this.gridIncomingSupplies.TabStop = false;
             this.gridIncomingSupplies.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.gridIncomingSupplies.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -126,8 +127,9 @@
             this.gridIncomingSupplies.ThemeStyle.RowsStyle.Height = 40;
             this.gridIncomingSupplies.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
             this.gridIncomingSupplies.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.gridIncomingSupplies.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridIncomingSupplies_CellContentClick);
             // 
-            // frmView
+            // frmList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -136,10 +138,10 @@
             this.Controls.Add(this.btnAddIncomingSupply);
             this.Controls.Add(this.gridIncomingSupplies);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmView";
+            this.Name = "frmList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "INCOMING SUPPLIES";
-            this.Load += new System.EventHandler(this.frmView_Load);
+            this.Text = "LIST OF INCOMING SUPPLIES";
+            this.Load += new System.EventHandler(this.frmList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridIncomingSupplies)).EndInit();
             this.ResumeLayout(false);
 

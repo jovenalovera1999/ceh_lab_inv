@@ -65,7 +65,7 @@
             this.txtQuantity.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtQuantity.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtQuantity.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtQuantity.ForeColor = System.Drawing.Color.Green;
+            this.txtQuantity.ForeColor = System.Drawing.Color.Black;
             this.txtQuantity.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtQuantity.Location = new System.Drawing.Point(16, 95);
             this.txtQuantity.Margin = new System.Windows.Forms.Padding(4);
@@ -98,6 +98,7 @@
             this.dateExpiration.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dateExpiration.FormatCustom = null;
             this.dateExpiration.Location = new System.Drawing.Point(16, 32);
+            this.dateExpiration.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dateExpiration.Name = "dateExpiration";
             this.dateExpiration.Size = new System.Drawing.Size(413, 36);
             this.dateExpiration.TabIndex = 0;
@@ -126,7 +127,7 @@
             this.txtItem.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtItem.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtItem.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtItem.ForeColor = System.Drawing.Color.Green;
+            this.txtItem.ForeColor = System.Drawing.Color.Black;
             this.txtItem.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtItem.Location = new System.Drawing.Point(16, 159);
             this.txtItem.Margin = new System.Windows.Forms.Padding(4);
@@ -177,7 +178,7 @@
             this.txtBrand.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtBrand.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtBrand.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtBrand.ForeColor = System.Drawing.Color.Green;
+            this.txtBrand.ForeColor = System.Drawing.Color.Black;
             this.txtBrand.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtBrand.Location = new System.Drawing.Point(16, 223);
             this.txtBrand.Margin = new System.Windows.Forms.Padding(4);
@@ -212,7 +213,7 @@
             this.txtQTY.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtQTY.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtQTY.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtQTY.ForeColor = System.Drawing.Color.Green;
+            this.txtQTY.ForeColor = System.Drawing.Color.Black;
             this.txtQTY.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtQTY.Location = new System.Drawing.Point(16, 287);
             this.txtQTY.Margin = new System.Windows.Forms.Padding(4);
@@ -247,7 +248,7 @@
             this.txtSupplier.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtSupplier.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtSupplier.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtSupplier.ForeColor = System.Drawing.Color.Green;
+            this.txtSupplier.ForeColor = System.Drawing.Color.Black;
             this.txtSupplier.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtSupplier.Location = new System.Drawing.Point(477, 32);
             this.txtSupplier.Margin = new System.Windows.Forms.Padding(4);
@@ -282,7 +283,7 @@
             this.txtUnitCost.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtUnitCost.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtUnitCost.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtUnitCost.ForeColor = System.Drawing.Color.Green;
+            this.txtUnitCost.ForeColor = System.Drawing.Color.Black;
             this.txtUnitCost.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtUnitCost.Location = new System.Drawing.Point(477, 95);
             this.txtUnitCost.Margin = new System.Windows.Forms.Padding(4);
@@ -317,7 +318,7 @@
             this.txtNumberOfUnit.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtNumberOfUnit.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtNumberOfUnit.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtNumberOfUnit.ForeColor = System.Drawing.Color.Green;
+            this.txtNumberOfUnit.ForeColor = System.Drawing.Color.Black;
             this.txtNumberOfUnit.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtNumberOfUnit.Location = new System.Drawing.Point(477, 159);
             this.txtNumberOfUnit.Margin = new System.Windows.Forms.Padding(4);
@@ -352,7 +353,7 @@
             this.txtTotalCost.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtTotalCost.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtTotalCost.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtTotalCost.ForeColor = System.Drawing.Color.Green;
+            this.txtTotalCost.ForeColor = System.Drawing.Color.Black;
             this.txtTotalCost.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtTotalCost.Location = new System.Drawing.Point(477, 223);
             this.txtTotalCost.Margin = new System.Windows.Forms.Padding(4);
@@ -389,7 +390,7 @@
             this.txtExpRgtCost.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtExpRgtCost.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtExpRgtCost.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtExpRgtCost.ForeColor = System.Drawing.Color.Green;
+            this.txtExpRgtCost.ForeColor = System.Drawing.Color.Black;
             this.txtExpRgtCost.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtExpRgtCost.Location = new System.Drawing.Point(477, 287);
             this.txtExpRgtCost.Margin = new System.Windows.Forms.Padding(4);
@@ -432,7 +433,7 @@
             this.btnAddSupply.HoverState.FillColor = System.Drawing.Color.DodgerBlue;
             this.btnAddSupply.Location = new System.Drawing.Point(773, 330);
             this.btnAddSupply.Name = "btnAddSupply";
-            this.btnAddSupply.Size = new System.Drawing.Size(117, 38);
+            this.btnAddSupply.Size = new System.Drawing.Size(117, 40);
             this.btnAddSupply.TabIndex = 31;
             this.btnAddSupply.TabStop = false;
             this.btnAddSupply.Text = "ADD SUPPLY";
@@ -455,7 +456,7 @@
             this.btnCancel.HoverState.FillColor = System.Drawing.Color.Red;
             this.btnCancel.Location = new System.Drawing.Point(650, 330);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(117, 38);
+            this.btnCancel.Size = new System.Drawing.Size(117, 40);
             this.btnCancel.TabIndex = 32;
             this.btnCancel.TabStop = false;
             this.btnCancel.Text = "CANCEL";

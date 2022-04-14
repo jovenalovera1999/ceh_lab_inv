@@ -28,13 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
+            this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.btnAddIncomingSupply = new Guna.UI2.WinForms.Guna2Button();
-            this.txtExpRgtCost = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.txtTotalCost = new Guna.UI2.WinForms.Guna2TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtNumberOfCost = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtNumberOfUnit = new Guna.UI2.WinForms.Guna2TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtUnitCost = new Guna.UI2.WinForms.Guna2TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -44,7 +42,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtBrand = new Guna.UI2.WinForms.Guna2TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.switchExpirationDate = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.txtItem = new Guna.UI2.WinForms.Guna2TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,28 +52,29 @@
             this.dateArrival = new Bunifu.Framework.UI.BunifuDatepicker();
             this.SuspendLayout();
             // 
-            // btnCancel
+            // btnClose
             // 
-            this.btnCancel.Animated = true;
-            this.btnCancel.BorderColor = System.Drawing.Color.Transparent;
-            this.btnCancel.BorderRadius = 3;
-            this.btnCancel.BorderThickness = 1;
-            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCancel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCancel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCancel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCancel.FillColor = System.Drawing.Color.Red;
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.HoverState.BorderColor = System.Drawing.Color.Green;
-            this.btnCancel.HoverState.FillColor = System.Drawing.Color.Red;
-            this.btnCancel.Location = new System.Drawing.Point(498, 392);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(193, 38);
-            this.btnCancel.TabIndex = 55;
-            this.btnCancel.TabStop = false;
-            this.btnCancel.Text = "CANCEL";
+            this.btnClose.Animated = true;
+            this.btnClose.BorderColor = System.Drawing.Color.Transparent;
+            this.btnClose.BorderRadius = 3;
+            this.btnClose.BorderThickness = 1;
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnClose.FillColor = System.Drawing.Color.Red;
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.HoverState.BorderColor = System.Drawing.Color.Green;
+            this.btnClose.HoverState.FillColor = System.Drawing.Color.Red;
+            this.btnClose.Location = new System.Drawing.Point(498, 328);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(193, 40);
+            this.btnClose.TabIndex = 55;
+            this.btnClose.TabStop = false;
+            this.btnClose.Text = "CLOSE";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnAddIncomingSupply
             // 
@@ -94,63 +92,27 @@
             this.btnAddIncomingSupply.ForeColor = System.Drawing.Color.White;
             this.btnAddIncomingSupply.HoverState.BorderColor = System.Drawing.Color.Green;
             this.btnAddIncomingSupply.HoverState.FillColor = System.Drawing.Color.DodgerBlue;
-            this.btnAddIncomingSupply.Location = new System.Drawing.Point(697, 392);
+            this.btnAddIncomingSupply.Location = new System.Drawing.Point(697, 328);
             this.btnAddIncomingSupply.Name = "btnAddIncomingSupply";
-            this.btnAddIncomingSupply.Size = new System.Drawing.Size(193, 38);
+            this.btnAddIncomingSupply.Size = new System.Drawing.Size(193, 40);
             this.btnAddIncomingSupply.TabIndex = 54;
             this.btnAddIncomingSupply.TabStop = false;
             this.btnAddIncomingSupply.Text = "ADD INCOMING SUPPLY";
-            // 
-            // txtExpRgtCost
-            // 
-            this.txtExpRgtCost.Animated = true;
-            this.txtExpRgtCost.BorderRadius = 3;
-            this.txtExpRgtCost.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtExpRgtCost.DefaultText = "";
-            this.txtExpRgtCost.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtExpRgtCost.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtExpRgtCost.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtExpRgtCost.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtExpRgtCost.FocusedState.BorderColor = System.Drawing.Color.Green;
-            this.txtExpRgtCost.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtExpRgtCost.ForeColor = System.Drawing.Color.Green;
-            this.txtExpRgtCost.HoverState.BorderColor = System.Drawing.Color.Green;
-            this.txtExpRgtCost.Location = new System.Drawing.Point(477, 349);
-            this.txtExpRgtCost.Margin = new System.Windows.Forms.Padding(4);
-            this.txtExpRgtCost.MaxLength = 255;
-            this.txtExpRgtCost.Name = "txtExpRgtCost";
-            this.txtExpRgtCost.PasswordChar = '\0';
-            this.txtExpRgtCost.PlaceholderText = "";
-            this.txtExpRgtCost.ReadOnly = true;
-            this.txtExpRgtCost.SelectedText = "";
-            this.txtExpRgtCost.Size = new System.Drawing.Size(413, 36);
-            this.txtExpRgtCost.TabIndex = 10;
-            this.txtExpRgtCost.TabStop = false;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Green;
-            this.label10.Location = new System.Drawing.Point(473, 325);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(111, 20);
-            this.label10.TabIndex = 53;
-            this.label10.Text = "EXP. RGT. COST";
+            this.btnAddIncomingSupply.Click += new System.EventHandler(this.btnAddIncomingSupply_Click);
             // 
             // txtTotalCost
             // 
             this.txtTotalCost.Animated = true;
             this.txtTotalCost.BorderRadius = 3;
             this.txtTotalCost.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTotalCost.DefaultText = "";
+            this.txtTotalCost.DefaultText = "0.00";
             this.txtTotalCost.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtTotalCost.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtTotalCost.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtTotalCost.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtTotalCost.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtTotalCost.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtTotalCost.ForeColor = System.Drawing.Color.Green;
+            this.txtTotalCost.ForeColor = System.Drawing.Color.Black;
             this.txtTotalCost.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtTotalCost.Location = new System.Drawing.Point(477, 285);
             this.txtTotalCost.Margin = new System.Windows.Forms.Padding(4);
@@ -175,29 +137,31 @@
             this.label9.TabIndex = 51;
             this.label9.Text = "TOTAL COST";
             // 
-            // txtNumberOfCost
+            // txtNumberOfUnit
             // 
-            this.txtNumberOfCost.Animated = true;
-            this.txtNumberOfCost.BorderRadius = 3;
-            this.txtNumberOfCost.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtNumberOfCost.DefaultText = "";
-            this.txtNumberOfCost.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtNumberOfCost.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtNumberOfCost.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtNumberOfCost.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtNumberOfCost.FocusedState.BorderColor = System.Drawing.Color.Green;
-            this.txtNumberOfCost.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtNumberOfCost.ForeColor = System.Drawing.Color.Green;
-            this.txtNumberOfCost.HoverState.BorderColor = System.Drawing.Color.Green;
-            this.txtNumberOfCost.Location = new System.Drawing.Point(477, 221);
-            this.txtNumberOfCost.Margin = new System.Windows.Forms.Padding(4);
-            this.txtNumberOfCost.MaxLength = 255;
-            this.txtNumberOfCost.Name = "txtNumberOfCost";
-            this.txtNumberOfCost.PasswordChar = '\0';
-            this.txtNumberOfCost.PlaceholderText = "INPUT NUMBER OF UNIT";
-            this.txtNumberOfCost.SelectedText = "";
-            this.txtNumberOfCost.Size = new System.Drawing.Size(413, 36);
-            this.txtNumberOfCost.TabIndex = 8;
+            this.txtNumberOfUnit.Animated = true;
+            this.txtNumberOfUnit.BorderRadius = 3;
+            this.txtNumberOfUnit.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNumberOfUnit.DefaultText = "";
+            this.txtNumberOfUnit.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtNumberOfUnit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtNumberOfUnit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtNumberOfUnit.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtNumberOfUnit.FocusedState.BorderColor = System.Drawing.Color.Green;
+            this.txtNumberOfUnit.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.txtNumberOfUnit.ForeColor = System.Drawing.Color.Black;
+            this.txtNumberOfUnit.HoverState.BorderColor = System.Drawing.Color.Green;
+            this.txtNumberOfUnit.Location = new System.Drawing.Point(477, 221);
+            this.txtNumberOfUnit.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNumberOfUnit.MaxLength = 255;
+            this.txtNumberOfUnit.Name = "txtNumberOfUnit";
+            this.txtNumberOfUnit.PasswordChar = '\0';
+            this.txtNumberOfUnit.PlaceholderText = "INPUT NUMBER OF UNIT";
+            this.txtNumberOfUnit.SelectedText = "";
+            this.txtNumberOfUnit.Size = new System.Drawing.Size(413, 36);
+            this.txtNumberOfUnit.TabIndex = 8;
+            this.txtNumberOfUnit.TextChanged += new System.EventHandler(this.txtNumberOfUnit_TextChanged);
+            this.txtNumberOfUnit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumberOfUnit_KeyPress);
             // 
             // label8
             // 
@@ -222,7 +186,7 @@
             this.txtUnitCost.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtUnitCost.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtUnitCost.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtUnitCost.ForeColor = System.Drawing.Color.Green;
+            this.txtUnitCost.ForeColor = System.Drawing.Color.Black;
             this.txtUnitCost.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtUnitCost.Location = new System.Drawing.Point(477, 157);
             this.txtUnitCost.Margin = new System.Windows.Forms.Padding(4);
@@ -233,6 +197,8 @@
             this.txtUnitCost.SelectedText = "";
             this.txtUnitCost.Size = new System.Drawing.Size(413, 36);
             this.txtUnitCost.TabIndex = 7;
+            this.txtUnitCost.TextChanged += new System.EventHandler(this.txtUnitCost_TextChanged);
+            this.txtUnitCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUnitCost_KeyPress);
             // 
             // label7
             // 
@@ -257,7 +223,7 @@
             this.txtSupplier.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtSupplier.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtSupplier.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtSupplier.ForeColor = System.Drawing.Color.Green;
+            this.txtSupplier.ForeColor = System.Drawing.Color.Black;
             this.txtSupplier.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtSupplier.Location = new System.Drawing.Point(477, 94);
             this.txtSupplier.Margin = new System.Windows.Forms.Padding(4);
@@ -292,9 +258,9 @@
             this.txtQTY.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtQTY.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtQTY.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtQTY.ForeColor = System.Drawing.Color.Green;
+            this.txtQTY.ForeColor = System.Drawing.Color.Black;
             this.txtQTY.HoverState.BorderColor = System.Drawing.Color.Green;
-            this.txtQTY.Location = new System.Drawing.Point(16, 349);
+            this.txtQTY.Location = new System.Drawing.Point(477, 30);
             this.txtQTY.Margin = new System.Windows.Forms.Padding(4);
             this.txtQTY.MaxLength = 255;
             this.txtQTY.Name = "txtQTY";
@@ -309,7 +275,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Green;
-            this.label5.Location = new System.Drawing.Point(12, 325);
+            this.label5.Location = new System.Drawing.Point(473, 6);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 20);
             this.label5.TabIndex = 43;
@@ -327,7 +293,7 @@
             this.txtBrand.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtBrand.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtBrand.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtBrand.ForeColor = System.Drawing.Color.Green;
+            this.txtBrand.ForeColor = System.Drawing.Color.Black;
             this.txtBrand.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtBrand.Location = new System.Drawing.Point(16, 285);
             this.txtBrand.Margin = new System.Windows.Forms.Padding(4);
@@ -350,22 +316,6 @@
             this.label4.TabIndex = 41;
             this.label4.Text = "BRAND";
             // 
-            // switchExpirationDate
-            // 
-            this.switchExpirationDate.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.switchExpirationDate.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.switchExpirationDate.CheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.switchExpirationDate.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.switchExpirationDate.Location = new System.Drawing.Point(435, 101);
-            this.switchExpirationDate.Name = "switchExpirationDate";
-            this.switchExpirationDate.Size = new System.Drawing.Size(35, 20);
-            this.switchExpirationDate.TabIndex = 39;
-            this.switchExpirationDate.TabStop = false;
-            this.switchExpirationDate.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.switchExpirationDate.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.switchExpirationDate.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.switchExpirationDate.UncheckedState.InnerColor = System.Drawing.Color.White;
-            // 
             // txtItem
             // 
             this.txtItem.Animated = true;
@@ -378,7 +328,7 @@
             this.txtItem.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtItem.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtItem.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtItem.ForeColor = System.Drawing.Color.Green;
+            this.txtItem.ForeColor = System.Drawing.Color.Black;
             this.txtItem.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtItem.Location = new System.Drawing.Point(16, 221);
             this.txtItem.Margin = new System.Windows.Forms.Padding(4);
@@ -415,13 +365,13 @@
             // dateExpiration
             // 
             this.dateExpiration.BackColor = System.Drawing.Color.Green;
-            this.dateExpiration.BorderRadius = 0;
-            this.dateExpiration.Enabled = false;
+            this.dateExpiration.BorderRadius = 3;
             this.dateExpiration.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateExpiration.ForeColor = System.Drawing.Color.White;
             this.dateExpiration.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dateExpiration.FormatCustom = null;
             this.dateExpiration.Location = new System.Drawing.Point(16, 94);
+            this.dateExpiration.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dateExpiration.Name = "dateExpiration";
             this.dateExpiration.Size = new System.Drawing.Size(413, 36);
             this.dateExpiration.TabIndex = 1;
@@ -439,7 +389,7 @@
             this.txtQuantity.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtQuantity.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtQuantity.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtQuantity.ForeColor = System.Drawing.Color.Green;
+            this.txtQuantity.ForeColor = System.Drawing.Color.Black;
             this.txtQuantity.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtQuantity.Location = new System.Drawing.Point(16, 157);
             this.txtQuantity.Margin = new System.Windows.Forms.Padding(4);
@@ -476,12 +426,13 @@
             // dateArrival
             // 
             this.dateArrival.BackColor = System.Drawing.Color.Green;
-            this.dateArrival.BorderRadius = 0;
+            this.dateArrival.BorderRadius = 3;
             this.dateArrival.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateArrival.ForeColor = System.Drawing.Color.White;
             this.dateArrival.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dateArrival.FormatCustom = null;
             this.dateArrival.Location = new System.Drawing.Point(16, 32);
+            this.dateArrival.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dateArrival.Name = "dateArrival";
             this.dateArrival.Size = new System.Drawing.Size(413, 36);
             this.dateArrival.TabIndex = 0;
@@ -492,16 +443,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(901, 442);
+            this.ClientSize = new System.Drawing.Size(901, 376);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.dateArrival);
-            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnAddIncomingSupply);
-            this.Controls.Add(this.txtExpRgtCost);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.txtTotalCost);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.txtNumberOfCost);
+            this.Controls.Add(this.txtNumberOfUnit);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtUnitCost);
             this.Controls.Add(this.label7);
@@ -511,7 +460,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtBrand);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.switchExpirationDate);
             this.Controls.Add(this.txtItem);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -523,6 +471,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ADD INCOMING SUPPLY";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.frmAdd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -530,13 +479,11 @@
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2Button btnCancel;
+        private Guna.UI2.WinForms.Guna2Button btnClose;
         private Guna.UI2.WinForms.Guna2Button btnAddIncomingSupply;
-        private Guna.UI2.WinForms.Guna2TextBox txtExpRgtCost;
-        private System.Windows.Forms.Label label10;
         private Guna.UI2.WinForms.Guna2TextBox txtTotalCost;
         private System.Windows.Forms.Label label9;
-        private Guna.UI2.WinForms.Guna2TextBox txtNumberOfCost;
+        private Guna.UI2.WinForms.Guna2TextBox txtNumberOfUnit;
         private System.Windows.Forms.Label label8;
         private Guna.UI2.WinForms.Guna2TextBox txtUnitCost;
         private System.Windows.Forms.Label label7;
@@ -546,7 +493,6 @@
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2TextBox txtBrand;
         private System.Windows.Forms.Label label4;
-        private Guna.UI2.WinForms.Guna2ToggleSwitch switchExpirationDate;
         private Guna.UI2.WinForms.Guna2TextBox txtItem;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;

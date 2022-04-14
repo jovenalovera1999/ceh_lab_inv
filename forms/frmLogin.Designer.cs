@@ -86,7 +86,7 @@
             this.txtUsername.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtUsername.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtUsername.ForeColor = System.Drawing.Color.Green;
+            this.txtUsername.ForeColor = System.Drawing.Color.Black;
             this.txtUsername.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtUsername.Location = new System.Drawing.Point(16, 60);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(4);
@@ -110,7 +110,7 @@
             this.txtPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtPassword.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtPassword.ForeColor = System.Drawing.Color.Green;
+            this.txtPassword.ForeColor = System.Drawing.Color.Black;
             this.txtPassword.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txtPassword.Location = new System.Drawing.Point(16, 124);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
@@ -151,7 +151,7 @@
             this.btnLogin.HoverState.FillColor = System.Drawing.Color.DodgerBlue;
             this.btnLogin.Location = new System.Drawing.Point(189, 167);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(100, 38);
+            this.btnLogin.Size = new System.Drawing.Size(100, 40);
             this.btnLogin.TabIndex = 8;
             this.btnLogin.TabStop = false;
             this.btnLogin.Text = "LOGIN";
@@ -175,7 +175,7 @@
             this.btnExit.HoverState.FillColor = System.Drawing.Color.Red;
             this.btnExit.Location = new System.Drawing.Point(83, 167);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(100, 38);
+            this.btnExit.Size = new System.Drawing.Size(100, 40);
             this.btnExit.TabIndex = 9;
             this.btnExit.TabStop = false;
             this.btnExit.Text = "EXIT";

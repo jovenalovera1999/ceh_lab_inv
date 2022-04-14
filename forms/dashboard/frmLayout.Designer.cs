@@ -31,7 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnManageSupplies = new Guna.UI2.WinForms.Guna2Button();
             this.gridCurrentSupplies = new Guna.UI2.WinForms.Guna2DataGridView();
             this.bunifuCards1 = new Bunifu.Framework.UI.BunifuCards();
             this.lblTotalIncomingSupplies = new System.Windows.Forms.Label();
@@ -39,33 +38,12 @@
             this.bunifuCards2 = new Bunifu.Framework.UI.BunifuCards();
             this.lblTotalCurrentSupplies = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.lblModuleName = new System.Windows.Forms.Label();
+            this.btnPrint = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridCurrentSupplies)).BeginInit();
             this.bunifuCards1.SuspendLayout();
             this.bunifuCards2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnManageSupplies
-            // 
-            this.btnManageSupplies.Animated = true;
-            this.btnManageSupplies.BorderColor = System.Drawing.Color.Transparent;
-            this.btnManageSupplies.BorderRadius = 3;
-            this.btnManageSupplies.BorderThickness = 1;
-            this.btnManageSupplies.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnManageSupplies.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnManageSupplies.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnManageSupplies.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnManageSupplies.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnManageSupplies.FillColor = System.Drawing.Color.DodgerBlue;
-            this.btnManageSupplies.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.btnManageSupplies.ForeColor = System.Drawing.Color.White;
-            this.btnManageSupplies.HoverState.BorderColor = System.Drawing.Color.Green;
-            this.btnManageSupplies.HoverState.FillColor = System.Drawing.Color.DodgerBlue;
-            this.btnManageSupplies.Location = new System.Drawing.Point(1547, 119);
-            this.btnManageSupplies.Name = "btnManageSupplies";
-            this.btnManageSupplies.Size = new System.Drawing.Size(167, 40);
-            this.btnManageSupplies.TabIndex = 13;
-            this.btnManageSupplies.TabStop = false;
-            this.btnManageSupplies.Text = "MANAGE SUPPLIES";
             // 
             // gridCurrentSupplies
             // 
@@ -101,15 +79,16 @@
             this.gridCurrentSupplies.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.gridCurrentSupplies.EnableHeadersVisualStyles = false;
             this.gridCurrentSupplies.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.gridCurrentSupplies.Location = new System.Drawing.Point(0, 168);
+            this.gridCurrentSupplies.Location = new System.Drawing.Point(0, 193);
             this.gridCurrentSupplies.Name = "gridCurrentSupplies";
             this.gridCurrentSupplies.ReadOnly = true;
             this.gridCurrentSupplies.RowHeadersVisible = false;
             this.gridCurrentSupplies.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gridCurrentSupplies.RowTemplate.Height = 30;
             this.gridCurrentSupplies.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridCurrentSupplies.Size = new System.Drawing.Size(1726, 799);
+            this.gridCurrentSupplies.Size = new System.Drawing.Size(1726, 774);
             this.gridCurrentSupplies.TabIndex = 12;
+            this.gridCurrentSupplies.TabStop = false;
             this.gridCurrentSupplies.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.gridCurrentSupplies.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.gridCurrentSupplies.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -208,13 +187,49 @@
             this.label6.TabIndex = 4;
             this.label6.Text = "TOTAL CURRENT SUPPLIES:";
             // 
+            // lblModuleName
+            // 
+            this.lblModuleName.AutoSize = true;
+            this.lblModuleName.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblModuleName.ForeColor = System.Drawing.Color.Green;
+            this.lblModuleName.Location = new System.Drawing.Point(12, 162);
+            this.lblModuleName.Name = "lblModuleName";
+            this.lblModuleName.Size = new System.Drawing.Size(196, 28);
+            this.lblModuleName.TabIndex = 14;
+            this.lblModuleName.Text = "CURRENT SUPPLIES";
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Animated = true;
+            this.btnPrint.BackColor = System.Drawing.Color.White;
+            this.btnPrint.BorderColor = System.Drawing.Color.Transparent;
+            this.btnPrint.BorderRadius = 3;
+            this.btnPrint.BorderThickness = 1;
+            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrint.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrint.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrint.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPrint.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPrint.FillColor = System.Drawing.Color.Gainsboro;
+            this.btnPrint.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnPrint.ForeColor = System.Drawing.Color.Black;
+            this.btnPrint.HoverState.BorderColor = System.Drawing.Color.Green;
+            this.btnPrint.HoverState.FillColor = System.Drawing.Color.Gainsboro;
+            this.btnPrint.Location = new System.Drawing.Point(1547, 119);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(167, 40);
+            this.btnPrint.TabIndex = 15;
+            this.btnPrint.TabStop = false;
+            this.btnPrint.Text = "PRINT";
+            // 
             // frmLayout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1726, 967);
-            this.Controls.Add(this.btnManageSupplies);
+            this.Controls.Add(this.btnPrint);
+            this.Controls.Add(this.lblModuleName);
             this.Controls.Add(this.gridCurrentSupplies);
             this.Controls.Add(this.bunifuCards1);
             this.Controls.Add(this.bunifuCards2);
@@ -228,12 +243,11 @@
             this.bunifuCards2.ResumeLayout(false);
             this.bunifuCards2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private Guna.UI2.WinForms.Guna2Button btnManageSupplies;
         private Guna.UI2.WinForms.Guna2DataGridView gridCurrentSupplies;
         private Bunifu.Framework.UI.BunifuCards bunifuCards1;
         private System.Windows.Forms.Label lblTotalIncomingSupplies;
@@ -241,5 +255,7 @@
         private Bunifu.Framework.UI.BunifuCards bunifuCards2;
         private System.Windows.Forms.Label lblTotalCurrentSupplies;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblModuleName;
+        private Guna.UI2.WinForms.Guna2Button btnPrint;
     }
 }

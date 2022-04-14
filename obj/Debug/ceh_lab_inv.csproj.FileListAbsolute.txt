@@ -17,7 +17,6 @@ D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.current_supplies.frmEdit.
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.current_supplies.frmView.resources
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.incoming_supplies.frmAdd.resources
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.incoming_supplies.frmEdit.resources
-D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.incoming_supplies.frmView.resources
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.users.frmAdd.resources
 D:\my_projects\ceh_lab_inv\bin\Debug\MySql.Data.DLL
 D:\my_projects\ceh_lab_inv\bin\Debug\Renci.SshNet.dll
@@ -25,3 +24,4 @@ D:\my_projects\ceh_lab_inv\bin\Debug\BouncyCastle.Crypto.dll
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.users.frmView.resources
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.dashboard.frmDashboard.resources
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.dashboard.frmLayout.resources
+D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.incoming_supplies.frmList.resources
