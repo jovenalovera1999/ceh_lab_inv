@@ -113,6 +113,24 @@
     <Compile Include="forms\incoming_supplies\frmList.Designer.cs">
       <DependentUpon>frmList.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\supplies\frmAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\supplies\frmAdd.Designer.cs">
+      <DependentUpon>frmAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\supplies\frmEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\supplies\frmEdit.Designer.cs">
+      <DependentUpon>frmEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\supplies\frmList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\supplies\frmList.Designer.cs">
+      <DependentUpon>frmList.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\users\frmAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,8 +144,8 @@
       <DependentUpon>frmView.cs</DependentUpon>
     </Compile>
     <Compile Include="functions\Duplicate.cs" />
-    <Compile Include="functions\IncomingSupply.cs" />
     <Compile Include="functions\Login.cs" />
+    <Compile Include="functions\Supply.cs" />
     <Compile Include="functions\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -156,6 +174,15 @@
       <DependentUpon>frmEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\incoming_supplies\frmList.resx">
+      <DependentUpon>frmList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\supplies\frmAdd.resx">
+      <DependentUpon>frmAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\supplies\frmEdit.resx">
+      <DependentUpon>frmEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\supplies\frmList.resx">
       <DependentUpon>frmList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\users\frmAdd.resx">

@@ -33,8 +33,7 @@ namespace ceh_lab_inv.forms.dashboard
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             btnDashboard.FillColor = Color.DarkGreen;
-            btnIncomingSupplies.FillColor = Color.Green;
-            btnCurrentSupplies.FillColor = Color.Green;
+            btnSupplies.FillColor = Color.Green;
             btnCreateAccount.FillColor = Color.Green;
             btnProfile.FillColor = Color.Green;
 
@@ -48,40 +47,27 @@ namespace ceh_lab_inv.forms.dashboard
             layout.Show();
         }
 
-        private void btnIncomingSupplies_Click(object sender, EventArgs e)
+        private void btnSupplies_Click(object sender, EventArgs e)
         {
             btnDashboard.FillColor = Color.Green;
-            btnIncomingSupplies.FillColor = Color.DarkGreen;
-            btnCurrentSupplies.FillColor = Color.Green;
+            btnSupplies.FillColor = Color.DarkGreen;
             btnCreateAccount.FillColor = Color.Green;
             btnProfile.FillColor = Color.Green;
 
-            lblModuleName.Text = "LIST OF INCOMING SUPPLIES";
+            lblModuleName.Text = "LIST OF SUPPLIES";
 
             pnlMain.Controls.Clear();
-            forms.incoming_supplies.frmList incoming_supplies = new forms.incoming_supplies.frmList();
-            incoming_supplies.TopLevel = false;
-            pnlMain.Controls.Add(incoming_supplies);
-            incoming_supplies.Dock = DockStyle.Fill;
-            incoming_supplies.Show();
-        }
-
-        private void btnCurrentSupplies_Click(object sender, EventArgs e)
-        {
-            btnDashboard.FillColor = Color.Green;
-            btnIncomingSupplies.FillColor = Color.Green;
-            btnCurrentSupplies.FillColor = Color.DarkGreen;
-            btnCreateAccount.FillColor = Color.Green;
-            btnProfile.FillColor = Color.Green;
-
-            lblModuleName.Text = "LIST OF CURRENT SUPPLIES";
+            forms.supplies.frmList supplies_list = new forms.supplies.frmList();
+            supplies_list.TopLevel = false;
+            pnlMain.Controls.Add(supplies_list);
+            supplies_list.Dock = DockStyle.Fill;
+            supplies_list.Show();
         }
 
         private void btnCreateAccount_Click(object sender, EventArgs e)
         {
             btnDashboard.FillColor = Color.Green;
-            btnIncomingSupplies.FillColor = Color.Green;
-            btnCurrentSupplies.FillColor = Color.Green;
+            btnSupplies.FillColor = Color.Green;
             btnCreateAccount.FillColor = Color.DarkGreen;
             btnProfile.FillColor = Color.Green;
 
@@ -98,22 +84,34 @@ namespace ceh_lab_inv.forms.dashboard
         private void btnProfile_Click(object sender, EventArgs e)
         {
             btnDashboard.FillColor = Color.Green;
-            btnIncomingSupplies.FillColor = Color.Green;
-            btnCurrentSupplies.FillColor = Color.Green;
+            btnSupplies.FillColor = Color.Green;
             btnCreateAccount.FillColor = Color.Green;
             btnProfile.FillColor = Color.DarkGreen;
 
             lblModuleName.Text = "PROFILE";
+
+            pnlMain.Controls.Clear();
+            forms.users.frmView users_view = new forms.users.frmView();
+            users_view.TopLevel = false;
+            pnlMain.Controls.Add(users_view);
+            users_view.Dock = DockStyle.Fill;
+            users_view.Show();
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-
+            if(MessageBox.Show("Are you sure you want to logout?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                forms.frmLogin login = new forms.frmLogin();
+                login.Show();
+                this.Close();
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-
+            this.Close();
+            Application.OpenForms["frmLogin"].Close();
         }
     }
 }

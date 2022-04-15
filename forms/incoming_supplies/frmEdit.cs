@@ -19,13 +19,11 @@ namespace ceh_lab_inv.forms.incoming_supplies
 
         components.Connection con = new components.Connection();
         components.Value val = new components.Value();
-        functions.IncomingSupply incoming_supply = new functions.IncomingSupply();
 
         void RefreshIncomingSuppliesList()
         {
             forms.incoming_supplies.frmList incoming_supplies_list = (forms.incoming_supplies.frmList)Application.OpenForms["frmList"];
             DataGridView gridIncomingSupplies = (DataGridView)incoming_supplies_list.Controls["gridIncomingSupplies"];
-            incoming_supply.Load(gridIncomingSupplies);
         }
 
         void Calculate()
@@ -125,12 +123,6 @@ namespace ceh_lab_inv.forms.incoming_supplies
             {
                 MessageBox.Show("The supplier is required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtSupplier.Focus();
-            }
-            else if(incoming_supply.Update(val.SupplyPrimaryID, dateArrival.Value.Date, dateExpiration.Value.Date, txtQuantity.Text, txtItem.Text, txtBrand.Text, txtQTY.Text, txtSupplier.Text,
-                txtUnitCost.Text, int.Parse(txtNumberOfUnit.Text), txtTotalCost.Text))
-            {
-                MessageBox.Show("Incoming supply successfully updated!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                RefreshIncomingSuppliesList();
             }
             else
             {

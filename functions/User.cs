@@ -13,14 +13,14 @@ namespace ceh_lab_inv.functions
         components.Connection con = new components.Connection();
         components.Value val = new components.Value();
 
-        public bool Add(byte[] profile_picture, string username, string password, string first_name, string middle_name, string last_name, int age, string gender, string address,
+        public bool Add(byte[] profile_picture, string username, string password, string first_name, string middle_name, string last_name, int age, string gender, string address, DateTime birthday,
             string cellphone_number, string telephone_number, string email, string role)
         {
             try
             {
                 using(MySqlConnection connection = new MySqlConnection(con.conString()))
                 {
-                    string sql = @"CALL user_add(@profile_picture, @first_name, @middle_name, @last_name, @age, @gender, @address, @cellphone_number, @telephone_number, @email);";
+                    string sql = @"CALL user_add(@profile_picture, @first_name, @middle_name, @last_name, @age, @gender, @address, @birthday, @cellphone_number, @telephone_number, @email);";
 
                     using (MySqlCommand cmd = new MySqlCommand(sql, connection))
                     {
@@ -31,6 +31,7 @@ namespace ceh_lab_inv.functions
                         cmd.Parameters.AddWithValue("@age", age);
                         cmd.Parameters.AddWithValue("@gender", gender);
                         cmd.Parameters.AddWithValue("@address", address);
+                        cmd.Parameters.AddWithValue("@birthday", birthday);
                         cmd.Parameters.AddWithValue("@cellphone_number", cellphone_number);
                         cmd.Parameters.AddWithValue("@telephone_number", telephone_number);
                         cmd.Parameters.AddWithValue("@email", email);

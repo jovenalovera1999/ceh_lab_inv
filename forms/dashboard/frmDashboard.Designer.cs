@@ -40,9 +40,8 @@
             this.btnProfile = new Guna.UI2.WinForms.Guna2Button();
             this.btnLogout = new Guna.UI2.WinForms.Guna2Button();
             this.btnExit = new Guna.UI2.WinForms.Guna2Button();
-            this.btnIncomingSupplies = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSupplies = new Guna.UI2.WinForms.Guna2Button();
             this.btnDashboard = new Guna.UI2.WinForms.Guna2Button();
-            this.btnCurrentSupplies = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -122,8 +121,7 @@
             this.panel2.Controls.Add(this.btnProfile);
             this.panel2.Controls.Add(this.btnLogout);
             this.panel2.Controls.Add(this.btnExit);
-            this.panel2.Controls.Add(this.btnCurrentSupplies);
-            this.panel2.Controls.Add(this.btnIncomingSupplies);
+            this.panel2.Controls.Add(this.btnSupplies);
             this.panel2.Controls.Add(this.btnDashboard);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -148,7 +146,7 @@
             this.btnCreateAccount.ForeColor = System.Drawing.Color.White;
             this.btnCreateAccount.HoverState.BorderColor = System.Drawing.Color.White;
             this.btnCreateAccount.HoverState.FillColor = System.Drawing.Color.Green;
-            this.btnCreateAccount.Location = new System.Drawing.Point(0, 114);
+            this.btnCreateAccount.Location = new System.Drawing.Point(0, 76);
             this.btnCreateAccount.Name = "btnCreateAccount";
             this.btnCreateAccount.Size = new System.Drawing.Size(194, 38);
             this.btnCreateAccount.TabIndex = 15;
@@ -231,30 +229,30 @@
             this.btnExit.Text = "EXIT";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnIncomingSupplies
+            // btnSupplies
             // 
-            this.btnIncomingSupplies.Animated = true;
-            this.btnIncomingSupplies.BorderColor = System.Drawing.Color.Transparent;
-            this.btnIncomingSupplies.BorderRadius = 3;
-            this.btnIncomingSupplies.BorderThickness = 1;
-            this.btnIncomingSupplies.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnIncomingSupplies.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnIncomingSupplies.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnIncomingSupplies.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnIncomingSupplies.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnIncomingSupplies.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnIncomingSupplies.FillColor = System.Drawing.Color.Green;
-            this.btnIncomingSupplies.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.btnIncomingSupplies.ForeColor = System.Drawing.Color.White;
-            this.btnIncomingSupplies.HoverState.BorderColor = System.Drawing.Color.White;
-            this.btnIncomingSupplies.HoverState.FillColor = System.Drawing.Color.Green;
-            this.btnIncomingSupplies.Location = new System.Drawing.Point(0, 38);
-            this.btnIncomingSupplies.Name = "btnIncomingSupplies";
-            this.btnIncomingSupplies.Size = new System.Drawing.Size(194, 38);
-            this.btnIncomingSupplies.TabIndex = 10;
-            this.btnIncomingSupplies.TabStop = false;
-            this.btnIncomingSupplies.Text = "INCOMING SUPPLIES";
-            this.btnIncomingSupplies.Click += new System.EventHandler(this.btnIncomingSupplies_Click);
+            this.btnSupplies.Animated = true;
+            this.btnSupplies.BorderColor = System.Drawing.Color.Transparent;
+            this.btnSupplies.BorderRadius = 3;
+            this.btnSupplies.BorderThickness = 1;
+            this.btnSupplies.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSupplies.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSupplies.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSupplies.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSupplies.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSupplies.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSupplies.FillColor = System.Drawing.Color.Green;
+            this.btnSupplies.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnSupplies.ForeColor = System.Drawing.Color.White;
+            this.btnSupplies.HoverState.BorderColor = System.Drawing.Color.White;
+            this.btnSupplies.HoverState.FillColor = System.Drawing.Color.Green;
+            this.btnSupplies.Location = new System.Drawing.Point(0, 38);
+            this.btnSupplies.Name = "btnSupplies";
+            this.btnSupplies.Size = new System.Drawing.Size(194, 38);
+            this.btnSupplies.TabIndex = 11;
+            this.btnSupplies.TabStop = false;
+            this.btnSupplies.Text = "SUPPLIES";
+            this.btnSupplies.Click += new System.EventHandler(this.btnSupplies_Click);
             // 
             // btnDashboard
             // 
@@ -280,31 +278,6 @@
             this.btnDashboard.TabStop = false;
             this.btnDashboard.Text = "DASHBOARD";
             this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
-            // 
-            // btnCurrentSupplies
-            // 
-            this.btnCurrentSupplies.Animated = true;
-            this.btnCurrentSupplies.BorderColor = System.Drawing.Color.Transparent;
-            this.btnCurrentSupplies.BorderRadius = 3;
-            this.btnCurrentSupplies.BorderThickness = 1;
-            this.btnCurrentSupplies.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCurrentSupplies.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCurrentSupplies.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCurrentSupplies.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCurrentSupplies.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCurrentSupplies.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCurrentSupplies.FillColor = System.Drawing.Color.Green;
-            this.btnCurrentSupplies.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.btnCurrentSupplies.ForeColor = System.Drawing.Color.White;
-            this.btnCurrentSupplies.HoverState.BorderColor = System.Drawing.Color.White;
-            this.btnCurrentSupplies.HoverState.FillColor = System.Drawing.Color.Green;
-            this.btnCurrentSupplies.Location = new System.Drawing.Point(0, 76);
-            this.btnCurrentSupplies.Name = "btnCurrentSupplies";
-            this.btnCurrentSupplies.Size = new System.Drawing.Size(194, 38);
-            this.btnCurrentSupplies.TabIndex = 11;
-            this.btnCurrentSupplies.TabStop = false;
-            this.btnCurrentSupplies.Text = "CURRENT SUPPLIES";
-            this.btnCurrentSupplies.Click += new System.EventHandler(this.btnCurrentSupplies_Click);
             // 
             // frmDashboard
             // 
@@ -342,8 +315,7 @@
         private Guna.UI2.WinForms.Guna2Button btnProfile;
         private Guna.UI2.WinForms.Guna2Button btnLogout;
         private Guna.UI2.WinForms.Guna2Button btnExit;
-        private Guna.UI2.WinForms.Guna2Button btnIncomingSupplies;
         private Guna.UI2.WinForms.Guna2Button btnDashboard;
-        private Guna.UI2.WinForms.Guna2Button btnCurrentSupplies;
+        private Guna.UI2.WinForms.Guna2Button btnSupplies;
     }
 }

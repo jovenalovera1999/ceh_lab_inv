@@ -16,5 +16,19 @@ namespace ceh_lab_inv.forms.dashboard
         {
             InitializeComponent();
         }
+
+        components.Connection con = new components.Connection();
+        components.Value val = new components.Value();
+        functions.Supply supply = new functions.Supply();
+
+        private void frmLayout_Load(object sender, EventArgs e)
+        {
+            supply.Load(gridSupplies);
+        }
+
+        private void frmLayout_VisibleChanged(object sender, EventArgs e)
+        {
+            gridSupplies.ClearSelection();
+        }
     }
 }

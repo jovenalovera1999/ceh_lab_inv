@@ -31,7 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.gridCurrentSupplies = new Guna.UI2.WinForms.Guna2DataGridView();
             this.bunifuCards1 = new Bunifu.Framework.UI.BunifuCards();
             this.lblTotalIncomingSupplies = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -40,76 +39,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblModuleName = new System.Windows.Forms.Label();
             this.btnPrint = new Guna.UI2.WinForms.Guna2Button();
-            ((System.ComponentModel.ISupportInitialize)(this.gridCurrentSupplies)).BeginInit();
+            this.gridSupplies = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.bunifuCards1.SuspendLayout();
             this.bunifuCards2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSupplies)).BeginInit();
             this.SuspendLayout();
-            // 
-            // gridCurrentSupplies
-            // 
-            this.gridCurrentSupplies.AllowUserToAddRows = false;
-            this.gridCurrentSupplies.AllowUserToDeleteRows = false;
-            this.gridCurrentSupplies.AllowUserToResizeColumns = false;
-            this.gridCurrentSupplies.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.gridCurrentSupplies.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.gridCurrentSupplies.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridCurrentSupplies.BackgroundColor = System.Drawing.Color.White;
-            this.gridCurrentSupplies.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.gridCurrentSupplies.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.gridCurrentSupplies.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Green;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridCurrentSupplies.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.gridCurrentSupplies.ColumnHeadersHeight = 35;
-            this.gridCurrentSupplies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridCurrentSupplies.DefaultCellStyle = dataGridViewCellStyle3;
-            this.gridCurrentSupplies.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridCurrentSupplies.EnableHeadersVisualStyles = false;
-            this.gridCurrentSupplies.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.gridCurrentSupplies.Location = new System.Drawing.Point(0, 193);
-            this.gridCurrentSupplies.Name = "gridCurrentSupplies";
-            this.gridCurrentSupplies.ReadOnly = true;
-            this.gridCurrentSupplies.RowHeadersVisible = false;
-            this.gridCurrentSupplies.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.gridCurrentSupplies.RowTemplate.Height = 30;
-            this.gridCurrentSupplies.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridCurrentSupplies.Size = new System.Drawing.Size(1726, 774);
-            this.gridCurrentSupplies.TabIndex = 12;
-            this.gridCurrentSupplies.TabStop = false;
-            this.gridCurrentSupplies.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.gridCurrentSupplies.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.gridCurrentSupplies.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.gridCurrentSupplies.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.gridCurrentSupplies.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.gridCurrentSupplies.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.gridCurrentSupplies.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.gridCurrentSupplies.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Green;
-            this.gridCurrentSupplies.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.gridCurrentSupplies.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.gridCurrentSupplies.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.gridCurrentSupplies.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.gridCurrentSupplies.ThemeStyle.HeaderStyle.Height = 35;
-            this.gridCurrentSupplies.ThemeStyle.ReadOnly = true;
-            this.gridCurrentSupplies.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.gridCurrentSupplies.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.gridCurrentSupplies.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.gridCurrentSupplies.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.gridCurrentSupplies.ThemeStyle.RowsStyle.Height = 30;
-            this.gridCurrentSupplies.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.White;
-            this.gridCurrentSupplies.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             // 
             // bunifuCards1
             // 
@@ -222,33 +156,82 @@
             this.btnPrint.TabStop = false;
             this.btnPrint.Text = "PRINT";
             // 
+            // gridSupplies
+            // 
+            this.gridSupplies.AllowUserToAddRows = false;
+            this.gridSupplies.AllowUserToDeleteRows = false;
+            this.gridSupplies.AllowUserToResizeColumns = false;
+            this.gridSupplies.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gridSupplies.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridSupplies.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.gridSupplies.BackgroundColor = System.Drawing.Color.White;
+            this.gridSupplies.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gridSupplies.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Green;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridSupplies.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.gridSupplies.ColumnHeadersHeight = 40;
+            this.gridSupplies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.gridSupplies.Cursor = System.Windows.Forms.Cursors.Hand;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.MediumSeaGreen;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridSupplies.DefaultCellStyle = dataGridViewCellStyle3;
+            this.gridSupplies.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gridSupplies.DoubleBuffered = true;
+            this.gridSupplies.EnableHeadersVisualStyles = false;
+            this.gridSupplies.GridColor = System.Drawing.Color.Silver;
+            this.gridSupplies.HeaderBgColor = System.Drawing.Color.Green;
+            this.gridSupplies.HeaderForeColor = System.Drawing.Color.White;
+            this.gridSupplies.Location = new System.Drawing.Point(0, 193);
+            this.gridSupplies.MultiSelect = false;
+            this.gridSupplies.Name = "gridSupplies";
+            this.gridSupplies.ReadOnly = true;
+            this.gridSupplies.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.gridSupplies.RowTemplate.Height = 40;
+            this.gridSupplies.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridSupplies.Size = new System.Drawing.Size(1726, 774);
+            this.gridSupplies.TabIndex = 21;
+            this.gridSupplies.TabStop = false;
+            // 
             // frmLayout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1726, 967);
+            this.Controls.Add(this.gridSupplies);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.lblModuleName);
-            this.Controls.Add(this.gridCurrentSupplies);
             this.Controls.Add(this.bunifuCards1);
             this.Controls.Add(this.bunifuCards2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmLayout";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DASHBOARD";
-            ((System.ComponentModel.ISupportInitialize)(this.gridCurrentSupplies)).EndInit();
+            this.Load += new System.EventHandler(this.frmLayout_Load);
+            this.VisibleChanged += new System.EventHandler(this.frmLayout_VisibleChanged);
             this.bunifuCards1.ResumeLayout(false);
             this.bunifuCards1.PerformLayout();
             this.bunifuCards2.ResumeLayout(false);
             this.bunifuCards2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSupplies)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private Guna.UI2.WinForms.Guna2DataGridView gridCurrentSupplies;
         private Bunifu.Framework.UI.BunifuCards bunifuCards1;
         private System.Windows.Forms.Label lblTotalIncomingSupplies;
         private System.Windows.Forms.Label label5;
@@ -257,5 +240,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblModuleName;
         private Guna.UI2.WinForms.Guna2Button btnPrint;
+        private Bunifu.Framework.UI.BunifuCustomDataGrid gridSupplies;
     }
 }

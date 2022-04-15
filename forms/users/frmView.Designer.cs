@@ -43,7 +43,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.dateBirthday = new Bunifu.Framework.UI.BunifuDatepicker();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtAddres = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtAddress = new Guna.UI2.WinForms.Guna2TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtLastName = new Guna.UI2.WinForms.Guna2TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -58,15 +58,17 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtUsername = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnAddIncomingSupply = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSaveAccount = new Guna.UI2.WinForms.Guna2Button();
+            this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
+            this.btnEditAccount = new Guna.UI2.WinForms.Guna2Button();
             this.txtRole = new Guna.UI2.WinForms.Guna2TextBox();
             this.cmbGender = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtGender = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtAge = new Guna.UI2.WinForms.Guna2TextBox();
             this.label17 = new System.Windows.Forms.Label();
+            this.txtConfirmPassword = new Guna.UI2.WinForms.Guna2TextBox();
+            this.lblConfirmPassword = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picProfile)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,6 +94,7 @@
             this.btnRemovePhoto.TabIndex = 106;
             this.btnRemovePhoto.TabStop = false;
             this.btnRemovePhoto.Text = "REMOVE PHOTO";
+            this.btnRemovePhoto.Visible = false;
             // 
             // btnUploadPhoto
             // 
@@ -115,6 +118,7 @@
             this.btnUploadPhoto.TabIndex = 105;
             this.btnUploadPhoto.TabStop = false;
             this.btnUploadPhoto.Text = "UPLOAD PHOTO";
+            this.btnUploadPhoto.Visible = false;
             // 
             // cmbRole
             // 
@@ -126,16 +130,16 @@
             this.cmbRole.FocusedColor = System.Drawing.Color.Green;
             this.cmbRole.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.cmbRole.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.cmbRole.ForeColor = System.Drawing.Color.Green;
+            this.cmbRole.ForeColor = System.Drawing.Color.Black;
             this.cmbRole.HoverState.BorderColor = System.Drawing.Color.Green;
             this.cmbRole.ItemHeight = 30;
             this.cmbRole.Items.AddRange(new object[] {
-            "Administrator",
-            "Laboratory Head"});
+            "ADMINISTRATOR",
+            "LABORATORY HEAD"});
             this.cmbRole.Location = new System.Drawing.Point(1305, 80);
             this.cmbRole.Name = "cmbRole";
             this.cmbRole.Size = new System.Drawing.Size(356, 36);
-            this.cmbRole.TabIndex = 12;
+            this.cmbRole.TabIndex = 13;
             this.cmbRole.TabStop = false;
             this.cmbRole.Visible = false;
             // 
@@ -181,9 +185,10 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
             this.txtEmail.PlaceholderText = "INPUT USER\'S EMAIL";
+            this.txtEmail.ReadOnly = true;
             this.txtEmail.SelectedText = "";
             this.txtEmail.Size = new System.Drawing.Size(356, 36);
-            this.txtEmail.TabIndex = 11;
+            this.txtEmail.TabIndex = 12;
             this.txtEmail.TabStop = false;
             // 
             // label13
@@ -217,10 +222,12 @@
             this.txtTelephoneNumber.Name = "txtTelephoneNumber";
             this.txtTelephoneNumber.PasswordChar = '\0';
             this.txtTelephoneNumber.PlaceholderText = "INPUT USER\'S TELEPHONE NUMBER";
+            this.txtTelephoneNumber.ReadOnly = true;
             this.txtTelephoneNumber.SelectedText = "";
             this.txtTelephoneNumber.Size = new System.Drawing.Size(356, 36);
-            this.txtTelephoneNumber.TabIndex = 10;
+            this.txtTelephoneNumber.TabIndex = 11;
             this.txtTelephoneNumber.TabStop = false;
+            this.txtTelephoneNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelephoneNumber_KeyPress);
             // 
             // label12
             // 
@@ -264,10 +271,12 @@
             this.txtCellphoneNumber.Name = "txtCellphoneNumber";
             this.txtCellphoneNumber.PasswordChar = '\0';
             this.txtCellphoneNumber.PlaceholderText = "INPUT USER\'S CELLPHONE NUMBER";
+            this.txtCellphoneNumber.ReadOnly = true;
             this.txtCellphoneNumber.SelectedText = "";
             this.txtCellphoneNumber.Size = new System.Drawing.Size(356, 36);
-            this.txtCellphoneNumber.TabIndex = 9;
+            this.txtCellphoneNumber.TabIndex = 10;
             this.txtCellphoneNumber.TabStop = false;
+            this.txtCellphoneNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCellphoneNumber_KeyPress);
             // 
             // label11
             // 
@@ -284,6 +293,7 @@
             // 
             this.dateBirthday.BackColor = System.Drawing.Color.Green;
             this.dateBirthday.BorderRadius = 3;
+            this.dateBirthday.Enabled = false;
             this.dateBirthday.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateBirthday.ForeColor = System.Drawing.Color.White;
             this.dateBirthday.Format = System.Windows.Forms.DateTimePickerFormat.Long;
@@ -292,7 +302,7 @@
             this.dateBirthday.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dateBirthday.Name = "dateBirthday";
             this.dateBirthday.Size = new System.Drawing.Size(356, 36);
-            this.dateBirthday.TabIndex = 8;
+            this.dateBirthday.TabIndex = 9;
             this.dateBirthday.TabStop = false;
             this.dateBirthday.Value = new System.DateTime(2022, 4, 12, 14, 1, 1, 137);
             // 
@@ -307,30 +317,31 @@
             this.label9.TabIndex = 98;
             this.label9.Text = "BIRTHDAY";
             // 
-            // txtAddres
+            // txtAddress
             // 
-            this.txtAddres.Animated = true;
-            this.txtAddres.BorderRadius = 3;
-            this.txtAddres.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtAddres.DefaultText = "";
-            this.txtAddres.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtAddres.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtAddres.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtAddres.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtAddres.FocusedState.BorderColor = System.Drawing.Color.Green;
-            this.txtAddres.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtAddres.ForeColor = System.Drawing.Color.Black;
-            this.txtAddres.HoverState.BorderColor = System.Drawing.Color.Green;
-            this.txtAddres.Location = new System.Drawing.Point(577, 400);
-            this.txtAddres.Margin = new System.Windows.Forms.Padding(4);
-            this.txtAddres.MaxLength = 255;
-            this.txtAddres.Name = "txtAddres";
-            this.txtAddres.PasswordChar = '\0';
-            this.txtAddres.PlaceholderText = "INPUT USER\'S ADDRESS";
-            this.txtAddres.SelectedText = "";
-            this.txtAddres.Size = new System.Drawing.Size(356, 36);
-            this.txtAddres.TabIndex = 7;
-            this.txtAddres.TabStop = false;
+            this.txtAddress.Animated = true;
+            this.txtAddress.BorderRadius = 3;
+            this.txtAddress.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtAddress.DefaultText = "";
+            this.txtAddress.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtAddress.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtAddress.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtAddress.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtAddress.FocusedState.BorderColor = System.Drawing.Color.Green;
+            this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.txtAddress.ForeColor = System.Drawing.Color.Black;
+            this.txtAddress.HoverState.BorderColor = System.Drawing.Color.Green;
+            this.txtAddress.Location = new System.Drawing.Point(577, 400);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAddress.MaxLength = 255;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.PasswordChar = '\0';
+            this.txtAddress.PlaceholderText = "INPUT USER\'S ADDRESS";
+            this.txtAddress.ReadOnly = true;
+            this.txtAddress.SelectedText = "";
+            this.txtAddress.Size = new System.Drawing.Size(356, 36);
+            this.txtAddress.TabIndex = 8;
+            this.txtAddress.TabStop = false;
             // 
             // label8
             // 
@@ -363,9 +374,10 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.PasswordChar = '\0';
             this.txtLastName.PlaceholderText = "INPUT USER\'S LAST NAME";
+            this.txtLastName.ReadOnly = true;
             this.txtLastName.SelectedText = "";
             this.txtLastName.Size = new System.Drawing.Size(356, 36);
-            this.txtLastName.TabIndex = 4;
+            this.txtLastName.TabIndex = 5;
             this.txtLastName.TabStop = false;
             // 
             // label7
@@ -410,9 +422,10 @@
             this.txtMiddleName.Name = "txtMiddleName";
             this.txtMiddleName.PasswordChar = '\0';
             this.txtMiddleName.PlaceholderText = "INPUT USER\'S MIDDLE NAME";
+            this.txtMiddleName.ReadOnly = true;
             this.txtMiddleName.SelectedText = "";
             this.txtMiddleName.Size = new System.Drawing.Size(356, 36);
-            this.txtMiddleName.TabIndex = 3;
+            this.txtMiddleName.TabIndex = 4;
             this.txtMiddleName.TabStop = false;
             // 
             // label5
@@ -446,9 +459,10 @@
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.PasswordChar = '\0';
             this.txtFirstName.PlaceholderText = "INPUT USER\'S FIRST NAME";
+            this.txtFirstName.ReadOnly = true;
             this.txtFirstName.SelectedText = "";
             this.txtFirstName.Size = new System.Drawing.Size(356, 36);
-            this.txtFirstName.TabIndex = 2;
+            this.txtFirstName.TabIndex = 3;
             this.txtFirstName.TabStop = false;
             // 
             // label6
@@ -505,6 +519,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.PlaceholderText = "INPUT USER\'S PASSWORD";
+            this.txtPassword.ReadOnly = true;
             this.txtPassword.SelectedText = "";
             this.txtPassword.Size = new System.Drawing.Size(356, 36);
             this.txtPassword.TabIndex = 1;
@@ -541,6 +556,7 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.PasswordChar = '\0';
             this.txtUsername.PlaceholderText = "INPUT USER\'S USERNAME";
+            this.txtUsername.ReadOnly = true;
             this.txtUsername.SelectedText = "";
             this.txtUsername.Size = new System.Drawing.Size(356, 36);
             this.txtUsername.TabIndex = 0;
@@ -557,75 +573,77 @@
             this.label3.TabIndex = 89;
             this.label3.Text = "USERNAME";
             // 
-            // btnAddIncomingSupply
+            // btnSaveAccount
             // 
-            this.btnAddIncomingSupply.Animated = true;
-            this.btnAddIncomingSupply.BorderColor = System.Drawing.Color.Transparent;
-            this.btnAddIncomingSupply.BorderRadius = 3;
-            this.btnAddIncomingSupply.BorderThickness = 1;
-            this.btnAddIncomingSupply.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddIncomingSupply.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddIncomingSupply.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddIncomingSupply.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAddIncomingSupply.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnAddIncomingSupply.FillColor = System.Drawing.Color.DodgerBlue;
-            this.btnAddIncomingSupply.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.btnAddIncomingSupply.ForeColor = System.Drawing.Color.White;
-            this.btnAddIncomingSupply.HoverState.BorderColor = System.Drawing.Color.Green;
-            this.btnAddIncomingSupply.HoverState.FillColor = System.Drawing.Color.DodgerBlue;
-            this.btnAddIncomingSupply.Location = new System.Drawing.Point(1559, 915);
-            this.btnAddIncomingSupply.Name = "btnAddIncomingSupply";
-            this.btnAddIncomingSupply.Size = new System.Drawing.Size(155, 40);
-            this.btnAddIncomingSupply.TabIndex = 107;
-            this.btnAddIncomingSupply.TabStop = false;
-            this.btnAddIncomingSupply.Text = "UPDATE ACCOUNT";
-            this.btnAddIncomingSupply.Visible = false;
+            this.btnSaveAccount.Animated = true;
+            this.btnSaveAccount.BorderColor = System.Drawing.Color.Transparent;
+            this.btnSaveAccount.BorderRadius = 3;
+            this.btnSaveAccount.BorderThickness = 1;
+            this.btnSaveAccount.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSaveAccount.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSaveAccount.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSaveAccount.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSaveAccount.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSaveAccount.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btnSaveAccount.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnSaveAccount.ForeColor = System.Drawing.Color.White;
+            this.btnSaveAccount.HoverState.BorderColor = System.Drawing.Color.Green;
+            this.btnSaveAccount.HoverState.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btnSaveAccount.Location = new System.Drawing.Point(1559, 915);
+            this.btnSaveAccount.Name = "btnSaveAccount";
+            this.btnSaveAccount.Size = new System.Drawing.Size(155, 40);
+            this.btnSaveAccount.TabIndex = 107;
+            this.btnSaveAccount.TabStop = false;
+            this.btnSaveAccount.Text = "SAVE ACCOUNT";
+            this.btnSaveAccount.Visible = false;
             // 
-            // guna2Button1
+            // btnCancel
             // 
-            this.guna2Button1.Animated = true;
-            this.guna2Button1.BorderColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.BorderRadius = 3;
-            this.guna2Button1.BorderThickness = 1;
-            this.guna2Button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.Red;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.HoverState.BorderColor = System.Drawing.Color.Green;
-            this.guna2Button1.HoverState.FillColor = System.Drawing.Color.Red;
-            this.guna2Button1.Location = new System.Drawing.Point(1398, 915);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(155, 40);
-            this.guna2Button1.TabIndex = 108;
-            this.guna2Button1.TabStop = false;
-            this.guna2Button1.Text = "CANCEL";
+            this.btnCancel.Animated = true;
+            this.btnCancel.BorderColor = System.Drawing.Color.Transparent;
+            this.btnCancel.BorderRadius = 3;
+            this.btnCancel.BorderThickness = 1;
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCancel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCancel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCancel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCancel.FillColor = System.Drawing.Color.Red;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.HoverState.BorderColor = System.Drawing.Color.Green;
+            this.btnCancel.HoverState.FillColor = System.Drawing.Color.Red;
+            this.btnCancel.Location = new System.Drawing.Point(1398, 915);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(155, 40);
+            this.btnCancel.TabIndex = 108;
+            this.btnCancel.TabStop = false;
+            this.btnCancel.Text = "CANCEL";
+            this.btnCancel.Visible = false;
             // 
-            // guna2Button2
+            // btnEditAccount
             // 
-            this.guna2Button2.Animated = true;
-            this.guna2Button2.BorderColor = System.Drawing.Color.Transparent;
-            this.guna2Button2.BorderRadius = 3;
-            this.guna2Button2.BorderThickness = 1;
-            this.guna2Button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.FillColor = System.Drawing.Color.Green;
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.HoverState.BorderColor = System.Drawing.Color.White;
-            this.guna2Button2.HoverState.FillColor = System.Drawing.Color.Green;
-            this.guna2Button2.Location = new System.Drawing.Point(1559, 915);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(155, 40);
-            this.guna2Button2.TabIndex = 109;
-            this.guna2Button2.TabStop = false;
-            this.guna2Button2.Text = "EDIT ACCOUNT";
+            this.btnEditAccount.Animated = true;
+            this.btnEditAccount.BorderColor = System.Drawing.Color.Transparent;
+            this.btnEditAccount.BorderRadius = 3;
+            this.btnEditAccount.BorderThickness = 1;
+            this.btnEditAccount.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditAccount.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnEditAccount.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnEditAccount.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEditAccount.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEditAccount.FillColor = System.Drawing.Color.Green;
+            this.btnEditAccount.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnEditAccount.ForeColor = System.Drawing.Color.White;
+            this.btnEditAccount.HoverState.BorderColor = System.Drawing.Color.White;
+            this.btnEditAccount.HoverState.FillColor = System.Drawing.Color.Green;
+            this.btnEditAccount.Location = new System.Drawing.Point(1559, 915);
+            this.btnEditAccount.Name = "btnEditAccount";
+            this.btnEditAccount.Size = new System.Drawing.Size(155, 40);
+            this.btnEditAccount.TabIndex = 109;
+            this.btnEditAccount.TabStop = false;
+            this.btnEditAccount.Text = "EDIT ACCOUNT";
+            this.btnEditAccount.Click += new System.EventHandler(this.btnEditAccount_Click);
             // 
             // txtRole
             // 
@@ -647,9 +665,10 @@
             this.txtRole.Name = "txtRole";
             this.txtRole.PasswordChar = '\0';
             this.txtRole.PlaceholderText = "";
+            this.txtRole.ReadOnly = true;
             this.txtRole.SelectedText = "";
             this.txtRole.Size = new System.Drawing.Size(356, 36);
-            this.txtRole.TabIndex = 13;
+            this.txtRole.TabIndex = 14;
             this.txtRole.TabStop = false;
             // 
             // cmbGender
@@ -662,7 +681,7 @@
             this.cmbGender.FocusedColor = System.Drawing.Color.Green;
             this.cmbGender.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.cmbGender.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.cmbGender.ForeColor = System.Drawing.Color.Green;
+            this.cmbGender.ForeColor = System.Drawing.Color.Black;
             this.cmbGender.HoverState.BorderColor = System.Drawing.Color.Green;
             this.cmbGender.ItemHeight = 30;
             this.cmbGender.Items.AddRange(new object[] {
@@ -672,8 +691,9 @@
             this.cmbGender.Location = new System.Drawing.Point(577, 336);
             this.cmbGender.Name = "cmbGender";
             this.cmbGender.Size = new System.Drawing.Size(356, 36);
-            this.cmbGender.TabIndex = 6;
+            this.cmbGender.TabIndex = 7;
             this.cmbGender.TabStop = false;
+            this.cmbGender.Visible = false;
             // 
             // label16
             // 
@@ -706,34 +726,37 @@
             this.txtGender.Name = "txtGender";
             this.txtGender.PasswordChar = '\0';
             this.txtGender.PlaceholderText = "";
+            this.txtGender.ReadOnly = true;
             this.txtGender.SelectedText = "";
             this.txtGender.Size = new System.Drawing.Size(356, 36);
             this.txtGender.TabIndex = 112;
             this.txtGender.TabStop = false;
             // 
-            // guna2TextBox1
+            // txtAge
             // 
-            this.guna2TextBox1.Animated = true;
-            this.guna2TextBox1.BorderRadius = 3;
-            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox1.DefaultText = "";
-            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.Green;
-            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.guna2TextBox1.ForeColor = System.Drawing.Color.Black;
-            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.Green;
-            this.guna2TextBox1.Location = new System.Drawing.Point(577, 272);
-            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2TextBox1.MaxLength = 3;
-            this.guna2TextBox1.Name = "guna2TextBox1";
-            this.guna2TextBox1.PasswordChar = '\0';
-            this.guna2TextBox1.PlaceholderText = "INPUT USER\'S AGE";
-            this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(356, 36);
-            this.guna2TextBox1.TabIndex = 5;
+            this.txtAge.Animated = true;
+            this.txtAge.BorderRadius = 3;
+            this.txtAge.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtAge.DefaultText = "";
+            this.txtAge.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtAge.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtAge.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtAge.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtAge.FocusedState.BorderColor = System.Drawing.Color.Green;
+            this.txtAge.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.txtAge.ForeColor = System.Drawing.Color.Black;
+            this.txtAge.HoverState.BorderColor = System.Drawing.Color.Green;
+            this.txtAge.Location = new System.Drawing.Point(577, 272);
+            this.txtAge.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAge.MaxLength = 3;
+            this.txtAge.Name = "txtAge";
+            this.txtAge.PasswordChar = '\0';
+            this.txtAge.PlaceholderText = "INPUT USER\'S AGE";
+            this.txtAge.ReadOnly = true;
+            this.txtAge.SelectedText = "";
+            this.txtAge.Size = new System.Drawing.Size(356, 36);
+            this.txtAge.TabIndex = 6;
+            this.txtAge.TabStop = false;
             // 
             // label17
             // 
@@ -746,21 +769,62 @@
             this.label17.TabIndex = 114;
             this.label17.Text = "AGE";
             // 
+            // txtConfirmPassword
+            // 
+            this.txtConfirmPassword.Animated = true;
+            this.txtConfirmPassword.BorderRadius = 3;
+            this.txtConfirmPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtConfirmPassword.DefaultText = "";
+            this.txtConfirmPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtConfirmPassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtConfirmPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtConfirmPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtConfirmPassword.FocusedState.BorderColor = System.Drawing.Color.Green;
+            this.txtConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.txtConfirmPassword.ForeColor = System.Drawing.Color.Black;
+            this.txtConfirmPassword.HoverState.BorderColor = System.Drawing.Color.Green;
+            this.txtConfirmPassword.Location = new System.Drawing.Point(213, 208);
+            this.txtConfirmPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.txtConfirmPassword.MaxLength = 255;
+            this.txtConfirmPassword.Name = "txtConfirmPassword";
+            this.txtConfirmPassword.PasswordChar = '*';
+            this.txtConfirmPassword.PlaceholderText = "CONFIRM PASSWORD";
+            this.txtConfirmPassword.ReadOnly = true;
+            this.txtConfirmPassword.SelectedText = "";
+            this.txtConfirmPassword.Size = new System.Drawing.Size(356, 36);
+            this.txtConfirmPassword.TabIndex = 2;
+            this.txtConfirmPassword.TabStop = false;
+            this.txtConfirmPassword.Visible = false;
+            // 
+            // lblConfirmPassword
+            // 
+            this.lblConfirmPassword.AutoSize = true;
+            this.lblConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConfirmPassword.ForeColor = System.Drawing.Color.Green;
+            this.lblConfirmPassword.Location = new System.Drawing.Point(209, 184);
+            this.lblConfirmPassword.Name = "lblConfirmPassword";
+            this.lblConfirmPassword.Size = new System.Drawing.Size(155, 20);
+            this.lblConfirmPassword.TabIndex = 116;
+            this.lblConfirmPassword.Text = "CONFIRM PASSWORD";
+            this.lblConfirmPassword.Visible = false;
+            // 
             // frmView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1726, 967);
-            this.Controls.Add(this.guna2TextBox1);
+            this.Controls.Add(this.txtConfirmPassword);
+            this.Controls.Add(this.lblConfirmPassword);
+            this.Controls.Add(this.txtAge);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.txtGender);
             this.Controls.Add(this.cmbGender);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtRole);
-            this.Controls.Add(this.guna2Button2);
-            this.Controls.Add(this.guna2Button1);
-            this.Controls.Add(this.btnAddIncomingSupply);
+            this.Controls.Add(this.btnEditAccount);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnSaveAccount);
             this.Controls.Add(this.btnRemovePhoto);
             this.Controls.Add(this.btnUploadPhoto);
             this.Controls.Add(this.cmbRole);
@@ -775,7 +839,7 @@
             this.Controls.Add(this.label11);
             this.Controls.Add(this.dateBirthday);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.txtAddres);
+            this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.label7);
@@ -794,6 +858,7 @@
             this.Name = "frmView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EDIT PROFILE";
+            this.Load += new System.EventHandler(this.frmView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picProfile)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -816,7 +881,7 @@
         private System.Windows.Forms.Label label11;
         private Bunifu.Framework.UI.BunifuDatepicker dateBirthday;
         private System.Windows.Forms.Label label9;
-        private Guna.UI2.WinForms.Guna2TextBox txtAddres;
+        private Guna.UI2.WinForms.Guna2TextBox txtAddress;
         private System.Windows.Forms.Label label8;
         private Guna.UI2.WinForms.Guna2TextBox txtLastName;
         private System.Windows.Forms.Label label7;
@@ -831,14 +896,16 @@
         private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2TextBox txtUsername;
         private System.Windows.Forms.Label label3;
-        private Guna.UI2.WinForms.Guna2Button btnAddIncomingSupply;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private Guna.UI2.WinForms.Guna2Button btnSaveAccount;
+        private Guna.UI2.WinForms.Guna2Button btnCancel;
+        private Guna.UI2.WinForms.Guna2Button btnEditAccount;
         private Guna.UI2.WinForms.Guna2TextBox txtRole;
         private Guna.UI2.WinForms.Guna2ComboBox cmbGender;
         private System.Windows.Forms.Label label16;
         private Guna.UI2.WinForms.Guna2TextBox txtGender;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2TextBox txtAge;
         private System.Windows.Forms.Label label17;
+        private Guna.UI2.WinForms.Guna2TextBox txtConfirmPassword;
+        private System.Windows.Forms.Label lblConfirmPassword;
     }
 }

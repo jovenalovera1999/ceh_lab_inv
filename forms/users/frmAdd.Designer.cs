@@ -724,6 +724,7 @@
             this.Name = "frmAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CREATE USER ACCOUNT";
+            this.Load += new System.EventHandler(this.frmAdd_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picProfile)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

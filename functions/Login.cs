@@ -42,6 +42,7 @@ namespace ceh_lab_inv.functions
                             val.UserAge = dt.Rows[0].Field<int>("age");
                             val.UserGender = dt.Rows[0].Field<string>("gender");
                             val.UserAddress = dt.Rows[0].Field<string>("address");
+                            val.UserBirthday = dt.Rows[0].Field<DateTime>("birthday");
                             val.UserCellphoneNumber = dt.Rows[0].Field<string>("cellphone_number");
                             val.UserTelephoneNumber = dt.Rows[0].Field<string>("telephone_number");
                             val.UserEmail = dt.Rows[0].Field<string>("email");
