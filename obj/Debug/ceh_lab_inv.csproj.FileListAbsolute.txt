@@ -26,5 +26,4 @@ D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.dashboard.frmDashboard.re
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.dashboard.frmLayout.resources
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.incoming_supplies.frmList.resources
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.supplies.frmAdd.resources
-D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.supplies.frmEdit.resources
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.supplies.frmList.resources

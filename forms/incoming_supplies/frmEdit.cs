@@ -85,16 +85,7 @@ namespace ceh_lab_inv.forms.incoming_supplies
 
         private void frmEdit_Load(object sender, EventArgs e)
         {
-            dateArrival.Value = val.SupplyArrivalDate;
-            dateExpiration.Value = val.SupplyExpirationDate;
-            txtQuantity.Text = val.SupplyQuantity;
-            txtItem.Text = val.SupplyItem;
-            txtBrand.Text = val.SupplyBrand;
-            txtQTY.Text = val.SupplyQty;
-            txtSupplier.Text = val.SupplySupplier;
-            txtUnitCost.Text = val.SupplyUnitCost;
-            txtNumberOfUnit.Text = val.SupplyNumberOfUnit.ToString();
-            txtTotalCost.Text = val.SupplyTotalCost;
+
         }
 
         private void btnUpdateIncomingSupply_Click(object sender, EventArgs e)

@@ -133,27 +133,6 @@ namespace ceh_lab_inv.components
             set { supply_primary_id = value; }
         }
 
-        public static DateTime supply_arrival_date;
-        public DateTime SupplyArrivalDate
-        {
-            get { return supply_arrival_date; }
-            set { supply_arrival_date = value; }
-        }
-
-        public static DateTime supply_expiration_date;
-        public DateTime SupplyExpirationDate
-        {
-            get { return supply_expiration_date; }
-            set { supply_expiration_date = value; }
-        }
-
-        public static string supply_quantity;
-        public string SupplyQuantity
-        {
-            get { return supply_quantity; }
-            set { supply_quantity = value; }
-        }
-
         public static string supply_item;
         public string SupplyItem
         {
@@ -168,18 +147,46 @@ namespace ceh_lab_inv.components
             set { supply_brand = value; }
         }
 
-        public static string supply_qty;
-        public string SupplyQty
-        {
-            get { return supply_qty; }
-            set { supply_qty = value; }
-        }
-
         public static string supply_supplier;
         public string SupplySupplier
         {
             get { return supply_supplier; }
             set { supply_supplier = value; }
+        }
+
+        public static int supply_quantity;
+        public int SupplyQuantity
+        {
+            get { return supply_quantity; }
+            set { supply_quantity = value; }
+        }
+
+        public static string supply_unit_of_quantity;
+        public string SupplyUnitOfQuantity
+        {
+            get { return supply_unit_of_quantity; }
+            set { supply_unit_of_quantity = value; }
+        }
+
+        public static DateTime supply_expiration_date;
+        public DateTime SupplyExpirationDate
+        {
+            get { return supply_expiration_date; }
+            set { supply_expiration_date = value; }
+        }
+
+        public static int supply_qty;
+        public int SupplyQty
+        {
+            get { return supply_qty; }
+            set { supply_qty = value; }
+        }
+
+        public static string supply_unit_of_qty;
+        public string SupplyUnitOfQty
+        {
+            get { return supply_unit_of_qty; }
+            set { supply_unit_of_qty = value; }
         }
 
         public static string supply_unit_cost;
@@ -189,13 +196,6 @@ namespace ceh_lab_inv.components
             set { supply_unit_cost = value; }
         }
 
-        public static int supply_number_of_unit;
-        public int SupplyNumberOfUnit
-        {
-            get { return supply_number_of_unit; }
-            set { supply_number_of_unit = value; }
-        }
-
         public static string supply_total_cost;
         public string SupplyTotalCost
         {
@@ -203,11 +203,32 @@ namespace ceh_lab_inv.components
             set { supply_total_cost = value; }
         }
 
+        public static int supply_exp_rgt_quantity;
+        public int SupplyExpRgtQuantity
+        {
+            get { return supply_exp_rgt_quantity; }
+            set { supply_exp_rgt_quantity = value; }
+        }
+
+        public static string supply_exp_rgt_unit;
+        public string SupplyExpRgtUnit
+        {
+            get { return supply_exp_rgt_unit; }
+            set { supply_exp_rgt_unit = value; }
+        }
+
         public static string supply_exp_rgt_cost;
         public string SupplyExpRgtCost
         {
             get { return supply_exp_rgt_cost; }
             set { supply_exp_rgt_cost = value; }
+        }
+
+        public static string supply_exp_rgt_total_cost;
+        public string SupplyExpRgtTotalCost
+        {
+            get { return supply_exp_rgt_total_cost; }
+            set { supply_exp_rgt_total_cost = value; }
         }
     }
 }

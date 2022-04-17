@@ -40,15 +40,36 @@ namespace ceh_lab_inv.forms.supplies
             gridSupplies.Columns.Add(btnDelete);
         }
 
-        private void frmList_VisibleChanged(object sender, EventArgs e)
+        private void gridSupplies_VisibleChanged(object sender, EventArgs e)
         {
             gridSupplies.ClearSelection();
         }
 
         private void btnAddSupply_Click(object sender, EventArgs e)
         {
-            forms.supplies.frmAdd supplies_add = new forms.supplies.frmAdd();
-            supplies_add.Show();
+            forms.supplies.frmAdd add_supply = new forms.supplies.frmAdd();
+            add_supply.Show();
+        }
+
+        private void gridSupplies_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(gridSupplies.Columns[e.ColumnIndex].Name == "btnDelete")
+            {
+                if(MessageBox.Show("Are you sure you want to delete this item?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    DataGridViewRow row = gridSupplies.Rows[e.RowIndex];
+
+                    if(supply.Delete(int.Parse(row.Cells["id"].Value.ToString())))
+                    {
+                        MessageBox.Show("Item successfully deleted!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        supply.Load(gridSupplies);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to delete item!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }

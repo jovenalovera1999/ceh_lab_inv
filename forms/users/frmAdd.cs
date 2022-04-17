@@ -30,6 +30,7 @@ namespace ceh_lab_inv.forms.users
             picProfile.Image = null;
             txtUsername.ResetText();
             txtPassword.ResetText();
+            txtConfirmPassword.ResetText();
             txtFirstName.ResetText();
             txtMiddleName.ResetText();
             txtLastName.ResetText();

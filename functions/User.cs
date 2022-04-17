@@ -37,8 +37,7 @@ namespace ceh_lab_inv.functions
                         cmd.Parameters.AddWithValue("@email", email);
 
                         connection.Open();
-                        MySqlDataReader dr;
-                        dr = cmd.ExecuteReader();
+                        MySqlDataReader dr = cmd.ExecuteReader();
                         dr.Close();
                     }
 
@@ -63,8 +62,7 @@ namespace ceh_lab_inv.functions
                         cmd.Parameters.AddWithValue("@password", password);
                         cmd.Parameters.AddWithValue("@role", role);
 
-                        MySqlDataReader dr;
-                        dr = cmd.ExecuteReader();
+                        MySqlDataReader dr = cmd.ExecuteReader();
                         dr.Close();
                         connection.Close();
 

@@ -28,6 +28,11 @@ namespace ceh_lab_inv.forms
             txtUsername.Focus();
         }
 
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            txtUsername.Focus();
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if(String.IsNullOrWhiteSpace(txtUsername.Text) && String.IsNullOrWhiteSpace(txtPassword.Text))
@@ -63,6 +68,11 @@ namespace ceh_lab_inv.forms
                 MessageBox.Show("Your username and password do not match our record!", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Reset();
             }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

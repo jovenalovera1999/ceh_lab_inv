@@ -28,21 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuCards1 = new Bunifu.Framework.UI.BunifuCards();
             this.lblTotalIncomingSupplies = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.bunifuCards2 = new Bunifu.Framework.UI.BunifuCards();
             this.lblTotalCurrentSupplies = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.lblModuleName = new System.Windows.Forms.Label();
             this.btnPrint = new Guna.UI2.WinForms.Guna2Button();
-            this.gridSupplies = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.bunifuCards1.SuspendLayout();
             this.bunifuCards2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridSupplies)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuCards1
@@ -121,17 +115,6 @@
             this.label6.TabIndex = 4;
             this.label6.Text = "TOTAL CURRENT SUPPLIES:";
             // 
-            // lblModuleName
-            // 
-            this.lblModuleName.AutoSize = true;
-            this.lblModuleName.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblModuleName.ForeColor = System.Drawing.Color.Green;
-            this.lblModuleName.Location = new System.Drawing.Point(12, 162);
-            this.lblModuleName.Name = "lblModuleName";
-            this.lblModuleName.Size = new System.Drawing.Size(196, 28);
-            this.lblModuleName.TabIndex = 14;
-            this.lblModuleName.Text = "CURRENT SUPPLIES";
-            // 
             // btnPrint
             // 
             this.btnPrint.Animated = true;
@@ -156,63 +139,13 @@
             this.btnPrint.TabStop = false;
             this.btnPrint.Text = "PRINT";
             // 
-            // gridSupplies
-            // 
-            this.gridSupplies.AllowUserToAddRows = false;
-            this.gridSupplies.AllowUserToDeleteRows = false;
-            this.gridSupplies.AllowUserToResizeColumns = false;
-            this.gridSupplies.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gridSupplies.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.gridSupplies.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.gridSupplies.BackgroundColor = System.Drawing.Color.White;
-            this.gridSupplies.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.gridSupplies.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Green;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridSupplies.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.gridSupplies.ColumnHeadersHeight = 40;
-            this.gridSupplies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.gridSupplies.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.MediumSeaGreen;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridSupplies.DefaultCellStyle = dataGridViewCellStyle3;
-            this.gridSupplies.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridSupplies.DoubleBuffered = true;
-            this.gridSupplies.EnableHeadersVisualStyles = false;
-            this.gridSupplies.GridColor = System.Drawing.Color.Silver;
-            this.gridSupplies.HeaderBgColor = System.Drawing.Color.Green;
-            this.gridSupplies.HeaderForeColor = System.Drawing.Color.White;
-            this.gridSupplies.Location = new System.Drawing.Point(0, 193);
-            this.gridSupplies.MultiSelect = false;
-            this.gridSupplies.Name = "gridSupplies";
-            this.gridSupplies.ReadOnly = true;
-            this.gridSupplies.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.gridSupplies.RowTemplate.Height = 40;
-            this.gridSupplies.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridSupplies.Size = new System.Drawing.Size(1726, 774);
-            this.gridSupplies.TabIndex = 21;
-            this.gridSupplies.TabStop = false;
-            // 
             // frmLayout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1726, 967);
-            this.Controls.Add(this.gridSupplies);
             this.Controls.Add(this.btnPrint);
-            this.Controls.Add(this.lblModuleName);
             this.Controls.Add(this.bunifuCards1);
             this.Controls.Add(this.bunifuCards2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -220,14 +153,11 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DASHBOARD";
             this.Load += new System.EventHandler(this.frmLayout_Load);
-            this.VisibleChanged += new System.EventHandler(this.frmLayout_VisibleChanged);
             this.bunifuCards1.ResumeLayout(false);
             this.bunifuCards1.PerformLayout();
             this.bunifuCards2.ResumeLayout(false);
             this.bunifuCards2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridSupplies)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -238,8 +168,6 @@
         private Bunifu.Framework.UI.BunifuCards bunifuCards2;
         private System.Windows.Forms.Label lblTotalCurrentSupplies;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lblModuleName;
         private Guna.UI2.WinForms.Guna2Button btnPrint;
-        private Bunifu.Framework.UI.BunifuCustomDataGrid gridSupplies;
     }
 }

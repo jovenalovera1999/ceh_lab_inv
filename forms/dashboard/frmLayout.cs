@@ -23,12 +23,7 @@ namespace ceh_lab_inv.forms.dashboard
 
         private void frmLayout_Load(object sender, EventArgs e)
         {
-            supply.Load(gridSupplies);
-        }
-
-        private void frmLayout_VisibleChanged(object sender, EventArgs e)
-        {
-            gridSupplies.ClearSelection();
+            
         }
     }
 }

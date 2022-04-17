@@ -91,6 +91,7 @@ namespace ceh_lab_inv.forms.incoming_supplies
 
         private void txtNumberOfUnit_KeyPress(object sender, KeyPressEventArgs e)
         {
+            // Allows 0-9 and backspace
             if((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8)
             {
                 e.Handled = true;

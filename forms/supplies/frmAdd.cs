@@ -28,25 +28,12 @@ namespace ceh_lab_inv.forms.supplies
             txtSupplier.ResetText();
             txtQuantity.ResetText();
             txtUnitOfQuantity.ResetText();
-            dateExpiration.Value = DateTime.Now;
-            txtQTY.ResetText();
-            txtUnitOfQTY.ResetText();
+            txtQty.ResetText();
+            txtUnitOfQty.ResetText();
             txtUnitCost.ResetText();
             txtTotalCost.ResetText();
+            dateExpiration.Value = DateTime.Now;
             txtItem.Focus();
-        }
-
-        void Calculate()
-        {
-            if(txtUnitCost.Text == ".")
-            {
-                txtTotalCost.Text = "0.00";
-            }
-            else
-            {
-                double total_cost = (int.Parse(txtQuantity.Text) * double.Parse(txtUnitCost.Text));
-                txtTotalCost.Text = total_cost.ToString("0.00");
-            }
         }
 
         void RefreshSuppliesList()
@@ -56,11 +43,29 @@ namespace ceh_lab_inv.forms.supplies
             supply.Load(gridSupplies);
         }
 
+        void Calculate()
+        {
+            double total_cost = ((double.Parse(txtUnitCost.Text) / int.Parse(txtQty.Text)) * int.Parse(txtQuantity.Text));
+            txtTotalCost.Text = total_cost.ToString("0.00");
+        }
+
         private void txtQuantity_TextChanged(object sender, EventArgs e)
         {
-            if(String.IsNullOrWhiteSpace(txtQuantity.Text) || String.IsNullOrWhiteSpace(txtUnitCost.Text))
+            if(String.IsNullOrWhiteSpace(txtQuantity.Text) || String.IsNullOrWhiteSpace(txtQty.Text) || String.IsNullOrWhiteSpace(txtUnitCost.Text))
             {
-                txtTotalCost.Text = "0.00";
+                txtTotalCost.Text = "";
+            }
+            else
+            {
+                Calculate();
+            }
+        }
+
+        private void txtQty_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(txtQuantity.Text) || String.IsNullOrWhiteSpace(txtQty.Text) || String.IsNullOrWhiteSpace(txtUnitCost.Text))
+            {
+                txtTotalCost.Text = "";
             }
             else
             {
@@ -70,9 +75,9 @@ namespace ceh_lab_inv.forms.supplies
 
         private void txtUnitCost_TextChanged(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(txtQuantity.Text) || String.IsNullOrWhiteSpace(txtUnitCost.Text))
+            if (String.IsNullOrWhiteSpace(txtQuantity.Text) || String.IsNullOrWhiteSpace(txtQty.Text) || String.IsNullOrWhiteSpace(txtUnitCost.Text))
             {
-                txtTotalCost.Text = "0.00";
+                txtTotalCost.Text = "";
             }
             else
             {
@@ -90,7 +95,7 @@ namespace ceh_lab_inv.forms.supplies
             }
         }
 
-        private void txtQTY_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtQty_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Allows 0-9 and backspace
             if ((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8)
@@ -120,68 +125,67 @@ namespace ceh_lab_inv.forms.supplies
 
         private void frmAdd_Load(object sender, EventArgs e)
         {
-            txtItem.Focus();
             dateExpiration.Value = DateTime.Now;
+            txtItem.Focus();
         }
 
         private void btnAddSupply_Click(object sender, EventArgs e)
         {
             if(String.IsNullOrWhiteSpace(txtItem.Text))
             {
-                MessageBox.Show("The item name is required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The item name is required", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtItem.Focus();
             }
-            else if(String.IsNullOrWhiteSpace(txtBrand.Text))
+            else if (String.IsNullOrWhiteSpace(txtBrand.Text))
             {
-                MessageBox.Show("The brand is required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The brand is required", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtBrand.Focus();
             }
             else if (String.IsNullOrWhiteSpace(txtSupplier.Text))
             {
-                MessageBox.Show("The supplier is required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The supplier is required", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtSupplier.Focus();
             }
             else if (String.IsNullOrWhiteSpace(txtQuantity.Text))
             {
-                MessageBox.Show("The quantity is required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The quantity is required", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtQuantity.Focus();
             }
             else if (String.IsNullOrWhiteSpace(txtUnitOfQuantity.Text))
             {
-                MessageBox.Show("The unit of quantity is required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The unit of quantity is required", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtUnitOfQuantity.Focus();
             }
-            else if (String.IsNullOrWhiteSpace(txtQTY.Text))
+            else if (String.IsNullOrWhiteSpace(txtQty.Text))
             {
-                MessageBox.Show("The QTY is required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtQTY.Focus();
+                MessageBox.Show("The qty is required", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtQty.Focus();
             }
-            else if (String.IsNullOrWhiteSpace(txtUnitOfQTY.Text))
+            else if (String.IsNullOrWhiteSpace(txtUnitOfQty.Text))
             {
-                MessageBox.Show("The brand is required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtUnitOfQTY.Focus();
+                MessageBox.Show("The unit of qty is required", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUnitOfQty.Focus();
             }
             else if (String.IsNullOrWhiteSpace(txtUnitCost.Text))
             {
-                MessageBox.Show("The brand is required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtUnitCost.Focus();
+                MessageBox.Show("The unit cost is required", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtBrand.Focus();
             }
             else if(supply.Add(txtItem.Text.ToUpper(), txtBrand.Text.ToUpper(), txtSupplier.Text.ToUpper(), int.Parse(txtQuantity.Text), txtUnitOfQuantity.Text.ToUpper(),
-                dateExpiration.Value.Date, int.Parse(txtQTY.Text), txtUnitOfQTY.Text.ToUpper(), txtUnitCost.Text, txtTotalCost.Text))
+                int.Parse(txtQty.Text), txtUnitOfQty.Text.ToUpper(), txtUnitCost.Text, txtTotalCost.Text, dateExpiration.Value.Date))
             {
-                MessageBox.Show("Supply successfully added!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                RefreshSuppliesList();
+                MessageBox.Show("Item successfully added!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Reset();
+                RefreshSuppliesList();
             }
             else
             {
-                MessageBox.Show("Failed to add supply!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to add item!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            RefreshSuppliesList();
             this.Close();
         }
     }
