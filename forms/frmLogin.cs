@@ -72,6 +72,7 @@ namespace ceh_lab_inv.forms
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+            Application.OpenForms["frmLogin"].Close();
             this.Close();
         }
     }

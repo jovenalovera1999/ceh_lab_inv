@@ -131,6 +131,7 @@ namespace ceh_lab_inv.forms.supplies
 
         private void btnAddSupply_Click(object sender, EventArgs e)
         {
+
             if(String.IsNullOrWhiteSpace(txtItem.Text))
             {
                 MessageBox.Show("The item name is required", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -172,7 +173,7 @@ namespace ceh_lab_inv.forms.supplies
                 txtBrand.Focus();
             }
             else if(supply.Add(txtItem.Text.ToUpper(), txtBrand.Text.ToUpper(), txtSupplier.Text.ToUpper(), int.Parse(txtQuantity.Text), txtUnitOfQuantity.Text.ToUpper(),
-                int.Parse(txtQty.Text), txtUnitOfQty.Text.ToUpper(), txtUnitCost.Text, txtTotalCost.Text, dateExpiration.Value.Date))
+                int.Parse(txtQty.Text), txtUnitOfQty.Text.ToUpper(), double.Parse(txtUnitCost.Text).ToString("0.00"), txtTotalCost.Text, dateExpiration.Value.Date))
             {
                 MessageBox.Show("Item successfully added!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Reset();

@@ -168,13 +168,6 @@ namespace ceh_lab_inv.components
             set { supply_unit_of_quantity = value; }
         }
 
-        public static DateTime supply_expiration_date;
-        public DateTime SupplyExpirationDate
-        {
-            get { return supply_expiration_date; }
-            set { supply_expiration_date = value; }
-        }
-
         public static int supply_qty;
         public int SupplyQty
         {
@@ -224,11 +217,11 @@ namespace ceh_lab_inv.components
             set { supply_exp_rgt_cost = value; }
         }
 
-        public static string supply_exp_rgt_total_cost;
-        public string SupplyExpRgtTotalCost
+        public static DateTime supply_expiration_date;
+        public DateTime SupplyExpirationDate
         {
-            get { return supply_exp_rgt_total_cost; }
-            set { supply_exp_rgt_total_cost = value; }
+            get { return supply_expiration_date; }
+            set { supply_expiration_date = value; }
         }
     }
 }

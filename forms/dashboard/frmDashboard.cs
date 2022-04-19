@@ -110,8 +110,11 @@ namespace ceh_lab_inv.forms.dashboard
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Application.OpenForms["frmLogin"].Close();
+            if(MessageBox.Show("Are you sure you want to exit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Close();
+                Application.OpenForms["frmLogin"].Close();
+            }
         }
     }
 }

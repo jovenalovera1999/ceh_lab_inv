@@ -91,9 +91,10 @@ DELIMITER $$
 USE `ceh_lab_inv_db`$$
 CREATE PROCEDURE `supply_load` ()
 BEGIN
-	SELECT id, item, brand, supplier, CONCAT(quantity, ' ', unit_of_quantity), CONCAT(qty, ' ', unit_of_qty), CAST(AES_DECRYPT(unit_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR),
-    CAST(AES_DECRYPT(total_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), CAST(AES_DECRYPT(exp_rgt_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR),
-    DATE_FORMAT(expiration_date, '%m/%d/%y'), CONCAT(DATEDIFF(expiration_date, NOW()), ' DAYS LEFT'), DATE_FORMAT(date_created, '%m/%d/%y') FROM ceh_lab_inv_db.supplies;
+	SELECT id, item, brand, supplier, CONCAT(FORMAT(quantity, 0), ' ', unit_of_quantity), CONCAT(FORMAT(qty, 0), ' ', unit_of_qty), CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)),
+    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)), CONCAT(FORMAT(exp_rgt_quantity, 0), ' ', exp_rgt_unit),
+    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)), DATE_FORMAT(expiration_date, '%m/%d/%y'), CONCAT(DATEDIFF(expiration_date, NOW()), ' DAYS LEFT'),
+    DATE_FORMAT(date_created, '%m/%d/%y') FROM ceh_lab_inv_db.supplies;
 END$$
 
 DELIMITER ;
@@ -126,7 +127,9 @@ DELIMITER $$
 USE `ceh_lab_inv_db`$$
 CREATE PROCEDURE `supply_get` (Pid INT)
 BEGIN
-	-- GET
+	SELECT id, item, brand, supplier, quantity, unit_of_quantity, qty, unit_of_qty, CAST(AES_DECRYPT(unit_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR),
+    CAST(AES_DECRYPT(total_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), exp_rgt_quantity, exp_rgt_unit,
+    CAST(AES_DECRYPT(exp_rgt_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), expiration_date FROM ceh_lab_inv_db.supplies WHERE id = Pid;
 END$$
 
 DELIMITER ;
@@ -138,7 +141,7 @@ DROP procedure IF EXISTS `supply_add`;
 
 DELIMITER $$
 USE `ceh_lab_inv_db`$$
-CREATE PROCEDURE `supply_add` (Pitem VARCHAR(255), Pbrand VARCHAR(255), Psupplier VARCHAR(255), Pquantity INT, Punit_of_quantity VARCHAR(255), Pqty INT, Punit_of_qty VARCHAR(255), Punit_cost VARBINARY(255),
+CREATE PROCEDURE `supply_add` (Pitem VARCHAR(255), Pbrand VARCHAR(255), Psupplier VARCHAR(255), Pquantity VARCHAR(255), Punit_of_quantity VARCHAR(255), Pqty VARCHAR(255), Punit_of_qty VARCHAR(255), Punit_cost VARBINARY(255),
 Ptotal_cost VARBINARY(255), Pexpiration_date DATE)
 BEGIN
 	INSERT INTO ceh_lab_inv_db.supplies(item, brand, supplier, quantity, unit_of_quantity, qty, unit_of_qty, unit_cost, total_cost, expiration_date)
@@ -155,8 +158,8 @@ DROP procedure IF EXISTS `supply_update`;
 
 DELIMITER $$
 USE `ceh_lab_inv_db`$$
-CREATE PROCEDURE `supply_update` (Pid INT, Pitem VARCHAR(255), Pbrand VARCHAR(255), Psupplier VARCHAR(255), Pquantity INT, Punit_of_quantity VARCHAR(255),
-Pexpiration_date DATE, Pqty INT, Punit_of_qty VARCHAR(255), Punit_cost VARBINARY(255), Ptotal_cost VARBINARY(255), Pexp_rgt_quantity INT,
+CREATE PROCEDURE `supply_update` (Pid INT, Pitem VARCHAR(255), Pbrand VARCHAR(255), Psupplier VARCHAR(255), Pquantity VARCHAR(255), Punit_of_quantity VARCHAR(255),
+Pexpiration_date DATE, Pqty VARCHAR(255), Punit_of_qty VARCHAR(255), Punit_cost VARBINARY(255), Ptotal_cost VARBINARY(255), Pexp_rgt_quantity INT,
 Pexp_rgt_unit VARCHAR(255), Pexp_rgt_cost VARBINARY(255), Pexp_rgt_total_cost VARBINARY(255))
 BEGIN
 	-- UPDATE
