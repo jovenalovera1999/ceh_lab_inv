@@ -185,3 +185,21 @@ END$$
 DELIMITER ;
 
 -- End of Supply
+
+-- Start of Report
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `report_load_supplies`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `report_load_supplies` ()
+BEGIN
+	SELECT id, item, brand, supplier, CONCAT(FORMAT(quantity, 0), ' ', unit_of_quantity), CONCAT(FORMAT(qty, 0), ' ', unit_of_qty), CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)),
+    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)), CONCAT(FORMAT(exp_rgt_quantity, 0), ' ', exp_rgt_unit),
+    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)), DATE_FORMAT(expiration_date, '%m/%d/%y') FROM ceh_lab_inv_db.supplies;
+END$$
+
+DELIMITER ;
+
+-- End of Report

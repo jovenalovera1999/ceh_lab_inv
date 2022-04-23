@@ -1,5 +1,4 @@
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.csproj.AssemblyReference.cache
-D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.csproj.SuggestedBindingRedirects.cache
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.frmLogin.resources
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.Properties.Resources.resources
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.csproj.GenerateResource.cache
@@ -12,11 +11,6 @@ D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.csproj.CopyComplete
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.exe
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.pdb
 D:\my_projects\ceh_lab_inv\bin\Debug\Guna.UI2.dll
-D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.current_supplies.frmAdd.resources
-D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.current_supplies.frmEdit.resources
-D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.current_supplies.frmView.resources
-D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.incoming_supplies.frmAdd.resources
-D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.incoming_supplies.frmEdit.resources
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.users.frmAdd.resources
 D:\my_projects\ceh_lab_inv\bin\Debug\MySql.Data.DLL
 D:\my_projects\ceh_lab_inv\bin\Debug\Renci.SshNet.dll
@@ -24,7 +18,11 @@ D:\my_projects\ceh_lab_inv\bin\Debug\BouncyCastle.Crypto.dll
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.users.frmView.resources
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.dashboard.frmDashboard.resources
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.dashboard.frmLayout.resources
-D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.incoming_supplies.frmList.resources
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.supplies.frmAdd.resources
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.supplies.frmList.resources
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.supplies.frmEdit.resources
+D:\my_projects\ceh_lab_inv\bin\Debug\Microsoft.ReportViewer.Common.dll
+D:\my_projects\ceh_lab_inv\bin\Debug\Microsoft.ReportViewer.DataVisualization.dll
+D:\my_projects\ceh_lab_inv\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
+D:\my_projects\ceh_lab_inv\bin\Debug\Microsoft.ReportViewer.WebForms.DLL
+D:\my_projects\ceh_lab_inv\bin\Debug\Microsoft.ReportViewer.WinForms.dll
