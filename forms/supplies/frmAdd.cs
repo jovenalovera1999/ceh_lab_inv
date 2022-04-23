@@ -129,7 +129,7 @@ namespace ceh_lab_inv.forms.supplies
             txtItem.Focus();
         }
 
-        private void btnAddSupply_Click(object sender, EventArgs e)
+        private void btnSaveSupply_Click(object sender, EventArgs e)
         {
 
             if(String.IsNullOrWhiteSpace(txtItem.Text))
@@ -176,8 +176,8 @@ namespace ceh_lab_inv.forms.supplies
                 int.Parse(txtQty.Text), txtUnitOfQty.Text.ToUpper(), double.Parse(txtUnitCost.Text).ToString("0.00"), txtTotalCost.Text, dateExpiration.Value.Date))
             {
                 MessageBox.Show("Item successfully added!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Reset();
                 RefreshSuppliesList();
+                Reset();
             }
             else
             {

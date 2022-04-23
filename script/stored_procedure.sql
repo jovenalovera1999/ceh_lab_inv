@@ -141,7 +141,7 @@ DROP procedure IF EXISTS `supply_add`;
 
 DELIMITER $$
 USE `ceh_lab_inv_db`$$
-CREATE PROCEDURE `supply_add` (Pitem VARCHAR(255), Pbrand VARCHAR(255), Psupplier VARCHAR(255), Pquantity VARCHAR(255), Punit_of_quantity VARCHAR(255), Pqty VARCHAR(255), Punit_of_qty VARCHAR(255), Punit_cost VARBINARY(255),
+CREATE PROCEDURE `supply_add` (Pitem VARCHAR(255), Pbrand VARCHAR(255), Psupplier VARCHAR(255), Pquantity INT, Punit_of_quantity VARCHAR(255), Pqty INT, Punit_of_qty VARCHAR(255), Punit_cost VARBINARY(255),
 Ptotal_cost VARBINARY(255), Pexpiration_date DATE)
 BEGIN
 	INSERT INTO ceh_lab_inv_db.supplies(item, brand, supplier, quantity, unit_of_quantity, qty, unit_of_qty, unit_cost, total_cost, expiration_date)
@@ -158,11 +158,14 @@ DROP procedure IF EXISTS `supply_update`;
 
 DELIMITER $$
 USE `ceh_lab_inv_db`$$
-CREATE PROCEDURE `supply_update` (Pid INT, Pitem VARCHAR(255), Pbrand VARCHAR(255), Psupplier VARCHAR(255), Pquantity VARCHAR(255), Punit_of_quantity VARCHAR(255),
-Pexpiration_date DATE, Pqty VARCHAR(255), Punit_of_qty VARCHAR(255), Punit_cost VARBINARY(255), Ptotal_cost VARBINARY(255), Pexp_rgt_quantity INT,
-Pexp_rgt_unit VARCHAR(255), Pexp_rgt_cost VARBINARY(255), Pexp_rgt_total_cost VARBINARY(255))
+CREATE PROCEDURE `supply_update` (Pid INT, Pitem VARCHAR(255), Pbrand VARCHAR(255), Psupplier VARCHAR(255), Pquantity INT, Punit_of_quantity VARCHAR(255),
+Pqty INT, Punit_of_qty VARCHAR(255), Punit_cost VARBINARY(255), Ptotal_cost VARBINARY(255), Pexp_rgt_quantity INT, Pexp_rgt_unit VARCHAR(255),
+Pexp_rgt_cost VARBINARY(255), Pexpiration_date DATE)
 BEGIN
-	-- UPDATE
+	UPDATE ceh_lab_inv_db.supplies SET item = Pitem, brand = Pbrand, supplier = Psupplier, quantity = Pquantity, unit_of_quantity = Punit_of_quantity, qty = Pqty, unit_of_qty = Punit_of_quantity,
+    unit_cost = AES_ENCRYPT(Punit_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test'), total_cost = AES_ENCRYPT(Ptotal_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test'),
+    exp_rgt_quantity = Pexp_rgt_quantity, exp_rgt_unit = Pexp_rgt_unit, exp_rgt_cost = AES_ENCRYPT(Pexp_rgt_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test'),
+    expiration_date = Pexpiration_date WHERE id = Pid;
 END$$
 
 DELIMITER ;

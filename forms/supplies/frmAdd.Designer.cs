@@ -45,7 +45,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.dateExpiration = new Bunifu.Framework.UI.BunifuDatepicker();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
-            this.btnAddSupply = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSaveSupply = new Guna.UI2.WinForms.Guna2Button();
             this.txtUnitCost = new Guna.UI2.WinForms.Guna2TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtTotalCost = new Guna.UI2.WinForms.Guna2TextBox();
@@ -344,37 +344,37 @@
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.HoverState.BorderColor = System.Drawing.Color.Green;
             this.btnClose.HoverState.FillColor = System.Drawing.Color.Red;
-            this.btnClose.Location = new System.Drawing.Point(104, 680);
+            this.btnClose.Location = new System.Drawing.Point(84, 680);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(117, 40);
+            this.btnClose.Size = new System.Drawing.Size(137, 40);
             this.btnClose.TabIndex = 34;
             this.btnClose.TabStop = false;
             this.btnClose.Text = "CLOSE";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // btnAddSupply
+            // btnSaveSupply
             // 
-            this.btnAddSupply.Animated = true;
-            this.btnAddSupply.BorderColor = System.Drawing.Color.Transparent;
-            this.btnAddSupply.BorderRadius = 3;
-            this.btnAddSupply.BorderThickness = 1;
-            this.btnAddSupply.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddSupply.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddSupply.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddSupply.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAddSupply.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnAddSupply.FillColor = System.Drawing.Color.DodgerBlue;
-            this.btnAddSupply.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.btnAddSupply.ForeColor = System.Drawing.Color.White;
-            this.btnAddSupply.HoverState.BorderColor = System.Drawing.Color.Green;
-            this.btnAddSupply.HoverState.FillColor = System.Drawing.Color.DodgerBlue;
-            this.btnAddSupply.Location = new System.Drawing.Point(227, 680);
-            this.btnAddSupply.Name = "btnAddSupply";
-            this.btnAddSupply.Size = new System.Drawing.Size(117, 40);
-            this.btnAddSupply.TabIndex = 33;
-            this.btnAddSupply.TabStop = false;
-            this.btnAddSupply.Text = "ADD SUPPLY";
-            this.btnAddSupply.Click += new System.EventHandler(this.btnAddSupply_Click);
+            this.btnSaveSupply.Animated = true;
+            this.btnSaveSupply.BorderColor = System.Drawing.Color.Transparent;
+            this.btnSaveSupply.BorderRadius = 3;
+            this.btnSaveSupply.BorderThickness = 1;
+            this.btnSaveSupply.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSaveSupply.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSaveSupply.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSaveSupply.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSaveSupply.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSaveSupply.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btnSaveSupply.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnSaveSupply.ForeColor = System.Drawing.Color.White;
+            this.btnSaveSupply.HoverState.BorderColor = System.Drawing.Color.Green;
+            this.btnSaveSupply.HoverState.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btnSaveSupply.Location = new System.Drawing.Point(227, 680);
+            this.btnSaveSupply.Name = "btnSaveSupply";
+            this.btnSaveSupply.Size = new System.Drawing.Size(137, 40);
+            this.btnSaveSupply.TabIndex = 33;
+            this.btnSaveSupply.TabStop = false;
+            this.btnSaveSupply.Text = "SAVE SUPPLY";
+            this.btnSaveSupply.Click += new System.EventHandler(this.btnSaveSupply_Click);
             // 
             // txtUnitCost
             // 
@@ -473,7 +473,7 @@
             this.Controls.Add(this.txtUnitCost);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnAddSupply);
+            this.Controls.Add(this.btnSaveSupply);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dateExpiration);
             this.Controls.Add(this.txtUnitOfQty);
@@ -520,7 +520,7 @@
         private System.Windows.Forms.Label label8;
         private Bunifu.Framework.UI.BunifuDatepicker dateExpiration;
         private Guna.UI2.WinForms.Guna2Button btnClose;
-        private Guna.UI2.WinForms.Guna2Button btnAddSupply;
+        private Guna.UI2.WinForms.Guna2Button btnSaveSupply;
         private Guna.UI2.WinForms.Guna2TextBox txtUnitCost;
         private System.Windows.Forms.Label label9;
         private Guna.UI2.WinForms.Guna2TextBox txtTotalCost;

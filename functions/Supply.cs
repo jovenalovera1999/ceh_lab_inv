@@ -146,11 +146,41 @@ namespace ceh_lab_inv.functions
             }
         }
 
-        public bool Update()
+        public bool Update(int id, string item, string brand, string supplier, int quantity, string unit_of_quantity, int qty, string unit_of_qty, string unit_cost, string total_cost,
+            int exp_rgt_quantity, string exp_rgt_unit, string exp_rgt_cost, DateTime expiration_date)
         {
             try
             {
-                return true;
+                using (MySqlConnection connection = new MySqlConnection(con.conString()))
+                {
+                    string sql = @"CALL supply_update(@id, @item, @brand, @supplier, @quantity, @unit_of_quantity, @qty, @unit_of_qty, @unit_cost, @total_cost, @exp_rgt_quantity,
+                                    @exp_rgt_unit, @exp_rgt_cost, @expiration_date);";
+
+                    using(MySqlCommand cmd = new MySqlCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+                        cmd.Parameters.AddWithValue("@item", item);
+                        cmd.Parameters.AddWithValue("@brand", brand);
+                        cmd.Parameters.AddWithValue("@supplier", supplier);
+                        cmd.Parameters.AddWithValue("@quantity", quantity);
+                        cmd.Parameters.AddWithValue("@unit_of_quantity", unit_of_quantity);
+                        cmd.Parameters.AddWithValue("@qty", qty);
+                        cmd.Parameters.AddWithValue("@unit_of_qty", unit_of_qty);
+                        cmd.Parameters.AddWithValue("@unit_cost", unit_cost);
+                        cmd.Parameters.AddWithValue("@total_cost", total_cost);
+                        cmd.Parameters.AddWithValue("@exp_rgt_quantity", exp_rgt_quantity);
+                        cmd.Parameters.AddWithValue("@exp_rgt_unit", exp_rgt_unit);
+                        cmd.Parameters.AddWithValue("@exp_rgt_cost", exp_rgt_cost);
+                        cmd.Parameters.AddWithValue("@expiration_date", expiration_date);
+
+                        connection.Open();
+                        MySqlDataReader dr = cmd.ExecuteReader();
+                        dr.Close();
+                        connection.Close();
+
+                        return true;
+                    }
+                }
             }
             catch(Exception ex)
             {
