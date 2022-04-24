@@ -152,13 +152,7 @@ namespace ceh_lab_inv.forms.users
 
         private void btnCreateAccount_Click(object sender, EventArgs e)
         {
-            if(duplicate.Username(txtUsername.Text))
-            {
-                MessageBox.Show("The username is already taken!", "Already Taken", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtUsername.ResetText();
-                txtUsername.Focus();
-            }
-            else if(String.IsNullOrWhiteSpace(txtUsername.Text))
+            if(String.IsNullOrWhiteSpace(txtUsername.Text))
             {
                 MessageBox.Show("The username is required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtUsername.Focus();
@@ -205,7 +199,7 @@ namespace ceh_lab_inv.forms.users
                 MessageBox.Show("The address is required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtAddress.Focus();
             }
-            else if (String.IsNullOrWhiteSpace(txtCellphoneNumber.Text) || String.IsNullOrWhiteSpace(txtTelephoneNumber.Text) || String.IsNullOrWhiteSpace(txtEmail.Text))
+            else if (String.IsNullOrWhiteSpace(txtCellphoneNumber.Text) && String.IsNullOrWhiteSpace(txtTelephoneNumber.Text) && String.IsNullOrWhiteSpace(txtEmail.Text))
             {
                 MessageBox.Show("The contact information is required at least one (1)!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtCellphoneNumber.Focus();
@@ -214,6 +208,12 @@ namespace ceh_lab_inv.forms.users
             {
                 MessageBox.Show("The role is required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cmbRole.Focus();
+            }
+            else if (duplicate.Username(txtUsername.Text))
+            {
+                MessageBox.Show("The username is already taken!", "Already Taken", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUsername.ResetText();
+                txtUsername.Focus();
             }
             else if(String.IsNullOrWhiteSpace(imgLocation))
             {

@@ -1,6 +1,22 @@
 -- Start of User
 
 USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `user_get`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `user_get` (Pid INT)
+BEGIN
+	SELECT ceh_lab_inv_db.users.id, profile_picture, first_name, middle_name, last_name, age, gender, address, birthday, cellphone_number, telephone_number,
+    email, username, CAST(AES_DECRYPT(password, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), role FROM ceh_lab_inv_db.users INNER JOIN ceh_lab_inv_db.accounts ON ceh_lab_inv_db.users.id = 
+    ceh_lab_inv_db.accounts.id WHERE ceh_lab_inv_db.users.id = Pid;
+END$$
+
+DELIMITER ;
+
+--
+
+USE `ceh_lab_inv_db`;
 DROP procedure IF EXISTS `user_add`;
 
 DELIMITER $$
@@ -46,6 +62,25 @@ END$$
 
 DELIMITER ;
 
+--
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `user_update`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `user_update` (Pid INT, Pprofile_picture BLOB, Pusername VARCHAR(255), Ppassword VARBINARY(255), Pfirst_name VARCHAR(255), 
+Pmiddle_name VARCHAR(255), Plast_name VARCHAR(255), Page INT(3), Pgender VARCHAR(255), Paddress VARCHAR(255), Pbirthday DATE, Pcellphone_number VARCHAR(255),
+Ptelephone_number VARCHAR(255), Pemail VARCHAR(255), Prole VARCHAR(255))
+BEGIN
+	UPDATE ceh_lab_inv_db.users INNER JOIN ceh_lab_inv_db.accounts ON ceh_lab_inv_db.users.id = ceh_lab_inv_db.accounts.id SET username = Pusername,
+    password = AES_ENCRYPT(Ppassword, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test'), profile_picture = Pprofile_picture, first_name = Pfirst_name,
+    middle_name = Pmiddle_name, last_name = Plast_name, age = Page, gender = Pgender, address = Paddress, birthday = Pbirthday, cellphone_number = Pcellphone_number,
+    telephone_number = Ptelephone_number, email = Pemail, role = Prole WHERE ceh_lab_inv_db.users.id = Pid;
+END$$
+
+DELIMITER ;
+
 -- End of User
 
 -- Start of Login
@@ -80,6 +115,20 @@ END$$
 
 DELIMITER ;
 
+--
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `duplicate_username_proceed`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `duplicate_username_proceed` (Pid INT, Pusername VARCHAR(255))
+BEGIN
+	SELECT * FROM ceh_lab_inv_db.accounts WHERE id = Pid AND username = Pusername;
+END$$
+
+DELIMITER ;
+
 -- End of Duplicate
 
 -- Start of Supply
@@ -94,29 +143,27 @@ BEGIN
 	SELECT id, item, brand, supplier, CONCAT(FORMAT(quantity, 0), ' ', unit_of_quantity), CONCAT(FORMAT(qty, 0), ' ', unit_of_qty), CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)),
     CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)), CONCAT(FORMAT(exp_rgt_quantity, 0), ' ', exp_rgt_unit),
     CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)), DATE_FORMAT(expiration_date, '%m/%d/%y'), CONCAT(DATEDIFF(expiration_date, NOW()), ' DAYS LEFT'),
-    DATE_FORMAT(date_created, '%m/%d/%y') FROM ceh_lab_inv_db.supplies;
+    DATE_FORMAT(date_created, '%m/%d/%y') FROM ceh_lab_inv_db.supplies ORDER BY item ASC;
 END$$
 
 DELIMITER ;
 
 --
 
--- USE `ceh_lab_inv_db`;
--- DROP procedure IF EXISTS `supply_load_by_date`;
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `supply_load_by_date`;
 
--- DELIMITER $$
--- USE `ceh_lab_inv_db`$$
--- CREATE PROCEDURE `supply_load_by_date` (Pfrom DATE, Pto DATE)
--- BEGIN
--- 	SELECT id, DATE_FORMAT(expiration_date, '%m/%d/%y'), CONCAT(DATEDIFF(expiration_date, NOW()), ' ', 'DAYS LEFT'), CONCAT(quantity, ' ', unit_of_quantity), item, brand, CONCAT(qty, ' ', unit_of_qty), supplier,
---     CAST(AES_DECRYPT(unit_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR),
---     CAST(AES_DECRYPT(total_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR),
---     CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit), CAST(AES_DECRYPT(exp_rgt_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR),
---     CAST(AES_DECRYPT(exp_rgt_total_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR),
---     DATE_FORMAT(date_created, '%m/%d/%y') FROM ceh_lab_inv_db.supplies WHERE DATE(date_created) = DATE(Pfrom) <= DATE(Pto) ORDER BY item ASC LIMIT 500;
--- END$$
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `supply_load_by_date` (Pfrom DATE, Pto DATE)
+BEGIN
+	SELECT id, item, brand, supplier, CONCAT(FORMAT(quantity, 0), ' ', unit_of_quantity), CONCAT(FORMAT(qty, 0), ' ', unit_of_qty), CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)),
+    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)), CONCAT(FORMAT(exp_rgt_quantity, 0), ' ', exp_rgt_unit),
+    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)), DATE_FORMAT(expiration_date, '%m/%d/%y'), CONCAT(DATEDIFF(expiration_date, NOW()), ' DAYS LEFT'),
+    DATE_FORMAT(date_created, '%m/%d/%y') FROM ceh_lab_inv_db.supplies WHERE date_created BETWEEN Pfrom AND Pto ORDER BY item ASC;
+END$$
 
--- DELIMITER ;
+DELIMITER ;
 
 --
 
@@ -195,11 +242,47 @@ DELIMITER $$
 USE `ceh_lab_inv_db`$$
 CREATE PROCEDURE `report_load_supplies` ()
 BEGIN
-	SELECT id, item, brand, supplier, CONCAT(FORMAT(quantity, 0), ' ', unit_of_quantity), CONCAT(FORMAT(qty, 0), ' ', unit_of_qty), CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)),
-    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)), CONCAT(FORMAT(exp_rgt_quantity, 0), ' ', exp_rgt_unit),
-    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)), DATE_FORMAT(expiration_date, '%m/%d/%y') FROM ceh_lab_inv_db.supplies;
+	SELECT item AS 'item', brand AS 'brand', supplier AS 'supplier', CONCAT(FORMAT(quantity, 0), ' ', unit_of_quantity) AS 'quantity', CONCAT(FORMAT(qty, 0), ' ', unit_of_qty) AS 'qty',
+    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)) AS 'unit_cost',
+    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)) AS 'total_cost',
+    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)) AS 'exp_rgt_cost', DATE_FORMAT(expiration_date, '%m/%d/%y') AS 'expiration_date'
+    FROM ceh_lab_inv_db.supplies ORDER BY item ASC;
+END$$
+
+DELIMITER ;
+
+--
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `report_load_supplies_by_date`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `report_load_supplies_by_date` (Pfrom DATE, Pto DATE)
+BEGIN
+	SELECT item AS 'item', brand AS 'brand', supplier AS 'supplier', CONCAT(FORMAT(quantity, 0), ' ', unit_of_quantity) AS 'quantity', CONCAT(FORMAT(qty, 0), ' ', unit_of_qty) AS 'qty',
+    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)) AS 'unit_cost',
+    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)) AS 'total_cost',
+    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)) AS 'exp_rgt_cost', DATE_FORMAT(expiration_date, '%m/%d/%y') AS 'expiration_date'
+    FROM ceh_lab_inv_db.supplies WHERE date_created BETWEEN Pfrom AND Pto ORDER BY item ASC;
 END$$
 
 DELIMITER ;
 
 -- End of Report
+
+-- Start of Account
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `account_load`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `account_load` ()
+BEGIN
+	SELECT id, username, CAST(AES_DECRYPT(password, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), role, DATE_FORMAT(date_created, '%m/%d/%y') FROM ceh_lab_inv_db.accounts;
+END$$
+
+DELIMITER ;
+
+-- End of Account

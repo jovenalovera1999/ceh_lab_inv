@@ -56,6 +56,51 @@ namespace ceh_lab_inv.functions
             }
         }
 
+        public void LoadByDate(DateTime from, DateTime to, DataGridView grid)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(con.conString()))
+                {
+                    string sql = @"CALL supply_load_by_date(@from, @to);";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@from", from);
+                        cmd.Parameters.AddWithValue("@to", to);
+
+                        connection.Open();
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        dt.Clear();
+                        da.Fill(dt);
+
+                        grid.DataSource = dt;
+                        grid.ClearSelection();
+
+                        grid.Columns["id"].Visible = false;
+                        grid.Columns["item"].HeaderText = "ITEM";
+                        grid.Columns["brand"].HeaderText = "BRAND";
+                        grid.Columns["supplier"].HeaderText = "SUPPLIER";
+                        grid.Columns["CONCAT(FORMAT(quantity, 0), ' ', unit_of_quantity)"].HeaderText = "QUANTITY";
+                        grid.Columns["CONCAT(FORMAT(qty, 0), ' ', unit_of_qty)"].HeaderText = "QTY";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2))"].HeaderText = "UNIT COST";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2))"].HeaderText = "TOTAL COST";
+                        grid.Columns["CONCAT(FORMAT(exp_rgt_quantity, 0), ' ', exp_rgt_unit)"].HeaderText = "EXP. RGT. QUANTITY";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2))"].HeaderText = "EXP. RGT. COST";
+                        grid.Columns["DATE_FORMAT(expiration_date, '%m/%d/%y')"].HeaderText = "EXPIRATION DATE";
+                        grid.Columns["CONCAT(DATEDIFF(expiration_date, NOW()), ' DAYS LEFT')"].HeaderText = "EXPIRED IN";
+                        grid.Columns["DATE_FORMAT(date_created, '%m/%d/%y')"].HeaderText = "DATE ADDED";
+                        connection.Close();
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error loading supplies by date: " + ex.ToString());
+            }
+        }
+
         public bool Get(int id)
         {
             try

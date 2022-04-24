@@ -14,27 +14,53 @@ namespace ceh_lab_inv.functions
         components.Connection con = new components.Connection();
         components.Value val = new components.Value();
 
-        //public void LoadSupplies(ReportViewer report)
-        //{
-            //using (MySqlConnection connection = new MySqlConnection(con.conString()))
-            //{
-                //string sql = @"CALL report_load_supplies();";
+        public void LoadSupplies(ReportViewer report)
+        {
+            using (MySqlConnection connection = new MySqlConnection(con.conString()))
+            {
+                string sql = @"CALL report_load_supplies();";
 
-                //using (MySqlCommand cmd = new MySqlCommand(sql, connection))
-                //{
-                    //connection.Open();
-                    //MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                    //DataTable dt = new DataTable();
-                    //dt.Clear();
-                    //da.Fill(dt);
+                using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    dt.Clear();
+                    da.Fill(dt);
 
-                    //report.LocalReport.DataSources.Clear();
-                    //ReportDataSource source = new ReportDataSource("dtSupplies", dt);
-                    //report.LocalReport.DataSources.Add(source);
-                    //report.RefreshReport();
-                    //connection.Close();
-                //}
-            //}
-        //}
+                    report.LocalReport.DataSources.Clear();
+                    ReportDataSource source = new ReportDataSource("dtSupplies", dt);
+                    report.LocalReport.DataSources.Add(source);
+                    report.RefreshReport();
+                    connection.Close();
+                }
+            }
+        }
+
+        public void LoadSuppliesByDate(DateTime from, DateTime to, ReportViewer report)
+        {
+            using (MySqlConnection connection = new MySqlConnection(con.conString()))
+            {
+                string sql = @"CALL report_load_supplies_by_date(@from, @to);";
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                {
+                    cmd.Parameters.AddWithValue("@from", from);
+                    cmd.Parameters.AddWithValue("@to", to);
+
+                    connection.Open();
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    dt.Clear();
+                    da.Fill(dt);
+
+                    report.LocalReport.DataSources.Clear();
+                    ReportDataSource source = new ReportDataSource("dtSupplies", dt);
+                    report.LocalReport.DataSources.Add(source);
+                    report.RefreshReport();
+                    connection.Close();
+                }
+            }
+        }
     }
 }

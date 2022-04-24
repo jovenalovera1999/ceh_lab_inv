@@ -58,9 +58,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtUsername = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnSaveAccount = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
-            this.btnEditAccount = new Guna.UI2.WinForms.Guna2Button();
+            this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
             this.txtRole = new Guna.UI2.WinForms.Guna2TextBox();
             this.cmbGender = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -69,6 +69,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.txtConfirmPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblConfirmPassword = new System.Windows.Forms.Label();
+            this.txtBirthday = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picProfile)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,6 +96,7 @@
             this.btnRemovePhoto.TabStop = false;
             this.btnRemovePhoto.Text = "REMOVE PHOTO";
             this.btnRemovePhoto.Visible = false;
+            this.btnRemovePhoto.Click += new System.EventHandler(this.btnRemovePhoto_Click);
             // 
             // btnUploadPhoto
             // 
@@ -119,6 +121,7 @@
             this.btnUploadPhoto.TabStop = false;
             this.btnUploadPhoto.Text = "UPLOAD PHOTO";
             this.btnUploadPhoto.Visible = false;
+            this.btnUploadPhoto.Click += new System.EventHandler(this.btnUploadPhoto_Click);
             // 
             // cmbRole
             // 
@@ -305,6 +308,7 @@
             this.dateBirthday.TabIndex = 9;
             this.dateBirthday.TabStop = false;
             this.dateBirthday.Value = new System.DateTime(2022, 4, 12, 14, 1, 1, 137);
+            this.dateBirthday.Visible = false;
             // 
             // label9
             // 
@@ -573,29 +577,30 @@
             this.label3.TabIndex = 89;
             this.label3.Text = "USERNAME";
             // 
-            // btnSaveAccount
+            // btnSave
             // 
-            this.btnSaveAccount.Animated = true;
-            this.btnSaveAccount.BorderColor = System.Drawing.Color.Transparent;
-            this.btnSaveAccount.BorderRadius = 3;
-            this.btnSaveAccount.BorderThickness = 1;
-            this.btnSaveAccount.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSaveAccount.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSaveAccount.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSaveAccount.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSaveAccount.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSaveAccount.FillColor = System.Drawing.Color.DodgerBlue;
-            this.btnSaveAccount.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.btnSaveAccount.ForeColor = System.Drawing.Color.White;
-            this.btnSaveAccount.HoverState.BorderColor = System.Drawing.Color.Green;
-            this.btnSaveAccount.HoverState.FillColor = System.Drawing.Color.DodgerBlue;
-            this.btnSaveAccount.Location = new System.Drawing.Point(1559, 915);
-            this.btnSaveAccount.Name = "btnSaveAccount";
-            this.btnSaveAccount.Size = new System.Drawing.Size(155, 40);
-            this.btnSaveAccount.TabIndex = 107;
-            this.btnSaveAccount.TabStop = false;
-            this.btnSaveAccount.Text = "SAVE ACCOUNT";
-            this.btnSaveAccount.Visible = false;
+            this.btnSave.Animated = true;
+            this.btnSave.BorderColor = System.Drawing.Color.Transparent;
+            this.btnSave.BorderRadius = 3;
+            this.btnSave.BorderThickness = 1;
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSave.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.HoverState.BorderColor = System.Drawing.Color.Green;
+            this.btnSave.HoverState.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btnSave.Location = new System.Drawing.Point(1577, 915);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(137, 40);
+            this.btnSave.TabIndex = 107;
+            this.btnSave.TabStop = false;
+            this.btnSave.Text = "SAVE";
+            this.btnSave.Visible = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -613,37 +618,38 @@
             this.btnCancel.ForeColor = System.Drawing.Color.White;
             this.btnCancel.HoverState.BorderColor = System.Drawing.Color.Green;
             this.btnCancel.HoverState.FillColor = System.Drawing.Color.Red;
-            this.btnCancel.Location = new System.Drawing.Point(1398, 915);
+            this.btnCancel.Location = new System.Drawing.Point(1434, 915);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(155, 40);
+            this.btnCancel.Size = new System.Drawing.Size(137, 40);
             this.btnCancel.TabIndex = 108;
             this.btnCancel.TabStop = false;
             this.btnCancel.Text = "CANCEL";
             this.btnCancel.Visible = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // btnEditAccount
+            // btnEdit
             // 
-            this.btnEditAccount.Animated = true;
-            this.btnEditAccount.BorderColor = System.Drawing.Color.Transparent;
-            this.btnEditAccount.BorderRadius = 3;
-            this.btnEditAccount.BorderThickness = 1;
-            this.btnEditAccount.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEditAccount.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnEditAccount.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnEditAccount.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnEditAccount.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnEditAccount.FillColor = System.Drawing.Color.Green;
-            this.btnEditAccount.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.btnEditAccount.ForeColor = System.Drawing.Color.White;
-            this.btnEditAccount.HoverState.BorderColor = System.Drawing.Color.White;
-            this.btnEditAccount.HoverState.FillColor = System.Drawing.Color.Green;
-            this.btnEditAccount.Location = new System.Drawing.Point(1559, 915);
-            this.btnEditAccount.Name = "btnEditAccount";
-            this.btnEditAccount.Size = new System.Drawing.Size(155, 40);
-            this.btnEditAccount.TabIndex = 109;
-            this.btnEditAccount.TabStop = false;
-            this.btnEditAccount.Text = "EDIT ACCOUNT";
-            this.btnEditAccount.Click += new System.EventHandler(this.btnEditAccount_Click);
+            this.btnEdit.Animated = true;
+            this.btnEdit.BorderColor = System.Drawing.Color.Transparent;
+            this.btnEdit.BorderRadius = 3;
+            this.btnEdit.BorderThickness = 1;
+            this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEdit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnEdit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnEdit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEdit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEdit.FillColor = System.Drawing.Color.Green;
+            this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnEdit.ForeColor = System.Drawing.Color.White;
+            this.btnEdit.HoverState.BorderColor = System.Drawing.Color.White;
+            this.btnEdit.HoverState.FillColor = System.Drawing.Color.Green;
+            this.btnEdit.Location = new System.Drawing.Point(1577, 915);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(137, 40);
+            this.btnEdit.TabIndex = 109;
+            this.btnEdit.TabStop = false;
+            this.btnEdit.Text = "EDIT";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // txtRole
             // 
@@ -808,12 +814,39 @@
             this.lblConfirmPassword.Text = "CONFIRM PASSWORD";
             this.lblConfirmPassword.Visible = false;
             // 
+            // txtBirthday
+            // 
+            this.txtBirthday.Animated = true;
+            this.txtBirthday.BorderRadius = 3;
+            this.txtBirthday.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBirthday.DefaultText = "";
+            this.txtBirthday.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBirthday.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtBirthday.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBirthday.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBirthday.FocusedState.BorderColor = System.Drawing.Color.Green;
+            this.txtBirthday.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.txtBirthday.ForeColor = System.Drawing.Color.Black;
+            this.txtBirthday.HoverState.BorderColor = System.Drawing.Color.Green;
+            this.txtBirthday.Location = new System.Drawing.Point(577, 463);
+            this.txtBirthday.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBirthday.MaxLength = 255;
+            this.txtBirthday.Name = "txtBirthday";
+            this.txtBirthday.PasswordChar = '\0';
+            this.txtBirthday.PlaceholderText = "";
+            this.txtBirthday.ReadOnly = true;
+            this.txtBirthday.SelectedText = "";
+            this.txtBirthday.Size = new System.Drawing.Size(356, 36);
+            this.txtBirthday.TabIndex = 117;
+            this.txtBirthday.TabStop = false;
+            // 
             // frmView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1726, 967);
+            this.Controls.Add(this.txtBirthday);
             this.Controls.Add(this.txtConfirmPassword);
             this.Controls.Add(this.lblConfirmPassword);
             this.Controls.Add(this.txtAge);
@@ -822,9 +855,9 @@
             this.Controls.Add(this.cmbGender);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtRole);
-            this.Controls.Add(this.btnEditAccount);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSaveAccount);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnRemovePhoto);
             this.Controls.Add(this.btnUploadPhoto);
             this.Controls.Add(this.cmbRole);
@@ -859,6 +892,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EDIT PROFILE";
             this.Load += new System.EventHandler(this.frmView_Load);
+            this.VisibleChanged += new System.EventHandler(this.frmView_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.picProfile)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -896,9 +930,9 @@
         private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2TextBox txtUsername;
         private System.Windows.Forms.Label label3;
-        private Guna.UI2.WinForms.Guna2Button btnSaveAccount;
+        private Guna.UI2.WinForms.Guna2Button btnSave;
         private Guna.UI2.WinForms.Guna2Button btnCancel;
-        private Guna.UI2.WinForms.Guna2Button btnEditAccount;
+        private Guna.UI2.WinForms.Guna2Button btnEdit;
         private Guna.UI2.WinForms.Guna2TextBox txtRole;
         private Guna.UI2.WinForms.Guna2ComboBox cmbGender;
         private System.Windows.Forms.Label label16;
@@ -907,5 +941,6 @@
         private System.Windows.Forms.Label label17;
         private Guna.UI2.WinForms.Guna2TextBox txtConfirmPassword;
         private System.Windows.Forms.Label lblConfirmPassword;
+        private Guna.UI2.WinForms.Guna2TextBox txtBirthday;
     }
 }

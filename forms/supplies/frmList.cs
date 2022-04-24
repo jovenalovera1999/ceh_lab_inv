@@ -23,7 +23,10 @@ namespace ceh_lab_inv.forms.supplies
 
         private void frmList_Load(object sender, EventArgs e)
         {
-            supply.Load(gridSupplies);
+            dateFrom.Value = DateTime.Now;
+            dateTo.Value = DateTime.Now;
+
+            supply.LoadByDate(dateFrom.Value, dateTo.Value, gridSupplies);
 
             DataGridViewButtonColumn btnUpdate = new DataGridViewButtonColumn();
             btnUpdate.HeaderText = "ACTION";
@@ -38,6 +41,16 @@ namespace ceh_lab_inv.forms.supplies
             btnDelete.Name = "btnDelete";
             btnDelete.UseColumnTextForButtonValue = true;
             gridSupplies.Columns.Add(btnDelete);
+        }
+
+        private void dateFrom_onValueChanged(object sender, EventArgs e)
+        {
+            supply.LoadByDate(dateFrom.Value, dateTo.Value, gridSupplies);
+        }
+
+        private void dateTo_onValueChanged(object sender, EventArgs e)
+        {
+            supply.LoadByDate(dateFrom.Value, dateTo.Value, gridSupplies);
         }
 
         private void gridSupplies_VisibleChanged(object sender, EventArgs e)

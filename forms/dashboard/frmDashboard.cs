@@ -21,20 +21,34 @@ namespace ceh_lab_inv.forms.dashboard
         components.Connection con = new components.Connection();
         components.Value val = new components.Value();
 
-        private void frmDashboard_Load(object sender, EventArgs e)
+        void picProfileRefresh()
         {
-            if (!String.IsNullOrWhiteSpace(val.UserProfilePicture.ToString()))
+            if (val.UserProfilePicture != null)
             {
                 MemoryStream ms = new MemoryStream(val.UserProfilePicture);
                 picProfile.Image = Image.FromStream(ms);
             }
         }
 
+        private void frmDashboard_Load(object sender, EventArgs e)
+        {
+            picProfileRefresh();
+
+            if(val.UserRole != "ADMINISTRATOR")
+            {
+                btnCreateAccount.Visible = false;
+                btnAccounts.Visible = false;
+            }
+        }
+
         private void btnDashboard_Click(object sender, EventArgs e)
         {
+            picProfileRefresh();
+
             btnDashboard.FillColor = Color.DarkGreen;
             btnSupplies.FillColor = Color.Green;
             btnCreateAccount.FillColor = Color.Green;
+            btnAccounts.FillColor = Color.Green;
             btnProfile.FillColor = Color.Green;
 
             lblModuleName.Text = "DASHBOARD";
@@ -49,9 +63,12 @@ namespace ceh_lab_inv.forms.dashboard
 
         private void btnSupplies_Click(object sender, EventArgs e)
         {
+            picProfileRefresh();
+
             btnDashboard.FillColor = Color.Green;
             btnSupplies.FillColor = Color.DarkGreen;
             btnCreateAccount.FillColor = Color.Green;
+            btnAccounts.FillColor = Color.Green;
             btnProfile.FillColor = Color.Green;
 
             lblModuleName.Text = "LIST OF SUPPLIES";
@@ -66,9 +83,12 @@ namespace ceh_lab_inv.forms.dashboard
 
         private void btnCreateAccount_Click(object sender, EventArgs e)
         {
+            picProfileRefresh();
+
             btnDashboard.FillColor = Color.Green;
             btnSupplies.FillColor = Color.Green;
             btnCreateAccount.FillColor = Color.DarkGreen;
+            btnAccounts.FillColor = Color.Green;
             btnProfile.FillColor = Color.Green;
 
             lblModuleName.Text = "CREATE ACCOUNT";
@@ -81,11 +101,34 @@ namespace ceh_lab_inv.forms.dashboard
             users_add.Show();
         }
 
-        private void btnProfile_Click(object sender, EventArgs e)
+        private void btnAccounts_Click(object sender, EventArgs e)
         {
+            picProfileRefresh();
+
             btnDashboard.FillColor = Color.Green;
             btnSupplies.FillColor = Color.Green;
             btnCreateAccount.FillColor = Color.Green;
+            btnAccounts.FillColor = Color.DarkGreen;
+            btnProfile.FillColor = Color.Green;
+
+            lblModuleName.Text = "ACCOUNTS";
+
+            pnlMain.Controls.Clear();
+            forms.accounts.frmList accounts_list = new forms.accounts.frmList();
+            accounts_list.TopLevel = false;
+            pnlMain.Controls.Add(accounts_list);
+            accounts_list.Dock = DockStyle.Fill;
+            accounts_list.Show();
+        }
+
+        private void btnProfile_Click(object sender, EventArgs e)
+        {
+            picProfileRefresh();
+
+            btnDashboard.FillColor = Color.Green;
+            btnSupplies.FillColor = Color.Green;
+            btnCreateAccount.FillColor = Color.Green;
+            btnAccounts.FillColor = Color.Green;
             btnProfile.FillColor = Color.DarkGreen;
 
             lblModuleName.Text = "PROFILE";
@@ -100,7 +143,9 @@ namespace ceh_lab_inv.forms.dashboard
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Are you sure you want to logout?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            picProfileRefresh();
+
+            if (MessageBox.Show("Are you sure you want to logout?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 forms.frmLogin login = new forms.frmLogin();
                 login.Show();
@@ -110,7 +155,9 @@ namespace ceh_lab_inv.forms.dashboard
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Are you sure you want to exit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            picProfileRefresh();
+
+            if (MessageBox.Show("Are you sure you want to exit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 this.Close();
                 Application.OpenForms["frmLogin"].Close();

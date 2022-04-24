@@ -74,7 +74,18 @@
   <ItemGroup>
     <Compile Include="components\Connection.cs" />
     <Compile Include="components\Value.cs" />
+    <Compile Include="datasets\dsSupplies.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsSupplies.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DGVPrinter.cs" />
+    <Compile Include="forms\accounts\frmList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\accounts\frmList.Designer.cs">
+      <DependentUpon>frmList.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\dashboard\frmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +134,8 @@
     <Compile Include="forms\users\frmView.Designer.cs">
       <DependentUpon>frmView.cs</DependentUpon>
     </Compile>
+    <Compile Include="functions\Account.cs" />
+    <Compile Include="functions\Count.cs" />
     <Compile Include="functions\Duplicate.cs" />
     <Compile Include="functions\Login.cs" />
     <Compile Include="functions\Report.cs" />
@@ -130,6 +143,9 @@
     <Compile Include="functions\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="forms\accounts\frmList.resx">
+      <DependentUpon>frmList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\dashboard\frmDashboard.resx">
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,6 +179,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="reports\rprtSupplies.rdlc" />
+    <None Include="datasets\dsSupplies.xsc">
+      <DependentUpon>dsSupplies.xsd</DependentUpon>
+    </None>
+    <None Include="datasets\dsSupplies.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsSupplies.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="datasets\dsSupplies.xss">
+      <DependentUpon>dsSupplies.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -177,9 +205,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="datasets\" />
-    <Folder Include="reports\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -36,6 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnAccounts = new Guna.UI2.WinForms.Guna2Button();
             this.btnCreateAccount = new Guna.UI2.WinForms.Guna2Button();
             this.btnProfile = new Guna.UI2.WinForms.Guna2Button();
             this.btnLogout = new Guna.UI2.WinForms.Guna2Button();
@@ -117,6 +118,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Green;
+            this.panel2.Controls.Add(this.btnAccounts);
             this.panel2.Controls.Add(this.btnCreateAccount);
             this.panel2.Controls.Add(this.btnProfile);
             this.panel2.Controls.Add(this.btnLogout);
@@ -128,6 +130,31 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(194, 1080);
             this.panel2.TabIndex = 5;
+            // 
+            // btnAccounts
+            // 
+            this.btnAccounts.Animated = true;
+            this.btnAccounts.BorderColor = System.Drawing.Color.Transparent;
+            this.btnAccounts.BorderRadius = 3;
+            this.btnAccounts.BorderThickness = 1;
+            this.btnAccounts.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAccounts.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAccounts.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAccounts.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAccounts.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAccounts.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAccounts.FillColor = System.Drawing.Color.Green;
+            this.btnAccounts.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnAccounts.ForeColor = System.Drawing.Color.White;
+            this.btnAccounts.HoverState.BorderColor = System.Drawing.Color.White;
+            this.btnAccounts.HoverState.FillColor = System.Drawing.Color.Green;
+            this.btnAccounts.Location = new System.Drawing.Point(0, 114);
+            this.btnAccounts.Name = "btnAccounts";
+            this.btnAccounts.Size = new System.Drawing.Size(194, 38);
+            this.btnAccounts.TabIndex = 16;
+            this.btnAccounts.TabStop = false;
+            this.btnAccounts.Text = "ACCOUNTS";
+            this.btnAccounts.Click += new System.EventHandler(this.btnAccounts_Click);
             // 
             // btnCreateAccount
             // 
@@ -317,5 +344,6 @@
         private Guna.UI2.WinForms.Guna2Button btnExit;
         private Guna.UI2.WinForms.Guna2Button btnDashboard;
         private Guna.UI2.WinForms.Guna2Button btnSupplies;
+        private Guna.UI2.WinForms.Guna2Button btnAccounts;
     }
 }
