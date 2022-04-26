@@ -124,6 +124,113 @@ namespace ceh_lab_inv.components
             set { user_role = value; }
         }
 
+        // Account values
+
+        public static int account_primary_id;
+        public int AccountPrimaryID
+        {
+            get { return account_primary_id; }
+            set { account_primary_id = value; }
+        }
+
+        public static byte[] account_profile_picture;
+        public byte[] AccountProfilePicture
+        {
+            get { return account_profile_picture; }
+            set { account_profile_picture = value; }
+        }
+
+        public static string account_first_name;
+        public string AccountFirstName
+        {
+            get { return account_first_name; }
+            set { account_first_name = value; }
+        }
+
+        public static string account_middle_name;
+        public string AccountMiddleName
+        {
+            get { return account_middle_name; }
+            set { account_middle_name = value; }
+        }
+
+        public static string account_last_name;
+        public string AccountLastName
+        {
+            get { return account_last_name; }
+            set { account_last_name = value; }
+        }
+
+        public static int account_age;
+        public int AccountAge
+        {
+            get { return account_age; }
+            set { account_age = value; }
+        }
+
+        public static string account_gender;
+        public string AccountGender
+        {
+            get { return account_gender; }
+            set { account_gender = value; }
+        }
+
+        public static string account_address;
+        public string AccountAddress
+        {
+            get { return account_address; }
+            set { account_address = value; }
+        }
+
+        public static DateTime account_birthday;
+        public DateTime AccountBirthday
+        {
+            get { return account_birthday; }
+            set { account_birthday = value; }
+        }
+
+        public static string account_cellphone_number;
+        public string AccountCellphoneNumber
+        {
+            get { return account_cellphone_number; }
+            set { account_cellphone_number = value; }
+        }
+
+        public static string account_telephone_number;
+        public string AccountTelephoneNumber
+        {
+            get { return account_telephone_number; }
+            set { account_telephone_number = value; }
+        }
+
+        public static string account_email;
+        public string AccountEmail
+        {
+            get { return account_email; }
+            set { account_email = value; }
+        }
+
+        public static string account_username;
+        public string AccountUsername
+        {
+            get { return account_username; }
+            set { account_username = value; }
+        }
+
+        public static string account_password;
+        public string AccountPassword
+        {
+            get { return account_password; }
+            set { account_password = value; }
+        }
+
+        public static string account_role;
+        public string AccountRole
+        {
+            get { return account_role; }
+            set { account_role = value; }
+        }
+
         // Supply values
 
         public static int supply_primary_id;

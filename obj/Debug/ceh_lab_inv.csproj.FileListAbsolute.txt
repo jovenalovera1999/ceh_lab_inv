@@ -27,5 +27,5 @@ D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.exe
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.pdb
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.csproj.AssemblyReference.cache
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.accounts.frmList.resources
-D:\my_projects\ceh_lab_inv\obj\Debug\RdlCompile.cache
-D:\my_projects\ceh_lab_inv\obj\Debug\RdlCompile.compiled
+D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.csproj.SuggestedBindingRedirects.cache
+D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.accounts.frmEdit.resources

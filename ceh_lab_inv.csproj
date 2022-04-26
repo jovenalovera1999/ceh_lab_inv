@@ -80,6 +80,12 @@
       <DependentUpon>dsSupplies.xsd</DependentUpon>
     </Compile>
     <Compile Include="DGVPrinter.cs" />
+    <Compile Include="forms\accounts\frmEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\accounts\frmEdit.Designer.cs">
+      <DependentUpon>frmEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\accounts\frmList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,9 @@
     <Compile Include="functions\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="forms\accounts\frmEdit.resx">
+      <DependentUpon>frmEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\accounts\frmList.resx">
       <DependentUpon>frmList.cs</DependentUpon>
     </EmbeddedResource>

@@ -74,6 +74,7 @@
             this.gridAccounts.Size = new System.Drawing.Size(1726, 967);
             this.gridAccounts.TabIndex = 22;
             this.gridAccounts.TabStop = false;
+            this.gridAccounts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridAccounts_CellContentClick);
             this.gridAccounts.VisibleChanged += new System.EventHandler(this.gridAccounts_VisibleChanged);
             // 
             // frmList

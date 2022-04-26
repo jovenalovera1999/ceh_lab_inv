@@ -103,6 +103,16 @@ namespace ceh_lab_inv.forms.users
             label1.Focus();
         }
 
+        private void txtAge_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Allows 0-9 and backspace
+            if ((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+                return;
+            }
+        }
+
         private void txtCellphoneNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Allows 0-9, backspace, plus sign, open and close parenthesis, and space
@@ -294,7 +304,7 @@ namespace ceh_lab_inv.forms.users
                 MessageBox.Show("The address is required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtAddress.Focus();
             }
-            else if (String.IsNullOrWhiteSpace(txtCellphoneNumber.Text) || String.IsNullOrWhiteSpace(txtTelephoneNumber.Text) || String.IsNullOrWhiteSpace(txtEmail.Text))
+            else if (String.IsNullOrWhiteSpace(txtCellphoneNumber.Text) && String.IsNullOrWhiteSpace(txtTelephoneNumber.Text) && String.IsNullOrWhiteSpace(txtEmail.Text))
             {
                 MessageBox.Show("The contact information is required at least one (1)!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtCellphoneNumber.Focus();

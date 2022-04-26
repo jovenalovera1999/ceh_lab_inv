@@ -209,7 +209,7 @@ CREATE PROCEDURE `supply_update` (Pid INT, Pitem VARCHAR(255), Pbrand VARCHAR(25
 Pqty INT, Punit_of_qty VARCHAR(255), Punit_cost VARBINARY(255), Ptotal_cost VARBINARY(255), Pexp_rgt_quantity INT, Pexp_rgt_unit VARCHAR(255),
 Pexp_rgt_cost VARBINARY(255), Pexpiration_date DATE)
 BEGIN
-	UPDATE ceh_lab_inv_db.supplies SET item = Pitem, brand = Pbrand, supplier = Psupplier, quantity = Pquantity, unit_of_quantity = Punit_of_quantity, qty = Pqty, unit_of_qty = Punit_of_quantity,
+	UPDATE ceh_lab_inv_db.supplies SET item = Pitem, brand = Pbrand, supplier = Psupplier, quantity = Pquantity, unit_of_quantity = Punit_of_quantity, qty = Pqty, unit_of_qty = Punit_of_qty,
     unit_cost = AES_ENCRYPT(Punit_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test'), total_cost = AES_ENCRYPT(Ptotal_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test'),
     exp_rgt_quantity = Pexp_rgt_quantity, exp_rgt_unit = Pexp_rgt_unit, exp_rgt_cost = AES_ENCRYPT(Pexp_rgt_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test'),
     expiration_date = Pexpiration_date WHERE id = Pid;
@@ -280,8 +280,85 @@ DELIMITER $$
 USE `ceh_lab_inv_db`$$
 CREATE PROCEDURE `account_load` ()
 BEGIN
-	SELECT ceh_lab_inv_db.users.id, first_name, middle_name, last_name, username, CAST(AES_DECRYPT(password, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), role,
-    DATE_FORMAT(ceh_lab_inv_db.accounts.date_created, '%m/%d/%y') FROM ceh_lab_inv_db.users INNER JOIN ceh_lab_inv_db.accounts ON ceh_lab_inv_db.users.id = ceh_lab_inv_db.accounts.id;
+	SELECT ceh_lab_inv_db.users.id, first_name, middle_name, last_name, age, gender, role, DATE_FORMAT(ceh_lab_inv_db.users.date_created, '%m/%d/%y')
+    FROM ceh_lab_inv_db.users INNER JOIN ceh_lab_inv_db.accounts ON ceh_lab_inv_db.users.id = ceh_lab_inv_db.accounts.id ORDER BY first_name ASC;
+END$$
+
+DELIMITER ;
+
+--
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `account_get`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `account_get` (Pid INT)
+BEGIN
+	SELECT ceh_lab_inv_db.users.id, profile_picture, first_name, middle_name, last_name, age, gender, address, birthday, cellphone_number, telephone_number,
+    email, username, CAST(AES_DECRYPT(password, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), role FROM ceh_lab_inv_db.users INNER JOIN ceh_lab_inv_db.accounts ON ceh_lab_inv_db.users.id = 
+    ceh_lab_inv_db.accounts.id WHERE ceh_lab_inv_db.users.id = Pid;
+END$$
+
+DELIMITER ;
+
+--
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `account_update`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `account_update` (Pid INT, Pusername VARCHAR(255), Ppassword VARBINARY(255), Pfirst_name VARCHAR(255), 
+Pmiddle_name VARCHAR(255), Plast_name VARCHAR(255), Page INT(3), Pgender VARCHAR(255), Paddress VARCHAR(255), Pbirthday DATE, Pcellphone_number VARCHAR(255),
+Ptelephone_number VARCHAR(255), Pemail VARCHAR(255), Prole VARCHAR(255))
+BEGIN
+	UPDATE ceh_lab_inv_db.users INNER JOIN ceh_lab_inv_db.accounts ON ceh_lab_inv_db.users.id = ceh_lab_inv_db.accounts.id SET username = Pusername,
+    password = AES_ENCRYPT(Ppassword, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test'), first_name = Pfirst_name,
+    middle_name = Pmiddle_name, last_name = Plast_name, age = Page, gender = Pgender, address = Paddress, birthday = Pbirthday, cellphone_number = Pcellphone_number,
+    telephone_number = Ptelephone_number, email = Pemail, role = Prole WHERE ceh_lab_inv_db.users.id = Pid;
+END$$
+
+DELIMITER ;
+
+--
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `account_delete`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `account_delete` (Pid INT)
+BEGIN
+	SELECT * FROM ceh_lab_inv_db.users WHERE id = Pid;
+END$$
+
+DELIMITER ;
+
+--
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `account_delete_1`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `account_delete_1` (Puser_id INT)
+BEGIN
+	DELETE FROM ceh_lab_inv_db.accounts WHERE user_id = Puser_id;
+END$$
+
+DELIMITER ;
+
+--
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `account_delete_2`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `account_delete_2` (Pid INT)
+BEGIN
+	DELETE FROM ceh_lab_inv_db.users WHERE id = Pid;
 END$$
 
 DELIMITER ;

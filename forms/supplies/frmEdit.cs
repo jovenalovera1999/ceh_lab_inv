@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Bunifu.Framework.UI;
 
 namespace ceh_lab_inv.forms.supplies
 {
@@ -36,8 +37,10 @@ namespace ceh_lab_inv.forms.supplies
         void RefreshSuppliesList()
         {
             forms.supplies.frmList supplies_list = (forms.supplies.frmList)Application.OpenForms["frmList"];
+            BunifuDatepicker dateFrom = (BunifuDatepicker)supplies_list.Controls["dateFrom"];
+            BunifuDatepicker dateTo = (BunifuDatepicker)supplies_list.Controls["dateTo"];
             DataGridView gridSupplies = (DataGridView)supplies_list.Controls["gridSupplies"];
-            supply.Load(gridSupplies);
+            supply.LoadByDate(dateFrom.Value, dateTo.Value, gridSupplies);
         }
 
         private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
@@ -202,7 +205,7 @@ namespace ceh_lab_inv.forms.supplies
                 txtExpRgtUnit.Text.ToUpper(), txtExpRgtCost.Text, dateExpiration.Value.Date))
             {
                 MessageBox.Show("Supply successfully updated!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                RefreshSuppliesList();               
+                RefreshSuppliesList();
             }
             else
             {

@@ -66,22 +66,20 @@ namespace ceh_lab_inv.forms.supplies
 
         private void gridSupplies_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            DataGridViewRow row = gridSupplies.Rows[e.RowIndex];
+
             if(gridSupplies.Columns[e.ColumnIndex].Name == "btnUpdate")
             {
-                DataGridViewRow row = gridSupplies.Rows[e.RowIndex];
-
                 if(supply.Get(int.Parse(row.Cells["id"].Value.ToString())))
                 {
                     forms.supplies.frmEdit edit_supply = new forms.supplies.frmEdit();
                     edit_supply.Show();
                 }
             }
-            if(gridSupplies.Columns[e.ColumnIndex].Name == "btnDelete")
+            else if(gridSupplies.Columns[e.ColumnIndex].Name == "btnDelete")
             {
                 if(MessageBox.Show("Are you sure you want to delete this item?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    DataGridViewRow row = gridSupplies.Rows[e.RowIndex];
-
                     if(supply.Delete(int.Parse(row.Cells["id"].Value.ToString())))
                     {
                         MessageBox.Show("Item successfully deleted!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
