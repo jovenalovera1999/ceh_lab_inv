@@ -21,34 +21,22 @@ namespace ceh_lab_inv.forms
         components.Value val = new components.Value();
         functions.Login login = new functions.Login();
 
-        void Reset()
+        void Login()
         {
-            txtUsername.ResetText();
-            txtPassword.ResetText();
-            txtUsername.Focus();
-        }
-
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-            txtUsername.Focus();
-        }
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            if(String.IsNullOrWhiteSpace(txtUsername.Text) && String.IsNullOrWhiteSpace(txtPassword.Text))
+            if (String.IsNullOrWhiteSpace(txtUsername.Text) && String.IsNullOrWhiteSpace(txtPassword.Text))
             {
                 MessageBox.Show("The username and password are required!", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Reset();
+                txtUsername.Focus();
             }
             else if (String.IsNullOrWhiteSpace(txtUsername.Text))
             {
                 MessageBox.Show("The username is required!", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Reset();
+                txtUsername.Focus();
             }
             else if (String.IsNullOrWhiteSpace(txtPassword.Text))
             {
                 MessageBox.Show("The password is required!", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Reset();
+                txtPassword.Focus();
             }
             else if (login.UserAuthentication(txtUsername.Text.ToUpper(), txtPassword.Text))
             {
@@ -65,9 +53,37 @@ namespace ceh_lab_inv.forms
             }
             else
             {
-                MessageBox.Show("Your username and password do not match our record!", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Reset();
+                MessageBox.Show("Your username and password do not match the record!", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUsername.ResetText();
+                txtPassword.ResetText();
+                txtUsername.Focus();
             }
+        }
+
+        private void txtUsername_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                Login();
+            }
+        }
+
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                Login();
+            }
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            txtUsername.Focus();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            Login();
         }
 
         private void btnExit_Click(object sender, EventArgs e)

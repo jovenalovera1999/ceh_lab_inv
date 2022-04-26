@@ -223,5 +223,14 @@ namespace ceh_lab_inv.components
             get { return supply_expiration_date; }
             set { supply_expiration_date = value; }
         }
+
+        // Count values
+
+        public static string count_supplies;
+        public string CountSupplies
+        {
+            get { return count_supplies; }
+            set { count_supplies = value; }
+        }
     }
 }

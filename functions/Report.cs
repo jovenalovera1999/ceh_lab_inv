@@ -55,8 +55,13 @@ namespace ceh_lab_inv.functions
                     da.Fill(dt);
 
                     report.LocalReport.DataSources.Clear();
+                    ReportParameterCollection parameters = new ReportParameterCollection();
+                    parameters.Add(new ReportParameter("pFrom", from.ToString("MMMM d")));
+                    parameters.Add(new ReportParameter("pTo", to.ToString("d, yyyy")));
+                    report.LocalReport.SetParameters(parameters);
                     ReportDataSource source = new ReportDataSource("dtSupplies", dt);
                     report.LocalReport.DataSources.Add(source);
+                    report.SetDisplayMode(DisplayMode.PrintLayout);
                     report.RefreshReport();
                     connection.Close();
                 }

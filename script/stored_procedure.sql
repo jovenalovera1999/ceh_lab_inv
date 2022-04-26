@@ -280,9 +280,26 @@ DELIMITER $$
 USE `ceh_lab_inv_db`$$
 CREATE PROCEDURE `account_load` ()
 BEGIN
-	SELECT id, username, CAST(AES_DECRYPT(password, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), role, DATE_FORMAT(date_created, '%m/%d/%y') FROM ceh_lab_inv_db.accounts;
+	SELECT ceh_lab_inv_db.users.id, first_name, middle_name, last_name, username, CAST(AES_DECRYPT(password, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), role,
+    DATE_FORMAT(ceh_lab_inv_db.accounts.date_created, '%m/%d/%y') FROM ceh_lab_inv_db.users INNER JOIN ceh_lab_inv_db.accounts ON ceh_lab_inv_db.users.id = ceh_lab_inv_db.accounts.id;
 END$$
 
 DELIMITER ;
 
 -- End of Account
+
+-- Start of Count
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `count_supplies_by_date`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `count_supplies_by_date` (Pfrom DATE, Pto DATE)
+BEGIN
+	SELECT COUNT(*) FROM ceh_lab_inv_db.supplies WHERE date_created BETWEEN Pfrom AND Pto;
+END$$
+
+DELIMITER ;
+
+-- End of Count

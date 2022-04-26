@@ -34,10 +34,13 @@ namespace ceh_lab_inv.functions
                         grid.ClearSelection();
 
                         grid.Columns["id"].Visible = false;
+                        grid.Columns["first_name"].HeaderText = "FIRST NAME";
+                        grid.Columns["middle_name"].HeaderText = "MIDDLE NAME";
+                        grid.Columns["last_name"].HeaderText = "LAST NAME";
                         grid.Columns["username"].HeaderText = "USERNAME";
                         grid.Columns["CAST(AES_DECRYPT(password, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR)"].HeaderText = "PASSWORD";
                         grid.Columns["role"].HeaderText = "ROLE";
-                        grid.Columns["DATE_FORMAT(date_created, '%m/%d/%y')"].HeaderText = "DATE CREATED";
+                        grid.Columns["DATE_FORMAT(ceh_lab_inv_db.accounts.date_created, '%m/%d/%y')"].HeaderText = "DATE CREATED";
                         connection.Close();
                     }
                 }

@@ -20,6 +20,7 @@ namespace ceh_lab_inv.forms.dashboard
         components.Connection con = new components.Connection();
         components.Value val = new components.Value();
         functions.Report report = new functions.Report();
+        functions.Count count = new functions.Count();
 
         private void frmLayout_Load(object sender, EventArgs e)
         {
@@ -29,6 +30,8 @@ namespace ceh_lab_inv.forms.dashboard
 
         private void btnPrintPreview_Click(object sender, EventArgs e)
         {
+            count.SuppliesByDate(dateFrom.Value, dateTo.Value);
+            lblTotalSupplies.Text = val.CountSupplies;
             report.LoadSuppliesByDate(dateFrom.Value, dateTo.Value, rprtSupplies);
         }
     }
