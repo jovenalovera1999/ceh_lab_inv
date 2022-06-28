@@ -37,6 +37,7 @@ namespace ceh_lab_inv.forms.users
             txtAge.ResetText();
             cmbGender.Text = null;
             txtAddress.ResetText();
+            dateBirthday.Value = DateTime.Now;
             txtCellphoneNumber.ResetText();
             txtTelephoneNumber.ResetText();
             txtEmail.ResetText();

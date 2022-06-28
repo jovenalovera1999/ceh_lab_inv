@@ -40,7 +40,8 @@ namespace ceh_lab_inv.functions
                         grid.Columns["age"].HeaderText = "AGE";
                         grid.Columns["gender"].HeaderText = "GENDER";
                         grid.Columns["role"].HeaderText = "ROLE";
-                        grid.Columns["DATE_FORMAT(ceh_lab_inv_db.users.date_created, '%m/%d/%y')"].HeaderText = "DATE CREATED";
+                        grid.Columns["DATE_FORMAT(ceh_lab_inv_db.users.created_at, '%m/%d/%y')"].HeaderText = "CREATED AT";
+                        grid.Columns["DATE_FORMAT(ceh_lab_inv_db.users.updated_at, '%m/%d/%y')"].HeaderText = "UPDATED AT";
                         connection.Close();
                     }
                 }
@@ -181,16 +182,6 @@ namespace ceh_lab_inv.functions
                     using (MySqlCommand cmd = new MySqlCommand(sql, connection))
                     {
                         cmd.Parameters.AddWithValue("@user_id", val.AccountPrimaryID);
-
-                        MySqlDataReader dr = cmd.ExecuteReader();
-                        dr.Close();
-                    }
-
-                    sql = @"CALL account_delete_2(@id);";
-
-                    using (MySqlCommand cmd = new MySqlCommand(sql, connection))
-                    {
-                        cmd.Parameters.AddWithValue("@id", id);
 
                         MySqlDataReader dr = cmd.ExecuteReader();
                         dr.Close();

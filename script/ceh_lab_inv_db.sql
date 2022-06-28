@@ -15,7 +15,8 @@ CREATE TABLE ceh_lab_inv_db.users(
     cellphone_number                    VARCHAR(255) DEFAULT NULL,
     telephone_number                    VARCHAR(255) DEFAULT NULL,
     email                               VARCHAR(255) DEFAULT NULL,
-    date_created                        TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_at                          TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at                          TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY(id)
 );
 
@@ -25,7 +26,10 @@ CREATE TABLE ceh_lab_inv_db.accounts(
     username                            VARCHAR(255) NOT NULL,
     password                            VARBINARY(255) NOT NULL,
     role                                VARCHAR(255) NOT NULL,
-    date_created                        TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    is_loggedIn                         TINYINT(1) NOT NULL DEFAULT 0,
+    is_deleted                          TINYINT(1) NOT NULL DEFAULT 0,
+    created_at                          TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at                          TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY(id),
     FOREIGN KEY(user_id) REFERENCES ceh_lab_inv_db.users(id)
 );
@@ -45,6 +49,8 @@ CREATE TABLE ceh_lab_inv_db.supplies(
     exp_rgt_unit                        VARCHAR(255) DEFAULT NULL,
     exp_rgt_cost                        VARBINARY(255) DEFAULT NULL,
     expiration_date                     DATE,
-    date_created                        TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    is_deleted                          TINYINT(1) NOT NULL DEFAULT 0,
+    created_at                          TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at                          TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY(id)
 );

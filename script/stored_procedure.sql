@@ -76,7 +76,8 @@ BEGIN
 	UPDATE ceh_lab_inv_db.users INNER JOIN ceh_lab_inv_db.accounts ON ceh_lab_inv_db.users.id = ceh_lab_inv_db.accounts.id SET username = Pusername,
     password = AES_ENCRYPT(Ppassword, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test'), profile_picture = Pprofile_picture, first_name = Pfirst_name,
     middle_name = Pmiddle_name, last_name = Plast_name, age = Page, gender = Pgender, address = Paddress, birthday = Pbirthday, cellphone_number = Pcellphone_number,
-    telephone_number = Ptelephone_number, email = Pemail, role = Prole WHERE ceh_lab_inv_db.users.id = Pid;
+    telephone_number = Ptelephone_number, email = Pemail, role = Prole, ceh_lab_inv_db.users.updated_at = CURRENT_TIMESTAMP, ceh_lab_inv_db.accounts.updated_at = CURRENT_TIMESTAMP
+    WHERE ceh_lab_inv_db.users.id = Pid;
 END$$
 
 DELIMITER ;
@@ -95,11 +96,31 @@ BEGIN
 	SELECT ceh_lab_inv_db.users.id, profile_picture, first_name, middle_name, last_name, age, gender, address, birthday, cellphone_number, telephone_number,
     email, username, CAST(AES_DECRYPT(password, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), role FROM ceh_lab_inv_db.users INNER JOIN ceh_lab_inv_db.accounts ON ceh_lab_inv_db.users.id = 
     ceh_lab_inv_db.accounts.id WHERE username = Pusername AND CAST(AES_DECRYPT(password, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR) = Ppassword;
+
+    UPDATE ceh_lab_inv_db.users INNER JOIN ceh_lab_inv_db.accounts ON ceh_lab_inv_db.users.id = ceh_lab_inv_db.accounts.id SET is_loggedIn = 1
+    WHERE username = Pusername AND CAST(AES_DECRYPT(password, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR) = Ppassword AND is_deleted = 0;
 END$$
 
 DELIMITER ;
 
 -- End of Login
+
+-- Start of Logout
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `logout`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `logout` (Pid INT)
+BEGIN
+	UPDATE ceh_lab_inv_db.users INNER JOIN ceh_lab_inv_db.accounts ON ceh_lab_inv_db.users.id = ceh_lab_inv_db.accounts.id SET is_loggedIn = 0
+    WHERE ceh_lab_inv_db.users.id = Pid;
+END$$
+
+DELIMITER ;
+
+-- End of Logout
 
 -- Start of Duplicate
 
@@ -110,7 +131,7 @@ DELIMITER $$
 USE `ceh_lab_inv_db`$$
 CREATE PROCEDURE `duplicate_username` (Pusername VARCHAR(255))
 BEGIN
-	SELECT * FROM ceh_lab_inv_db.accounts WHERE username = Pusername;
+	SELECT * FROM ceh_lab_inv_db.accounts WHERE username = Pusername AND is_deleted = 0;
 END$$
 
 DELIMITER ;
@@ -143,7 +164,7 @@ BEGIN
 	SELECT id, item, brand, supplier, CONCAT(FORMAT(quantity, 0), ' ', unit_of_quantity), CONCAT(FORMAT(qty, 0), ' ', unit_of_qty), CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)),
     CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)), CONCAT(FORMAT(exp_rgt_quantity, 0), ' ', exp_rgt_unit),
     CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)), DATE_FORMAT(expiration_date, '%m/%d/%y'), CONCAT(DATEDIFF(expiration_date, NOW()), ' DAYS LEFT'),
-    DATE_FORMAT(date_created, '%m/%d/%y') FROM ceh_lab_inv_db.supplies ORDER BY item ASC;
+    DATE_FORMAT(created_at, '%m/%d/%y'), DATE_FORMAT(updated_at, '%m/%d/%y') FROM ceh_lab_inv_db.supplies WHERE is_deleted = 0 ORDER BY item ASC;
 END$$
 
 DELIMITER ;
@@ -160,7 +181,7 @@ BEGIN
 	SELECT id, item, brand, supplier, CONCAT(FORMAT(quantity, 0), ' ', unit_of_quantity), CONCAT(FORMAT(qty, 0), ' ', unit_of_qty), CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)),
     CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)), CONCAT(FORMAT(exp_rgt_quantity, 0), ' ', exp_rgt_unit),
     CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)), DATE_FORMAT(expiration_date, '%m/%d/%y'), CONCAT(DATEDIFF(expiration_date, NOW()), ' DAYS LEFT'),
-    DATE_FORMAT(date_created, '%m/%d/%y') FROM ceh_lab_inv_db.supplies WHERE date_created BETWEEN Pfrom AND Pto ORDER BY item ASC;
+    DATE_FORMAT(created_at, '%m/%d/%y'), DATE_FORMAT(updated_at, '%m/%d/%y') FROM ceh_lab_inv_db.supplies WHERE created_at BETWEEN Pfrom AND Pto AND is_deleted = 0 ORDER BY item ASC LIMIT 500;
 END$$
 
 DELIMITER ;
@@ -212,7 +233,7 @@ BEGIN
 	UPDATE ceh_lab_inv_db.supplies SET item = Pitem, brand = Pbrand, supplier = Psupplier, quantity = Pquantity, unit_of_quantity = Punit_of_quantity, qty = Pqty, unit_of_qty = Punit_of_qty,
     unit_cost = AES_ENCRYPT(Punit_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test'), total_cost = AES_ENCRYPT(Ptotal_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test'),
     exp_rgt_quantity = Pexp_rgt_quantity, exp_rgt_unit = Pexp_rgt_unit, exp_rgt_cost = AES_ENCRYPT(Pexp_rgt_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test'),
-    expiration_date = Pexpiration_date WHERE id = Pid;
+    expiration_date = Pexpiration_date, updated_at = CURRENT_TIMESTAMP WHERE id = Pid;
 END$$
 
 DELIMITER ;
@@ -226,7 +247,7 @@ DELIMITER $$
 USE `ceh_lab_inv_db`$$
 CREATE PROCEDURE `supply_delete` (Pid INT)
 BEGIN
-	DELETE FROM ceh_lab_inv_db.supplies WHERE id = Pid;
+	UPDATE ceh_lab_inv_db.supplies SET is_deleted = 1, updated_at = CURRENT_TIMESTAMP WHERE id = Pid;
 END$$
 
 DELIMITER ;
@@ -246,7 +267,7 @@ BEGIN
     CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)) AS 'unit_cost',
     CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)) AS 'total_cost',
     CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)) AS 'exp_rgt_cost', DATE_FORMAT(expiration_date, '%m/%d/%y') AS 'expiration_date'
-    FROM ceh_lab_inv_db.supplies ORDER BY item ASC;
+    FROM ceh_lab_inv_db.supplies WHERE is_deleted = 0 ORDER BY item ASC;
 END$$
 
 DELIMITER ;
@@ -264,7 +285,7 @@ BEGIN
     CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)) AS 'unit_cost',
     CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)) AS 'total_cost',
     CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test') AS CHAR), 2)) AS 'exp_rgt_cost', DATE_FORMAT(expiration_date, '%m/%d/%y') AS 'expiration_date'
-    FROM ceh_lab_inv_db.supplies WHERE date_created BETWEEN Pfrom AND Pto ORDER BY item ASC;
+    FROM ceh_lab_inv_db.supplies WHERE created_at BETWEEN Pfrom AND Pto AND is_deleted = 0 ORDER BY item ASC;
 END$$
 
 DELIMITER ;
@@ -280,8 +301,8 @@ DELIMITER $$
 USE `ceh_lab_inv_db`$$
 CREATE PROCEDURE `account_load` ()
 BEGIN
-	SELECT ceh_lab_inv_db.users.id, first_name, middle_name, last_name, age, gender, role, DATE_FORMAT(ceh_lab_inv_db.users.date_created, '%m/%d/%y')
-    FROM ceh_lab_inv_db.users INNER JOIN ceh_lab_inv_db.accounts ON ceh_lab_inv_db.users.id = ceh_lab_inv_db.accounts.id ORDER BY first_name ASC;
+	SELECT ceh_lab_inv_db.users.id, first_name, middle_name, last_name, age, gender, role, DATE_FORMAT(ceh_lab_inv_db.users.created_at, '%m/%d/%y'), DATE_FORMAT(ceh_lab_inv_db.users.updated_at, '%m/%d/%y')
+    FROM ceh_lab_inv_db.users INNER JOIN ceh_lab_inv_db.accounts ON ceh_lab_inv_db.users.id = ceh_lab_inv_db.accounts.id WHERE is_deleted = 0 ORDER BY first_name ASC;
 END$$
 
 DELIMITER ;
@@ -316,7 +337,8 @@ BEGIN
 	UPDATE ceh_lab_inv_db.users INNER JOIN ceh_lab_inv_db.accounts ON ceh_lab_inv_db.users.id = ceh_lab_inv_db.accounts.id SET username = Pusername,
     password = AES_ENCRYPT(Ppassword, 'J0V3NCUT3GW@P0P3R0J0KEL4NG+63!@#943$%^407&*?1429?!@#test'), first_name = Pfirst_name,
     middle_name = Pmiddle_name, last_name = Plast_name, age = Page, gender = Pgender, address = Paddress, birthday = Pbirthday, cellphone_number = Pcellphone_number,
-    telephone_number = Ptelephone_number, email = Pemail, role = Prole WHERE ceh_lab_inv_db.users.id = Pid;
+    telephone_number = Ptelephone_number, email = Pemail, role = Prole, ceh_lab_inv_db.users.updated_at = CURRENT_TIMESTAMP, ceh_lab_inv_db.accounts.updated_at = CURRENT_TIMESTAMP
+    WHERE ceh_lab_inv_db.users.id = Pid;
 END$$
 
 DELIMITER ;
@@ -330,7 +352,7 @@ DELIMITER $$
 USE `ceh_lab_inv_db`$$
 CREATE PROCEDURE `account_delete` (Pid INT)
 BEGIN
-	SELECT * FROM ceh_lab_inv_db.users WHERE id = Pid;
+	UPDATE ceh_lab_inv_db.users SET is_deleted = 1 WHERE id = Pid;
 END$$
 
 DELIMITER ;
@@ -344,21 +366,7 @@ DELIMITER $$
 USE `ceh_lab_inv_db`$$
 CREATE PROCEDURE `account_delete_1` (Puser_id INT)
 BEGIN
-	DELETE FROM ceh_lab_inv_db.accounts WHERE user_id = Puser_id;
-END$$
-
-DELIMITER ;
-
---
-
-USE `ceh_lab_inv_db`;
-DROP procedure IF EXISTS `account_delete_2`;
-
-DELIMITER $$
-USE `ceh_lab_inv_db`$$
-CREATE PROCEDURE `account_delete_2` (Pid INT)
-BEGIN
-	DELETE FROM ceh_lab_inv_db.users WHERE id = Pid;
+	UPDATE ceh_lab_inv_db.accounts SET is_deleted = 1 WHERE user_id = Puser_id;
 END$$
 
 DELIMITER ;
@@ -374,7 +382,7 @@ DELIMITER $$
 USE `ceh_lab_inv_db`$$
 CREATE PROCEDURE `count_supplies_by_date` (Pfrom DATE, Pto DATE)
 BEGIN
-	SELECT COUNT(*) FROM ceh_lab_inv_db.supplies WHERE date_created BETWEEN Pfrom AND Pto;
+	SELECT COUNT(*) FROM ceh_lab_inv_db.supplies WHERE created_at BETWEEN Pfrom AND Pto AND is_deleted = 0;
 END$$
 
 DELIMITER ;

@@ -21,12 +21,18 @@ namespace ceh_lab_inv.forms.supplies
         components.Value val = new components.Value();
         functions.Supply supply = new functions.Supply();
 
+        void GetDateValue()
+        {
+            val.From = dateFrom.Value;
+            val.To = dateTo.Value;
+        }
+
         private void frmList_Load(object sender, EventArgs e)
         {
             dateFrom.Value = DateTime.Now;
             dateTo.Value = DateTime.Now;
 
-            supply.LoadByDate(dateFrom.Value, dateTo.Value, gridSupplies);
+            supply.Load(gridSupplies);
 
             DataGridViewButtonColumn btnUpdate = new DataGridViewButtonColumn();
             btnUpdate.HeaderText = "ACTION";
@@ -41,16 +47,20 @@ namespace ceh_lab_inv.forms.supplies
             btnDelete.Name = "btnDelete";
             btnDelete.UseColumnTextForButtonValue = true;
             gridSupplies.Columns.Add(btnDelete);
+
+            GetDateValue();
         }
 
         private void dateFrom_onValueChanged(object sender, EventArgs e)
         {
             supply.LoadByDate(dateFrom.Value, dateTo.Value, gridSupplies);
+            GetDateValue();
         }
 
         private void dateTo_onValueChanged(object sender, EventArgs e)
         {
             supply.LoadByDate(dateFrom.Value, dateTo.Value, gridSupplies);
+            GetDateValue();
         }
 
         private void gridSupplies_VisibleChanged(object sender, EventArgs e)

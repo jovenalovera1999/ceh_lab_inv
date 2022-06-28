@@ -40,6 +40,8 @@ namespace ceh_lab_inv.forms.supplies
             BunifuDatepicker dateFrom = (BunifuDatepicker)supplies_list.Controls["dateFrom"];
             BunifuDatepicker dateTo = (BunifuDatepicker)supplies_list.Controls["dateTo"];
             DataGridView gridSupplies = (DataGridView)supplies_list.Controls["gridSupplies"];
+            dateFrom.Value = val.From;
+            dateTo.Value = val.To;
             supply.LoadByDate(dateFrom.Value, dateTo.Value, gridSupplies);
         }
 

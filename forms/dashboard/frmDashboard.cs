@@ -20,6 +20,7 @@ namespace ceh_lab_inv.forms.dashboard
 
         components.Connection con = new components.Connection();
         components.Value val = new components.Value();
+        functions.Logout logout = new functions.Logout();
 
         void picProfileRefresh()
         {
@@ -147,9 +148,12 @@ namespace ceh_lab_inv.forms.dashboard
 
             if (MessageBox.Show("Are you sure you want to logout?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                forms.frmLogin login = new forms.frmLogin();
-                login.Show();
-                this.Close();
+                if(logout.LogoutUser(val.UserPrimaryID))
+                {
+                    forms.frmLogin login = new forms.frmLogin();
+                    login.Show();
+                    this.Close();
+                }
             }
         }
 
@@ -159,8 +163,11 @@ namespace ceh_lab_inv.forms.dashboard
 
             if (MessageBox.Show("Are you sure you want to exit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                this.Close();
-                Application.OpenForms["frmLogin"].Close();
+                if(logout.LogoutUser(val.UserPrimaryID))
+                {
+                    this.Close();
+                    Application.OpenForms["frmLogin"].Close();
+                }
             }
         }
     }

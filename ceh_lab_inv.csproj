@@ -158,6 +158,7 @@
     <Compile Include="functions\Count.cs" />
     <Compile Include="functions\Duplicate.cs" />
     <Compile Include="functions\Login.cs" />
+    <Compile Include="functions\Logout.cs" />
     <Compile Include="functions\Report.cs" />
     <Compile Include="functions\Supply.cs" />
     <Compile Include="functions\User.cs" />

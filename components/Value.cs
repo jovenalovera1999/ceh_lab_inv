@@ -339,5 +339,21 @@ namespace ceh_lab_inv.components
             get { return count_supplies; }
             set { count_supplies = value; }
         }
+
+        // Date From and To
+
+        public static DateTime from;
+        public DateTime From
+        {
+            get { return from; }
+            set { from = value; }
+        }
+
+        public static DateTime to;
+        public DateTime To
+        {
+            get { return to; }
+            set { to = value; }
+        }
     }
 }
