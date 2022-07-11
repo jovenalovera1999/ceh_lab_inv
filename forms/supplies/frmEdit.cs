@@ -42,7 +42,15 @@ namespace ceh_lab_inv.forms.supplies
             DataGridView gridSupplies = (DataGridView)supplies_list.Controls["gridSupplies"];
             dateFrom.Value = val.From;
             dateTo.Value = val.To;
-            supply.LoadByDate(dateFrom.Value, dateTo.Value, gridSupplies);
+
+            if(dateFrom.Value.Date == dateTo.Value.Date)
+            {
+                supply.Load(gridSupplies);
+            }
+            else
+            {
+                supply.LoadByDate(dateFrom.Value, dateTo.Value, gridSupplies);
+            }
         }
 
         private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
@@ -201,6 +209,11 @@ namespace ceh_lab_inv.forms.supplies
             {
                 MessageBox.Show("The unit cost is required", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtBrand.Focus();
+            }
+            else if(String.IsNullOrWhiteSpace(txtExpRgtQuantity.Text))
+            {
+                MessageBox.Show("The exp. rgt. quantity is required", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtExpRgtQuantity.Focus();
             }
             else if(supply.Update(val.SupplyPrimaryID, txtItem.Text.ToUpper(), txtBrand.Text.ToUpper(), txtSupplier.Text.ToUpper(), int.Parse(txtQuantity.Text),
                 txtUnitOfQuantity.Text.ToUpper(), int.Parse(txtQty.Text), txtUnitOfQty.Text.ToUpper(), txtUnitCost.Text, txtTotalCost.Text, int.Parse(txtExpRgtQuantity.Text),

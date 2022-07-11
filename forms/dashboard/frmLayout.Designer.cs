@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLayout));
             this.bunifuCards2 = new Bunifu.Framework.UI.BunifuCards();
             this.lblTotalSupplies = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -181,6 +182,7 @@
             this.Controls.Add(this.btnPrintPreview);
             this.Controls.Add(this.bunifuCards2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmLayout";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DASHBOARD";

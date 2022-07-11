@@ -45,7 +45,15 @@ namespace ceh_lab_inv.forms.supplies
             DataGridView gridSupplies = (DataGridView)supplies_list.Controls["gridSupplies"];
             dateFrom.Value = val.From;
             dateTo.Value = val.To;
-            supply.LoadByDate(dateFrom.Value, dateTo.Value, gridSupplies);
+
+            if(dateFrom.Value.Date == dateTo.Value.Date)
+            {
+                supply.Load(gridSupplies);
+            }
+            else
+            {
+                supply.LoadByDate(dateFrom.Value, dateTo.Value, gridSupplies);
+            }
         }
 
         void Calculate()
