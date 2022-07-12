@@ -16,7 +16,7 @@ namespace ceh_lab_inv
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new forms.frmLogin());
+            Application.Run(new forms.frmDashboard());
         }
     }
 }

@@ -76,6 +76,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -94,29 +95,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsSupplies.xsd</DependentUpon>
     </Compile>
-    <Compile Include="forms\accounts\frmEdit.cs">
+    <Compile Include="forms\frmCreateAccount.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\accounts\frmEdit.Designer.cs">
-      <DependentUpon>frmEdit.cs</DependentUpon>
+    <Compile Include="forms\frmCreateAccount.Designer.cs">
+      <DependentUpon>frmCreateAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\accounts\frmList.cs">
+    <Compile Include="forms\frmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\accounts\frmList.Designer.cs">
-      <DependentUpon>frmList.cs</DependentUpon>
-    </Compile>
-    <Compile Include="forms\dashboard\frmDashboard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="forms\dashboard\frmDashboard.Designer.cs">
+    <Compile Include="forms\frmDashboard.Designer.cs">
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\dashboard\frmLayout.cs">
+    <Compile Include="forms\frmHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\dashboard\frmLayout.Designer.cs">
-      <DependentUpon>frmLayout.cs</DependentUpon>
+    <Compile Include="forms\frmHome.Designer.cs">
+      <DependentUpon>frmHome.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\frmLogin.cs">
       <SubType>Form</SubType>
@@ -124,35 +119,11 @@
     <Compile Include="forms\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\supplies\frmAdd.cs">
+    <Compile Include="forms\frmSupplies.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\supplies\frmAdd.Designer.cs">
-      <DependentUpon>frmAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="forms\supplies\frmEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="forms\supplies\frmEdit.Designer.cs">
-      <DependentUpon>frmEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="forms\supplies\frmList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="forms\supplies\frmList.Designer.cs">
-      <DependentUpon>frmList.cs</DependentUpon>
-    </Compile>
-    <Compile Include="forms\users\frmAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="forms\users\frmAdd.Designer.cs">
-      <DependentUpon>frmAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="forms\users\frmView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="forms\users\frmView.Designer.cs">
-      <DependentUpon>frmView.cs</DependentUpon>
+    <Compile Include="forms\frmSupplies.Designer.cs">
+      <DependentUpon>frmSupplies.cs</DependentUpon>
     </Compile>
     <Compile Include="functions\Account.cs" />
     <Compile Include="functions\Count.cs" />
@@ -164,35 +135,20 @@
     <Compile Include="functions\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="forms\accounts\frmEdit.resx">
-      <DependentUpon>frmEdit.cs</DependentUpon>
+    <EmbeddedResource Include="forms\frmCreateAccount.resx">
+      <DependentUpon>frmCreateAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\accounts\frmList.resx">
-      <DependentUpon>frmList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="forms\dashboard\frmDashboard.resx">
+    <EmbeddedResource Include="forms\frmDashboard.resx">
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\dashboard\frmLayout.resx">
-      <DependentUpon>frmLayout.cs</DependentUpon>
+    <EmbeddedResource Include="forms\frmHome.resx">
+      <DependentUpon>frmHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\supplies\frmAdd.resx">
-      <DependentUpon>frmAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="forms\supplies\frmEdit.resx">
-      <DependentUpon>frmEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="forms\supplies\frmList.resx">
-      <DependentUpon>frmList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="forms\users\frmAdd.resx">
-      <DependentUpon>frmAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="forms\users\frmView.resx">
-      <DependentUpon>frmView.cs</DependentUpon>
+    <EmbeddedResource Include="forms\frmSupplies.resx">
+      <DependentUpon>frmSupplies.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -244,6 +200,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\ceh_logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\header.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\no_profile_picture.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace ceh_lab_inv.forms
 {
-    public partial class frmLogin : Form
+    public partial class frmCreateAccount : Form
     {
-        public frmLogin()
+        public frmCreateAccount()
         {
             InitializeComponent();
-        }
-
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
