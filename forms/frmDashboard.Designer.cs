@@ -33,13 +33,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnProfile = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSwitchAccount = new Guna.UI2.WinForms.Guna2Button();
+            this.btnExit = new Guna.UI2.WinForms.Guna2Button();
             this.btnCreateAccount = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSupplies = new Guna.UI2.WinForms.Guna2Button();
+            this.btnHome = new Guna.UI2.WinForms.Guna2Button();
             this.pnlMain = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnAccounts = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.guna2Panel2.SuspendLayout();
@@ -94,77 +95,81 @@
             // guna2Panel2
             // 
             this.guna2Panel2.BackColor = System.Drawing.Color.Green;
-            this.guna2Panel2.Controls.Add(this.guna2Button6);
-            this.guna2Panel2.Controls.Add(this.guna2Button5);
-            this.guna2Panel2.Controls.Add(this.guna2Button4);
+            this.guna2Panel2.Controls.Add(this.btnAccounts);
+            this.guna2Panel2.Controls.Add(this.btnProfile);
+            this.guna2Panel2.Controls.Add(this.btnSwitchAccount);
+            this.guna2Panel2.Controls.Add(this.btnExit);
             this.guna2Panel2.Controls.Add(this.btnCreateAccount);
-            this.guna2Panel2.Controls.Add(this.guna2Button2);
-            this.guna2Panel2.Controls.Add(this.guna2Button1);
+            this.guna2Panel2.Controls.Add(this.btnSupplies);
+            this.guna2Panel2.Controls.Add(this.btnHome);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.guna2Panel2.Location = new System.Drawing.Point(0, 100);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(123, 500);
             this.guna2Panel2.TabIndex = 2;
             // 
-            // guna2Button6
+            // btnProfile
             // 
-            this.guna2Button6.Animated = true;
-            this.guna2Button6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2Button6.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button6.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button6.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button6.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.guna2Button6.FillColor = System.Drawing.Color.Green;
-            this.guna2Button6.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2Button6.ForeColor = System.Drawing.Color.White;
-            this.guna2Button6.Location = new System.Drawing.Point(0, 395);
-            this.guna2Button6.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.guna2Button6.Name = "guna2Button6";
-            this.guna2Button6.Size = new System.Drawing.Size(123, 35);
-            this.guna2Button6.TabIndex = 13;
-            this.guna2Button6.TabStop = false;
-            this.guna2Button6.Text = "Profile";
+            this.btnProfile.Animated = true;
+            this.btnProfile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnProfile.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnProfile.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnProfile.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnProfile.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnProfile.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnProfile.FillColor = System.Drawing.Color.Green;
+            this.btnProfile.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnProfile.ForeColor = System.Drawing.Color.White;
+            this.btnProfile.Location = new System.Drawing.Point(0, 395);
+            this.btnProfile.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.btnProfile.Name = "btnProfile";
+            this.btnProfile.Size = new System.Drawing.Size(123, 35);
+            this.btnProfile.TabIndex = 13;
+            this.btnProfile.TabStop = false;
+            this.btnProfile.Text = "Profile";
+            this.btnProfile.Click += new System.EventHandler(this.btnProfile_Click);
             // 
-            // guna2Button5
+            // btnSwitchAccount
             // 
-            this.guna2Button5.Animated = true;
-            this.guna2Button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2Button5.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button5.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.guna2Button5.FillColor = System.Drawing.Color.Green;
-            this.guna2Button5.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2Button5.ForeColor = System.Drawing.Color.White;
-            this.guna2Button5.Location = new System.Drawing.Point(0, 430);
-            this.guna2Button5.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.guna2Button5.Name = "guna2Button5";
-            this.guna2Button5.Size = new System.Drawing.Size(123, 35);
-            this.guna2Button5.TabIndex = 12;
-            this.guna2Button5.TabStop = false;
-            this.guna2Button5.Text = "Switch Account";
+            this.btnSwitchAccount.Animated = true;
+            this.btnSwitchAccount.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSwitchAccount.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSwitchAccount.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSwitchAccount.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSwitchAccount.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSwitchAccount.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnSwitchAccount.FillColor = System.Drawing.Color.Green;
+            this.btnSwitchAccount.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnSwitchAccount.ForeColor = System.Drawing.Color.White;
+            this.btnSwitchAccount.Location = new System.Drawing.Point(0, 430);
+            this.btnSwitchAccount.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.btnSwitchAccount.Name = "btnSwitchAccount";
+            this.btnSwitchAccount.Size = new System.Drawing.Size(123, 35);
+            this.btnSwitchAccount.TabIndex = 12;
+            this.btnSwitchAccount.TabStop = false;
+            this.btnSwitchAccount.Text = "Switch Account";
+            this.btnSwitchAccount.Click += new System.EventHandler(this.btnSwitchAccount_Click);
             // 
-            // guna2Button4
+            // btnExit
             // 
-            this.guna2Button4.Animated = true;
-            this.guna2Button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2Button4.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.guna2Button4.FillColor = System.Drawing.Color.Green;
-            this.guna2Button4.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2Button4.ForeColor = System.Drawing.Color.White;
-            this.guna2Button4.Location = new System.Drawing.Point(0, 465);
-            this.guna2Button4.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.guna2Button4.Name = "guna2Button4";
-            this.guna2Button4.Size = new System.Drawing.Size(123, 35);
-            this.guna2Button4.TabIndex = 11;
-            this.guna2Button4.TabStop = false;
-            this.guna2Button4.Text = "Exit";
+            this.btnExit.Animated = true;
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnExit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnExit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnExit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnExit.FillColor = System.Drawing.Color.Green;
+            this.btnExit.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Location = new System.Drawing.Point(0, 465);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(123, 35);
+            this.btnExit.TabIndex = 11;
+            this.btnExit.TabStop = false;
+            this.btnExit.Text = "Exit";
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnCreateAccount
             // 
@@ -187,45 +192,47 @@
             this.btnCreateAccount.Text = "Create Account";
             this.btnCreateAccount.Click += new System.EventHandler(this.btnCreateAccount_Click);
             // 
-            // guna2Button2
+            // btnSupplies
             // 
-            this.guna2Button2.Animated = true;
-            this.guna2Button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Button2.FillColor = System.Drawing.Color.Green;
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(0, 35);
-            this.guna2Button2.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(123, 35);
-            this.guna2Button2.TabIndex = 9;
-            this.guna2Button2.TabStop = false;
-            this.guna2Button2.Text = "Supplies";
+            this.btnSupplies.Animated = true;
+            this.btnSupplies.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSupplies.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSupplies.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSupplies.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSupplies.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSupplies.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSupplies.FillColor = System.Drawing.Color.Green;
+            this.btnSupplies.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnSupplies.ForeColor = System.Drawing.Color.White;
+            this.btnSupplies.Location = new System.Drawing.Point(0, 35);
+            this.btnSupplies.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.btnSupplies.Name = "btnSupplies";
+            this.btnSupplies.Size = new System.Drawing.Size(123, 35);
+            this.btnSupplies.TabIndex = 9;
+            this.btnSupplies.TabStop = false;
+            this.btnSupplies.Text = "Supplies";
+            this.btnSupplies.Click += new System.EventHandler(this.btnSupplies_Click);
             // 
-            // guna2Button1
+            // btnHome
             // 
-            this.guna2Button1.Animated = true;
-            this.guna2Button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Button1.FillColor = System.Drawing.Color.Green;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(0, 0);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(123, 35);
-            this.guna2Button1.TabIndex = 8;
-            this.guna2Button1.TabStop = false;
-            this.guna2Button1.Text = "Home";
+            this.btnHome.Animated = true;
+            this.btnHome.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHome.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnHome.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnHome.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnHome.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnHome.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnHome.FillColor = System.Drawing.Color.Green;
+            this.btnHome.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnHome.ForeColor = System.Drawing.Color.White;
+            this.btnHome.Location = new System.Drawing.Point(0, 0);
+            this.btnHome.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(123, 35);
+            this.btnHome.TabIndex = 8;
+            this.btnHome.TabStop = false;
+            this.btnHome.Text = "Home";
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // pnlMain
             // 
@@ -235,6 +242,27 @@
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(677, 500);
             this.pnlMain.TabIndex = 3;
+            // 
+            // btnAccounts
+            // 
+            this.btnAccounts.Animated = true;
+            this.btnAccounts.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAccounts.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAccounts.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAccounts.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAccounts.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAccounts.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAccounts.FillColor = System.Drawing.Color.Green;
+            this.btnAccounts.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnAccounts.ForeColor = System.Drawing.Color.White;
+            this.btnAccounts.Location = new System.Drawing.Point(0, 105);
+            this.btnAccounts.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.btnAccounts.Name = "btnAccounts";
+            this.btnAccounts.Size = new System.Drawing.Size(123, 35);
+            this.btnAccounts.TabIndex = 14;
+            this.btnAccounts.TabStop = false;
+            this.btnAccounts.Text = "Accounts";
+            this.btnAccounts.Click += new System.EventHandler(this.btnAccounts_Click);
             // 
             // frmDashboard
             // 
@@ -252,6 +280,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmDashboard_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
@@ -267,12 +296,13 @@
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button6;
-        private Guna.UI2.WinForms.Guna2Button guna2Button5;
-        private Guna.UI2.WinForms.Guna2Button guna2Button4;
+        private Guna.UI2.WinForms.Guna2Button btnProfile;
+        private Guna.UI2.WinForms.Guna2Button btnSwitchAccount;
+        private Guna.UI2.WinForms.Guna2Button btnExit;
         private Guna.UI2.WinForms.Guna2Button btnCreateAccount;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button btnSupplies;
+        private Guna.UI2.WinForms.Guna2Button btnHome;
         private Guna.UI2.WinForms.Guna2Panel pnlMain;
+        private Guna.UI2.WinForms.Guna2Button btnAccounts;
     }
 }

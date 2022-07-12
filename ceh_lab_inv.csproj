@@ -95,6 +95,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsSupplies.xsd</DependentUpon>
     </Compile>
+    <Compile Include="forms\frmAccounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmAccounts.Designer.cs">
+      <DependentUpon>frmAccounts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmAddSupply.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmAddSupply.Designer.cs">
+      <DependentUpon>frmAddSupply.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\frmCreateAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,11 +131,35 @@
     <Compile Include="forms\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\frmPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmPrint.Designer.cs">
+      <DependentUpon>frmPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmProfile.Designer.cs">
+      <DependentUpon>frmProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\frmSupplies.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\frmSupplies.Designer.cs">
       <DependentUpon>frmSupplies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmUpdateAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmUpdateAccount.Designer.cs">
+      <DependentUpon>frmUpdateAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmUpdateSupply.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmUpdateSupply.Designer.cs">
+      <DependentUpon>frmUpdateSupply.cs</DependentUpon>
     </Compile>
     <Compile Include="functions\Account.cs" />
     <Compile Include="functions\Count.cs" />
@@ -135,6 +171,12 @@
     <Compile Include="functions\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="forms\frmAccounts.resx">
+      <DependentUpon>frmAccounts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmAddSupply.resx">
+      <DependentUpon>frmAddSupply.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmCreateAccount.resx">
       <DependentUpon>frmCreateAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,8 +189,20 @@
     <EmbeddedResource Include="forms\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmPrint.resx">
+      <DependentUpon>frmPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmProfile.resx">
+      <DependentUpon>frmProfile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmSupplies.resx">
       <DependentUpon>frmSupplies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmUpdateAccount.resx">
+      <DependentUpon>frmUpdateAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmUpdateSupply.resx">
+      <DependentUpon>frmUpdateSupply.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
