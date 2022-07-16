@@ -16,5 +16,16 @@ namespace ceh_lab_inv.forms
         {
             InitializeComponent();
         }
+
+        private void frmAccounts_Load(object sender, EventArgs e)
+        {
+            txtSearch.Focus();
+        }
+
+        private void btnCreateAccount_Click(object sender, EventArgs e)
+        {
+            forms.frmCreateAccount create_account = new forms.frmCreateAccount();
+            create_account.Show();
+        }
     }
 }

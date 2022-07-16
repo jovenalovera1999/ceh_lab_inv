@@ -19,26 +19,26 @@ namespace ceh_lab_inv.forms
 
         components.Connection con = new components.Connection();
         components.Value val = new components.Value();
-        functions.Login login = new functions.Login();
+        functions.Authentication authentication = new functions.Authentication();
 
         void Login()
         {
             if (String.IsNullOrWhiteSpace(txtUsername.Text) && String.IsNullOrWhiteSpace(txtPassword.Text))
             {
-                MessageBox.Show("Failed to Login! Username and Password are Missing!", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to Login, Username and Password are Required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtUsername.Focus();
             }
             else if (String.IsNullOrWhiteSpace(txtUsername.Text))
             {
-                MessageBox.Show("Failed to Login! Username is Missing!", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to Login, Username is Required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtUsername.Focus();
             }
             else if (String.IsNullOrWhiteSpace(txtPassword.Text))
             {
-                MessageBox.Show("Failed to Login! Password is Missing!", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to Login, Password is Required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPassword.Focus();
             }
-            else if (login.UserAuthentication(txtUsername.Text.ToLower(), txtPassword.Text))
+            else if (authentication.Login(txtUsername.Text, txtPassword.Text))
             {
                 forms.frmDashboard dashboard = new forms.frmDashboard();
                 dashboard.Show();
@@ -46,10 +46,7 @@ namespace ceh_lab_inv.forms
             }
             else
             {
-                MessageBox.Show("Failed to Login! Username or Password is Incorrect!", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtUsername.ResetText();
-                txtPassword.ResetText();
-                txtUsername.Focus();
+                MessageBox.Show("Failed to Login, Username or Password is Incorrect!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -81,7 +78,7 @@ namespace ceh_lab_inv.forms
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
     }
 }

@@ -117,11 +117,11 @@ namespace ceh_lab_inv.components
             set { user_password = value; }
         }
 
-        public static string user_role;
-        public string UserRole
+        public static string user_type;
+        public string UserType
         {
-            get { return user_role; }
-            set { user_role = value; }
+            get { return user_type; }
+            set { user_type = value; }
         }
 
         // Account values

@@ -16,5 +16,15 @@ namespace ceh_lab_inv.forms
         {
             InitializeComponent();
         }
+
+        private void frmAddSupply_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

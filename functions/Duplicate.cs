@@ -13,7 +13,7 @@ namespace ceh_lab_inv.functions
         components.Connection con = new components.Connection();
         components.Value val = new components.Value();
 
-        public bool Username(string username)
+        public bool DuplicateUsername(string username)
         {
             try
             {
@@ -31,7 +31,7 @@ namespace ceh_lab_inv.functions
                         dt.Clear();
                         da.Fill(dt);
 
-                        if(dt.Rows.Count > 0)
+                        if(dt.Rows.Count == 1)
                         {
                             connection.Close();
                             return true;
@@ -46,12 +46,12 @@ namespace ceh_lab_inv.functions
             }
             catch(Exception ex)
             {
-                Console.WriteLine("Error checking duplicate username: " + ex.ToString());
+                Console.WriteLine("Error locating duplicate username: " + ex.ToString());
                 return false;
             }
         }
 
-        public bool UsernameProceed(int id, string username)
+        public bool DuplicateUsernameProceed(int id, string username)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace ceh_lab_inv.functions
                         dt.Clear();
                         da.Fill(dt);
 
-                        if (dt.Rows.Count > 0)
+                        if (dt.Rows.Count == 1)
                         {
                             connection.Close();
                             return true;
@@ -83,9 +83,9 @@ namespace ceh_lab_inv.functions
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Console.WriteLine("Error checking duplicate id and username: " + ex.ToString());
+                Console.WriteLine("Error locating duplicate username proceed: " + ex.ToString());
                 return false;
             }
         }

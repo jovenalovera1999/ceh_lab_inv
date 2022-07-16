@@ -119,23 +119,11 @@
     <Compile Include="forms\frmDashboard.Designer.cs">
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmHome.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="forms\frmHome.Designer.cs">
-      <DependentUpon>frmHome.cs</DependentUpon>
-    </Compile>
     <Compile Include="forms\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="forms\frmPrint.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="forms\frmPrint.Designer.cs">
-      <DependentUpon>frmPrint.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\frmProfile.cs">
       <SubType>Form</SubType>
@@ -149,11 +137,11 @@
     <Compile Include="forms\frmSupplies.Designer.cs">
       <DependentUpon>frmSupplies.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmUpdateAccount.cs">
+    <Compile Include="forms\frmUpdateRgt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\frmUpdateAccount.Designer.cs">
-      <DependentUpon>frmUpdateAccount.cs</DependentUpon>
+    <Compile Include="forms\frmUpdateRgt.Designer.cs">
+      <DependentUpon>frmUpdateRgt.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\frmUpdateSupply.cs">
       <SubType>Form</SubType>
@@ -161,13 +149,9 @@
     <Compile Include="forms\frmUpdateSupply.Designer.cs">
       <DependentUpon>frmUpdateSupply.cs</DependentUpon>
     </Compile>
-    <Compile Include="functions\Account.cs" />
-    <Compile Include="functions\Count.cs" />
+    <Compile Include="functions\Authentication.cs" />
     <Compile Include="functions\Duplicate.cs" />
-    <Compile Include="functions\Login.cs" />
-    <Compile Include="functions\Logout.cs" />
-    <Compile Include="functions\Report.cs" />
-    <Compile Include="functions\Supply.cs" />
+    <Compile Include="functions\Signup.cs" />
     <Compile Include="functions\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -183,14 +167,8 @@
     <EmbeddedResource Include="forms\frmDashboard.resx">
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\frmHome.resx">
-      <DependentUpon>frmHome.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="forms\frmPrint.resx">
-      <DependentUpon>frmPrint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmProfile.resx">
       <DependentUpon>frmProfile.cs</DependentUpon>
@@ -198,8 +176,8 @@
     <EmbeddedResource Include="forms\frmSupplies.resx">
       <DependentUpon>frmSupplies.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\frmUpdateAccount.resx">
-      <DependentUpon>frmUpdateAccount.cs</DependentUpon>
+    <EmbeddedResource Include="forms\frmUpdateRgt.resx">
+      <DependentUpon>frmUpdateRgt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmUpdateSupply.resx">
       <DependentUpon>frmUpdateSupply.cs</DependentUpon>
@@ -261,5 +239,6 @@
   <ItemGroup>
     <None Include="resources\no_profile_picture.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

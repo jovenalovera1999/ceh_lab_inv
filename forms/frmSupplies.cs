@@ -16,5 +16,17 @@ namespace ceh_lab_inv.forms
         {
             InitializeComponent();
         }
+
+        private void frmSupplies_Load(object sender, EventArgs e)
+        {
+            this.SetBounds(Screen.PrimaryScreen.WorkingArea.Left, Screen.PrimaryScreen.WorkingArea.Top, Screen.PrimaryScreen.WorkingArea.Width,
+                Screen.PrimaryScreen.WorkingArea.Height);
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            forms.frmAddSupply add_supply = new forms.frmAddSupply();
+            add_supply.Show();
+        }
     }
 }

@@ -19,30 +19,12 @@ namespace ceh_lab_inv.forms
 
         components.Connection con = new components.Connection();
         components.Value val = new components.Value();
-        functions.Logout logout = new functions.Logout();
-
-        void ShowHome()
-        {
-            pnlMain.Controls.Clear();
-            forms.frmHome home = new forms.frmHome();
-            home.TopLevel = false;
-            pnlMain.Controls.Add(home);
-            home.Dock = DockStyle.Fill;
-            home.Show();
-        }
+        functions.Authentication authentication = new functions.Authentication();
 
         private void frmDashboard_Load(object sender, EventArgs e)
         {
-            if(val.UserRole != "Administrator")
-            {
-                btnAccounts.Visible = false;
-            }
-            ShowHome();
-        }
-
-        private void btnHome_Click(object sender, EventArgs e)
-        {
-            ShowHome();
+            this.SetBounds(Screen.PrimaryScreen.WorkingArea.Left, Screen.PrimaryScreen.WorkingArea.Top, Screen.PrimaryScreen.WorkingArea.Width,
+                Screen.PrimaryScreen.WorkingArea.Height);
         }
 
         private void btnSupplies_Click(object sender, EventArgs e)
@@ -55,20 +37,10 @@ namespace ceh_lab_inv.forms
             supplies.Show();
         }
 
-        private void btnCreateAccount_Click(object sender, EventArgs e)
-        {
-            pnlMain.Controls.Clear();
-            forms.frmCreateAccount create_account = new forms.frmCreateAccount();
-            create_account.TopLevel = false;
-            pnlMain.Controls.Add(create_account);
-            create_account.Dock = DockStyle.Fill;
-            create_account.Show();
-        }
-
         private void btnAccounts_Click(object sender, EventArgs e)
         {
             pnlMain.Controls.Clear();
-            forms.frmAccounts accounts = new forms.frmAccounts();
+            forms.frmAccounts accounts = new frmAccounts();
             accounts.TopLevel = false;
             pnlMain.Controls.Add(accounts);
             accounts.Dock = DockStyle.Fill;
@@ -85,29 +57,22 @@ namespace ceh_lab_inv.forms
             profile.Show();
         }
 
-        private void btnSwitchAccount_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Switch Account?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if(MessageBox.Show("Are you sure you want to exit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                if(logout.LogoutUser(val.UserPrimaryID))
+                if(authentication.Logout(val.UserPrimaryID))
                 {
-                    forms.frmLogin login = new forms.frmLogin();
-                    login.Show();
-                    this.Close();
+                    Application.Exit();
                 }
             }
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private void btnSwitchAccount_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Exit Application?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                if(logout.LogoutUser(val.UserPrimaryID))
-                {
-                    Application.OpenForms["frmLogin"].Close();
-                    this.Close();
-                }
-            }
+            forms.frmLogin login = new forms.frmLogin();
+            login.Show();
+            this.Close();
         }
     }
 }

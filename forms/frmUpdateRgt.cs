@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace ceh_lab_inv.forms
 {
-    public partial class frmPrint : Form
+    public partial class frmUpdateRgt : Form
     {
-        public frmPrint()
+        public frmUpdateRgt()
         {
             InitializeComponent();
-        }
-
-        private void frmPrint_Load(object sender, EventArgs e)
-        {
-
-            this.reportViewer1.RefreshReport();
         }
     }
 }

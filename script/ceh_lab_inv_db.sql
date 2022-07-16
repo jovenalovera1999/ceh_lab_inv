@@ -25,7 +25,7 @@ CREATE TABLE ceh_lab_inv_db.accounts(
     user_id                             INT NOT NULL,
     username                            VARCHAR(255) NOT NULL,
     password                            VARBINARY(255) NOT NULL,
-    role                                VARCHAR(255) NOT NULL,
+    user_type                           VARCHAR(255) NOT NULL,
     is_loggedIn                         TINYINT(1) NOT NULL DEFAULT 0,
     is_deleted                          TINYINT(1) NOT NULL DEFAULT 0,
     created_at                          TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

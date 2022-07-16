@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Globalization;
 using System.IO;
 
 namespace ceh_lab_inv.forms
@@ -21,13 +20,17 @@ namespace ceh_lab_inv.forms
 
         components.Connection con = new components.Connection();
         components.Value val = new components.Value();
-        functions.User user = new functions.User();
+        functions.Signup sign_up = new functions.Signup();
         functions.Duplicate duplicate = new functions.Duplicate();
 
-        TextInfo text_info = new CultureInfo("en-US", false).TextInfo;
-
-        void Reset()
+        void ResetFields()
         {
+            if(!String.IsNullOrWhiteSpace(imgLocation))
+            {
+                imgLocation = null;
+                picProfile.ImageLocation = null;
+                picProfile.Image = null;
+            }
             txtUsername.ResetText();
             txtPassword.ResetText();
             txtConfirmPassword.ResetText();
@@ -35,21 +38,13 @@ namespace ceh_lab_inv.forms
             txtMiddleName.ResetText();
             txtLastName.ResetText();
             cmbGender.Text = null;
-            cmbAge.Text = null;
             txtAddress.ResetText();
             dateBirthday.Value = DateTime.Now;
             txtCellphoneNumber.ResetText();
             txtTelephoneNumber.ResetText();
             txtEmail.ResetText();
-            cmbUserTypeOrRole.Text = null;
+            cmbUserType.Text = null;
             txtUsername.Focus();
-        }
-
-        void RemoveImage()
-        {
-            imgLocation = null;
-            picProfilePicture.ImageLocation = null;
-            picProfilePicture.Image = null;
         }
 
         private void txtCellphoneNumber_KeyPress(object sender, KeyPressEventArgs e)
@@ -122,11 +117,6 @@ namespace ceh_lab_inv.forms
 
         private void frmCreateAccount_Load(object sender, EventArgs e)
         {
-            for (int i = 1; i <= 200; i++)
-            {
-                cmbAge.Items.Add(i.ToString());
-            }
-            dateBirthday.Value = DateTime.Now;
             txtUsername.Focus();
         }
 
@@ -134,98 +124,95 @@ namespace ceh_lab_inv.forms
         private void btnUpload_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "All files(*.*)|*.*|PNG files(*.png)|*.png|JPG files(*.jpg)|*.jpg";
+            dialog.Filter = "PNG files(*.png)|*.png|JPG files(*.jpg)|*.jpg|All files(*.*)|*.*";
 
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if(dialog.ShowDialog() == DialogResult.OK)
             {
                 imgLocation = dialog.FileName.ToString();
-                picProfilePicture.ImageLocation = imgLocation;
+                picProfile.ImageLocation = imgLocation;
             }
             txtUsername.Focus();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            RemoveImage();
+            imgLocation = null;
+            picProfile.ImageLocation = null;
+            picProfile.Image = null;
             txtUsername.Focus();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(String.IsNullOrWhiteSpace(txtUsername.Text))
+            int age = DateTime.Now.Year - dateBirthday.Value.Year;
+
+            if (dateBirthday.Value.Date > DateTime.Now.AddYears(-age)) age--;
+
+            if (String.IsNullOrWhiteSpace(txtUsername.Text))
             {
-                MessageBox.Show("Failed to Create Account! Username is Missing!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to Create Account, Username is Required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtUsername.Focus();
             }
             else if(String.IsNullOrWhiteSpace(txtPassword.Text))
             {
-                MessageBox.Show("Failed to Create Account! Password is Missing!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to Create Account, Password is Required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPassword.Focus();
             }
             else if(String.IsNullOrWhiteSpace(txtConfirmPassword.Text))
             {
-                MessageBox.Show("Failed to Create Account! Confirm Password is Missing!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to Create Account, Confirm Password is Required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtConfirmPassword.Focus();
-            }
-            else if(txtPassword.Text != txtConfirmPassword.Text)
-            {
-                MessageBox.Show("Failed to Create Account! Password do not Match!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtPassword.ResetText();
-                txtConfirmPassword.ResetText();
-                txtPassword.Focus();
             }
             else if(String.IsNullOrWhiteSpace(txtFirstName.Text))
             {
-                MessageBox.Show("Failed to Create Account! First Name is Missing!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to Create Account, First Name is Required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtFirstName.Focus();
             }
             else if(String.IsNullOrWhiteSpace(txtLastName.Text))
             {
-                MessageBox.Show("Failed to Create Account! Last Name is Missing!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to Create Account, Last Name is Required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtLastName.Focus();
             }
             else if(String.IsNullOrWhiteSpace(cmbGender.Text))
             {
-                MessageBox.Show("Failed to Create Account! Gender is Missing!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to Create Account, Gender is Required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cmbGender.Focus();
-            }
-            else if(String.IsNullOrWhiteSpace(cmbAge.Text))
-            {
-                MessageBox.Show("Failed to Create Account! Age is Missing!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cmbAge.Focus();
             }
             else if(String.IsNullOrWhiteSpace(txtAddress.Text))
             {
-                MessageBox.Show("Failed to Create Account! Address is Missing!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to Create Account, Address is Required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtAddress.Focus();
             }
             else if(String.IsNullOrWhiteSpace(txtCellphoneNumber.Text) && String.IsNullOrWhiteSpace(txtTelephoneNumber.Text) &&
                 String.IsNullOrWhiteSpace(txtEmail.Text))
             {
-                MessageBox.Show("Failed to Create Account! Contact Information is Missing! Input at least one Contact Information!", "Failed",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to Create Account, Contact Information is Required at least one!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtCellphoneNumber.Focus();
             }
-            else if(String.IsNullOrWhiteSpace(cmbUserTypeOrRole.Text))
+            else if(String.IsNullOrWhiteSpace(cmbUserType.Text))
             {
-                MessageBox.Show("Failed to Create Account! User Type or Role is Missing!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cmbUserTypeOrRole.Focus();
+                MessageBox.Show("Failed to Create Account, User Type is Required!", "Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmbUserType.Focus();
             }
-            else if(duplicate.Username(txtUsername.Text.ToLower()))
+            else if (duplicate.DuplicateUsername(txtUsername.Text))
             {
-                MessageBox.Show("Failed to Create Account! Username is Missing!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to Create Account, Username is Already Taken!", "Taken", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtUsername.ResetText();
                 txtUsername.Focus();
             }
+            else if(txtPassword.Text != txtConfirmPassword.Text)
+            {
+                MessageBox.Show("Failed to Create Account, Password do not Match!", "Mismatch", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPassword.Focus();
+            }
             else if(String.IsNullOrWhiteSpace(imgLocation) && txtPassword.Text == txtConfirmPassword.Text)
             {
-                if(user.Add(null, txtUsername.Text.ToLower(), txtPassword.Text, text_info.ToTitleCase(txtFirstName.Text),
-                    text_info.ToTitleCase(txtMiddleName.Text), text_info.ToTitleCase(txtLastName.Text), int.Parse(cmbAge.Text), cmbGender.Text,
-                    text_info.ToTitleCase(txtAddress.Text), dateBirthday.Value.Date, txtCellphoneNumber.Text, txtTelephoneNumber.Text, txtEmail.Text,
-                    cmbUserTypeOrRole.Text))
+                if(sign_up.SignUp(null, txtFirstName.Text.ToUpper(), txtMiddleName.Text.ToUpper(), txtLastName.Text.ToUpper(), age, cmbGender.Text,
+                    txtAddress.Text.ToUpper(), dateBirthday.Value.Date, txtCellphoneNumber.Text, txtTelephoneNumber.Text, txtEmail.Text,
+                    txtUsername.Text, txtPassword.Text, cmbUserType.Text))
                 {
                     MessageBox.Show("Account Successfully Created!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Reset();
+                    ResetFields();
                 }
                 else
                 {
@@ -239,20 +226,23 @@ namespace ceh_lab_inv.forms
                 BinaryReader br = new BinaryReader(fs);
                 profile_picture = br.ReadBytes((int)fs.Length);
 
-                if (user.Add(profile_picture, txtUsername.Text.ToLower(), txtPassword.Text, text_info.ToTitleCase(txtFirstName.Text),
-                    text_info.ToTitleCase(txtMiddleName.Text), text_info.ToTitleCase(txtLastName.Text), int.Parse(cmbAge.Text), cmbGender.Text,
-                    text_info.ToTitleCase(txtAddress.Text), dateBirthday.Value.Date, txtCellphoneNumber.Text, txtTelephoneNumber.Text, txtEmail.Text,
-                    cmbUserTypeOrRole.Text))
+                if (sign_up.SignUp(profile_picture, txtFirstName.Text.ToUpper(), txtMiddleName.Text.ToUpper(), txtLastName.Text.ToUpper(),
+                    int.Parse(age.ToString()), cmbGender.Text, txtAddress.Text.ToUpper(), dateBirthday.Value.Date, txtCellphoneNumber.Text,
+                    txtTelephoneNumber.Text, txtEmail.Text, txtUsername.Text, txtPassword.Text, cmbUserType.Text))
                 {
                     MessageBox.Show("Account Successfully Created!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    RemoveImage();
-                    Reset();
+                    ResetFields();
                 }
                 else
                 {
                     MessageBox.Show("Failed to Create Account!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
