@@ -132,3 +132,50 @@ BEGIN
 END$$
 
 DELIMITER ;
+-- //
+-- // Supply
+-- //
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `add_supply_with_date`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `add_supply_with_date` (p_item VARCHAR(255), p_brand VARCHAR(255), p_supplier VARCHAR(255), p_quantity INT, p_unit_of_quantity VARCHAR(255), p_qty INT, p_unit_of_qty VARCHAR(255),
+p_unit_cost VARBINARY(255), p_total_cost VARBINARY(255), p_expiration_date DATE)
+BEGIN
+	INSERT INTO ceh_lab_inv_db.supplies(item, brand, supplier, quantity, unit_of_quantity, qty, unit_of_qty, unit_cost, total_cost, expiration_date)
+    VALUES(p_item, p_brand, p_supplier, p_quantity, p_unit_of_quantity, p_qty, p_unit_of_qty, AES_ENCRYPT(p_unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry'),
+    AES_ENCRYPT(p_total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry'), p_expiration_date);
+END$$
+
+DELIMITER ;
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `add_supply_without_date`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `add_supply_without_date` (p_item VARCHAR(255), p_brand VARCHAR(255), p_supplier VARCHAR(255), p_quantity INT, p_unit_of_quantity VARCHAR(255), p_qty INT, p_unit_of_qty VARCHAR(255),
+p_unit_cost VARBINARY(255), p_total_cost VARBINARY(255))
+BEGIN
+	INSERT INTO ceh_lab_inv_db.supplies(item, brand, supplier, quantity, unit_of_quantity, qty, unit_of_qty, unit_cost, total_cost)
+    VALUES(p_item, p_brand, p_supplier, p_quantity, p_unit_of_quantity, p_qty, p_unit_of_qty, AES_ENCRYPT(p_unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry'),
+    AES_ENCRYPT(p_total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry'));
+END$$
+
+DELIMITER ;
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `load_supplies`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `load_supplies` ()
+BEGIN
+	SELECT id, item, brand, supplier, CONCAT(quantity, ' ', unit_of_quantity), CONCAT(qty, ' ', unit_of_qty), CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), 
+    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit),
+    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), DATE_FORMAT(expiration_date, '%m/%d/%y'), CONCAT(DATEDIFF(expiration_date, NOW()), ' Days Left'),
+    DATE_FORMAT(created_at, '%m/%d/%y'), DATE_FORMAT(updated_at, '%m/%d/%y') FROM ceh_lab_inv_db.supplies;
+END$$
+
+DELIMITER ;

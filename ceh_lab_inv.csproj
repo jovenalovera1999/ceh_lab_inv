@@ -152,6 +152,7 @@
     <Compile Include="functions\Authentication.cs" />
     <Compile Include="functions\Duplicate.cs" />
     <Compile Include="functions\Signup.cs" />
+    <Compile Include="functions\Supply.cs" />
     <Compile Include="functions\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

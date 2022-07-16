@@ -17,10 +17,24 @@ namespace ceh_lab_inv.forms
             InitializeComponent();
         }
 
+        components.Connection con = new components.Connection();
+        components.Value val = new components.Value();
+        functions.Supply supply = new functions.Supply();
+
         private void frmSupplies_Load(object sender, EventArgs e)
         {
             this.SetBounds(Screen.PrimaryScreen.WorkingArea.Left, Screen.PrimaryScreen.WorkingArea.Top, Screen.PrimaryScreen.WorkingArea.Width,
                 Screen.PrimaryScreen.WorkingArea.Height);
+
+            supply.Load(gridSupplies);
+            DataGridViewButtonColumn btnUpdate = new DataGridViewButtonColumn();
+            btnUpdate.HeaderText = "ACTION";
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Text = "UPDATE";
+            btnUpdate.UseColumnTextForButtonValue = true;
+            btnUpdate.Visible = true;
+
+            txtSearch.Focus();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
