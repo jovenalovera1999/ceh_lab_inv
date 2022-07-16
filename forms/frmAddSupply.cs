@@ -19,6 +19,7 @@ namespace ceh_lab_inv.forms
 
         components.Connection con = new components.Connection();
         components.Value val = new components.Value();
+
         functions.Supply supply = new functions.Supply();
 
         void ResetFields()
@@ -32,8 +33,16 @@ namespace ceh_lab_inv.forms
             txtUnitOfQty.ResetText();
             txtUnitCost.ResetText();
             txtTotalCost.ResetText();
+
+            txtTotalCost.Enabled = true;
+
+            txtTotalCost.Enabled = false;
             switchExpirationDate.Checked = false;
             dateExpirationDate.Enabled = false;
+            
+            dateExpirationDate.Value = DateTime.Now;
+
+            txtItem.Focus();
         }
 
         void Calculate()
@@ -124,6 +133,7 @@ namespace ceh_lab_inv.forms
         private void frmAddSupply_Load(object sender, EventArgs e)
         {
             dateExpirationDate.Value = DateTime.Now;
+
             txtItem.Focus();
         }
 

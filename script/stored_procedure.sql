@@ -179,3 +179,29 @@ BEGIN
 END$$
 
 DELIMITER ;
+-- //
+-- // Count
+-- //
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `count_supplies`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `count_supplies` ()
+BEGIN
+	SELECT COUNT(*) FROM ceh_lab_inv_db.supplies WHERE is_deleted = 0;
+END$$
+
+DELIMITER ;
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `count_trash`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `count_trash` ()
+BEGIN
+	SELECT COUNT(*) FROM ceh_lab_inv_db.supplies WHERE is_deleted = 1;
+END$$
+
+DELIMITER ;

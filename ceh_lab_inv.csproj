@@ -150,6 +150,7 @@
       <DependentUpon>frmUpdateSupply.cs</DependentUpon>
     </Compile>
     <Compile Include="functions\Authentication.cs" />
+    <Compile Include="functions\Count.cs" />
     <Compile Include="functions\Duplicate.cs" />
     <Compile Include="functions\Signup.cs" />
     <Compile Include="functions\Supply.cs" />

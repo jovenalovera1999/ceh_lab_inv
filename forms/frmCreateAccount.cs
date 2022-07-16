@@ -20,6 +20,7 @@ namespace ceh_lab_inv.forms
 
         components.Connection con = new components.Connection();
         components.Value val = new components.Value();
+
         functions.Signup sign_up = new functions.Signup();
         functions.Duplicate duplicate = new functions.Duplicate();
 
@@ -31,19 +32,23 @@ namespace ceh_lab_inv.forms
                 picProfile.ImageLocation = null;
                 picProfile.Image = null;
             }
+
             txtUsername.ResetText();
             txtPassword.ResetText();
             txtConfirmPassword.ResetText();
             txtFirstName.ResetText();
             txtMiddleName.ResetText();
             txtLastName.ResetText();
-            cmbGender.Text = null;
             txtAddress.ResetText();
-            dateBirthday.Value = DateTime.Now;
             txtCellphoneNumber.ResetText();
             txtTelephoneNumber.ResetText();
             txtEmail.ResetText();
+            
+            cmbGender.Text = null;
             cmbUserType.Text = null;
+            
+            dateBirthday.Value = DateTime.Now;
+
             txtUsername.Focus();
         }
 
@@ -131,6 +136,7 @@ namespace ceh_lab_inv.forms
                 imgLocation = dialog.FileName.ToString();
                 picProfile.ImageLocation = imgLocation;
             }
+
             txtUsername.Focus();
         }
 
@@ -139,6 +145,7 @@ namespace ceh_lab_inv.forms
             imgLocation = null;
             picProfile.ImageLocation = null;
             picProfile.Image = null;
+
             txtUsername.Focus();
         }
 

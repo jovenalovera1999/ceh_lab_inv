@@ -20,6 +20,7 @@ namespace ceh_lab_inv.forms
 
         components.Connection con = new components.Connection();
         components.Value val = new components.Value();
+
         functions.User user = new functions.User();
         functions.Duplicate duplicate = new functions.Duplicate();
 
@@ -27,6 +28,10 @@ namespace ceh_lab_inv.forms
 
         void ResetFields()
         {
+            txtGender.Visible = true;
+            txtBirthday.Visible = true;
+            btnUpdate.Visible = true;
+
             btnUpload.Visible = false;
             btnRemove.Visible = false;
             txtUsername.Enabled = false;
@@ -37,15 +42,12 @@ namespace ceh_lab_inv.forms
             txtFirstName.Enabled = false;
             txtMiddleName.Enabled = false;
             txtLastName.Enabled = false;
-            txtGender.Visible = true;
             cmbGender.Visible = false;
             txtAddress.Enabled = false;
-            txtBirthday.Visible = true;
             dateBirthday.Visible = false;
             txtCellphoneNumber.Enabled = false;
             txtTelephoneNumber.Enabled = false;
             txtEmail.Enabled = false;
-            btnUpdate.Visible = true;
             btnSave.Visible = false;
             btnCancel.Visible = false;
         }
@@ -190,6 +192,7 @@ namespace ceh_lab_inv.forms
                 imgLocation = dialog.FileName.ToString();
                 picProfile.ImageLocation = imgLocation;
             }
+
             txtConfirmPassword.Focus();
         }
 
@@ -199,6 +202,7 @@ namespace ceh_lab_inv.forms
             imgLocation = null;
             picProfile.ImageLocation = null;
             picProfile.Image = null;
+
             txtConfirmPassword.Focus();
         }
 
@@ -215,16 +219,18 @@ namespace ceh_lab_inv.forms
             txtMiddleName.Enabled = true;
             txtLastName.Enabled = true;
             cmbGender.Visible = true;
-            txtGender.Visible = false;
             txtAddress.Enabled = true;
             dateBirthday.Visible = true;
-            txtBirthday.Visible = false;
             txtCellphoneNumber.Enabled = true;
             txtTelephoneNumber.Enabled = true;
             txtEmail.Enabled = true;
             btnSave.Visible = true;
             btnCancel.Visible = true;
+
+            txtGender.Visible = false;
+            txtBirthday.Visible = false;
             btnUpdate.Visible = false;
+            
             txtUsername.Focus();
         }
 

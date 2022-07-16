@@ -340,6 +340,13 @@ namespace ceh_lab_inv.components
             set { count_supplies = value; }
         }
 
+        public static string count_trash;
+        public string CountTrash
+        {
+            get { return count_trash; }
+            set { count_trash = value; }
+        }
+
         // Date From and To
 
         public static DateTime from;

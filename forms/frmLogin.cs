@@ -19,6 +19,7 @@ namespace ceh_lab_inv.forms
 
         components.Connection con = new components.Connection();
         components.Value val = new components.Value();
+
         functions.Authentication authentication = new functions.Authentication();
 
         void Login()
