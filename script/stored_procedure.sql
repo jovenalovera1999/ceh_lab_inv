@@ -136,6 +136,35 @@ DELIMITER ;
 -- // Supply
 -- //
 USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `get_supply`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `get_supply` (p_id INT)
+BEGIN
+	SELECT id, item, brand, supplier, quantity, unit_of_quantity, qty, unit_of_qty, CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 
+    CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), exp_rgt_quantity, exp_rgt_unit, CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), expiration_date
+    FROM ceh_lab_inv_db.supplies WHERE id = p_id;
+END$$
+
+DELIMITER ;
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `load_supplies`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `load_supplies` ()
+BEGIN
+	SELECT id, item, brand, supplier, CONCAT(quantity, ' ', unit_of_quantity), CONCAT(qty, ' ', unit_of_qty), CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), 
+    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit),
+    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), DATE_FORMAT(expiration_date, '%m/%d/%y'), CONCAT(DATEDIFF(expiration_date, NOW()), ' Days Left'),
+    DATE_FORMAT(created_at, '%m/%d/%y'), DATE_FORMAT(updated_at, '%m/%d/%y') FROM ceh_lab_inv_db.supplies WHERE is_deleted = 0 ORDER BY item ASC;
+END$$
+
+DELIMITER ;
+
+USE `ceh_lab_inv_db`;
 DROP procedure IF EXISTS `add_supply_with_date`;
 
 DELIMITER $$
@@ -166,16 +195,41 @@ END$$
 DELIMITER ;
 
 USE `ceh_lab_inv_db`;
-DROP procedure IF EXISTS `load_supplies`;
+DROP procedure IF EXISTS `update_supply_with_expiration_date`;
 
 DELIMITER $$
 USE `ceh_lab_inv_db`$$
-CREATE PROCEDURE `load_supplies` ()
+CREATE PROCEDURE `update_supply_with_expiration_date` (p_id INT, p_item VARCHAR(255), p_brand VARCHAR(255), p_supplier VARCHAR(255), p_quantity INT, p_unit_of_quantity VARCHAR(255), p_qty INT,
+p_unit_of_qty VARCHAR(255), p_unit_cost VARBINARY(255), p_total_cost VARBINARY(255), p_expiration_date DATE)
 BEGIN
-	SELECT id, item, brand, supplier, CONCAT(quantity, ' ', unit_of_quantity), CONCAT(qty, ' ', unit_of_qty), CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), 
-    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit),
-    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), DATE_FORMAT(expiration_date, '%m/%d/%y'), CONCAT(DATEDIFF(expiration_date, NOW()), ' Days Left'),
-    DATE_FORMAT(created_at, '%m/%d/%y'), DATE_FORMAT(updated_at, '%m/%d/%y') FROM ceh_lab_inv_db.supplies WHERE is_deleted = 0 ORDER BY item ASC;
+	UPDATE ceh_lab_inv_db.supplies SET item = p_item, brand = p_brand, supplier = p_supplier, quantity = p_quantity, unit_of_quantity = p_unit_of_quantity, qty = p_qty, unit_of_qty = p_unit_of_qty,
+    unit_cost = AES_ENCRYPT(p_unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry'), total_cost = AES_ENCRYPT(p_total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry'), expiration_date = p_expiration_date WHERE id = p_id;
+END$$
+
+DELIMITER ;
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `update_supply_without_expiration_date`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `update_supply_without_expiration_date` (p_id INT, p_item VARCHAR(255), p_brand VARCHAR(255), p_supplier VARCHAR(255), p_quantity INT, p_unit_of_quantity VARCHAR(255), p_qty INT,
+p_unit_of_qty VARCHAR(255), p_unit_cost VARBINARY(255), p_total_cost VARBINARY(255))
+BEGIN
+	UPDATE ceh_lab_inv_db.supplies SET item = p_item, brand = p_brand, supplier = p_supplier, quantity = p_quantity, unit_of_quantity = p_unit_of_quantity, qty = p_qty, unit_of_qty = p_unit_of_qty,
+    unit_cost = AES_ENCRYPT(p_unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry'), total_cost = AES_ENCRYPT(p_total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') WHERE id = p_id;
+END$$
+
+DELIMITER ;
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `delete_supply`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `delete_supply` (p_id INT)
+BEGIN
+	UPDATE ceh_lab_inv_db.supplies SET is_deleted = 1 WHERE id = p_id;
 END$$
 
 DELIMITER ;

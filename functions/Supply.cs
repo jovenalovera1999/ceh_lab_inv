@@ -20,6 +20,55 @@ namespace ceh_lab_inv.functions
         int start_record;
         const int max_record = 4;
 
+        public bool Get(int id)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(con.conString()))
+                {
+                    string sql = @"CALL get_supply(@id);";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+
+                        connection.Open();
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        dt.Clear();
+                        da.Fill(dt);
+
+                        if(dt.Rows.Count == 1)
+                        {
+                            val.SupplyPrimaryID = dt.Rows[0].Field<int>("id");
+                            val.SupplyItem = dt.Rows[0].Field<string>("item");
+                            val.SupplyBrand = dt.Rows[0].Field<string>("brand");
+                            val.SupplySupplier = dt.Rows[0].Field<string>("supplier");
+                            val.SupplyQuantity = dt.Rows[0].Field<int>("quantity");
+                            val.SupplyUnitOfQuantity = dt.Rows[0].Field<string>("unit_of_quantity");
+                            val.SupplyQty = dt.Rows[0].Field<int>("qty");
+                            val.SupplyUnitOfQty = dt.Rows[0].Field<string>("unit_of_quantity");
+                            val.SupplyUnitCost = dt.Rows[0].Field<string>("CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR)");
+                            val.SupplyTotalCost = dt.Rows[0].Field<string>("CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR)");
+                            val.SupplyExpirationDate = dt.Rows[0].Field<DateTime>("expiration_date");
+                            connection.Close();
+                            return true;
+                        }
+                        else
+                        {
+                            connection.Close();
+                            return false;
+                        }
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error getting supply: " + ex.ToString());
+                return false;
+            }
+        }
+
         public void Load(DataGridView grid)
         {
             try
@@ -115,7 +164,7 @@ namespace ceh_lab_inv.functions
             }
         }
 
-        public bool AddWithDate(string item, string brand, string supplier, int quantity, string unit_of_quantity, int qty, string unit_of_qty,
+        public bool AddWithExpirationDate(string item, string brand, string supplier, int quantity, string unit_of_quantity, int qty, string unit_of_qty,
             string unit_cost, string total_cost, DateTime expiration_date)
         {
             try
@@ -153,7 +202,7 @@ namespace ceh_lab_inv.functions
             }
         }
 
-        public bool AddWithoutDate(string item, string brand, string supplier, int quantity, string unit_of_quantity, int qty, string unit_of_qty,
+        public bool AddWithoutExpirationDate(string item, string brand, string supplier, int quantity, string unit_of_quantity, int qty, string unit_of_qty,
             string unit_cost, string total_cost)
         {
             try
@@ -186,6 +235,113 @@ namespace ceh_lab_inv.functions
             catch (Exception ex)
             {
                 Console.WriteLine("Error adding supply without date: " + ex.ToString());
+                return false;
+            }
+        }
+
+        public bool UpdateWithExpirationDate(int id, string item, string brand, string supplier, int quantity, string unit_of_quantity, int qty,
+            string unit_of_qty, string unit_cost, string total_cost, DateTime expiration_date)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(con.conString()))
+                {
+                    string sql = @"CALL update_supply_with_expiration_date(@id, @item, @brand, @supplier, @quantity, @unit_of_quantity, @qty
+                                    @unit_of_qty, @unit_cost, @total_cost, @expiration_date);";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+                        cmd.Parameters.AddWithValue("@item", item);
+                        cmd.Parameters.AddWithValue("@brand", brand);
+                        cmd.Parameters.AddWithValue("@supplier", supplier);
+                        cmd.Parameters.AddWithValue("@quantity", quantity);
+                        cmd.Parameters.AddWithValue("@unit_of_quantity", unit_of_quantity);
+                        cmd.Parameters.AddWithValue("@qty", qty);
+                        cmd.Parameters.AddWithValue("@unit_of_qty", unit_of_qty);
+                        cmd.Parameters.AddWithValue("@unit_cost", unit_cost);
+                        cmd.Parameters.AddWithValue("@total_cost", total_cost);
+                        cmd.Parameters.AddWithValue("@expiration_date", expiration_date);
+
+                        connection.Open();
+                        MySqlDataReader dr = cmd.ExecuteReader();
+                        dr.Close();
+                        connection.Close();
+
+                        return true;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error updating supply with expiration date: " + ex.ToString());
+                return false;
+            }
+        }
+
+        public bool UpdateWithoutExpirationDate(int id, string item, string brand, string supplier, int quantity, string unit_of_quantity, int qty,
+            string unit_of_qty, string unit_cost, string total_cost)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(con.conString()))
+                {
+                    string sql = @"CALL update_supply_without_expiration_date(@id, @item, @brand, @supplier, @quantity, @unit_of_quantity, @qty
+                                    @unit_of_qty, @unit_cost, @total_cost);";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+                        cmd.Parameters.AddWithValue("@item", item);
+                        cmd.Parameters.AddWithValue("@brand", brand);
+                        cmd.Parameters.AddWithValue("@supplier", supplier);
+                        cmd.Parameters.AddWithValue("@quantity", quantity);
+                        cmd.Parameters.AddWithValue("@unit_of_quantity", unit_of_quantity);
+                        cmd.Parameters.AddWithValue("@qty", qty);
+                        cmd.Parameters.AddWithValue("@unit_of_qty", unit_of_qty);
+                        cmd.Parameters.AddWithValue("@unit_cost", unit_cost);
+                        cmd.Parameters.AddWithValue("@total_cost", total_cost);
+
+                        connection.Open();
+                        MySqlDataReader dr = cmd.ExecuteReader();
+                        dr.Close();
+                        connection.Close();
+
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error updating supply without expiration date: " + ex.ToString());
+                return false;
+            }
+        }
+
+        public bool Delete(int id)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(con.conString()))
+                {
+                    string sql = @"CALL delete_supply(@id);";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+
+                        connection.Open();
+                        MySqlDataReader dr = cmd.ExecuteReader();
+                        dr.Close();
+                        connection.Close();
+
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error deleting supply: " + ex.ToString());
                 return false;
             }
         }

@@ -181,7 +181,7 @@ namespace ceh_lab_inv.forms
             }
             else if(!switchExpirationDate.Checked && !dateExpirationDate.Enabled)
             {
-                if(supply.AddWithoutDate(txtItem.Text.ToUpper(), txtBrand.Text.ToUpper(), txtSupplier.Text.ToUpper(), int.Parse(txtQuantity.Text),
+                if(supply.AddWithoutExpirationDate(txtItem.Text.ToUpper(), txtBrand.Text.ToUpper(), txtSupplier.Text.ToUpper(), int.Parse(txtQuantity.Text),
                     txtUnitOfQuantity.Text.ToUpper(), int.Parse(txtQty.Text), txtUnitOfQty.Text.ToUpper(), txtUnitCost.Text, txtTotalCost.Text))
                 {
                     MessageBox.Show("Supply Successfully Added!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -194,7 +194,7 @@ namespace ceh_lab_inv.forms
             }
             else if(switchExpirationDate.Checked && dateExpirationDate.Enabled)
             {
-                if (supply.AddWithDate(txtItem.Text.ToUpper(), txtBrand.Text.ToUpper(), txtSupplier.Text.ToUpper(), int.Parse(txtQuantity.Text),
+                if (supply.AddWithExpirationDate(txtItem.Text.ToUpper(), txtBrand.Text.ToUpper(), txtSupplier.Text.ToUpper(), int.Parse(txtQuantity.Text),
                     txtUnitOfQuantity.Text.ToUpper(), int.Parse(txtQty.Text), txtUnitOfQty.Text.ToUpper(), txtUnitCost.Text, txtTotalCost.Text,
                     dateExpirationDate.Value.Date))
                 {

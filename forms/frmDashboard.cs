@@ -60,7 +60,7 @@ namespace ceh_lab_inv.forms
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Are you sure you want to exit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if(MessageBox.Show("Are you sure you want to Exit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 if(authentication.Logout(val.UserPrimaryID))
                 {
@@ -71,9 +71,15 @@ namespace ceh_lab_inv.forms
 
         private void btnSwitchAccount_Click(object sender, EventArgs e)
         {
-            forms.frmLogin login = new forms.frmLogin();
-            login.Show();
-            this.Close();
+            if (MessageBox.Show("Are you sure you want to Switch Account?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (authentication.Logout(val.UserPrimaryID))
+                {
+                    forms.frmLogin login = new forms.frmLogin();
+                    login.Show();
+                    this.Close();
+                }
+            }
         }
     }
 }

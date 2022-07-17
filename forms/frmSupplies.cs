@@ -128,6 +128,11 @@ namespace ceh_lab_inv.forms
 
         }
 
+        private void gridSupplies_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
         private void btnNextPage_Click(object sender, EventArgs e)
         {
             supply.NextPage();
