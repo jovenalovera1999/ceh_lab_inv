@@ -18,7 +18,7 @@ namespace ceh_lab_inv.functions
         DataSet ds;
 
         int start_record;
-        const int max_record = 4;
+        const int max_record = 20;
 
         public bool Get(int id)
         {
@@ -33,8 +33,10 @@ namespace ceh_lab_inv.functions
                         cmd.Parameters.AddWithValue("@id", id);
 
                         connection.Open();
+
                         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
+
                         dt.Clear();
                         da.Fill(dt);
 
@@ -47,10 +49,11 @@ namespace ceh_lab_inv.functions
                             val.SupplyQuantity = dt.Rows[0].Field<int>("quantity");
                             val.SupplyUnitOfQuantity = dt.Rows[0].Field<string>("unit_of_quantity");
                             val.SupplyQty = dt.Rows[0].Field<int>("qty");
-                            val.SupplyUnitOfQty = dt.Rows[0].Field<string>("unit_of_quantity");
+                            val.SupplyUnitOfQty = dt.Rows[0].Field<string>("unit_of_qty");
                             val.SupplyUnitCost = dt.Rows[0].Field<string>("CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR)");
                             val.SupplyTotalCost = dt.Rows[0].Field<string>("CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR)");
-                            val.SupplyExpirationDate = dt.Rows[0].Field<DateTime>("expiration_date");
+                            val.SupplyExpirationDate = dt.Rows[0].Field<DateTime?>("expiration_date");
+
                             connection.Close();
                             return true;
                         }
@@ -80,13 +83,16 @@ namespace ceh_lab_inv.functions
                     using (MySqlCommand cmd = new MySqlCommand(sql, connection))
                     {
                         connection.Open();
+
                         da = new MySqlDataAdapter(cmd);
                         ds = new DataSet();
+
                         ds.Clear();
                         da.Fill(ds, start_record, max_record, "supplies");
 
                         grid.DataSource = ds;
                         grid.DataMember = "supplies";
+
                         grid.Columns["id"].Visible = false;
                         grid.Columns["item"].HeaderText = "ITEM";
                         grid.Columns["brand"].HeaderText = "BRAND";
@@ -101,6 +107,7 @@ namespace ceh_lab_inv.functions
                         grid.Columns["CONCAT(DATEDIFF(expiration_date, NOW()), ' Days Left')"].HeaderText = "EXPIRED IN";
                         grid.Columns["DATE_FORMAT(created_at, '%m/%d/%y')"].HeaderText = "CREATED AT";
                         grid.Columns["DATE_FORMAT(updated_at, '%m/%d/%y')"].HeaderText = "UPDATED AT";
+
                         connection.Close();
                     }
                 }
@@ -188,8 +195,10 @@ namespace ceh_lab_inv.functions
                         cmd.Parameters.AddWithValue("@expiration_date", expiration_date);
 
                         connection.Open();
+
                         MySqlDataReader dr = cmd.ExecuteReader();
                         dr.Close();
+
                         connection.Close();
                         return true;
                     }
@@ -225,8 +234,10 @@ namespace ceh_lab_inv.functions
                         cmd.Parameters.AddWithValue("@total_cost", total_cost);
 
                         connection.Open();
+
                         MySqlDataReader dr = cmd.ExecuteReader();
                         dr.Close();
+
                         connection.Close();
                         return true;
                     }
@@ -264,10 +275,11 @@ namespace ceh_lab_inv.functions
                         cmd.Parameters.AddWithValue("@expiration_date", expiration_date);
 
                         connection.Open();
+
                         MySqlDataReader dr = cmd.ExecuteReader();
                         dr.Close();
-                        connection.Close();
 
+                        connection.Close();
                         return true;
                     }
                 }
@@ -303,10 +315,11 @@ namespace ceh_lab_inv.functions
                         cmd.Parameters.AddWithValue("@total_cost", total_cost);
 
                         connection.Open();
+
                         MySqlDataReader dr = cmd.ExecuteReader();
                         dr.Close();
-                        connection.Close();
 
+                        connection.Close();
                         return true;
                     }
                 }
@@ -331,10 +344,11 @@ namespace ceh_lab_inv.functions
                         cmd.Parameters.AddWithValue("@id", id);
 
                         connection.Open();
+
                         MySqlDataReader dr = cmd.ExecuteReader();
                         dr.Close();
-                        connection.Close();
 
+                        connection.Close();
                         return true;
                     }
                 }

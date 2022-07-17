@@ -26,8 +26,10 @@ namespace ceh_lab_inv.functions
                         cmd.Parameters.AddWithValue("@id", id);
 
                         connection.Open();
+
                         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
+
                         dt.Clear();
                         da.Fill(dt);
 
@@ -48,6 +50,7 @@ namespace ceh_lab_inv.functions
                             val.UserUsername = dt.Rows[0].Field<string>("username");
                             val.UserPassword = dt.Rows[0].Field<string>("CAST(AES_DECRYPT(password, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR)");
                             val.UserType = dt.Rows[0].Field<string>("user_type");
+
                             connection.Close();
                             return true;
                         }
@@ -94,8 +97,10 @@ namespace ceh_lab_inv.functions
                         cmd.Parameters.AddWithValue("@password", password);
 
                         connection.Open();
+
                         MySqlDataReader dr = cmd.ExecuteReader();
                         dr.Close();
+
                         connection.Close();
                         return true;
                     }

@@ -24,7 +24,7 @@ namespace ceh_lab_inv.forms
         functions.Count count = new functions.Count();
 
         int count_entries;
-        const int max_rows = 4;
+        const int max_rows = 20;
 
         void CountSuppliesAndTrash()
         {
@@ -130,7 +130,37 @@ namespace ceh_lab_inv.forms
 
         private void gridSupplies_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            DataGridViewRow row = gridSupplies.Rows[e.RowIndex];
+
+            if (gridSupplies.Columns[e.ColumnIndex].Name == "btnUpdateRgt")
+            {
+                
+            }
+            else if (gridSupplies.Columns[e.ColumnIndex].Name == "btnUpdate")
+            {
+                if (supply.Get(int.Parse(row.Cells["id"].Value.ToString())))
+                {
+                    forms.frmUpdateSupply update_supply = new forms.frmUpdateSupply();
+                    update_supply.Show();
+                }
+            }
+            else
+            {
+                if (MessageBox.Show("Are you sure you want to Delete this Supply?", "Confirmation", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (supply.Delete(int.Parse(row.Cells["id"].Value.ToString())))
+                    {
+                        MessageBox.Show("Supply Successfully Deleted!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        supply.Load(gridSupplies);
+                        gridSupplies.ClearSelection();
+
+                        CountSuppliesAndTrash();
+                        LabelPaging();
+                    }
+                }
+            }
         }
 
         private void btnNextPage_Click(object sender, EventArgs e)

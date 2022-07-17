@@ -324,8 +324,8 @@ namespace ceh_lab_inv.components
             set { supply_exp_rgt_cost = value; }
         }
 
-        public static DateTime supply_expiration_date;
-        public DateTime SupplyExpirationDate
+        public static DateTime? supply_expiration_date;
+        public DateTime? SupplyExpirationDate
         {
             get { return supply_expiration_date; }
             set { supply_expiration_date = value; }

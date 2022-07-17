@@ -26,8 +26,10 @@ namespace ceh_lab_inv.functions
                         cmd.Parameters.AddWithValue("@username", username);
 
                         connection.Open();
+
                         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
+
                         dt.Clear();
                         da.Fill(dt);
 
@@ -65,8 +67,10 @@ namespace ceh_lab_inv.functions
                         cmd.Parameters.AddWithValue("@username", username);
 
                         connection.Open();
+
                         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
+
                         dt.Clear();
                         da.Fill(dt);
 

@@ -469,10 +469,12 @@
             this.dateExpirationDate.BackColor = System.Drawing.Color.Green;
             this.dateExpirationDate.BorderRadius = 0;
             this.dateExpirationDate.Enabled = false;
+            this.dateExpirationDate.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateExpirationDate.ForeColor = System.Drawing.Color.White;
             this.dateExpirationDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dateExpirationDate.FormatCustom = null;
             this.dateExpirationDate.Location = new System.Drawing.Point(327, 393);
+            this.dateExpirationDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dateExpirationDate.Name = "dateExpirationDate";
             this.dateExpirationDate.Size = new System.Drawing.Size(306, 36);
             this.dateExpirationDate.TabIndex = 9;
@@ -561,6 +563,7 @@
             this.Name = "frmAddSupply";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ADD SUPPLY";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmAddSupply_Load);
             this.Panel1.ResumeLayout(false);
             this.Panel1.PerformLayout();

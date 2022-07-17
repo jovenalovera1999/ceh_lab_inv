@@ -24,12 +24,15 @@ namespace ceh_lab_inv.functions
                     using (MySqlCommand cmd = new MySqlCommand(sql, connection))
                     {
                         connection.Open();
+
                         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
+
                         dt.Clear();
                         da.Fill(dt);
 
                         val.CountSupplies = cmd.ExecuteScalar().ToString();
+
                         connection.Close();
                     }
                 }
@@ -51,12 +54,15 @@ namespace ceh_lab_inv.functions
                     using (MySqlCommand cmd = new MySqlCommand(sql, connection))
                     {
                         connection.Open();
+
                         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
+
                         dt.Clear();
                         da.Fill(dt);
 
                         val.CountTrash = cmd.ExecuteScalar().ToString();
+
                         connection.Close();
                     }
                 }

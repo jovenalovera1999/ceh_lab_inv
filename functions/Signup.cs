@@ -38,6 +38,7 @@ namespace ceh_lab_inv.functions
                         cmd.Parameters.AddWithValue("@email", email);
 
                         connection.Open();
+
                         MySqlDataReader dr = cmd.ExecuteReader();
                         dr.Close();
                     }
@@ -48,6 +49,7 @@ namespace ceh_lab_inv.functions
                     {
                         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
+
                         dt.Clear();
                         da.Fill(dt);
 
@@ -65,8 +67,8 @@ namespace ceh_lab_inv.functions
 
                         MySqlDataReader dr = cmd.ExecuteReader();
                         dr.Close();
-                        connection.Close();
 
+                        connection.Close();
                         return true;
                     }
                 }
