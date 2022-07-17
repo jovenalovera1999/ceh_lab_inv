@@ -58,7 +58,7 @@ namespace ceh_lab_inv.forms
                 txtLastName.Text.ToUpper(), age, cmbGender.Text, txtAddress.Text.ToUpper(), dateBirthday.Value.Date, txtCellphoneNumber.Text,
                 txtTelephoneNumber.Text, txtEmail.Text, txtUsername.Text, txtPassword.Text))
             {
-                MessageBox.Show("Your Account was Successfully Updated!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Your Account has been Successfully Updated!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ResetFields();
             }
             else

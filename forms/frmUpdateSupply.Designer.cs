@@ -167,6 +167,7 @@
             this.btnSave.TabIndex = 25;
             this.btnSave.TabStop = false;
             this.btnSave.Text = "SAVE";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label12
             // 
@@ -189,6 +190,7 @@
             this.dateExpirationDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dateExpirationDate.FormatCustom = null;
             this.dateExpirationDate.Location = new System.Drawing.Point(327, 393);
+            this.dateExpirationDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dateExpirationDate.Name = "dateExpirationDate";
             this.dateExpirationDate.Size = new System.Drawing.Size(306, 36);
             this.dateExpirationDate.TabIndex = 9;
@@ -212,9 +214,10 @@
             this.txtTotalCost.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTotalCost.DefaultText = "";
             this.txtTotalCost.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtTotalCost.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtTotalCost.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTotalCost.DisabledState.FillColor = System.Drawing.Color.White;
+            this.txtTotalCost.DisabledState.ForeColor = System.Drawing.Color.Black;
             this.txtTotalCost.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTotalCost.Enabled = false;
             this.txtTotalCost.FocusedState.BorderColor = System.Drawing.Color.Green;
             this.txtTotalCost.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txtTotalCost.ForeColor = System.Drawing.Color.Black;
@@ -261,6 +264,8 @@
             this.txtUnitCost.SelectedText = "";
             this.txtUnitCost.Size = new System.Drawing.Size(306, 36);
             this.txtUnitCost.TabIndex = 7;
+            this.txtUnitCost.TextChanged += new System.EventHandler(this.txtUnitCost_TextChanged);
+            this.txtUnitCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUnitCost_KeyPress);
             // 
             // label9
             // 
@@ -329,6 +334,8 @@
             this.txtQty.SelectedText = "";
             this.txtQty.Size = new System.Drawing.Size(306, 36);
             this.txtQty.TabIndex = 5;
+            this.txtQty.TextChanged += new System.EventHandler(this.txtQty_TextChanged);
+            this.txtQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQty_KeyPress);
             // 
             // label6
             // 
@@ -397,6 +404,8 @@
             this.txtQuantity.SelectedText = "";
             this.txtQuantity.Size = new System.Drawing.Size(306, 36);
             this.txtQuantity.TabIndex = 3;
+            this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
+            this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
             // 
             // label5
             // 

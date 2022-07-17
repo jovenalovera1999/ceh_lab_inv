@@ -37,6 +37,7 @@ namespace ceh_lab_inv.forms
 
         void LabelPaging()
         {
+            count_entries = gridSupplies.Rows.Count;
             lblPageLabel.Text = string.Format("Entries: {0}/{1}", count_entries, val.CountSupplies);
         }
 
@@ -96,9 +97,7 @@ namespace ceh_lab_inv.forms
             btnDelete.UseColumnTextForButtonValue = true;
             gridSupplies.Columns.Add(btnDelete);
 
-            count_entries = gridSupplies.Rows.Count;
             LabelPaging();
-
             ButtonControls();
 
             txtSearch.Focus();
@@ -158,6 +157,7 @@ namespace ceh_lab_inv.forms
 
                         CountSuppliesAndTrash();
                         LabelPaging();
+                        ButtonControls();
                     }
                 }
             }

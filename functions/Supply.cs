@@ -257,8 +257,8 @@ namespace ceh_lab_inv.functions
             {
                 using (MySqlConnection connection = new MySqlConnection(con.conString()))
                 {
-                    string sql = @"CALL update_supply_with_expiration_date(@id, @item, @brand, @supplier, @quantity, @unit_of_quantity, @qty
-                                    @unit_of_qty, @unit_cost, @total_cost, @expiration_date);";
+                    string sql = @"CALL update_supply_with_expiration_date(@id, @item, @brand, @supplier, @quantity, @unit_of_quantity,
+                                    @qty, @unit_of_qty, @unit_cost, @total_cost, @expiration_date);";
 
                     using (MySqlCommand cmd = new MySqlCommand(sql, connection))
                     {
@@ -298,8 +298,8 @@ namespace ceh_lab_inv.functions
             {
                 using (MySqlConnection connection = new MySqlConnection(con.conString()))
                 {
-                    string sql = @"CALL update_supply_without_expiration_date(@id, @item, @brand, @supplier, @quantity, @unit_of_quantity, @qty
-                                    @unit_of_qty, @unit_cost, @total_cost);";
+                    string sql = @"CALL update_supply_without_expiration_date(@id, @item, @brand, @supplier, @quantity, @unit_of_quantity,
+                                    @qty, @unit_of_qty, @unit_cost, @total_cost);";
 
                     using (MySqlCommand cmd = new MySqlCommand(sql, connection))
                     {

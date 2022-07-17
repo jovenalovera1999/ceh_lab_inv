@@ -202,8 +202,9 @@ USE `ceh_lab_inv_db`$$
 CREATE PROCEDURE `update_supply_with_expiration_date` (p_id INT, p_item VARCHAR(255), p_brand VARCHAR(255), p_supplier VARCHAR(255), p_quantity INT, p_unit_of_quantity VARCHAR(255), p_qty INT,
 p_unit_of_qty VARCHAR(255), p_unit_cost VARBINARY(255), p_total_cost VARBINARY(255), p_expiration_date DATE)
 BEGIN
-	UPDATE ceh_lab_inv_db.supplies SET item = p_item, brand = p_brand, supplier = p_supplier, quantity = p_quantity, unit_of_quantity = p_unit_of_quantity, qty = p_qty, unit_of_qty = p_unit_of_qty,
-    unit_cost = AES_ENCRYPT(p_unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry'), total_cost = AES_ENCRYPT(p_total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry'), expiration_date = p_expiration_date WHERE id = p_id;
+    UPDATE ceh_lab_inv_db.supplies SET item = p_item, brand = p_brand, supplier = p_supplier, quantity = p_quantity, unit_of_quantity = p_unit_of_quantity, qty = p_qty, unit_of_qty = p_unit_of_qty,
+    unit_cost = AES_ENCRYPT(p_unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry'), total_cost = AES_ENCRYPT(p_total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry'), expiration_date = p_expiration_date,
+    updated_at = CURRENT_TIMESTAMP WHERE id = p_id;
 END$$
 
 DELIMITER ;
@@ -217,7 +218,7 @@ CREATE PROCEDURE `update_supply_without_expiration_date` (p_id INT, p_item VARCH
 p_unit_of_qty VARCHAR(255), p_unit_cost VARBINARY(255), p_total_cost VARBINARY(255))
 BEGIN
 	UPDATE ceh_lab_inv_db.supplies SET item = p_item, brand = p_brand, supplier = p_supplier, quantity = p_quantity, unit_of_quantity = p_unit_of_quantity, qty = p_qty, unit_of_qty = p_unit_of_qty,
-    unit_cost = AES_ENCRYPT(p_unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry'), total_cost = AES_ENCRYPT(p_total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') WHERE id = p_id;
+    unit_cost = AES_ENCRYPT(p_unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry'), total_cost = AES_ENCRYPT(p_total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry'), updated_at = CURRENT_TIMESTAMP WHERE id = p_id;
 END$$
 
 DELIMITER ;
