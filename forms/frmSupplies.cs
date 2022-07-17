@@ -19,15 +19,59 @@ namespace ceh_lab_inv.forms
 
         components.Connection con = new components.Connection();
         components.Value val = new components.Value();
+
         functions.Supply supply = new functions.Supply();
+        functions.Count count = new functions.Count();
+
+        int count_entries;
+        const int max_rows = 4;
+
+        void CountSuppliesAndTrash()
+        {
+            count.Supplies();
+            lblTotalSupplies.Text = val.CountSupplies;
+
+            count.Trash();
+            lblInTrash.Text = val.CountTrash;
+        }
+
+        void LabelPaging()
+        {
+            lblPageLabel.Text = string.Format("Entries: {0}/{1}", count_entries, val.CountSupplies);
+        }
+
+        void ButtonControls()
+        {
+            if (count_entries <= int.Parse(val.CountSupplies) && int.Parse(val.CountSupplies) > max_rows == false)
+            {
+                btnNextPage.Enabled = false;
+                btnPreviousPage.Enabled = false;
+            }
+            else if(count_entries == max_rows)
+            {
+                btnNextPage.Enabled = true;
+
+                btnPreviousPage.Enabled = false;
+            }
+            else if(count_entries == int.Parse(val.CountSupplies))
+            {
+                btnPreviousPage.Enabled = true;
+
+                btnNextPage.Enabled = false;
+            }
+            else
+            {
+                btnNextPage.Enabled = true;
+                btnPreviousPage.Enabled = true;
+            }
+        }
 
         private void frmSupplies_Load(object sender, EventArgs e)
         {
             this.SetBounds(Screen.PrimaryScreen.WorkingArea.Left, Screen.PrimaryScreen.WorkingArea.Top, Screen.PrimaryScreen.WorkingArea.Width,
                 Screen.PrimaryScreen.WorkingArea.Height);
 
-            lblTotalSupplies.Text = val.CountSupplies;
-            lblInTrash.Text = val.CountTrash;
+            CountSuppliesAndTrash();
 
             supply.Load(gridSupplies);
 
@@ -52,6 +96,11 @@ namespace ceh_lab_inv.forms
             btnDelete.UseColumnTextForButtonValue = true;
             gridSupplies.Columns.Add(btnDelete);
 
+            count_entries = gridSupplies.Rows.Count;
+            LabelPaging();
+
+            ButtonControls();
+
             txtSearch.Focus();
         }
 
@@ -68,6 +117,8 @@ namespace ceh_lab_inv.forms
 
         private void btnLoadSupplies_Click(object sender, EventArgs e)
         {
+            CountSuppliesAndTrash();
+
             supply.Load(gridSupplies);
             gridSupplies.ClearSelection();
         }
@@ -75,6 +126,50 @@ namespace ceh_lab_inv.forms
         private void btnLoadTrash_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnNextPage_Click(object sender, EventArgs e)
+        {
+            supply.NextPage();
+            gridSupplies.ClearSelection();
+
+            count_entries += gridSupplies.Rows.Count;
+            if (count_entries > int.Parse(val.CountSupplies))
+            {
+                count_entries = gridSupplies.Rows.Count;
+            }
+
+            LabelPaging();
+            ButtonControls();
+
+            txtSearch.Focus();
+        }
+
+        private void btnPreviousPage_Click(object sender, EventArgs e)
+        {
+            if (count_entries == int.Parse(val.CountSupplies) && gridSupplies.Rows.Count < max_rows)
+            {
+                count_entries -= gridSupplies.Rows.Count;
+
+                supply.PreviousPage();
+                gridSupplies.ClearSelection();
+            }
+            else
+            {
+                supply.PreviousPage();
+                gridSupplies.ClearSelection();
+
+                count_entries -= gridSupplies.Rows.Count;
+                if (count_entries <= 0)
+                {
+                    count_entries = gridSupplies.Rows.Count;
+                }
+            }
+
+            LabelPaging();
+            ButtonControls();
+
+            txtSearch.Focus();
         }
 
         private void frmSupplies_VisibleChanged(object sender, EventArgs e)

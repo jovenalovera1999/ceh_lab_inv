@@ -14,6 +14,12 @@ namespace ceh_lab_inv.functions
         components.Connection con = new components.Connection();
         components.Value val = new components.Value();
 
+        MySqlDataAdapter da;
+        DataSet ds;
+
+        int start_record;
+        const int max_record = 4;
+
         public void Load(DataGridView grid)
         {
             try
@@ -25,12 +31,13 @@ namespace ceh_lab_inv.functions
                     using (MySqlCommand cmd = new MySqlCommand(sql, connection))
                     {
                         connection.Open();
-                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                        DataTable dt = new DataTable();
-                        dt.Clear();
-                        da.Fill(dt);
+                        da = new MySqlDataAdapter(cmd);
+                        ds = new DataSet();
+                        ds.Clear();
+                        da.Fill(ds, start_record, max_record, "supplies");
 
-                        grid.DataSource = dt;
+                        grid.DataSource = ds;
+                        grid.DataMember = "supplies";
                         grid.Columns["id"].Visible = false;
                         grid.Columns["item"].HeaderText = "ITEM";
                         grid.Columns["brand"].HeaderText = "BRAND";
@@ -52,6 +59,59 @@ namespace ceh_lab_inv.functions
             catch(Exception ex)
             {
                 Console.WriteLine("Error loading supplies: " + ex.ToString());
+            }
+        }
+
+        public void NextPage()
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(con.conString()))
+                {
+                    connection.Open();
+
+                    start_record += max_record;
+
+                    if (start_record >= int.Parse(val.CountSupplies))
+                    {
+                        start_record = int.Parse(val.CountSupplies) - max_record;
+                    }
+
+                    ds.Clear();
+                    da.Fill(ds, start_record, max_record, "supplies");
+
+                    connection.Close();
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error next paging: " + ex.ToString());
+            }
+        }
+
+        public void PreviousPage()
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(con.conString()))
+                {
+                    connection.Open();
+
+                    start_record -= max_record;
+                    if (start_record <= 0)
+                    {
+                        start_record = 0;
+                    }
+
+                    ds.Clear();
+                    da.Fill(ds, start_record, max_record, "supplies");
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error previous paging: " + ex.ToString());
             }
         }
 

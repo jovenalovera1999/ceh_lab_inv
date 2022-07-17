@@ -9,7 +9,7 @@ namespace ceh_lab_inv.components
     internal class Value
     {
 
-        // Connection values
+        // Connection Values
 
         public string server_name = "localhost";
         public string server_user = "root";
@@ -17,7 +17,7 @@ namespace ceh_lab_inv.components
         public string server_port = "3307";
         public string db_name = "ceh_lab_inv_db";
 
-        // User values
+        // User Values
 
         public static int user_primary_id;
         public int UserPrimaryID
@@ -124,7 +124,7 @@ namespace ceh_lab_inv.components
             set { user_type = value; }
         }
 
-        // Account values
+        // Account Values
 
         public static int account_primary_id;
         public int AccountPrimaryID
@@ -231,7 +231,7 @@ namespace ceh_lab_inv.components
             set { account_role = value; }
         }
 
-        // Supply values
+        // Supply Values
 
         public static int supply_primary_id;
         public int SupplyPrimaryID
@@ -331,7 +331,7 @@ namespace ceh_lab_inv.components
             set { supply_expiration_date = value; }
         }
 
-        // Count values
+        // Count Values
 
         public static string count_supplies;
         public string CountSupplies
@@ -345,22 +345,6 @@ namespace ceh_lab_inv.components
         {
             get { return count_trash; }
             set { count_trash = value; }
-        }
-
-        // Date From and To
-
-        public static DateTime from;
-        public DateTime From
-        {
-            get { return from; }
-            set { from = value; }
-        }
-
-        public static DateTime to;
-        public DateTime To
-        {
-            get { return to; }
-            set { to = value; }
         }
     }
 }

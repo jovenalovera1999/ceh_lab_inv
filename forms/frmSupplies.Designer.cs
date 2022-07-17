@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridSupplies = new Guna.UI2.WinForms.Guna2DataGridView();
             this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
             this.btnPrint = new Guna.UI2.WinForms.Guna2Button();
@@ -43,6 +43,9 @@
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnLoadTrash = new Guna.UI2.WinForms.Guna2Button();
             this.btnLoadSupplies = new Guna.UI2.WinForms.Guna2Button();
+            this.btnNextPage = new Guna.UI2.WinForms.Guna2Button();
+            this.btnPreviousPage = new Guna.UI2.WinForms.Guna2Button();
+            this.lblPageLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridSupplies)).BeginInit();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
@@ -54,8 +57,8 @@
             this.gridSupplies.AllowUserToDeleteRows = false;
             this.gridSupplies.AllowUserToResizeColumns = false;
             this.gridSupplies.AllowUserToResizeRows = false;
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.White;
-            this.gridSupplies.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.gridSupplies.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.gridSupplies.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -64,24 +67,24 @@
             this.gridSupplies.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridSupplies.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.gridSupplies.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.Color.Green;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Segoe UI", 12F);
-            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridSupplies.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Green;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 12F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridSupplies.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.gridSupplies.ColumnHeadersHeight = 36;
             this.gridSupplies.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 11F);
-            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.MediumSeaGreen;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridSupplies.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.MediumSeaGreen;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridSupplies.DefaultCellStyle = dataGridViewCellStyle6;
             this.gridSupplies.EnableHeadersVisualStyles = false;
             this.gridSupplies.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.gridSupplies.Location = new System.Drawing.Point(0, 179);
@@ -90,7 +93,7 @@
             this.gridSupplies.RowHeadersVisible = false;
             this.gridSupplies.RowTemplate.Height = 36;
             this.gridSupplies.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridSupplies.Size = new System.Drawing.Size(1764, 765);
+            this.gridSupplies.Size = new System.Drawing.Size(1764, 711);
             this.gridSupplies.TabIndex = 0;
             this.gridSupplies.TabStop = false;
             this.gridSupplies.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -282,12 +285,73 @@
             this.btnLoadSupplies.Text = "LOAD SUPPLIES";
             this.btnLoadSupplies.Click += new System.EventHandler(this.btnLoadSupplies_Click);
             // 
+            // btnNextPage
+            // 
+            this.btnNextPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNextPage.Animated = true;
+            this.btnNextPage.BorderColor = System.Drawing.Color.White;
+            this.btnNextPage.BorderThickness = 1;
+            this.btnNextPage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNextPage.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnNextPage.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnNextPage.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnNextPage.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnNextPage.FillColor = System.Drawing.Color.Green;
+            this.btnNextPage.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnNextPage.ForeColor = System.Drawing.Color.White;
+            this.btnNextPage.Location = new System.Drawing.Point(1711, 896);
+            this.btnNextPage.Name = "btnNextPage";
+            this.btnNextPage.Size = new System.Drawing.Size(40, 36);
+            this.btnNextPage.TabIndex = 14;
+            this.btnNextPage.TabStop = false;
+            this.btnNextPage.Text = ">";
+            this.btnNextPage.Click += new System.EventHandler(this.btnNextPage_Click);
+            // 
+            // btnPreviousPage
+            // 
+            this.btnPreviousPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPreviousPage.Animated = true;
+            this.btnPreviousPage.BorderColor = System.Drawing.Color.White;
+            this.btnPreviousPage.BorderThickness = 1;
+            this.btnPreviousPage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPreviousPage.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPreviousPage.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPreviousPage.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPreviousPage.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPreviousPage.FillColor = System.Drawing.Color.Green;
+            this.btnPreviousPage.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnPreviousPage.ForeColor = System.Drawing.Color.White;
+            this.btnPreviousPage.Location = new System.Drawing.Point(1665, 896);
+            this.btnPreviousPage.Name = "btnPreviousPage";
+            this.btnPreviousPage.Size = new System.Drawing.Size(40, 36);
+            this.btnPreviousPage.TabIndex = 15;
+            this.btnPreviousPage.TabStop = false;
+            this.btnPreviousPage.Text = "<";
+            this.btnPreviousPage.Click += new System.EventHandler(this.btnPreviousPage_Click);
+            // 
+            // lblPageLabel
+            // 
+            this.lblPageLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPageLabel.AutoSize = true;
+            this.lblPageLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPageLabel.ForeColor = System.Drawing.Color.Black;
+            this.lblPageLabel.Location = new System.Drawing.Point(1576, 905);
+            this.lblPageLabel.Name = "lblPageLabel";
+            this.lblPageLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblPageLabel.Size = new System.Drawing.Size(83, 21);
+            this.lblPageLabel.TabIndex = 42;
+            this.lblPageLabel.Text = "lblTotalList";
+            this.lblPageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // frmSupplies
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1763, 944);
+            this.Controls.Add(this.lblPageLabel);
+            this.Controls.Add(this.btnPreviousPage);
+            this.Controls.Add(this.btnNextPage);
             this.Controls.Add(this.btnLoadSupplies);
             this.Controls.Add(this.btnLoadTrash);
             this.Controls.Add(this.txtSearch);
@@ -308,6 +372,7 @@
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -325,5 +390,8 @@
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
         private Guna.UI2.WinForms.Guna2Button btnLoadTrash;
         private Guna.UI2.WinForms.Guna2Button btnLoadSupplies;
+        private Guna.UI2.WinForms.Guna2Button btnNextPage;
+        private Guna.UI2.WinForms.Guna2Button btnPreviousPage;
+        private System.Windows.Forms.Label lblPageLabel;
     }
 }
