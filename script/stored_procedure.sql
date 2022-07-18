@@ -260,3 +260,20 @@ BEGIN
 END$$
 
 DELIMITER ;
+-- //
+-- // Print
+-- //
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `load_print_supplies_by_date`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `load_print_supplies_by_date` (p_from DATE, p_to DATE)
+BEGIN
+	SELECT id, item, brand, supplier, CONCAT(quantity, ' ', unit_of_quantity), CONCAT(qty, ' ', unit_of_qty), CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), 
+    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit),
+    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), DATE_FORMAT(expiration_date, '%m/%d/%y'), CONCAT(DATEDIFF(expiration_date, NOW()), ' Days Left'),
+    DATE_FORMAT(created_at, '%m/%d/%y'), DATE_FORMAT(updated_at, '%m/%d/%y') FROM ceh_lab_inv_db.supplies WHERE created_at BETWEEN p_from AND p_to AND is_deleted = 0 ORDER BY item ASC;
+END$$
+
+DELIMITER ;

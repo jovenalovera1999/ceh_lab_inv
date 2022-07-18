@@ -26,6 +26,11 @@ namespace ceh_lab_inv.forms
         {
             this.SetBounds(Screen.PrimaryScreen.WorkingArea.Left, Screen.PrimaryScreen.WorkingArea.Top, Screen.PrimaryScreen.WorkingArea.Width,
                 Screen.PrimaryScreen.WorkingArea.Height);
+
+            if(val.UserType != "ADMINISTRATOR")
+            {
+                btnAccounts.Visible = false;
+            }
         }
 
         private void btnSupplies_Click(object sender, EventArgs e)
