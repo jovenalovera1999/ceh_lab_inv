@@ -52,6 +52,9 @@ namespace ceh_lab_inv.functions
                             val.SupplyUnitOfQty = dt.Rows[0].Field<string>("unit_of_qty");
                             val.SupplyUnitCost = dt.Rows[0].Field<string>("CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR)");
                             val.SupplyTotalCost = dt.Rows[0].Field<string>("CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR)");
+                            val.SupplyExpRgtQuantity = dt.Rows[0].Field<int?>("exp_rgt_quantity");
+                            val.SupplyExpRgtUnit = dt.Rows[0].Field<string>("exp_rgt_unit");
+                            val.SupplyExpRgtCost = dt.Rows[0].Field<string>("CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR)");
                             val.SupplyExpirationDate = dt.Rows[0].Field<DateTime?>("expiration_date");
 
                             connection.Close();
@@ -327,6 +330,39 @@ namespace ceh_lab_inv.functions
             catch (Exception ex)
             {
                 Console.WriteLine("Error updating supply without expiration date: " + ex.ToString());
+                return false;
+            }
+        }
+
+        public bool UpdateRgt(int id, int exp_rgt_quantity, string exp_rgt_unit, string exp_rgt_cost)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(con.conString()))
+                {
+                    string sql = @"CALL update_supply_rgt(@id, @exp_rgt_quantity, @exp_rgt_unit, @exp_rgt_cost);";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+                        cmd.Parameters.AddWithValue("@exp_rgt_quantity", exp_rgt_quantity);
+                        cmd.Parameters.AddWithValue("@exp_rgt_unit", exp_rgt_unit);
+                        cmd.Parameters.AddWithValue("@exp_rgt_cost", exp_rgt_cost);
+
+                        connection.Open();
+
+                        MySqlDataReader dr = cmd.ExecuteReader();
+                        dr.Close();
+
+                        connection.Close();
+
+                        return true;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error updating supply rgt: " + ex.ToString());
                 return false;
             }
         }

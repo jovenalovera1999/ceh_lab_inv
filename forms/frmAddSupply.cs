@@ -50,11 +50,17 @@ namespace ceh_lab_inv.forms
             if (String.IsNullOrWhiteSpace(txtQuantity.Text))
             {
                 txtQuantity.Text = "";
-                txtUnitCost.Text = "";
+                txtTotalCost.Text = "";
+            }
+            else if(String.IsNullOrWhiteSpace(txtQty.Text))
+            {
+                txtQty.Text = "";
+                txtTotalCost.Text = "";
             }
             else if(String.IsNullOrWhiteSpace(txtUnitCost.Text))
             {
                 txtUnitCost.Text = "";
+                txtTotalCost.Text = "";
             }
             else
             {

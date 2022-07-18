@@ -303,8 +303,8 @@ namespace ceh_lab_inv.components
             set { supply_total_cost = value; }
         }
 
-        public static int supply_exp_rgt_quantity;
-        public int SupplyExpRgtQuantity
+        public static int? supply_exp_rgt_quantity;
+        public int? SupplyExpRgtQuantity
         {
             get { return supply_exp_rgt_quantity; }
             set { supply_exp_rgt_quantity = value; }

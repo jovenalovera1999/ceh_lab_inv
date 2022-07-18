@@ -45,6 +45,7 @@
             // 
             // rprtSupplies
             // 
+            this.rprtSupplies.LocalReport.ReportEmbeddedResource = "ceh_lab_inv.reports.rprtSupplies.rdlc";
             this.rprtSupplies.Location = new System.Drawing.Point(-1, 148);
             this.rprtSupplies.Name = "rprtSupplies";
             this.rprtSupplies.Size = new System.Drawing.Size(1921, 933);
@@ -109,6 +110,7 @@
             this.btnClose.TabIndex = 9;
             this.btnClose.TabStop = false;
             this.btnClose.Text = "X";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // guna2Button7
             // 

@@ -111,7 +111,8 @@ namespace ceh_lab_inv.forms
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-
+            forms.frmPrint print = new forms.frmPrint();
+            print.Show();
         }
 
         private void btnLoadSupplies_Click(object sender, EventArgs e)
@@ -133,7 +134,11 @@ namespace ceh_lab_inv.forms
 
             if (gridSupplies.Columns[e.ColumnIndex].Name == "btnUpdateRgt")
             {
-                
+                if (supply.Get(int.Parse(row.Cells["id"].Value.ToString())))
+                {
+                    forms.frmUpdateRgt update_rgt = new forms.frmUpdateRgt();
+                    update_rgt.Show();
+                }
             }
             else if (gridSupplies.Columns[e.ColumnIndex].Name == "btnUpdate")
             {

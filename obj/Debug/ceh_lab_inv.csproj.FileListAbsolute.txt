@@ -28,3 +28,4 @@ D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.frmSupplies.resources
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.frmUpdateRgt.resources
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.frmUpdateSupply.resources
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.frmProfile.resources
+D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.frmPrint.resources
