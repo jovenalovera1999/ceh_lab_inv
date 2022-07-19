@@ -112,12 +112,121 @@ namespace ceh_lab_inv.functions
                         grid.Columns["DATE_FORMAT(updated_at, '%m/%d/%y')"].HeaderText = "UPDATED AT";
 
                         connection.Close();
+
+                        val.IsSupplies = true;
+
+                        val.IsSuppliesBySearch = false;
+                        val.IsTrash = false;
                     }
                 }
             }
             catch(Exception ex)
             {
                 Console.WriteLine("Error loading supplies: " + ex.ToString());
+            }
+        }
+
+        public void LoadBySearch(string keyword, DataGridView grid)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(con.conString()))
+                {
+                    string sql = @"CALL load_supplies_by_date(@keyword);";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@keyword", string.Format("%{0}%", keyword));
+
+                        connection.Open();
+
+                        da = new MySqlDataAdapter(cmd);
+                        ds = new DataSet();
+
+                        ds.Clear();
+                        da.Fill(ds, start_record, max_record, "supplies");
+
+                        grid.DataSource = ds;
+                        grid.DataMember = "supplies";
+
+                        grid.Columns["id"].Visible = false;
+                        grid.Columns["item"].HeaderText = "ITEM";
+                        grid.Columns["brand"].HeaderText = "BRAND";
+                        grid.Columns["supplier"].HeaderText = "SUPPLIER";
+                        grid.Columns["CONCAT(quantity, ' ', unit_of_quantity)"].HeaderText = "QUANTITY";
+                        grid.Columns["CONCAT(qty, ' ', unit_of_qty)"].HeaderText = "QTY";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "UNIT COST";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "TOTAL COST";
+                        grid.Columns["CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit)"].HeaderText = "EXP. RGT. QTY";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "EXP. RGT. COST";
+                        grid.Columns["DATE_FORMAT(expiration_date, '%m/%d/%y')"].HeaderText = "EXPIRATION DATE";
+                        grid.Columns["CONCAT(DATEDIFF(expiration_date, NOW()), ' Days Left')"].HeaderText = "EXPIRED IN";
+                        grid.Columns["DATE_FORMAT(created_at, '%m/%d/%y')"].HeaderText = "CREATED AT";
+                        grid.Columns["DATE_FORMAT(updated_at, '%m/%d/%y')"].HeaderText = "UPDATED AT";
+
+                        connection.Close();
+
+                        val.IsSuppliesBySearch = true;
+
+                        val.IsSupplies = false;
+                        val.IsTrash = false;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error loading supplies by date: " + ex.ToString());
+            }
+        }
+
+        public void LoadTrash(DataGridView grid)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(con.conString()))
+                {
+                    string sql = @"CALL load_trash();";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                    {
+                        connection.Open();
+
+                        da = new MySqlDataAdapter(cmd);
+                        ds = new DataSet();
+
+                        ds.Clear();
+                        da.Fill(ds, start_record, max_record, "supplies");
+
+                        grid.DataSource = ds;
+                        grid.DataMember = "supplies";
+
+                        grid.Columns["id"].Visible = false;
+                        grid.Columns["item"].HeaderText = "ITEM";
+                        grid.Columns["brand"].HeaderText = "BRAND";
+                        grid.Columns["supplier"].HeaderText = "SUPPLIER";
+                        grid.Columns["CONCAT(quantity, ' ', unit_of_quantity)"].HeaderText = "QUANTITY";
+                        grid.Columns["CONCAT(qty, ' ', unit_of_qty)"].HeaderText = "QTY";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "UNIT COST";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "TOTAL COST";
+                        grid.Columns["CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit)"].HeaderText = "EXP. RGT. QTY";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "EXP. RGT. COST";
+                        grid.Columns["DATE_FORMAT(expiration_date, '%m/%d/%y')"].HeaderText = "EXPIRATION DATE";
+                        grid.Columns["CONCAT(DATEDIFF(expiration_date, NOW()), ' Days Left')"].HeaderText = "EXPIRED IN";
+                        grid.Columns["DATE_FORMAT(created_at, '%m/%d/%y')"].HeaderText = "CREATED AT";
+                        grid.Columns["DATE_FORMAT(updated_at, '%m/%d/%y')"].HeaderText = "UPDATED AT";
+
+                        connection.Close();
+
+                        val.IsTrash = true;
+
+                        val.IsSupplies = false;
+                        val.IsSuppliesBySearch = false;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error loading trash: " + ex.ToString());
             }
         }
 
@@ -131,9 +240,26 @@ namespace ceh_lab_inv.functions
 
                     start_record += max_record;
 
-                    if (start_record >= int.Parse(val.CountSupplies))
+                    if (val.IsSupplies == true && val.IsSuppliesBySearch == false && val.IsTrash == false)
                     {
-                        start_record = int.Parse(val.CountSupplies) - max_record;
+                        if (start_record >= int.Parse(val.CountSupplies))
+                        {
+                            start_record = int.Parse(val.CountSupplies) - max_record;
+                        }
+                    }
+                    else if (val.IsSupplies == false && val.IsSuppliesBySearch == true && val.IsTrash == false)
+                    {
+                        if (start_record >= int.Parse(val.CountSuppliesBySearch))
+                        {
+                            start_record = int.Parse(val.CountSuppliesBySearch) - max_record;
+                        }
+                    }
+                    else
+                    {
+                        if (start_record >= int.Parse(val.CountSuppliesBySearch))
+                        {
+                            start_record = int.Parse(val.CountTrash) - max_record;
+                        }
                     }
 
                     ds.Clear();

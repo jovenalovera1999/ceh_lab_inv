@@ -43,6 +43,38 @@ namespace ceh_lab_inv.functions
             }
         }
 
+        public void SuppliesBySearch(string keyword)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(con.conString()))
+                {
+                    string sql = @"CALL count_supplies_by_search(@keyword);";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@keyword", string.Format("%{0}%", keyword));
+
+                        connection.Open();
+
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+
+                        dt.Clear();
+                        da.Fill(dt);
+
+                        val.CountSuppliesBySearch = cmd.ExecuteScalar().ToString();
+
+                        connection.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error counting supplies by search: " + ex.ToString());
+            }
+        }
+
         public void Trash()
         {
             try

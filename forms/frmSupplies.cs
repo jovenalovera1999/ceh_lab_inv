@@ -23,6 +23,8 @@ namespace ceh_lab_inv.forms
         functions.Supply supply = new functions.Supply();
         functions.Count count = new functions.Count();
 
+        string keyword;
+
         int count_entries;
         const int max_rows = 20;
 
@@ -33,37 +35,129 @@ namespace ceh_lab_inv.forms
 
             count.Trash();
             lblInTrash.Text = val.CountTrash;
+
+            count.SuppliesBySearch(keyword);
         }
 
         void LabelPaging()
         {
-            count_entries = gridSupplies.Rows.Count;
-            lblPageLabel.Text = string.Format("Entries: {0}/{1}", count_entries, val.CountSupplies);
+            if(val.IsSupplies == true && val.IsSuppliesBySearch == false && val.IsTrash == false)
+            {
+                count_entries = gridSupplies.Rows.Count;
+                lblPageLabel.Text = string.Format("Entries: {0}/{1}", count_entries, val.CountSupplies);
+            }
+            else if(val.IsSupplies == false && val.IsSuppliesBySearch == true && val.IsTrash == false)
+            {
+                count_entries = gridSupplies.Rows.Count;
+                lblPageLabel.Text = string.Format("Entries: {0}/{1}", count_entries, val.CountSuppliesBySearch);
+            }
+            else
+            {
+                count_entries = gridSupplies.Rows.Count;
+                lblPageLabel.Text = string.Format("Entries: {0}/{1}", count_entries, val.CountTrash);
+            }
         }
 
         void ButtonControls()
         {
-            if (count_entries <= int.Parse(val.CountSupplies) && int.Parse(val.CountSupplies) > max_rows == false)
+            if (val.IsSupplies == true && val.IsSuppliesBySearch == false && val.IsTrash == false)
             {
-                btnNextPage.Enabled = false;
-                btnPreviousPage.Enabled = false;
-            }
-            else if(count_entries == max_rows)
-            {
-                btnNextPage.Enabled = true;
+                if (count_entries <= int.Parse(val.CountSupplies) && int.Parse(val.CountSupplies) > max_rows == false)
+                {
+                    btnNextPage.Enabled = false;
+                    btnPreviousPage.Enabled = false;
+                }
+                else if (count_entries == max_rows)
+                {
+                    btnNextPage.Enabled = true;
 
-                btnPreviousPage.Enabled = false;
-            }
-            else if(count_entries == int.Parse(val.CountSupplies))
-            {
-                btnPreviousPage.Enabled = true;
+                    btnPreviousPage.Enabled = false;
+                }
+                else if (count_entries == int.Parse(val.CountSupplies))
+                {
+                    btnPreviousPage.Enabled = true;
 
-                btnNextPage.Enabled = false;
+                    btnNextPage.Enabled = false;
+                }
+                else
+                {
+                    btnNextPage.Enabled = true;
+                    btnPreviousPage.Enabled = true;
+                }
+            }
+            else if (val.IsSupplies == false && val.IsSuppliesBySearch == true && val.IsTrash == false)
+            {
+                if (count_entries <= int.Parse(val.CountSuppliesBySearch) && int.Parse(val.CountSuppliesBySearch) > max_rows == false)
+                {
+                    btnNextPage.Enabled = false;
+                    btnPreviousPage.Enabled = false;
+                }
+                else if (count_entries == max_rows)
+                {
+                    btnNextPage.Enabled = true;
+
+                    btnPreviousPage.Enabled = false;
+                }
+                else if (count_entries == int.Parse(val.CountSuppliesBySearch))
+                {
+                    btnPreviousPage.Enabled = true;
+
+                    btnNextPage.Enabled = false;
+                }
+                else
+                {
+                    btnNextPage.Enabled = true;
+                    btnPreviousPage.Enabled = true;
+                }
             }
             else
             {
-                btnNextPage.Enabled = true;
-                btnPreviousPage.Enabled = true;
+                if (count_entries <= int.Parse(val.CountTrash) && int.Parse(val.CountTrash) > max_rows == false)
+                {
+                    btnNextPage.Enabled = false;
+                    btnPreviousPage.Enabled = false;
+                }
+                else if (count_entries == max_rows)
+                {
+                    btnNextPage.Enabled = true;
+
+                    btnPreviousPage.Enabled = false;
+                }
+                else if (count_entries == int.Parse(val.CountTrash))
+                {
+                    btnPreviousPage.Enabled = true;
+
+                    btnNextPage.Enabled = false;
+                }
+                else
+                {
+                    btnNextPage.Enabled = true;
+                    btnPreviousPage.Enabled = true;
+                }
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (val.IsSupplies == true || val.IsSuppliesBySearch == true)
+            {
+                keyword = txtSearch.Text;
+                supply.LoadBySearch(keyword, gridSupplies);
+                gridSupplies.ClearSelection();
+
+                CountSuppliesAndTrash();
+                LabelPaging();
+                ButtonControls();
+            }
+            else
+            {
+                // keyword = txtSearch.Text;
+                // supply.LoadBySearch(keyword, gridSupplies);
+                // gridSupplies.ClearSelection();
+
+                // CountSuppliesAndTrash();
+                // LabelPaging();
+                // ButtonControls();
             }
         }
 
@@ -71,8 +165,6 @@ namespace ceh_lab_inv.forms
         {
             this.SetBounds(Screen.PrimaryScreen.WorkingArea.Left, Screen.PrimaryScreen.WorkingArea.Top, Screen.PrimaryScreen.WorkingArea.Width,
                 Screen.PrimaryScreen.WorkingArea.Height);
-
-            CountSuppliesAndTrash();
 
             supply.Load(gridSupplies);
 
@@ -97,6 +189,7 @@ namespace ceh_lab_inv.forms
             btnDelete.UseColumnTextForButtonValue = true;
             gridSupplies.Columns.Add(btnDelete);
 
+            CountSuppliesAndTrash();
             LabelPaging();
             ButtonControls();
 
@@ -117,15 +210,29 @@ namespace ceh_lab_inv.forms
 
         private void btnLoadSupplies_Click(object sender, EventArgs e)
         {
-            CountSuppliesAndTrash();
 
             supply.Load(gridSupplies);
             gridSupplies.ClearSelection();
+
+            CountSuppliesAndTrash();
+            LabelPaging();
+            ButtonControls();
+
+            txtSearch.ResetText();
+            txtSearch.Focus();
         }
 
         private void btnLoadTrash_Click(object sender, EventArgs e)
         {
+            supply.LoadTrash(gridSupplies);
+            gridSupplies.ClearSelection();
 
+            CountSuppliesAndTrash();
+            LabelPaging();
+            ButtonControls();
+
+            txtSearch.ResetText();
+            txtSearch.Focus();
         }
 
         private void gridSupplies_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -174,9 +281,27 @@ namespace ceh_lab_inv.forms
             gridSupplies.ClearSelection();
 
             count_entries += gridSupplies.Rows.Count;
-            if (count_entries > int.Parse(val.CountSupplies))
+
+            if (val.IsSupplies == true && val.IsSuppliesBySearch == false && val.IsTrash == false)
             {
-                count_entries = gridSupplies.Rows.Count;
+                if (count_entries > int.Parse(val.CountSupplies))
+                {
+                    count_entries = gridSupplies.Rows.Count;
+                }
+            }
+            else if (val.IsSupplies == false && val.IsSuppliesBySearch == true && val.IsTrash == false)
+            {
+                if (count_entries > int.Parse(val.CountSuppliesBySearch))
+                {
+                    count_entries = gridSupplies.Rows.Count;
+                }
+            }
+            else
+            {
+                if (count_entries > int.Parse(val.CountTrash))
+                {
+                    count_entries = gridSupplies.Rows.Count;
+                }
             }
 
             LabelPaging();
@@ -187,22 +312,67 @@ namespace ceh_lab_inv.forms
 
         private void btnPreviousPage_Click(object sender, EventArgs e)
         {
-            if (count_entries == int.Parse(val.CountSupplies) && gridSupplies.Rows.Count < max_rows)
+            if (val.IsSupplies == true && val.IsSuppliesBySearch == false && val.IsTrash == false)
             {
-                count_entries -= gridSupplies.Rows.Count;
+                if (count_entries == int.Parse(val.CountSupplies) && gridSupplies.Rows.Count < max_rows)
+                {
+                    count_entries -= gridSupplies.Rows.Count;
 
-                supply.PreviousPage();
-                gridSupplies.ClearSelection();
+                    supply.PreviousPage();
+                    gridSupplies.ClearSelection();
+                }
+                else
+                {
+                    supply.PreviousPage();
+                    gridSupplies.ClearSelection();
+
+                    count_entries -= gridSupplies.Rows.Count;
+                    if (count_entries <= 0)
+                    {
+                        count_entries = gridSupplies.Rows.Count;
+                    }
+                }
+            }
+            else if (val.IsSupplies == false && val.IsSuppliesBySearch == true && val.IsTrash == false)
+            {
+                if (count_entries == int.Parse(val.CountSuppliesBySearch) && gridSupplies.Rows.Count < max_rows)
+                {
+                    count_entries -= gridSupplies.Rows.Count;
+
+                    supply.PreviousPage();
+                    gridSupplies.ClearSelection();
+                }
+                else
+                {
+                    supply.PreviousPage();
+                    gridSupplies.ClearSelection();
+
+                    count_entries -= gridSupplies.Rows.Count;
+                    if (count_entries <= 0)
+                    {
+                        count_entries = gridSupplies.Rows.Count;
+                    }
+                }
             }
             else
             {
-                supply.PreviousPage();
-                gridSupplies.ClearSelection();
-
-                count_entries -= gridSupplies.Rows.Count;
-                if (count_entries <= 0)
+                if (count_entries == int.Parse(val.CountTrash) && gridSupplies.Rows.Count < max_rows)
                 {
-                    count_entries = gridSupplies.Rows.Count;
+                    count_entries -= gridSupplies.Rows.Count;
+
+                    supply.PreviousPage();
+                    gridSupplies.ClearSelection();
+                }
+                else
+                {
+                    supply.PreviousPage();
+                    gridSupplies.ClearSelection();
+
+                    count_entries -= gridSupplies.Rows.Count;
+                    if (count_entries <= 0)
+                    {
+                        count_entries = gridSupplies.Rows.Count;
+                    }
                 }
             }
 
