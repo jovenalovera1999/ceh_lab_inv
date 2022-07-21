@@ -14,12 +14,6 @@ namespace ceh_lab_inv.functions
         components.Connection con = new components.Connection();
         components.Value val = new components.Value();
 
-        MySqlDataAdapter da;
-        DataSet ds;
-
-        int start_record;
-        const int max_record = 20;
-
         public bool Get(int id)
         {
             try
@@ -87,36 +81,29 @@ namespace ceh_lab_inv.functions
                     {
                         connection.Open();
 
-                        da = new MySqlDataAdapter(cmd);
-                        ds = new DataSet();
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
 
-                        ds.Clear();
-                        da.Fill(ds, start_record, max_record, "supplies");
+                        dt.Clear();
+                        da.Fill(dt);
 
-                        grid.DataSource = ds;
-                        grid.DataMember = "supplies";
-
+                        grid.DataSource = dt;
                         grid.Columns["id"].Visible = false;
                         grid.Columns["item"].HeaderText = "ITEM";
                         grid.Columns["brand"].HeaderText = "BRAND";
                         grid.Columns["supplier"].HeaderText = "SUPPLIER";
-                        grid.Columns["CONCAT(quantity, ' ', unit_of_quantity)"].HeaderText = "QUANTITY";
+                        grid.Columns["CONCAT(quantity, ' ', unit_of_quantity)"].HeaderText = "QUANTITY (EXISTING)";
                         grid.Columns["CONCAT(qty, ' ', unit_of_qty)"].HeaderText = "QTY";
                         grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "UNIT COST";
                         grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "TOTAL COST";
-                        grid.Columns["CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit)"].HeaderText = "EXP. RGT. QTY";
-                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "EXP. RGT. COST";
                         grid.Columns["DATE_FORMAT(expiration_date, '%m/%d/%y')"].HeaderText = "EXPIRATION DATE";
                         grid.Columns["CONCAT(DATEDIFF(expiration_date, NOW()), ' Days Left')"].HeaderText = "EXPIRED IN";
+                        grid.Columns["CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit)"].HeaderText = "EXP. RGT. QTY";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "EXP. RGT. COST";
                         grid.Columns["DATE_FORMAT(created_at, '%m/%d/%y')"].HeaderText = "CREATED AT";
                         grid.Columns["DATE_FORMAT(updated_at, '%m/%d/%y')"].HeaderText = "UPDATED AT";
 
                         connection.Close();
-
-                        val.IsSupplies = true;
-
-                        val.IsSuppliesBySearch = false;
-                        val.IsTrash = false;
                     }
                 }
             }
@@ -140,36 +127,29 @@ namespace ceh_lab_inv.functions
 
                         connection.Open();
 
-                        da = new MySqlDataAdapter(cmd);
-                        ds = new DataSet();
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
 
-                        ds.Clear();
-                        da.Fill(ds, start_record, max_record, "supplies");
+                        dt.Clear();
+                        da.Fill(dt);
 
-                        grid.DataSource = ds;
-                        grid.DataMember = "supplies";
-
+                        grid.DataSource = dt;
                         grid.Columns["id"].Visible = false;
                         grid.Columns["item"].HeaderText = "ITEM";
                         grid.Columns["brand"].HeaderText = "BRAND";
                         grid.Columns["supplier"].HeaderText = "SUPPLIER";
-                        grid.Columns["CONCAT(quantity, ' ', unit_of_quantity)"].HeaderText = "QUANTITY";
+                        grid.Columns["CONCAT(quantity, ' ', unit_of_quantity)"].HeaderText = "QUANTITY (EXISTING)";
                         grid.Columns["CONCAT(qty, ' ', unit_of_qty)"].HeaderText = "QTY";
                         grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "UNIT COST";
                         grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "TOTAL COST";
-                        grid.Columns["CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit)"].HeaderText = "EXP. RGT. QTY";
-                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "EXP. RGT. COST";
                         grid.Columns["DATE_FORMAT(expiration_date, '%m/%d/%y')"].HeaderText = "EXPIRATION DATE";
                         grid.Columns["CONCAT(DATEDIFF(expiration_date, NOW()), ' Days Left')"].HeaderText = "EXPIRED IN";
+                        grid.Columns["CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit)"].HeaderText = "EXP. RGT. QTY";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "EXP. RGT. COST";
                         grid.Columns["DATE_FORMAT(created_at, '%m/%d/%y')"].HeaderText = "CREATED AT";
                         grid.Columns["DATE_FORMAT(updated_at, '%m/%d/%y')"].HeaderText = "UPDATED AT";
 
                         connection.Close();
-
-                        val.IsSuppliesBySearch = true;
-
-                        val.IsSupplies = false;
-                        val.IsTrash = false;
                     }
                 }
             }
@@ -191,112 +171,35 @@ namespace ceh_lab_inv.functions
                     {
                         connection.Open();
 
-                        da = new MySqlDataAdapter(cmd);
-                        ds = new DataSet();
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
 
-                        ds.Clear();
-                        da.Fill(ds, start_record, max_record, "supplies");
+                        dt.Clear();
+                        da.Fill(dt);
 
-                        grid.DataSource = ds;
-                        grid.DataMember = "supplies";
-
+                        grid.DataSource = dt;
                         grid.Columns["id"].Visible = false;
                         grid.Columns["item"].HeaderText = "ITEM";
                         grid.Columns["brand"].HeaderText = "BRAND";
                         grid.Columns["supplier"].HeaderText = "SUPPLIER";
-                        grid.Columns["CONCAT(quantity, ' ', unit_of_quantity)"].HeaderText = "QUANTITY";
+                        grid.Columns["CONCAT(quantity, ' ', unit_of_quantity)"].HeaderText = "QUANTITY (EXISTING)";
                         grid.Columns["CONCAT(qty, ' ', unit_of_qty)"].HeaderText = "QTY";
                         grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "UNIT COST";
                         grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "TOTAL COST";
-                        grid.Columns["CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit)"].HeaderText = "EXP. RGT. QTY";
-                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "EXP. RGT. COST";
                         grid.Columns["DATE_FORMAT(expiration_date, '%m/%d/%y')"].HeaderText = "EXPIRATION DATE";
                         grid.Columns["CONCAT(DATEDIFF(expiration_date, NOW()), ' Days Left')"].HeaderText = "EXPIRED IN";
+                        grid.Columns["CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit)"].HeaderText = "EXP. RGT. QTY";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "EXP. RGT. COST";
                         grid.Columns["DATE_FORMAT(created_at, '%m/%d/%y')"].HeaderText = "CREATED AT";
                         grid.Columns["DATE_FORMAT(updated_at, '%m/%d/%y')"].HeaderText = "UPDATED AT";
 
                         connection.Close();
-
-                        val.IsTrash = true;
-
-                        val.IsSupplies = false;
-                        val.IsSuppliesBySearch = false;
                     }
                 }
             }
             catch(Exception ex)
             {
                 Console.WriteLine("Error loading trash: " + ex.ToString());
-            }
-        }
-
-        public void NextPage()
-        {
-            try
-            {
-                using (MySqlConnection connection = new MySqlConnection(con.conString()))
-                {
-                    connection.Open();
-
-                    start_record += max_record;
-
-                    if (val.IsSupplies == true && val.IsSuppliesBySearch == false && val.IsTrash == false)
-                    {
-                        if (start_record >= int.Parse(val.CountSupplies))
-                        {
-                            start_record = int.Parse(val.CountSupplies) - max_record;
-                        }
-                    }
-                    else if (val.IsSupplies == false && val.IsSuppliesBySearch == true && val.IsTrash == false)
-                    {
-                        if (start_record >= int.Parse(val.CountSuppliesBySearch))
-                        {
-                            start_record = int.Parse(val.CountSuppliesBySearch) - max_record;
-                        }
-                    }
-                    else
-                    {
-                        if (start_record >= int.Parse(val.CountSuppliesBySearch))
-                        {
-                            start_record = int.Parse(val.CountTrash) - max_record;
-                        }
-                    }
-
-                    ds.Clear();
-                    da.Fill(ds, start_record, max_record, "supplies");
-
-                    connection.Close();
-                }
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine("Error next paging: " + ex.ToString());
-            }
-        }
-
-        public void PreviousPage()
-        {
-            try
-            {
-                using (MySqlConnection connection = new MySqlConnection(con.conString()))
-                {
-                    connection.Open();
-
-                    start_record -= max_record;
-                    if (start_record <= 0)
-                    {
-                        start_record = 0;
-                    }
-
-                    ds.Clear();
-                    da.Fill(ds, start_record, max_record, "supplies");
-
-                    connection.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error previous paging: " + ex.ToString());
             }
         }
 
@@ -481,7 +384,6 @@ namespace ceh_lab_inv.functions
                         dr.Close();
 
                         connection.Close();
-
                         return true;
                     }
                 }
@@ -518,6 +420,64 @@ namespace ceh_lab_inv.functions
             catch (Exception ex)
             {
                 Console.WriteLine("Error deleting supply: " + ex.ToString());
+                return false;
+            }
+        }
+
+        public bool Restore(int id)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(con.conString()))
+                {
+                    string sql = @"CALL restore_supply(@id);";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+
+                        connection.Open();
+
+                        MySqlDataReader dr = cmd.ExecuteReader();
+                        dr.Close();
+
+                        connection.Close();
+                        return true;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Failed to restoring supply: " + ex.ToString());
+                return false;
+            }
+        }
+
+        public bool PermanentDelete(int id)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(con.conString()))
+                {
+                    string sql = @"CALL permanent_delete_supply(@id);";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+
+                        connection.Open();
+
+                        MySqlDataReader dr = cmd.ExecuteReader();
+                        dr.Close();
+
+                        connection.Close();
+                        return true;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error deleting supply permanent: " + ex.ToString());
                 return false;
             }
         }

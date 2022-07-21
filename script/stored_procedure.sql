@@ -157,9 +157,9 @@ USE `ceh_lab_inv_db`$$
 CREATE PROCEDURE `load_supplies` ()
 BEGIN
 	SELECT id, item, brand, supplier, CONCAT(quantity, ' ', unit_of_quantity), CONCAT(qty, ' ', unit_of_qty), CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), 
-    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit),
-    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), DATE_FORMAT(expiration_date, '%m/%d/%y'), CONCAT(DATEDIFF(expiration_date, NOW()), ' Days Left'),
-    DATE_FORMAT(created_at, '%m/%d/%y'), DATE_FORMAT(updated_at, '%m/%d/%y') FROM ceh_lab_inv_db.supplies WHERE is_deleted = 0 ORDER BY item ASC;
+    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), DATE_FORMAT(expiration_date, '%m/%d/%y'), CONCAT(DATEDIFF(expiration_date, NOW()), ' Days Left'), 
+    CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit), CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), DATE_FORMAT(created_at, '%m/%d/%y'),
+    DATE_FORMAT(updated_at, '%m/%d/%y') FROM ceh_lab_inv_db.supplies WHERE is_deleted = 0 ORDER BY item ASC LIMIT 1400;
 END$$
 
 DELIMITER ;
@@ -172,10 +172,10 @@ USE `ceh_lab_inv_db`$$
 CREATE PROCEDURE `load_supplies_by_date` (p_keyword VARCHAR(255))
 BEGIN
 	SELECT id, item, brand, supplier, CONCAT(quantity, ' ', unit_of_quantity), CONCAT(qty, ' ', unit_of_qty), CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), 
-    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit),
-    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), DATE_FORMAT(expiration_date, '%m/%d/%y'), CONCAT(DATEDIFF(expiration_date, NOW()), ' Days Left'),
-    DATE_FORMAT(created_at, '%m/%d/%y'), DATE_FORMAT(updated_at, '%m/%d/%y') FROM ceh_lab_inv_db.supplies WHERE item LIKE p_keyword AND is_deleted = 0 OR brand LIKE p_keyword AND is_deleted = 0
-    OR supplier LIKE p_keyword AND is_deleted = 0 ORDER BY item ASC;
+    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), DATE_FORMAT(expiration_date, '%m/%d/%y'), CONCAT(DATEDIFF(expiration_date, NOW()), ' Days Left'), 
+    CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit), CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), DATE_FORMAT(created_at, '%m/%d/%y'),
+    DATE_FORMAT(updated_at, '%m/%d/%y') FROM ceh_lab_inv_db.supplies WHERE item LIKE p_keyword AND is_deleted = 0 OR brand LIKE p_keyword AND is_deleted = 0
+    OR supplier LIKE p_keyword AND is_deleted = 0 ORDER BY item ASC LIMIT 1400;
 END$$
 
 DELIMITER ;
@@ -188,9 +188,9 @@ USE `ceh_lab_inv_db`$$
 CREATE PROCEDURE `load_trash` ()
 BEGIN
 	SELECT id, item, brand, supplier, CONCAT(quantity, ' ', unit_of_quantity), CONCAT(qty, ' ', unit_of_qty), CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), 
-    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit),
-    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), DATE_FORMAT(expiration_date, '%m/%d/%y'), CONCAT(DATEDIFF(expiration_date, NOW()), ' Days Left'),
-    DATE_FORMAT(created_at, '%m/%d/%y'), DATE_FORMAT(updated_at, '%m/%d/%y') FROM ceh_lab_inv_db.supplies WHERE is_deleted = 1 ORDER BY item ASC;
+    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), DATE_FORMAT(expiration_date, '%m/%d/%y'), CONCAT(DATEDIFF(expiration_date, NOW()), ' Days Left'), 
+    CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit), CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), DATE_FORMAT(created_at, '%m/%d/%y'),
+    DATE_FORMAT(updated_at, '%m/%d/%y') FROM ceh_lab_inv_db.supplies WHERE is_deleted = 1 ORDER BY item ASC LIMIT 1400;
 END$$
 
 DELIMITER ;
@@ -275,6 +275,30 @@ USE `ceh_lab_inv_db`$$
 CREATE PROCEDURE `delete_supply` (p_id INT)
 BEGIN
 	UPDATE ceh_lab_inv_db.supplies SET is_deleted = 1 WHERE id = p_id;
+END$$
+
+DELIMITER ;
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `restore_supply`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `restore_supply` (p_id INT)
+BEGIN
+	UPDATE ceh_lab_inv_db.supplies SET is_deleted = 0 WHERE id = p_id;
+END$$
+
+DELIMITER ;
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `permanent_delete_supply`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `permanent_delete_supply` (p_id INT)
+BEGIN
+	DELETE FROM ceh_lab_inv_db.supplies WHERE id = p_id;
 END$$
 
 DELIMITER ;

@@ -23,10 +23,8 @@ namespace ceh_lab_inv.forms
         functions.Supply supply = new functions.Supply();
         functions.Count count = new functions.Count();
 
-        string keyword;
-
-        int count_entries;
-        const int max_rows = 20;
+        bool isSupplies;
+        bool isTrash;
 
         void CountSuppliesAndTrash()
         {
@@ -35,129 +33,107 @@ namespace ceh_lab_inv.forms
 
             count.Trash();
             lblInTrash.Text = val.CountTrash;
-
-            count.SuppliesBySearch(keyword);
         }
 
-        void LabelPaging()
+        void ButtonWithinGridControls()
         {
-            if(val.IsSupplies == true && val.IsSuppliesBySearch == false && val.IsTrash == false)
+            if(isSupplies == true && isTrash == false)
             {
-                count_entries = gridSupplies.Rows.Count;
-                lblPageLabel.Text = string.Format("Entries: {0}/{1}", count_entries, val.CountSupplies);
+                if (gridSupplies.Columns.Contains("btnUpdateRgt") == true && gridSupplies.Columns.Contains("btnUpdate") == true &&
+                    gridSupplies.Columns.Contains("btnDelete") == true)
+                {
+                    gridSupplies.Columns.Remove("btnUpdateRgt");
+                    gridSupplies.Columns.Remove("btnUpdate");
+                    gridSupplies.Columns.Remove("btnDelete");
+                }
+                else
+                {
+                    gridSupplies.Columns.Remove("btnRestore");
+                    gridSupplies.Columns.Remove("btnPermanentDelete");
+                }
+
+                DataGridViewButtonColumn btnUpdateRgt = new DataGridViewButtonColumn();
+                btnUpdateRgt.HeaderText = "ACTION";
+                btnUpdateRgt.Name = "btnUpdateRgt";
+                btnUpdateRgt.Text = "UPDATE RGT";
+                btnUpdateRgt.UseColumnTextForButtonValue = true;
+                gridSupplies.Columns.Add(btnUpdateRgt);
+
+                DataGridViewButtonColumn btnUpdate = new DataGridViewButtonColumn();
+                btnUpdate.HeaderText = "";
+                btnUpdate.Name = "btnUpdate";
+                btnUpdate.Text = "UPDATE";
+                btnUpdate.UseColumnTextForButtonValue = true;
+                gridSupplies.Columns.Add(btnUpdate);
+
+                DataGridViewButtonColumn btnDelete = new DataGridViewButtonColumn();
+                btnDelete.HeaderText = "";
+                btnDelete.Name = "btnDelete";
+                btnDelete.Text = "DELETE";
+                btnDelete.UseColumnTextForButtonValue = true;
+                gridSupplies.Columns.Add(btnDelete);
             }
-            else if(val.IsSupplies == false && val.IsSuppliesBySearch == true && val.IsTrash == false)
+            else if(isTrash == true && isSupplies == false)
             {
-                count_entries = gridSupplies.Rows.Count;
-                lblPageLabel.Text = string.Format("Entries: {0}/{1}", count_entries, val.CountSuppliesBySearch);
+                if (gridSupplies.Columns.Contains("btnUpdateRgt") == true && gridSupplies.Columns.Contains("btnUpdate") == true &&
+                    gridSupplies.Columns.Contains("btnDelete") == true)
+                {
+                    gridSupplies.Columns.Remove("btnUpdateRgt");
+                    gridSupplies.Columns.Remove("btnUpdate");
+                    gridSupplies.Columns.Remove("btnDelete");
+                }
+                else
+                {
+                    gridSupplies.Columns.Remove("btnRestore");
+                    gridSupplies.Columns.Remove("btnPermanentDelete");
+                }
+
+                DataGridViewButtonColumn btnRestore = new DataGridViewButtonColumn();
+                btnRestore.HeaderText = "ACTION";
+                btnRestore.Name = "btnRestore";
+                btnRestore.Text = "RESTORE";
+                btnRestore.UseColumnTextForButtonValue = true;
+                gridSupplies.Columns.Add(btnRestore);
+
+                DataGridViewButtonColumn btnPermanentDelete = new DataGridViewButtonColumn();
+                btnPermanentDelete.HeaderText = "";
+                btnPermanentDelete.Name = "btnPermanentDelete";
+                btnPermanentDelete.Text = "DELETE";
+                btnPermanentDelete.UseColumnTextForButtonValue = true;
+                gridSupplies.Columns.Add(btnPermanentDelete);
             }
             else
             {
-                count_entries = gridSupplies.Rows.Count;
-                lblPageLabel.Text = string.Format("Entries: {0}/{1}", count_entries, val.CountTrash);
+                DataGridViewButtonColumn btnUpdateRgt = new DataGridViewButtonColumn();
+                btnUpdateRgt.HeaderText = "ACTION";
+                btnUpdateRgt.Name = "btnUpdateRgt";
+                btnUpdateRgt.Text = "UPDATE RGT";
+                btnUpdateRgt.UseColumnTextForButtonValue = true;
+                gridSupplies.Columns.Add(btnUpdateRgt);
+
+                DataGridViewButtonColumn btnUpdate = new DataGridViewButtonColumn();
+                btnUpdate.HeaderText = "";
+                btnUpdate.Name = "btnUpdate";
+                btnUpdate.Text = "UPDATE";
+                btnUpdate.UseColumnTextForButtonValue = true;
+                gridSupplies.Columns.Add(btnUpdate);
+
+                DataGridViewButtonColumn btnDelete = new DataGridViewButtonColumn();
+                btnDelete.HeaderText = "";
+                btnDelete.Name = "btnDelete";
+                btnDelete.Text = "DELETE";
+                btnDelete.UseColumnTextForButtonValue = true;
+                gridSupplies.Columns.Add(btnDelete);
             }
-        }
-
-        void ButtonControls()
-        {
-            if (val.IsSupplies == true && val.IsSuppliesBySearch == false && val.IsTrash == false)
-            {
-                if (count_entries <= int.Parse(val.CountSupplies) && int.Parse(val.CountSupplies) > max_rows == false)
-                {
-                    btnNextPage.Enabled = false;
-                    btnPreviousPage.Enabled = false;
-                }
-                else if (count_entries == max_rows)
-                {
-                    btnNextPage.Enabled = true;
-
-                    btnPreviousPage.Enabled = false;
-                }
-                else if (count_entries == int.Parse(val.CountSupplies))
-                {
-                    btnPreviousPage.Enabled = true;
-
-                    btnNextPage.Enabled = false;
-                }
-                else
-                {
-                    btnNextPage.Enabled = true;
-                    btnPreviousPage.Enabled = true;
-                }
-            }
-            else if (val.IsSupplies == false && val.IsSuppliesBySearch == true && val.IsTrash == false)
-            {
-                if (count_entries <= int.Parse(val.CountSuppliesBySearch) && int.Parse(val.CountSuppliesBySearch) > max_rows == false)
-                {
-                    btnNextPage.Enabled = false;
-                    btnPreviousPage.Enabled = false;
-                }
-                else if (count_entries == max_rows)
-                {
-                    btnNextPage.Enabled = true;
-
-                    btnPreviousPage.Enabled = false;
-                }
-                else if (count_entries == int.Parse(val.CountSuppliesBySearch))
-                {
-                    btnPreviousPage.Enabled = true;
-
-                    btnNextPage.Enabled = false;
-                }
-                else
-                {
-                    btnNextPage.Enabled = true;
-                    btnPreviousPage.Enabled = true;
-                }
-            }
-            else
-            {
-                if (count_entries <= int.Parse(val.CountTrash) && int.Parse(val.CountTrash) > max_rows == false)
-                {
-                    btnNextPage.Enabled = false;
-                    btnPreviousPage.Enabled = false;
-                }
-                else if (count_entries == max_rows)
-                {
-                    btnNextPage.Enabled = true;
-
-                    btnPreviousPage.Enabled = false;
-                }
-                else if (count_entries == int.Parse(val.CountTrash))
-                {
-                    btnPreviousPage.Enabled = true;
-
-                    btnNextPage.Enabled = false;
-                }
-                else
-                {
-                    btnNextPage.Enabled = true;
-                    btnPreviousPage.Enabled = true;
-                }
-            }
+            gridSupplies.ClearSelection();
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            if (val.IsSupplies == true || val.IsSuppliesBySearch == true)
+            if(isSupplies == true)
             {
-                keyword = txtSearch.Text;
-                supply.LoadBySearch(keyword, gridSupplies);
+                supply.LoadBySearch(txtSearch.Text, gridSupplies);
                 gridSupplies.ClearSelection();
-
-                CountSuppliesAndTrash();
-                LabelPaging();
-                ButtonControls();
-            }
-            else
-            {
-                // keyword = txtSearch.Text;
-                // supply.LoadBySearch(keyword, gridSupplies);
-                // gridSupplies.ClearSelection();
-
-                // CountSuppliesAndTrash();
-                // LabelPaging();
-                // ButtonControls();
             }
         }
 
@@ -168,30 +144,11 @@ namespace ceh_lab_inv.forms
 
             supply.Load(gridSupplies);
 
-            DataGridViewButtonColumn btnUpdateRgt = new DataGridViewButtonColumn();
-            btnUpdateRgt.HeaderText = "ACTION";
-            btnUpdateRgt.Name = "btnUpdateRgt";
-            btnUpdateRgt.Text = "UPDATE RGT";
-            btnUpdateRgt.UseColumnTextForButtonValue = true;
-            gridSupplies.Columns.Add(btnUpdateRgt);
-
-            DataGridViewButtonColumn btnUpdate = new DataGridViewButtonColumn();
-            btnUpdate.HeaderText = "";
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.Text = "UPDATE";
-            btnUpdate.UseColumnTextForButtonValue = true;
-            gridSupplies.Columns.Add(btnUpdate);
-
-            DataGridViewButtonColumn btnDelete = new DataGridViewButtonColumn();
-            btnDelete.HeaderText = "";
-            btnDelete.Name = "btnDelete";
-            btnDelete.Text = "DELETE";
-            btnDelete.UseColumnTextForButtonValue = true;
-            gridSupplies.Columns.Add(btnDelete);
-
+            ButtonWithinGridControls();
             CountSuppliesAndTrash();
-            LabelPaging();
-            ButtonControls();
+
+            isSupplies = true;
+            isTrash = false;
 
             txtSearch.Focus();
         }
@@ -210,13 +167,14 @@ namespace ceh_lab_inv.forms
 
         private void btnLoadSupplies_Click(object sender, EventArgs e)
         {
+            isSupplies = true;
+            isTrash = false;
 
             supply.Load(gridSupplies);
             gridSupplies.ClearSelection();
 
+            ButtonWithinGridControls();
             CountSuppliesAndTrash();
-            LabelPaging();
-            ButtonControls();
 
             txtSearch.ResetText();
             txtSearch.Focus();
@@ -224,12 +182,14 @@ namespace ceh_lab_inv.forms
 
         private void btnLoadTrash_Click(object sender, EventArgs e)
         {
+            isTrash = true;
+            isSupplies = false;
+
             supply.LoadTrash(gridSupplies);
             gridSupplies.ClearSelection();
 
+            ButtonWithinGridControls();
             CountSuppliesAndTrash();
-            LabelPaging();
-            ButtonControls();
 
             txtSearch.ResetText();
             txtSearch.Focus();
@@ -255,131 +215,58 @@ namespace ceh_lab_inv.forms
                     update_supply.Show();
                 }
             }
-            else
+            else if (gridSupplies.Columns[e.ColumnIndex].Name == "btnDelete")
             {
                 if (MessageBox.Show("Are you sure you want to Delete this Supply?", "Confirmation", MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     if (supply.Delete(int.Parse(row.Cells["id"].Value.ToString())))
                     {
-                        MessageBox.Show("Supply Successfully Deleted!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Supply has been Successfully Deleted!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        supply.Load(gridSupplies);
+                        if(!String.IsNullOrWhiteSpace(txtSearch.Text))
+                        {
+                            supply.LoadBySearch(txtSearch.Text, gridSupplies);
+                        }
+                        else
+                        {
+                            supply.Load(gridSupplies);
+                        }
+
+                        gridSupplies.ClearSelection();
+                        CountSuppliesAndTrash();
+                    }
+                }
+            }
+            else if (gridSupplies.Columns[e.ColumnIndex].Name == "btnRestore")
+            {
+                if (supply.Restore(int.Parse(row.Cells[0].Value.ToString())))
+                {
+                    MessageBox.Show("Supply has been Successfully Restored!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    supply.LoadTrash(gridSupplies);
+                    gridSupplies.ClearSelection();
+
+                    CountSuppliesAndTrash();
+                }
+            }
+            else if (gridSupplies.Columns[e.ColumnIndex].Name == "btnPermanentDelete")
+            {
+                if(MessageBox.Show("Are you sure you want you to Permanently Delete this Supply?", "Warning",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                {
+                    if (supply.PermanentDelete(int.Parse(row.Cells["id"].Value.ToString())))
+                    {
+                        MessageBox.Show("Supply has been Successfully Permanent Deleted!", "Success", MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+
+                        supply.LoadTrash(gridSupplies);
                         gridSupplies.ClearSelection();
 
                         CountSuppliesAndTrash();
-                        LabelPaging();
-                        ButtonControls();
                     }
                 }
             }
-        }
-
-        private void btnNextPage_Click(object sender, EventArgs e)
-        {
-            supply.NextPage();
-            gridSupplies.ClearSelection();
-
-            count_entries += gridSupplies.Rows.Count;
-
-            if (val.IsSupplies == true && val.IsSuppliesBySearch == false && val.IsTrash == false)
-            {
-                if (count_entries > int.Parse(val.CountSupplies))
-                {
-                    count_entries = gridSupplies.Rows.Count;
-                }
-            }
-            else if (val.IsSupplies == false && val.IsSuppliesBySearch == true && val.IsTrash == false)
-            {
-                if (count_entries > int.Parse(val.CountSuppliesBySearch))
-                {
-                    count_entries = gridSupplies.Rows.Count;
-                }
-            }
-            else
-            {
-                if (count_entries > int.Parse(val.CountTrash))
-                {
-                    count_entries = gridSupplies.Rows.Count;
-                }
-            }
-
-            LabelPaging();
-            ButtonControls();
-
-            txtSearch.Focus();
-        }
-
-        private void btnPreviousPage_Click(object sender, EventArgs e)
-        {
-            if (val.IsSupplies == true && val.IsSuppliesBySearch == false && val.IsTrash == false)
-            {
-                if (count_entries == int.Parse(val.CountSupplies) && gridSupplies.Rows.Count < max_rows)
-                {
-                    count_entries -= gridSupplies.Rows.Count;
-
-                    supply.PreviousPage();
-                    gridSupplies.ClearSelection();
-                }
-                else
-                {
-                    supply.PreviousPage();
-                    gridSupplies.ClearSelection();
-
-                    count_entries -= gridSupplies.Rows.Count;
-                    if (count_entries <= 0)
-                    {
-                        count_entries = gridSupplies.Rows.Count;
-                    }
-                }
-            }
-            else if (val.IsSupplies == false && val.IsSuppliesBySearch == true && val.IsTrash == false)
-            {
-                if (count_entries == int.Parse(val.CountSuppliesBySearch) && gridSupplies.Rows.Count < max_rows)
-                {
-                    count_entries -= gridSupplies.Rows.Count;
-
-                    supply.PreviousPage();
-                    gridSupplies.ClearSelection();
-                }
-                else
-                {
-                    supply.PreviousPage();
-                    gridSupplies.ClearSelection();
-
-                    count_entries -= gridSupplies.Rows.Count;
-                    if (count_entries <= 0)
-                    {
-                        count_entries = gridSupplies.Rows.Count;
-                    }
-                }
-            }
-            else
-            {
-                if (count_entries == int.Parse(val.CountTrash) && gridSupplies.Rows.Count < max_rows)
-                {
-                    count_entries -= gridSupplies.Rows.Count;
-
-                    supply.PreviousPage();
-                    gridSupplies.ClearSelection();
-                }
-                else
-                {
-                    supply.PreviousPage();
-                    gridSupplies.ClearSelection();
-
-                    count_entries -= gridSupplies.Rows.Count;
-                    if (count_entries <= 0)
-                    {
-                        count_entries = gridSupplies.Rows.Count;
-                    }
-                }
-            }
-
-            LabelPaging();
-            ButtonControls();
-
-            txtSearch.Focus();
         }
 
         private void frmSupplies_VisibleChanged(object sender, EventArgs e)

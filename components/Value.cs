@@ -353,28 +353,5 @@ namespace ceh_lab_inv.components
             get { return count_trash; }
             set { count_trash = value; }
         }
-
-        // Supplies and Trash Boolean Values
-
-        public static bool is_supplies;
-        public bool IsSupplies
-        {
-            get { return is_supplies; }
-            set { is_supplies = value; }
-        }
-
-        public static bool is_supplies_by_search;
-        public bool IsSuppliesBySearch
-        {
-            get { return is_supplies_by_search; }
-            set { is_supplies_by_search = value; }
-        }
-
-        public static bool is_trash;
-        public bool IsTrash
-        {
-            get { return is_trash; }
-            set { is_trash = value; }
-        }
     }
 }

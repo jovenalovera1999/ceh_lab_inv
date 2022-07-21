@@ -43,9 +43,6 @@
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnLoadTrash = new Guna.UI2.WinForms.Guna2Button();
             this.btnLoadSupplies = new Guna.UI2.WinForms.Guna2Button();
-            this.btnNextPage = new Guna.UI2.WinForms.Guna2Button();
-            this.btnPreviousPage = new Guna.UI2.WinForms.Guna2Button();
-            this.lblPageLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridSupplies)).BeginInit();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
@@ -76,6 +73,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gridSupplies.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gridSupplies.ColumnHeadersHeight = 36;
+            this.gridSupplies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.gridSupplies.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
@@ -93,7 +91,7 @@
             this.gridSupplies.RowHeadersVisible = false;
             this.gridSupplies.RowTemplate.Height = 36;
             this.gridSupplies.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridSupplies.Size = new System.Drawing.Size(1764, 711);
+            this.gridSupplies.Size = new System.Drawing.Size(1764, 765);
             this.gridSupplies.TabIndex = 0;
             this.gridSupplies.TabStop = false;
             this.gridSupplies.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -107,7 +105,7 @@
             this.gridSupplies.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.gridSupplies.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.gridSupplies.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.gridSupplies.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.gridSupplies.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.gridSupplies.ThemeStyle.HeaderStyle.Height = 36;
             this.gridSupplies.ThemeStyle.ReadOnly = true;
             this.gridSupplies.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
@@ -172,9 +170,9 @@
             this.lblTotalSupplies.AutoSize = true;
             this.lblTotalSupplies.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalSupplies.ForeColor = System.Drawing.Color.White;
-            this.lblTotalSupplies.Location = new System.Drawing.Point(255, 42);
+            this.lblTotalSupplies.Location = new System.Drawing.Point(3, 42);
             this.lblTotalSupplies.Name = "lblTotalSupplies";
-            this.lblTotalSupplies.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblTotalSupplies.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblTotalSupplies.Size = new System.Drawing.Size(33, 37);
             this.lblTotalSupplies.TabIndex = 12;
             this.lblTotalSupplies.Text = "0";
@@ -205,9 +203,9 @@
             this.lblInTrash.AutoSize = true;
             this.lblInTrash.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInTrash.ForeColor = System.Drawing.Color.White;
-            this.lblInTrash.Location = new System.Drawing.Point(255, 42);
+            this.lblInTrash.Location = new System.Drawing.Point(3, 42);
             this.lblInTrash.Name = "lblInTrash";
-            this.lblInTrash.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblInTrash.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblInTrash.Size = new System.Drawing.Size(33, 37);
             this.lblInTrash.TabIndex = 13;
             this.lblInTrash.Text = "0";
@@ -287,73 +285,12 @@
             this.btnLoadSupplies.Text = "LOAD SUPPLIES";
             this.btnLoadSupplies.Click += new System.EventHandler(this.btnLoadSupplies_Click);
             // 
-            // btnNextPage
-            // 
-            this.btnNextPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNextPage.Animated = true;
-            this.btnNextPage.BorderColor = System.Drawing.Color.White;
-            this.btnNextPage.BorderThickness = 1;
-            this.btnNextPage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNextPage.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnNextPage.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnNextPage.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnNextPage.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnNextPage.FillColor = System.Drawing.Color.Green;
-            this.btnNextPage.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnNextPage.ForeColor = System.Drawing.Color.White;
-            this.btnNextPage.Location = new System.Drawing.Point(1711, 896);
-            this.btnNextPage.Name = "btnNextPage";
-            this.btnNextPage.Size = new System.Drawing.Size(40, 36);
-            this.btnNextPage.TabIndex = 14;
-            this.btnNextPage.TabStop = false;
-            this.btnNextPage.Text = ">";
-            this.btnNextPage.Click += new System.EventHandler(this.btnNextPage_Click);
-            // 
-            // btnPreviousPage
-            // 
-            this.btnPreviousPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPreviousPage.Animated = true;
-            this.btnPreviousPage.BorderColor = System.Drawing.Color.White;
-            this.btnPreviousPage.BorderThickness = 1;
-            this.btnPreviousPage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPreviousPage.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnPreviousPage.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnPreviousPage.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnPreviousPage.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPreviousPage.FillColor = System.Drawing.Color.Green;
-            this.btnPreviousPage.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnPreviousPage.ForeColor = System.Drawing.Color.White;
-            this.btnPreviousPage.Location = new System.Drawing.Point(1665, 896);
-            this.btnPreviousPage.Name = "btnPreviousPage";
-            this.btnPreviousPage.Size = new System.Drawing.Size(40, 36);
-            this.btnPreviousPage.TabIndex = 15;
-            this.btnPreviousPage.TabStop = false;
-            this.btnPreviousPage.Text = "<";
-            this.btnPreviousPage.Click += new System.EventHandler(this.btnPreviousPage_Click);
-            // 
-            // lblPageLabel
-            // 
-            this.lblPageLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblPageLabel.AutoSize = true;
-            this.lblPageLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPageLabel.ForeColor = System.Drawing.Color.Black;
-            this.lblPageLabel.Location = new System.Drawing.Point(1576, 905);
-            this.lblPageLabel.Name = "lblPageLabel";
-            this.lblPageLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblPageLabel.Size = new System.Drawing.Size(83, 21);
-            this.lblPageLabel.TabIndex = 42;
-            this.lblPageLabel.Text = "lblTotalList";
-            this.lblPageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // frmSupplies
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1763, 944);
-            this.Controls.Add(this.lblPageLabel);
-            this.Controls.Add(this.btnPreviousPage);
-            this.Controls.Add(this.btnNextPage);
             this.Controls.Add(this.btnLoadSupplies);
             this.Controls.Add(this.btnLoadTrash);
             this.Controls.Add(this.txtSearch);
@@ -374,7 +311,6 @@
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -392,8 +328,5 @@
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
         private Guna.UI2.WinForms.Guna2Button btnLoadTrash;
         private Guna.UI2.WinForms.Guna2Button btnLoadSupplies;
-        private Guna.UI2.WinForms.Guna2Button btnNextPage;
-        private Guna.UI2.WinForms.Guna2Button btnPreviousPage;
-        private System.Windows.Forms.Label lblPageLabel;
     }
 }

@@ -45,6 +45,9 @@
             // 
             // rprtSupplies
             // 
+            this.rprtSupplies.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rprtSupplies.LocalReport.ReportEmbeddedResource = "ceh_lab_inv.reports.rprtSupplies.rdlc";
             this.rprtSupplies.Location = new System.Drawing.Point(-1, 148);
             this.rprtSupplies.Name = "rprtSupplies";
@@ -53,6 +56,7 @@
             // 
             // dateTo
             // 
+            this.dateTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTo.BackColor = System.Drawing.Color.Green;
             this.dateTo.BorderRadius = 0;
             this.dateTo.ForeColor = System.Drawing.Color.White;
@@ -67,6 +71,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
@@ -168,6 +173,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
@@ -179,6 +185,7 @@
             // 
             // dateFrom
             // 
+            this.dateFrom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateFrom.BackColor = System.Drawing.Color.Green;
             this.dateFrom.BorderRadius = 0;
             this.dateFrom.ForeColor = System.Drawing.Color.White;
