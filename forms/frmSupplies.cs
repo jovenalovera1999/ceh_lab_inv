@@ -135,6 +135,11 @@ namespace ceh_lab_inv.forms
                 supply.LoadBySearch(txtSearch.Text, gridSupplies);
                 gridSupplies.ClearSelection();
             }
+            else
+            {
+                supply.LoadTrashBySearch(txtSearch.Text, gridSupplies);
+                gridSupplies.ClearSelection();
+            }
         }
 
         private void frmSupplies_Load(object sender, EventArgs e)
@@ -232,9 +237,10 @@ namespace ceh_lab_inv.forms
                         {
                             supply.Load(gridSupplies);
                         }
-
                         gridSupplies.ClearSelection();
+
                         CountSuppliesAndTrash();
+                        txtSearch.Focus();
                     }
                 }
             }
@@ -248,6 +254,7 @@ namespace ceh_lab_inv.forms
                     gridSupplies.ClearSelection();
 
                     CountSuppliesAndTrash();
+                    txtSearch.Focus();
                 }
             }
             else if (gridSupplies.Columns[e.ColumnIndex].Name == "btnPermanentDelete")
@@ -264,6 +271,7 @@ namespace ceh_lab_inv.forms
                         gridSupplies.ClearSelection();
 
                         CountSuppliesAndTrash();
+                        txtSearch.Focus();
                     }
                 }
             }

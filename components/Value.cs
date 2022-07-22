@@ -340,18 +340,20 @@ namespace ceh_lab_inv.components
             set { count_supplies = value; }
         }
 
-        public static string count_supplies_by_search;
-        public string CountSuppliesBySearch
-        {
-            get { return count_supplies_by_search; }
-            set { count_supplies_by_search = value; }
-        }
-
         public static string count_trash;
         public string CountTrash
         {
             get { return count_trash; }
             set { count_trash = value; }
+        }
+
+        // Print Values
+
+        public static string sum_total_cost;
+        public string SumTotalCost
+        {
+            get { return sum_total_cost; }
+            set { sum_total_cost = value; }
         }
     }
 }

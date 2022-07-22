@@ -196,6 +196,22 @@ END$$
 DELIMITER ;
 
 USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `load_trash_by_date`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `load_trash_by_date` (p_keyword VARCHAR(255))
+BEGIN
+	SELECT id, item, brand, supplier, CONCAT(quantity, ' ', unit_of_quantity), CONCAT(qty, ' ', unit_of_qty), CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), 
+    CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), DATE_FORMAT(expiration_date, '%m/%d/%y'), CONCAT(DATEDIFF(expiration_date, NOW()), ' Days Left'), 
+    CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit), CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)), DATE_FORMAT(created_at, '%m/%d/%y'),
+    DATE_FORMAT(updated_at, '%m/%d/%y') FROM ceh_lab_inv_db.supplies WHERE item LIKE p_keyword AND is_deleted = 1 OR brand LIKE p_keyword AND is_deleted = 1
+    OR supplier LIKE p_keyword AND is_deleted = 1 ORDER BY item ASC LIMIT 1400;
+END$$
+
+DELIMITER ;
+
+USE `ceh_lab_inv_db`;
 DROP procedure IF EXISTS `add_supply_with_date`;
 
 DELIMITER $$
@@ -355,6 +371,35 @@ BEGIN
     CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)) AS 'total_cost', CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit),
     CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2)) AS 'exp_rgt_cost',
     DATE_FORMAT(expiration_date, '%m/%d/%y') AS 'expiration_date' FROM ceh_lab_inv_db.supplies WHERE created_at BETWEEN p_from AND p_to AND is_deleted = 0 ORDER BY item ASC;
+END$$
+
+DELIMITER ;
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `print_sum`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `print_sum` (p_from DATE, p_to DATE)
+BEGIN
+	SELECT CONCAT('₱', FORMAT(SUM(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR)), 2)) FROM ceh_lab_inv_db.supplies WHERE created_at BETWEEN p_from AND p_to AND is_deleted = 0
+    ORDER BY item ASC;
+END$$
+
+DELIMITER ;
+-- //
+-- // Account
+-- //
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `load_accounts`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `load_accounts` ()
+BEGIN
+	SELECT ceh_lab_inv_db.users.id, first_name, middle_name, last_name, age, gender, address, user_type, DATE_FORMAT(ceh_lab_inv_db.users.created_at, '%m/%d/%y'),
+    DATE_FORMAT(ceh_lab_inv_db.users.updated_at, '%m/%d/%y') FROM ceh_lab_inv_db.users INNER JOIN ceh_lab_inv_db.accounts ON ceh_lab_inv_db.users.id = ceh_lab_inv_db.accounts.id
+    WHERE is_deleted = 0 ORDER BY first_name ASC LIMIT 1400;
 END$$
 
 DELIMITER ;

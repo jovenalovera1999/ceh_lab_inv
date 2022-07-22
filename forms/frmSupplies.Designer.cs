@@ -54,7 +54,7 @@
             this.gridSupplies.AllowUserToDeleteRows = false;
             this.gridSupplies.AllowUserToResizeColumns = false;
             this.gridSupplies.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.gridSupplies.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.gridSupplies.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -72,7 +72,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gridSupplies.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.gridSupplies.ColumnHeadersHeight = 36;
+            this.gridSupplies.ColumnHeadersHeight = 46;
             this.gridSupplies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.gridSupplies.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -86,15 +86,16 @@
             this.gridSupplies.EnableHeadersVisualStyles = false;
             this.gridSupplies.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.gridSupplies.Location = new System.Drawing.Point(0, 179);
+            this.gridSupplies.MultiSelect = false;
             this.gridSupplies.Name = "gridSupplies";
             this.gridSupplies.ReadOnly = true;
             this.gridSupplies.RowHeadersVisible = false;
-            this.gridSupplies.RowTemplate.Height = 36;
+            this.gridSupplies.RowTemplate.Height = 46;
             this.gridSupplies.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridSupplies.Size = new System.Drawing.Size(1764, 765);
             this.gridSupplies.TabIndex = 0;
             this.gridSupplies.TabStop = false;
-            this.gridSupplies.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.gridSupplies.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.WhiteSmoke;
             this.gridSupplies.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.gridSupplies.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
             this.gridSupplies.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
@@ -106,13 +107,13 @@
             this.gridSupplies.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.gridSupplies.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.gridSupplies.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.gridSupplies.ThemeStyle.HeaderStyle.Height = 36;
+            this.gridSupplies.ThemeStyle.HeaderStyle.Height = 46;
             this.gridSupplies.ThemeStyle.ReadOnly = true;
             this.gridSupplies.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.gridSupplies.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.gridSupplies.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.gridSupplies.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.gridSupplies.ThemeStyle.RowsStyle.Height = 36;
+            this.gridSupplies.ThemeStyle.RowsStyle.Height = 46;
             this.gridSupplies.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.MediumSeaGreen;
             this.gridSupplies.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.White;
             this.gridSupplies.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSupplies_CellContentClick);

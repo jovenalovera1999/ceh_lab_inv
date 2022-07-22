@@ -203,6 +203,52 @@ namespace ceh_lab_inv.functions
             }
         }
 
+        public void LoadTrashBySearch(string keyword, DataGridView grid)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(con.conString()))
+                {
+                    string sql = @"CALL load_trash_by_date(@keyword);";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@keyword", string.Format("%{0}%", keyword));
+
+                        connection.Open();
+
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+
+                        dt.Clear();
+                        da.Fill(dt);
+
+                        grid.DataSource = dt;
+                        grid.Columns["id"].Visible = false;
+                        grid.Columns["item"].HeaderText = "ITEM";
+                        grid.Columns["brand"].HeaderText = "BRAND";
+                        grid.Columns["supplier"].HeaderText = "SUPPLIER";
+                        grid.Columns["CONCAT(quantity, ' ', unit_of_quantity)"].HeaderText = "QUANTITY (EXISTING)";
+                        grid.Columns["CONCAT(qty, ' ', unit_of_qty)"].HeaderText = "QTY";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "UNIT COST";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "TOTAL COST";
+                        grid.Columns["DATE_FORMAT(expiration_date, '%m/%d/%y')"].HeaderText = "EXPIRATION DATE";
+                        grid.Columns["CONCAT(DATEDIFF(expiration_date, NOW()), ' Days Left')"].HeaderText = "EXPIRED IN";
+                        grid.Columns["CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit)"].HeaderText = "EXP. RGT. QTY";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "EXP. RGT. COST";
+                        grid.Columns["DATE_FORMAT(created_at, '%m/%d/%y')"].HeaderText = "CREATED AT";
+                        grid.Columns["DATE_FORMAT(updated_at, '%m/%d/%y')"].HeaderText = "UPDATED AT";
+
+                        connection.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error loading trash by date: " + ex.ToString());
+            }
+        }
+
         public bool AddWithExpirationDate(string item, string brand, string supplier, int quantity, string unit_of_quantity, int qty, string unit_of_qty,
             string unit_cost, string total_cost, DateTime expiration_date)
         {

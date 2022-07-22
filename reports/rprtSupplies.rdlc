@@ -86,7 +86,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>7.18817cm</Width>
+                  <Width>6.2924cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.68866cm</Width>
@@ -749,9 +749,9 @@
             </TablixRowHierarchy>
             <DataSetName>dtSupplies</DataSetName>
             <Top>1.03215cm</Top>
-            <Left>1.86312cm</Left>
+            <Left>2.18062cm</Left>
             <Height>1.59687cm</Height>
-            <Width>31.72108cm</Width>
+            <Width>30.82531cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -790,7 +790,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
             <Top>0.42333cm</Top>
-            <Left>1.86312cm</Left>
+            <Left>2.18062cm</Left>
             <Height>0.60882cm</Height>
             <Width>18.78009cm</Width>
             <ZIndex>1</ZIndex>
@@ -804,8 +804,48 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="Textbox4">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Total: </Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=Parameters!pSumTotalCost.Value</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox4</rd:DefaultName>
+            <Top>2.62902cm</Top>
+            <Left>24.12721cm</Left>
+            <Height>0.52062cm</Height>
+            <Width>3.1665cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>3.12208cm</Height>
+        <Height>3.3828cm</Height>
         <Style />
       </Body>
       <Width>35.56cm</Width>
@@ -852,6 +892,12 @@
     </ReportParameter>
     <ReportParameter Name="pTo">
       <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="pSumTotalCost">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
   </ReportParameters>

@@ -155,6 +155,7 @@
     <Compile Include="forms\frmUpdateSupply.Designer.cs">
       <DependentUpon>frmUpdateSupply.cs</DependentUpon>
     </Compile>
+    <Compile Include="functions\Account.cs" />
     <Compile Include="functions\Authentication.cs" />
     <Compile Include="functions\Count.cs" />
     <Compile Include="functions\Duplicate.cs" />
