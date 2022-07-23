@@ -29,12 +29,26 @@ namespace ceh_lab_inv.forms
 
             account.Load(gridAccounts);
 
-            DataGridViewButtonColumn btnUpdate = new DataGridViewButtonColumn();
-            btnUpdate.HeaderText = "ACTION";
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.Text = "UPDATE";
-            btnUpdate.UseColumnTextForButtonValue = true;
-            gridAccounts.Columns.Add(btnUpdate);
+            DataGridViewButtonColumn btnResetPassword = new DataGridViewButtonColumn();
+            btnResetPassword.HeaderText = "ACTION";
+            btnResetPassword.Name = "btnResetPassword";
+            btnResetPassword.Text = "RESET PASSWORD";
+            btnResetPassword.UseColumnTextForButtonValue = true;
+            gridAccounts.Columns.Add(btnResetPassword);
+
+            DataGridViewButtonColumn btnChangeUserType = new DataGridViewButtonColumn();
+            btnChangeUserType.HeaderText = "";
+            btnChangeUserType.Name = "btnChangeUserType";
+            btnChangeUserType.Text = "CHANGE USER TYPE";
+            btnChangeUserType.UseColumnTextForButtonValue = true;
+            gridAccounts.Columns.Add(btnChangeUserType);
+
+            DataGridViewButtonColumn btnDelete = new DataGridViewButtonColumn();
+            btnDelete.HeaderText = "";
+            btnDelete.Name = "btnDelete";
+            btnDelete.Text = "DELETE";
+            btnDelete.UseColumnTextForButtonValue = true;
+            gridAccounts.Columns.Add(btnDelete);
 
             txtSearch.Focus();
         }
@@ -43,6 +57,64 @@ namespace ceh_lab_inv.forms
         {
             forms.frmCreateAccount create_account = new forms.frmCreateAccount();
             create_account.Show();
+        }
+
+        private void btnLoadAccount_Click(object sender, EventArgs e)
+        {
+            account.Load(gridAccounts);
+            gridAccounts.ClearSelection();
+
+            txtSearch.Focus();
+        }
+
+        private void gridAccounts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = gridAccounts.Rows[e.RowIndex];
+
+            if (gridAccounts.Columns[e.ColumnIndex].Name == "btnResetPassword")
+            {
+                if(MessageBox.Show("Are you sure you want to Reset this User's Account Password?", "Warning", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    if (account.Get(int.Parse(row.Cells["id"].Value.ToString())))
+                    {
+                        forms.frmResetPassword reset_password = new forms.frmResetPassword();
+                        reset_password.Show();
+                    }
+                }
+            }
+            else if (gridAccounts.Columns[e.ColumnIndex].Name == "btnChangeUserType")
+            {
+                if (MessageBox.Show("Are you sure you want to Change this User's Type?", "Warning", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    if (account.Get(int.Parse(row.Cells["id"].Value.ToString())))
+                    {
+                        forms.frmChangeUserType change_user_type = new forms.frmChangeUserType();
+                        change_user_type.Show();
+                    }
+                }
+            }
+            else if (gridAccounts.Columns[e.ColumnIndex].Name == "btnDelete")
+            {
+                if (MessageBox.Show("Are you sure you want to Delete this User's Account?", "Warning", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    if (account.Delete(int.Parse(row.Cells["id"].Value.ToString())))
+                    {
+                        MessageBox.Show("Account has been Successfully Deleted!", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        account.Load(gridAccounts);
+                        gridAccounts.ClearSelection();
+
+                        txtSearch.Focus();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to Delete an Account!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
         private void frmAccounts_VisibleChanged(object sender, EventArgs e)

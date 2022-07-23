@@ -29,3 +29,5 @@ D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.frmUpdateSupply.resources
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.frmProfile.resources
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.frmPrint.resources
 D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.csproj.SuggestedBindingRedirects.cache
+D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.frmChangeUserType.resources
+D:\my_projects\ceh_lab_inv\obj\Debug\ceh_lab_inv.forms.frmResetPassword.resources

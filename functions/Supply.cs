@@ -44,11 +44,11 @@ namespace ceh_lab_inv.functions
                             val.SupplyUnitOfQuantity = dt.Rows[0].Field<string>("unit_of_quantity");
                             val.SupplyQty = dt.Rows[0].Field<int>("qty");
                             val.SupplyUnitOfQty = dt.Rows[0].Field<string>("unit_of_qty");
-                            val.SupplyUnitCost = dt.Rows[0].Field<string>("CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR)");
-                            val.SupplyTotalCost = dt.Rows[0].Field<string>("CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR)");
+                            val.SupplyUnitCost = dt.Rows[0].Field<string>("CAST(AES_DECRYPT(unit_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ERGedJSyA9.pMzmmE62V5wMfFrWSOe') AS CHAR)");
+                            val.SupplyTotalCost = dt.Rows[0].Field<string>("CAST(AES_DECRYPT(total_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ERGedJSyA9.pMzmmE62V5wMfFrWSOe') AS CHAR)");
                             val.SupplyExpRgtQuantity = dt.Rows[0].Field<int?>("exp_rgt_quantity");
                             val.SupplyExpRgtUnit = dt.Rows[0].Field<string>("exp_rgt_unit");
-                            val.SupplyExpRgtCost = dt.Rows[0].Field<string>("CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR)");
+                            val.SupplyExpRgtCost = dt.Rows[0].Field<string>("CAST(AES_DECRYPT(exp_rgt_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ERGedJSyA9.pMzmmE62V5wMfFrWSOe') AS CHAR)");
                             val.SupplyExpirationDate = dt.Rows[0].Field<DateTime?>("expiration_date");
 
                             connection.Close();
@@ -94,12 +94,12 @@ namespace ceh_lab_inv.functions
                         grid.Columns["supplier"].HeaderText = "SUPPLIER";
                         grid.Columns["CONCAT(quantity, ' ', unit_of_quantity)"].HeaderText = "QUANTITY (EXISTING)";
                         grid.Columns["CONCAT(qty, ' ', unit_of_qty)"].HeaderText = "QTY";
-                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "UNIT COST";
-                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "TOTAL COST";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ERGedJSyA9.pMzmmE62V5wMfFrWSOe') AS CHAR), 2))"].HeaderText = "UNIT COST";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ERGedJSyA9.pMzmmE62V5wMfFrWSOe') AS CHAR), 2))"].HeaderText = "TOTAL COST";
                         grid.Columns["DATE_FORMAT(expiration_date, '%m/%d/%y')"].HeaderText = "EXPIRATION DATE";
                         grid.Columns["CONCAT(DATEDIFF(expiration_date, NOW()), ' Days Left')"].HeaderText = "EXPIRED IN";
                         grid.Columns["CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit)"].HeaderText = "EXP. RGT. QTY";
-                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "EXP. RGT. COST";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ERGedJSyA9.pMzmmE62V5wMfFrWSOe') AS CHAR), 2))"].HeaderText = "EXP. RGT. COST";
                         grid.Columns["DATE_FORMAT(created_at, '%m/%d/%y')"].HeaderText = "CREATED AT";
                         grid.Columns["DATE_FORMAT(updated_at, '%m/%d/%y')"].HeaderText = "UPDATED AT";
 
@@ -140,12 +140,12 @@ namespace ceh_lab_inv.functions
                         grid.Columns["supplier"].HeaderText = "SUPPLIER";
                         grid.Columns["CONCAT(quantity, ' ', unit_of_quantity)"].HeaderText = "QUANTITY (EXISTING)";
                         grid.Columns["CONCAT(qty, ' ', unit_of_qty)"].HeaderText = "QTY";
-                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "UNIT COST";
-                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "TOTAL COST";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ERGedJSyA9.pMzmmE62V5wMfFrWSOe') AS CHAR), 2))"].HeaderText = "UNIT COST";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ERGedJSyA9.pMzmmE62V5wMfFrWSOe') AS CHAR), 2))"].HeaderText = "TOTAL COST";
                         grid.Columns["DATE_FORMAT(expiration_date, '%m/%d/%y')"].HeaderText = "EXPIRATION DATE";
                         grid.Columns["CONCAT(DATEDIFF(expiration_date, NOW()), ' Days Left')"].HeaderText = "EXPIRED IN";
                         grid.Columns["CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit)"].HeaderText = "EXP. RGT. QTY";
-                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "EXP. RGT. COST";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ERGedJSyA9.pMzmmE62V5wMfFrWSOe') AS CHAR), 2))"].HeaderText = "EXP. RGT. COST";
                         grid.Columns["DATE_FORMAT(created_at, '%m/%d/%y')"].HeaderText = "CREATED AT";
                         grid.Columns["DATE_FORMAT(updated_at, '%m/%d/%y')"].HeaderText = "UPDATED AT";
 
@@ -184,12 +184,12 @@ namespace ceh_lab_inv.functions
                         grid.Columns["supplier"].HeaderText = "SUPPLIER";
                         grid.Columns["CONCAT(quantity, ' ', unit_of_quantity)"].HeaderText = "QUANTITY (EXISTING)";
                         grid.Columns["CONCAT(qty, ' ', unit_of_qty)"].HeaderText = "QTY";
-                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "UNIT COST";
-                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "TOTAL COST";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ERGedJSyA9.pMzmmE62V5wMfFrWSOe') AS CHAR), 2))"].HeaderText = "UNIT COST";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ERGedJSyA9.pMzmmE62V5wMfFrWSOe') AS CHAR), 2))"].HeaderText = "TOTAL COST";
                         grid.Columns["DATE_FORMAT(expiration_date, '%m/%d/%y')"].HeaderText = "EXPIRATION DATE";
                         grid.Columns["CONCAT(DATEDIFF(expiration_date, NOW()), ' Days Left')"].HeaderText = "EXPIRED IN";
                         grid.Columns["CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit)"].HeaderText = "EXP. RGT. QTY";
-                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "EXP. RGT. COST";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ERGedJSyA9.pMzmmE62V5wMfFrWSOe') AS CHAR), 2))"].HeaderText = "EXP. RGT. COST";
                         grid.Columns["DATE_FORMAT(created_at, '%m/%d/%y')"].HeaderText = "CREATED AT";
                         grid.Columns["DATE_FORMAT(updated_at, '%m/%d/%y')"].HeaderText = "UPDATED AT";
 
@@ -230,12 +230,12 @@ namespace ceh_lab_inv.functions
                         grid.Columns["supplier"].HeaderText = "SUPPLIER";
                         grid.Columns["CONCAT(quantity, ' ', unit_of_quantity)"].HeaderText = "QUANTITY (EXISTING)";
                         grid.Columns["CONCAT(qty, ' ', unit_of_qty)"].HeaderText = "QTY";
-                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "UNIT COST";
-                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "TOTAL COST";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ERGedJSyA9.pMzmmE62V5wMfFrWSOe') AS CHAR), 2))"].HeaderText = "UNIT COST";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ERGedJSyA9.pMzmmE62V5wMfFrWSOe') AS CHAR), 2))"].HeaderText = "TOTAL COST";
                         grid.Columns["DATE_FORMAT(expiration_date, '%m/%d/%y')"].HeaderText = "EXPIRATION DATE";
                         grid.Columns["CONCAT(DATEDIFF(expiration_date, NOW()), ' Days Left')"].HeaderText = "EXPIRED IN";
                         grid.Columns["CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit)"].HeaderText = "EXP. RGT. QTY";
-                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), 2))"].HeaderText = "EXP. RGT. COST";
+                        grid.Columns["CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ERGedJSyA9.pMzmmE62V5wMfFrWSOe') AS CHAR), 2))"].HeaderText = "EXP. RGT. COST";
                         grid.Columns["DATE_FORMAT(created_at, '%m/%d/%y')"].HeaderText = "CREATED AT";
                         grid.Columns["DATE_FORMAT(updated_at, '%m/%d/%y')"].HeaderText = "UPDATED AT";
 

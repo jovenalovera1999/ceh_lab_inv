@@ -54,3 +54,12 @@ CREATE TABLE ceh_lab_inv_db.supplies(
     updated_at                          TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY(id)
 );
+
+-- UPDATE ceh_lab_inv_db.supplies SET unit_cost = AES_ENCRYPT(CAST(AES_DECRYPT(unit_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ERGedJSyA9.pMzmmE62V5wMfFrWSOe'),
+-- total_cost = AES_ENCRYPT(CAST(AES_DECRYPT(total_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ERGedJSyA9.pMzmmE62V5wMfFrWSOe'),
+-- exp_rgt_cost = AES_ENCRYPT(CAST(AES_DECRYPT(exp_rgt_cost, 'eMm4nu3lh0sp1t4Ll4b0r4T0Ry') AS CHAR), '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ERGedJSyA9.pMzmmE62V5wMfFrWSOe');
+
+-- SELECT CAST(AES_DECRYPT(unit_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ERGedJSyA9.pMzmmE62V5wMfFrWSOe') AS CHAR), CAST(AES_DECRYPT(unit_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ERGedJSyA9.pMzmmE62V5wMfFrWSOe') AS CHAR),
+-- CAST(AES_DECRYPT(unit_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ERGedJSyA9.pMzmmE62V5wMfFrWSOe') AS CHAR) FROM ceh_lab_inv_db.supplies;
+
+-- SELECT CAST(AES_DECRYPT(password, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ERGedJSyA9.pMzmmE62V5wMfFrWSOe') AS CHAR) FROM ceh_lab_inv_db.accounts;
