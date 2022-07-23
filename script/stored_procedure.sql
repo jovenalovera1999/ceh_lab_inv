@@ -205,11 +205,11 @@ END$$
 DELIMITER ;
 
 USE `ceh_lab_inv_db`;
-DROP procedure IF EXISTS `load_trash_by_date`;
+DROP procedure IF EXISTS `load_trash_by_search`;
 
 DELIMITER $$
 USE `ceh_lab_inv_db`$$
-CREATE PROCEDURE `load_trash_by_date` (p_keyword VARCHAR(255))
+CREATE PROCEDURE `load_trash_by_search` (p_keyword VARCHAR(255))
 BEGIN
 	SELECT id, item, brand, supplier, CONCAT(quantity, ' ', unit_of_quantity), CONCAT(qty, ' ', unit_of_qty),
     CONCAT('₱', FORMAT(CAST(AES_DECRYPT(unit_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ERGedJSyA9.pMzmmE62V5wMfFrWSOe') AS CHAR), 2)),
@@ -425,6 +425,20 @@ BEGIN
 	SELECT ceh_lab_inv_db.users.id, first_name, middle_name, last_name, age, gender, address, user_type, DATE_FORMAT(ceh_lab_inv_db.users.created_at, '%m/%d/%y'),
     DATE_FORMAT(ceh_lab_inv_db.users.updated_at, '%m/%d/%y') FROM ceh_lab_inv_db.users INNER JOIN ceh_lab_inv_db.accounts ON ceh_lab_inv_db.users.id = ceh_lab_inv_db.accounts.id
     WHERE is_deleted = 0 ORDER BY first_name ASC LIMIT 1400;
+END$$
+
+DELIMITER ;
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `load_accounts_by_search`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `load_accounts_by_search` (p_keyword VARCHAR(255))
+BEGIN
+	SELECT ceh_lab_inv_db.users.id, first_name, middle_name, last_name, age, gender, address, user_type, DATE_FORMAT(ceh_lab_inv_db.users.created_at, '%m/%d/%y'),
+    DATE_FORMAT(ceh_lab_inv_db.users.updated_at, '%m/%d/%y') FROM ceh_lab_inv_db.users INNER JOIN ceh_lab_inv_db.accounts ON ceh_lab_inv_db.users.id = ceh_lab_inv_db.accounts.id
+    WHERE first_name LIKE p_keyword AND is_deleted = 0 OR middle_name LIKE p_keyword AND is_deleted = 0 OR last_name LIKE p_keyword AND is_deleted = 0 ORDER BY first_name ASC LIMIT 1400;
 END$$
 
 DELIMITER ;

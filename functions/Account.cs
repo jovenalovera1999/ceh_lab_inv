@@ -96,6 +96,48 @@ namespace ceh_lab_inv.functions
             }
         }
 
+        public void LoadBySearch(string keyword, DataGridView grid)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(con.conString()))
+                {
+                    string sql = @"CALL load_accounts_by_search(@keyword);";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@keyword", string.Format("%{0}%", keyword));
+
+                        connection.Open();
+
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+
+                        dt.Clear();
+                        da.Fill(dt);
+
+                        grid.DataSource = dt;
+                        grid.Columns["id"].Visible = false;
+                        grid.Columns["first_name"].HeaderText = "FIRST NAME";
+                        grid.Columns["middle_name"].HeaderText = "MIDDLE NAME";
+                        grid.Columns["last_name"].HeaderText = "LAST NAME";
+                        grid.Columns["age"].HeaderText = "AGE";
+                        grid.Columns["gender"].HeaderText = "GENDER";
+                        grid.Columns["address"].HeaderText = "ADDRESS";
+                        grid.Columns["user_type"].HeaderText = "USER TYPE";
+                        grid.Columns["DATE_FORMAT(ceh_lab_inv_db.users.created_at, '%m/%d/%y')"].HeaderText = "CREATED AT";
+                        grid.Columns["DATE_FORMAT(ceh_lab_inv_db.users.updated_at, '%m/%d/%y')"].HeaderText = "UPDATED AT";
+
+                        connection.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error loading accounts by search : " + ex.ToString());
+            }
+        }
+
         public bool ResetPassword(int id, string password)
         {
             try

@@ -175,13 +175,19 @@ namespace ceh_lab_inv.forms
             isSupplies = true;
             isTrash = false;
 
-            supply.Load(gridSupplies);
+            if(!String.IsNullOrWhiteSpace(txtSearch.Text))
+            {
+                supply.LoadBySearch(txtSearch.Text, gridSupplies);
+            }
+            else
+            {
+                supply.Load(gridSupplies);
+            }
             gridSupplies.ClearSelection();
 
             ButtonWithinGridControls();
             CountSuppliesAndTrash();
 
-            txtSearch.ResetText();
             txtSearch.Focus();
         }
 
@@ -190,13 +196,19 @@ namespace ceh_lab_inv.forms
             isTrash = true;
             isSupplies = false;
 
-            supply.LoadTrash(gridSupplies);
+            if(!String.IsNullOrWhiteSpace(txtSearch.Text))
+            {
+                supply.LoadTrashBySearch(txtSearch.Text, gridSupplies);
+            }
+            else
+            {
+                supply.LoadTrash(gridSupplies);
+            }
             gridSupplies.ClearSelection();
 
             ButtonWithinGridControls();
             CountSuppliesAndTrash();
 
-            txtSearch.ResetText();
             txtSearch.Focus();
         }
 

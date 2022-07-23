@@ -209,7 +209,7 @@ namespace ceh_lab_inv.functions
             {
                 using (MySqlConnection connection = new MySqlConnection(con.conString()))
                 {
-                    string sql = @"CALL load_trash_by_date(@keyword);";
+                    string sql = @"CALL load_trash_by_search(@keyword);";
 
                     using (MySqlCommand cmd = new MySqlCommand(sql, connection))
                     {

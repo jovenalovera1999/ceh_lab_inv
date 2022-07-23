@@ -22,6 +22,12 @@ namespace ceh_lab_inv.forms
 
         functions.Account account = new functions.Account();
 
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            account.LoadBySearch(txtSearch.Text, gridAccounts);
+            gridAccounts.ClearSelection();
+        }
+
         private void frmAccounts_Load(object sender, EventArgs e)
         {
             this.SetBounds(Screen.PrimaryScreen.WorkingArea.Left, Screen.PrimaryScreen.WorkingArea.Top, Screen.PrimaryScreen.WorkingArea.Width,
@@ -61,7 +67,14 @@ namespace ceh_lab_inv.forms
 
         private void btnLoadAccount_Click(object sender, EventArgs e)
         {
-            account.Load(gridAccounts);
+            if(!String.IsNullOrWhiteSpace(txtSearch.Text))
+            {
+                account.LoadBySearch(txtSearch.Text, gridAccounts);
+            }
+            else
+            {
+                account.Load(gridAccounts);
+            }
             gridAccounts.ClearSelection();
 
             txtSearch.Focus();
