@@ -214,7 +214,6 @@
             this.Name = "frmPrint";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PRINT";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmPrint_Load);
             this.Panel1.ResumeLayout(false);
             this.Panel1.PerformLayout();

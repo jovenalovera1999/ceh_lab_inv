@@ -40,21 +40,21 @@ namespace ceh_lab_inv.forms
             btnResetPassword.Name = "btnResetPassword";
             btnResetPassword.Text = "RESET PASSWORD";
             btnResetPassword.UseColumnTextForButtonValue = true;
-            gridAccounts.Columns.Add(btnResetPassword);
+            gridAccounts.Columns.Insert(0, btnResetPassword);
 
             DataGridViewButtonColumn btnChangeUserType = new DataGridViewButtonColumn();
             btnChangeUserType.HeaderText = "";
             btnChangeUserType.Name = "btnChangeUserType";
             btnChangeUserType.Text = "CHANGE USER TYPE";
             btnChangeUserType.UseColumnTextForButtonValue = true;
-            gridAccounts.Columns.Add(btnChangeUserType);
+            gridAccounts.Columns.Insert(1, btnChangeUserType);
 
             DataGridViewButtonColumn btnDelete = new DataGridViewButtonColumn();
             btnDelete.HeaderText = "";
             btnDelete.Name = "btnDelete";
             btnDelete.Text = "DELETE";
             btnDelete.UseColumnTextForButtonValue = true;
-            gridAccounts.Columns.Add(btnDelete);
+            gridAccounts.Columns.Insert(2, btnDelete);
 
             txtSearch.Focus();
         }
@@ -62,7 +62,7 @@ namespace ceh_lab_inv.forms
         private void btnCreateAccount_Click(object sender, EventArgs e)
         {
             forms.frmCreateAccount create_account = new forms.frmCreateAccount();
-            create_account.Show();
+            create_account.ShowDialog();
         }
 
         private void btnLoadAccount_Click(object sender, EventArgs e)
@@ -92,7 +92,7 @@ namespace ceh_lab_inv.forms
                     if (account.Get(int.Parse(row.Cells["id"].Value.ToString())))
                     {
                         forms.frmResetPassword reset_password = new forms.frmResetPassword();
-                        reset_password.Show();
+                        reset_password.ShowDialog();
                     }
                 }
             }
@@ -104,7 +104,7 @@ namespace ceh_lab_inv.forms
                     if (account.Get(int.Parse(row.Cells["id"].Value.ToString())))
                     {
                         forms.frmChangeUserType change_user_type = new forms.frmChangeUserType();
-                        change_user_type.Show();
+                        change_user_type.ShowDialog();
                     }
                 }
             }

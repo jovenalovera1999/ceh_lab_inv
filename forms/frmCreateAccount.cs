@@ -122,6 +122,7 @@ namespace ceh_lab_inv.forms
 
         private void frmCreateAccount_Load(object sender, EventArgs e)
         {
+            dateBirthday.Value = DateTime.Now;
             txtUsername.Focus();
         }
 

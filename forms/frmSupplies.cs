@@ -57,21 +57,21 @@ namespace ceh_lab_inv.forms
                 btnUpdateRgt.Name = "btnUpdateRgt";
                 btnUpdateRgt.Text = "UPDATE RGT";
                 btnUpdateRgt.UseColumnTextForButtonValue = true;
-                gridSupplies.Columns.Add(btnUpdateRgt);
+                gridSupplies.Columns.Insert(0, btnUpdateRgt);
 
                 DataGridViewButtonColumn btnUpdate = new DataGridViewButtonColumn();
                 btnUpdate.HeaderText = "";
                 btnUpdate.Name = "btnUpdate";
                 btnUpdate.Text = "UPDATE";
                 btnUpdate.UseColumnTextForButtonValue = true;
-                gridSupplies.Columns.Add(btnUpdate);
+                gridSupplies.Columns.Insert(1, btnUpdate);
 
                 DataGridViewButtonColumn btnDelete = new DataGridViewButtonColumn();
                 btnDelete.HeaderText = "";
                 btnDelete.Name = "btnDelete";
                 btnDelete.Text = "DELETE";
                 btnDelete.UseColumnTextForButtonValue = true;
-                gridSupplies.Columns.Add(btnDelete);
+                gridSupplies.Columns.Insert(2, btnDelete);
             }
             else if(isTrash == true && isSupplies == false)
             {
@@ -93,14 +93,14 @@ namespace ceh_lab_inv.forms
                 btnRestore.Name = "btnRestore";
                 btnRestore.Text = "RESTORE";
                 btnRestore.UseColumnTextForButtonValue = true;
-                gridSupplies.Columns.Add(btnRestore);
+                gridSupplies.Columns.Insert(0, btnRestore);
 
                 DataGridViewButtonColumn btnPermanentDelete = new DataGridViewButtonColumn();
                 btnPermanentDelete.HeaderText = "";
                 btnPermanentDelete.Name = "btnPermanentDelete";
                 btnPermanentDelete.Text = "DELETE";
                 btnPermanentDelete.UseColumnTextForButtonValue = true;
-                gridSupplies.Columns.Add(btnPermanentDelete);
+                gridSupplies.Columns.Insert(1, btnPermanentDelete);
             }
             else
             {
@@ -109,21 +109,21 @@ namespace ceh_lab_inv.forms
                 btnUpdateRgt.Name = "btnUpdateRgt";
                 btnUpdateRgt.Text = "UPDATE RGT";
                 btnUpdateRgt.UseColumnTextForButtonValue = true;
-                gridSupplies.Columns.Add(btnUpdateRgt);
+                gridSupplies.Columns.Insert(0, btnUpdateRgt);
 
                 DataGridViewButtonColumn btnUpdate = new DataGridViewButtonColumn();
                 btnUpdate.HeaderText = "";
                 btnUpdate.Name = "btnUpdate";
                 btnUpdate.Text = "UPDATE";
                 btnUpdate.UseColumnTextForButtonValue = true;
-                gridSupplies.Columns.Add(btnUpdate);
+                gridSupplies.Columns.Insert(1, btnUpdate);
 
                 DataGridViewButtonColumn btnDelete = new DataGridViewButtonColumn();
                 btnDelete.HeaderText = "";
                 btnDelete.Name = "btnDelete";
                 btnDelete.Text = "DELETE";
                 btnDelete.UseColumnTextForButtonValue = true;
-                gridSupplies.Columns.Add(btnDelete);
+                gridSupplies.Columns.Insert(2, btnDelete);
             }
             gridSupplies.ClearSelection();
         }
@@ -161,7 +161,7 @@ namespace ceh_lab_inv.forms
         private void btnAdd_Click(object sender, EventArgs e)
         {
             forms.frmAddSupply add_supply = new forms.frmAddSupply();
-            add_supply.Show();
+            add_supply.ShowDialog();
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -221,7 +221,7 @@ namespace ceh_lab_inv.forms
                 if (supply.Get(int.Parse(row.Cells["id"].Value.ToString())))
                 {
                     forms.frmUpdateRgt update_rgt = new forms.frmUpdateRgt();
-                    update_rgt.Show();
+                    update_rgt.ShowDialog();
                 }
             }
             else if (gridSupplies.Columns[e.ColumnIndex].Name == "btnUpdate")
@@ -229,7 +229,7 @@ namespace ceh_lab_inv.forms
                 if (supply.Get(int.Parse(row.Cells["id"].Value.ToString())))
                 {
                     forms.frmUpdateSupply update_supply = new forms.frmUpdateSupply();
-                    update_supply.Show();
+                    update_supply.ShowDialog();
                 }
             }
             else if (gridSupplies.Columns[e.ColumnIndex].Name == "btnDelete")
@@ -258,7 +258,7 @@ namespace ceh_lab_inv.forms
             }
             else if (gridSupplies.Columns[e.ColumnIndex].Name == "btnRestore")
             {
-                if (supply.Restore(int.Parse(row.Cells[0].Value.ToString())))
+                if (supply.Restore(int.Parse(row.Cells["id"].Value.ToString())))
                 {
                     MessageBox.Show("Supply has been Successfully Restored!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
