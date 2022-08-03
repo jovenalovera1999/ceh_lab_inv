@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProfile));
             this.label13 = new System.Windows.Forms.Label();
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -68,6 +69,7 @@
             // 
             // label13
             // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.Black;
@@ -79,6 +81,7 @@
             // 
             // txtEmail
             // 
+            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtEmail.Animated = true;
             this.txtEmail.BorderRadius = 3;
             this.txtEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -103,6 +106,7 @@
             // 
             // label14
             // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.Black;
@@ -114,6 +118,7 @@
             // 
             // txtTelephoneNumber
             // 
+            this.txtTelephoneNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTelephoneNumber.Animated = true;
             this.txtTelephoneNumber.BorderRadius = 3;
             this.txtTelephoneNumber.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -139,6 +144,7 @@
             // 
             // label15
             // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.Black;
@@ -150,6 +156,7 @@
             // 
             // label16
             // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.Black;
@@ -161,6 +168,7 @@
             // 
             // txtCellphoneNumber
             // 
+            this.txtCellphoneNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCellphoneNumber.Animated = true;
             this.txtCellphoneNumber.BorderRadius = 3;
             this.txtCellphoneNumber.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -186,6 +194,7 @@
             // 
             // label12
             // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Black;
@@ -197,6 +206,7 @@
             // 
             // txtAddress
             // 
+            this.txtAddress.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtAddress.Animated = true;
             this.txtAddress.BorderRadius = 3;
             this.txtAddress.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -221,6 +231,7 @@
             // 
             // cmbGender
             // 
+            this.cmbGender.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cmbGender.BackColor = System.Drawing.Color.Transparent;
             this.cmbGender.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbGender.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
@@ -242,6 +253,7 @@
             // 
             // label11
             // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
@@ -293,6 +305,7 @@
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
@@ -304,6 +317,7 @@
             // 
             // txtLastName
             // 
+            this.txtLastName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtLastName.Animated = true;
             this.txtLastName.BorderRadius = 3;
             this.txtLastName.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -328,6 +342,7 @@
             // 
             // label8
             // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
@@ -339,6 +354,7 @@
             // 
             // txtMiddleName
             // 
+            this.txtMiddleName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtMiddleName.Animated = true;
             this.txtMiddleName.BorderRadius = 3;
             this.txtMiddleName.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -363,6 +379,7 @@
             // 
             // label9
             // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
@@ -374,6 +391,7 @@
             // 
             // label10
             // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Black;
@@ -385,6 +403,7 @@
             // 
             // txtFirstName
             // 
+            this.txtFirstName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtFirstName.Animated = true;
             this.txtFirstName.BorderRadius = 3;
             this.txtFirstName.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -540,6 +559,7 @@
             // 
             // txtGender
             // 
+            this.txtGender.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtGender.Animated = true;
             this.txtGender.BorderRadius = 3;
             this.txtGender.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -574,7 +594,7 @@
             this.btnUpdate.FillColor = System.Drawing.Color.Green;
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(1648, 932);
+            this.btnUpdate.Location = new System.Drawing.Point(999, 400);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(103, 36);
             this.btnUpdate.TabIndex = 95;
@@ -594,7 +614,7 @@
             this.btnCancel.FillColor = System.Drawing.Color.Green;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(1539, 932);
+            this.btnCancel.Location = new System.Drawing.Point(890, 400);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(103, 36);
             this.btnCancel.TabIndex = 96;
@@ -615,7 +635,7 @@
             this.btnSave.FillColor = System.Drawing.Color.Green;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(1648, 932);
+            this.btnSave.Location = new System.Drawing.Point(999, 400);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(103, 36);
             this.btnSave.TabIndex = 97;
@@ -626,6 +646,7 @@
             // 
             // dateBirthday
             // 
+            this.dateBirthday.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dateBirthday.BackColor = System.Drawing.Color.Green;
             this.dateBirthday.BorderRadius = 0;
             this.dateBirthday.ForeColor = System.Drawing.Color.White;
@@ -640,6 +661,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
@@ -651,6 +673,7 @@
             // 
             // txtBirthday
             // 
+            this.txtBirthday.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtBirthday.Animated = true;
             this.txtBirthday.BorderRadius = 3;
             this.txtBirthday.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -677,8 +700,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1763, 980);
+            this.ClientSize = new System.Drawing.Size(1114, 448);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtBirthday);
             this.Controls.Add(this.dateBirthday);
@@ -715,6 +739,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtUsername);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(1114, 448);
             this.Name = "frmProfile";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PROFILE";
