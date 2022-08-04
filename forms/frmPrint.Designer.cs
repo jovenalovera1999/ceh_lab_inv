@@ -53,7 +53,7 @@
             this.rprtSupplies.LocalReport.ReportEmbeddedResource = "ceh_lab_inv.reports.rprtSupplies.rdlc";
             this.rprtSupplies.Location = new System.Drawing.Point(-1, 148);
             this.rprtSupplies.Name = "rprtSupplies";
-            this.rprtSupplies.Size = new System.Drawing.Size(801, 453);
+            this.rprtSupplies.Size = new System.Drawing.Size(1281, 573);
             this.rprtSupplies.TabIndex = 0;
             // 
             // dateTo
@@ -64,7 +64,7 @@
             this.dateTo.ForeColor = System.Drawing.Color.White;
             this.dateTo.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dateTo.FormatCustom = null;
-            this.dateTo.Location = new System.Drawing.Point(518, 106);
+            this.dateTo.Location = new System.Drawing.Point(998, 106);
             this.dateTo.Name = "dateTo";
             this.dateTo.Size = new System.Drawing.Size(270, 36);
             this.dateTo.TabIndex = 9;
@@ -77,7 +77,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(480, 114);
+            this.label3.Location = new System.Drawing.Point(960, 114);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 21);
             this.label3.TabIndex = 10;
@@ -94,7 +94,7 @@
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel1.Location = new System.Drawing.Point(0, 0);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(800, 100);
+            this.Panel1.Size = new System.Drawing.Size(1280, 100);
             this.Panel1.TabIndex = 11;
             // 
             // btnClose
@@ -111,7 +111,7 @@
             this.btnClose.FillColor = System.Drawing.Color.Green;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(748, 12);
+            this.btnClose.Location = new System.Drawing.Point(1228, 12);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(40, 40);
             this.btnClose.TabIndex = 9;
@@ -179,7 +179,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(141, 114);
+            this.label4.Location = new System.Drawing.Point(621, 114);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 21);
             this.label4.TabIndex = 13;
@@ -193,7 +193,7 @@
             this.dateFrom.ForeColor = System.Drawing.Color.White;
             this.dateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dateFrom.FormatCustom = null;
-            this.dateFrom.Location = new System.Drawing.Point(204, 106);
+            this.dateFrom.Location = new System.Drawing.Point(684, 106);
             this.dateFrom.Name = "dateFrom";
             this.dateFrom.Size = new System.Drawing.Size(270, 36);
             this.dateFrom.TabIndex = 12;
@@ -204,9 +204,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1280, 720);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dateFrom);
             this.Controls.Add(this.Panel1);
@@ -215,7 +214,7 @@
             this.Controls.Add(this.rprtSupplies);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "frmPrint";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PRINT";

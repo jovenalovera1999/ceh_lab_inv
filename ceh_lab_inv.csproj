@@ -149,6 +149,12 @@
     <Compile Include="forms\frmResetPassword.Designer.cs">
       <DependentUpon>frmResetPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\frmStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmStatistics.Designer.cs">
+      <DependentUpon>frmStatistics.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\frmSupplies.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +179,7 @@
     <Compile Include="functions\Duplicate.cs" />
     <Compile Include="functions\Print.cs" />
     <Compile Include="functions\Signup.cs" />
+    <Compile Include="functions\Sum.cs" />
     <Compile Include="functions\Supply.cs" />
     <Compile Include="functions\User.cs" />
     <Compile Include="Program.cs" />
@@ -203,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmResetPassword.resx">
       <DependentUpon>frmResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmStatistics.resx">
+      <DependentUpon>frmStatistics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmSupplies.resx">
       <DependentUpon>frmSupplies.cs</DependentUpon>

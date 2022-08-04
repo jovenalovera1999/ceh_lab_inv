@@ -43,6 +43,39 @@ namespace ceh_lab_inv.functions
             }
         }
 
+        public void SuppliesWithDate(DateTime from, DateTime to)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(con.conString()))
+                {
+                    string sql = @"CALL count_supplies_with_date(@from, @to);";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@from", from);
+                        cmd.Parameters.AddWithValue("@to", to);
+
+                        connection.Open();
+
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+
+                        dt.Clear();
+                        da.Fill(dt);
+
+                        val.CountSuppliesWithDate = cmd.ExecuteScalar().ToString();
+
+                        connection.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error counting supplies with date: " + ex.ToString());
+            }
+        }
+
         public void Trash()
         {
             try
@@ -70,6 +103,39 @@ namespace ceh_lab_inv.functions
             catch (Exception ex)
             {
                 Console.WriteLine("Error counting trash: " + ex.ToString());
+            }
+        }
+
+        public void TrashWithDate(DateTime from, DateTime to)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(con.conString()))
+                {
+                    string sql = @"CALL count_trash_with_date(@from, @to);";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@from", from);
+                        cmd.Parameters.AddWithValue("@to", to);
+
+                        connection.Open();
+
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+
+                        dt.Clear();
+                        da.Fill(dt);
+
+                        val.CountTrashWithDate = cmd.ExecuteScalar().ToString();
+
+                        connection.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error counting trash with date: " + ex.ToString());
             }
         }
     }

@@ -53,6 +53,16 @@ namespace ceh_lab_inv.forms
             accounts.Show();
         }
 
+        private void btnStatistics_Click(object sender, EventArgs e)
+        {
+            pnlMain.Controls.Clear();
+            forms.frmStatistics statistics = new forms.frmStatistics();
+            statistics.TopLevel = false;
+            pnlMain.Controls.Add(statistics);
+            statistics.Dock = DockStyle.Fill;
+            statistics.Show();
+        }
+
         private void btnProfile_Click(object sender, EventArgs e)
         {
             pnlMain.Controls.Clear();

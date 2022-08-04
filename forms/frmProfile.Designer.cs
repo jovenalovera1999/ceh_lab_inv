@@ -594,7 +594,7 @@
             this.btnUpdate.FillColor = System.Drawing.Color.Green;
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(999, 400);
+            this.btnUpdate.Location = new System.Drawing.Point(1008, 536);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(103, 36);
             this.btnUpdate.TabIndex = 95;
@@ -614,7 +614,7 @@
             this.btnCancel.FillColor = System.Drawing.Color.Green;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(890, 400);
+            this.btnCancel.Location = new System.Drawing.Point(899, 536);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(103, 36);
             this.btnCancel.TabIndex = 96;
@@ -635,7 +635,7 @@
             this.btnSave.FillColor = System.Drawing.Color.Green;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(999, 400);
+            this.btnSave.Location = new System.Drawing.Point(1008, 536);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(103, 36);
             this.btnSave.TabIndex = 97;
@@ -700,9 +700,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1114, 448);
+            this.ClientSize = new System.Drawing.Size(1123, 584);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtBirthday);
             this.Controls.Add(this.dateBirthday);
@@ -740,7 +739,7 @@
             this.Controls.Add(this.txtUsername);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1114, 448);
+            this.MinimumSize = new System.Drawing.Size(1123, 584);
             this.Name = "frmProfile";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PROFILE";

@@ -21,6 +21,7 @@ namespace ceh_lab_inv.forms
         components.Value val = new components.Value();
 
         functions.Print print = new functions.Print();
+        functions.Sum sum = new functions.Sum();
 
         private void frmPrint_Load(object sender, EventArgs e)
         {
@@ -33,13 +34,13 @@ namespace ceh_lab_inv.forms
 
         private void dateFrom_onValueChanged(object sender, EventArgs e)
         {
-            print.Sum(dateFrom.Value.Date, dateTo.Value.Date);
+            sum.SumTotalCost(dateFrom.Value.Date, dateTo.Value.Date);
             print.LoadPrintSuppliesByDate(dateFrom.Value.Date, dateTo.Value.Date, rprtSupplies);
         }
 
         private void dateTo_onValueChanged(object sender, EventArgs e)
         {
-            print.Sum(dateFrom.Value.Date, dateTo.Value.Date);
+            sum.SumTotalCost(dateFrom.Value.Date, dateTo.Value.Date);
             print.LoadPrintSuppliesByDate(dateFrom.Value.Date, dateTo.Value.Date, rprtSupplies);
         }
 

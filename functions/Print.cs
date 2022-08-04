@@ -14,39 +14,6 @@ namespace ceh_lab_inv.functions
         components.Connection con = new components.Connection();
         components.Value val = new components.Value();
 
-        public void Sum(DateTime from, DateTime to)
-        {
-            try
-            {
-                using (MySqlConnection connection = new MySqlConnection(con.conString()))
-                {
-                    string sql = @"CALL print_sum(@from, @to)";
-
-                    using (MySqlCommand cmd = new MySqlCommand(sql, connection))
-                    {
-                        cmd.Parameters.AddWithValue("@from", from);
-                        cmd.Parameters.AddWithValue("@to", to);
-
-                        connection.Open();
-
-                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                        DataTable dt = new DataTable();
-
-                        dt.Clear();
-                        da.Fill(dt);
-
-                        val.SumTotalCost = cmd.ExecuteScalar().ToString();
-
-                        connection.Close();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error counting supplies: " + ex.ToString());
-            }
-        }
-
         public void LoadPrintSuppliesByDate(DateTime from, DateTime to, ReportViewer report)
         {
             try

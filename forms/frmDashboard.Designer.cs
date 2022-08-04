@@ -33,16 +33,17 @@
             this.btnExit = new Guna.UI2.WinForms.Guna2Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnProfile = new Guna.UI2.WinForms.Guna2Button();
             this.btnSwitchAccount = new Guna.UI2.WinForms.Guna2Button();
             this.btnAccounts = new Guna.UI2.WinForms.Guna2Button();
             this.btnSupplies = new Guna.UI2.WinForms.Guna2Button();
             this.pnlMain = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnStatistics = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.guna2Panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Panel1
@@ -55,7 +56,7 @@
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel1.Location = new System.Drawing.Point(0, 0);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(800, 136);
+            this.Panel1.Size = new System.Drawing.Size(1280, 136);
             this.Panel1.TabIndex = 1;
             // 
             // btnExit
@@ -72,7 +73,7 @@
             this.btnExit.FillColor = System.Drawing.Color.Green;
             this.btnExit.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(748, 12);
+            this.btnExit.Location = new System.Drawing.Point(1228, 12);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(40, 40);
             this.btnExit.TabIndex = 8;
@@ -102,21 +103,10 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "CAPIZ EMMANUEL HOSPITAL";
             // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2PictureBox1.Image = global::ceh_lab_inv.Properties.Resources.ceh_logo;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(157, 136);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.guna2PictureBox1.TabIndex = 0;
-            this.guna2PictureBox1.TabStop = false;
-            // 
             // guna2Panel2
             // 
             this.guna2Panel2.BackColor = System.Drawing.Color.Green;
+            this.guna2Panel2.Controls.Add(this.btnStatistics);
             this.guna2Panel2.Controls.Add(this.btnProfile);
             this.guna2Panel2.Controls.Add(this.btnSwitchAccount);
             this.guna2Panel2.Controls.Add(this.btnAccounts);
@@ -124,7 +114,7 @@
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.guna2Panel2.Location = new System.Drawing.Point(0, 136);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(157, 464);
+            this.guna2Panel2.Size = new System.Drawing.Size(157, 584);
             this.guna2Panel2.TabIndex = 2;
             // 
             // btnProfile
@@ -139,7 +129,7 @@
             this.btnProfile.FillColor = System.Drawing.Color.Green;
             this.btnProfile.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnProfile.ForeColor = System.Drawing.Color.White;
-            this.btnProfile.Location = new System.Drawing.Point(0, 392);
+            this.btnProfile.Location = new System.Drawing.Point(0, 512);
             this.btnProfile.Name = "btnProfile";
             this.btnProfile.Size = new System.Drawing.Size(157, 36);
             this.btnProfile.TabIndex = 12;
@@ -159,7 +149,7 @@
             this.btnSwitchAccount.FillColor = System.Drawing.Color.Green;
             this.btnSwitchAccount.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnSwitchAccount.ForeColor = System.Drawing.Color.White;
-            this.btnSwitchAccount.Location = new System.Drawing.Point(0, 428);
+            this.btnSwitchAccount.Location = new System.Drawing.Point(0, 548);
             this.btnSwitchAccount.Name = "btnSwitchAccount";
             this.btnSwitchAccount.Size = new System.Drawing.Size(157, 36);
             this.btnSwitchAccount.TabIndex = 11;
@@ -213,22 +203,53 @@
             this.pnlMain.Location = new System.Drawing.Point(157, 136);
             this.pnlMain.Margin = new System.Windows.Forms.Padding(0);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(643, 464);
+            this.pnlMain.Size = new System.Drawing.Size(1123, 584);
             this.pnlMain.TabIndex = 3;
+            // 
+            // btnStatistics
+            // 
+            this.btnStatistics.Animated = true;
+            this.btnStatistics.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStatistics.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnStatistics.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnStatistics.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnStatistics.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnStatistics.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnStatistics.FillColor = System.Drawing.Color.Green;
+            this.btnStatistics.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.btnStatistics.ForeColor = System.Drawing.Color.White;
+            this.btnStatistics.Location = new System.Drawing.Point(0, 72);
+            this.btnStatistics.Name = "btnStatistics";
+            this.btnStatistics.Size = new System.Drawing.Size(157, 36);
+            this.btnStatistics.TabIndex = 13;
+            this.btnStatistics.TabStop = false;
+            this.btnStatistics.Text = "STATISTICS";
+            this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.guna2PictureBox1.Image = global::ceh_lab_inv.Properties.Resources.ceh_logo;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(157, 136);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.guna2PictureBox1.TabIndex = 0;
+            this.guna2PictureBox1.TabStop = false;
             // 
             // frmDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1280, 720);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.guna2Panel2);
             this.Controls.Add(this.Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "frmDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DASHBOARD";
@@ -236,8 +257,8 @@
             this.Load += new System.EventHandler(this.frmDashboard_Load);
             this.Panel1.ResumeLayout(false);
             this.Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.guna2Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -255,5 +276,6 @@
         private Guna.UI2.WinForms.Guna2Button btnSwitchAccount;
         private Guna.UI2.WinForms.Guna2Panel pnlMain;
         private Guna.UI2.WinForms.Guna2Button btnExit;
+        private Guna.UI2.WinForms.Guna2Button btnStatistics;
     }
 }

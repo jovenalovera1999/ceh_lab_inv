@@ -346,13 +346,13 @@ END$$
 DELIMITER ;
 
 USE `ceh_lab_inv_db`;
-DROP procedure IF EXISTS `count_supplies_by_search`;
+DROP procedure IF EXISTS `count_supplies_with_date`;
 
 DELIMITER $$
 USE `ceh_lab_inv_db`$$
-CREATE PROCEDURE `count_supplies_by_search` (p_keyword VARCHAR(255))
+CREATE PROCEDURE `count_supplies_with_date` (p_from DATE, p_to DATE)
 BEGIN
-	SELECT COUNT(*) FROM ceh_lab_inv_db.supplies WHERE item LIKE p_keyword AND is_deleted = 0 OR brand LIKE p_keyword AND is_deleted = 0 OR supplier LIKE p_keyword AND is_deleted = 0 ORDER BY item ASC;
+	SELECT COUNT(*) FROM ceh_lab_inv_db.supplies WHERE created_at BETWEEN p_from AND p_to AND is_deleted = 0;
 END$$
 
 DELIMITER ;
@@ -365,6 +365,18 @@ USE `ceh_lab_inv_db`$$
 CREATE PROCEDURE `count_trash` ()
 BEGIN
 	SELECT COUNT(*) FROM ceh_lab_inv_db.supplies WHERE is_deleted = 1;
+END$$
+
+DELIMITER ;
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `count_trash_with_date`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `count_trash_with_date` (p_from DATE, p_to DATE)
+BEGIN
+	SELECT COUNT(*) FROM ceh_lab_inv_db.supplies WHERE created_at BETWEEN p_from AND p_to AND is_deleted = 1;
 END$$
 
 DELIMITER ;
@@ -383,19 +395,6 @@ BEGIN
     CONCAT('₱', FORMAT(CAST(AES_DECRYPT(total_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ER') AS CHAR), 2)) AS 'total_cost', CONCAT(exp_rgt_quantity, ' ', exp_rgt_unit),
     CONCAT('₱', FORMAT(CAST(AES_DECRYPT(exp_rgt_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ER') AS CHAR), 2)) AS 'exp_rgt_cost',
     DATE_FORMAT(expiration_date, '%m/%d/%y') AS 'expiration_date' FROM ceh_lab_inv_db.supplies WHERE created_at BETWEEN p_from AND p_to AND is_deleted = 0 ORDER BY item ASC;
-END$$
-
-DELIMITER ;
-
-USE `ceh_lab_inv_db`;
-DROP procedure IF EXISTS `print_sum`;
-
-DELIMITER $$
-USE `ceh_lab_inv_db`$$
-CREATE PROCEDURE `print_sum` (p_from DATE, p_to DATE)
-BEGIN
-	SELECT CONCAT('₱', FORMAT(SUM(CAST(AES_DECRYPT(total_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ER') AS CHAR)), 2)) FROM ceh_lab_inv_db.supplies
-    WHERE created_at BETWEEN p_from AND p_to AND is_deleted = 0 ORDER BY item ASC;
 END$$
 
 DELIMITER ;
@@ -479,6 +478,34 @@ CREATE PROCEDURE `delete_account` (p_id INT)
 BEGIN
 	DELETE FROM ceh_lab_inv_db.accounts WHERE user_id = p_id;
     DELETE FROM ceh_lab_inv_db.users WHERE id = p_id;
+END$$
+
+DELIMITER ;
+-- //
+-- // Statistic
+-- //
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `sum_total_cost`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `sum_total_cost` (p_from DATE, p_to DATE)
+BEGIN
+	SELECT CONCAT('₱', FORMAT(SUM(CAST(AES_DECRYPT(total_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ER') AS CHAR)), 2)) FROM ceh_lab_inv_db.supplies
+    WHERE created_at BETWEEN p_from AND p_to AND is_deleted = 0 ORDER BY item ASC;
+END$$
+
+DELIMITER ;
+
+USE `ceh_lab_inv_db`;
+DROP procedure IF EXISTS `sum_total_exp_rgt_cost`;
+
+DELIMITER $$
+USE `ceh_lab_inv_db`$$
+CREATE PROCEDURE `sum_total_exp_rgt_cost` (p_from DATE, p_to DATE)
+BEGIN
+	SELECT CONCAT('₱', FORMAT(SUM(CAST(AES_DECRYPT(exp_rgt_cost, '$2y$10$91FFYLJt2BCdiaK0mDHbTe0ER') AS CHAR)), 2)) FROM ceh_lab_inv_db.supplies
+    WHERE created_at BETWEEN p_from AND p_to AND is_deleted = 0 ORDER BY item ASC;
 END$$
 
 DELIMITER ;

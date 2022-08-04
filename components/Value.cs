@@ -124,6 +124,21 @@ namespace ceh_lab_inv.components
             set { user_type = value; }
         }
 
+        public string UserFullName
+        {
+            get
+            {
+                if(String.IsNullOrWhiteSpace(user_middle_name))
+                {
+                    return string.Format("{0} {1}", user_first_name, user_last_name);
+                }
+                else
+                {
+                    return string.Format("{0} {1}. {2}", user_first_name, user_middle_name[0], user_last_name);
+                }
+            }
+        }
+
         // Account Values
 
         public static int account_primary_id;
@@ -340,6 +355,13 @@ namespace ceh_lab_inv.components
             set { count_supplies = value; }
         }
 
+        public static string count_supplies_with_date;
+        public string CountSuppliesWithDate
+        {
+            get { return count_supplies_with_date; }
+            set { count_supplies_with_date = value; }
+        }
+
         public static string count_trash;
         public string CountTrash
         {
@@ -347,13 +369,27 @@ namespace ceh_lab_inv.components
             set { count_trash = value; }
         }
 
-        // Print Values
+        public static string count_trash_with_date;
+        public string CountTrashWithDate
+        {
+            get { return count_trash_with_date; }
+            set { count_trash_with_date = value; }
+        }
+
+        // Print & Statistic Values
 
         public static string sum_total_cost;
         public string SumTotalCost
         {
             get { return sum_total_cost; }
             set { sum_total_cost = value; }
+        }
+
+        public static string sum_total_exp_rgt_cost;
+        public string SumTotalExpRgtCost
+        {
+            get { return sum_total_exp_rgt_cost; }
+            set { sum_total_exp_rgt_cost = value; }
         }
     }
 }
